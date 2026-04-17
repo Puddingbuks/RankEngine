@@ -1,0 +1,2009 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RankEngine — SEO &amp; advertenties voor Nederlandse ondernemers</title>
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
+  <style>
+/* ==========================================================
+   RankEngine — design tokens + base styles
+   ========================================================== */
+:root {
+  --navy: #1A2E4A;
+  --navy-ink: #0F1E33;
+  --navy-soft: #24385A;
+  --orange: #FF6B35;
+  --orange-ink: #E45A28;
+  --off-white: #F8F7F4;
+  --grey: #EEECE8;
+  --grey-line: #E1DED8;
+  --near-black: #1A1A1A;
+  --muted: #5B6070;
+  --white: #FFFFFF;
+
+  --font-display: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-body: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --shell-x: clamp(24px, 5vw, 88px);
+  --section-y: clamp(80px, 10vw, 160px);
+
+  --radius: 4px;
+  --radius-lg: 14px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+html[data-density="tight"] {
+  --section-y: clamp(56px, 6vw, 96px);
+  --shell-x: clamp(20px, 4vw, 56px);
+}
+html[data-accent="crimson"] { --orange: #E23A3A; --orange-ink: #B52A2A; }
+html[data-accent="emerald"] { --orange: #2FB877; --orange-ink: #229565; }
+html[data-accent="electric"] { --orange: #3D5BFF; --orange-ink: #2A44D4; }
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--off-white);
+  color: var(--near-black);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+
+::selection { background: var(--orange); color: var(--white); }
+
+/* ---------- Type scale ---------- */
+.h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(44px, 8vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(34px, 5vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 3vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.lead {
+  font-size: clamp(18px, 1.6vw, 20px);
+  line-height: 1.55;
+  font-weight: 400;
+  color: var(--near-black);
+  text-wrap: pretty;
+}
+.small {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.mono {
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 28px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: transform .3s var(--ease), background .25s var(--ease), color .25s var(--ease), box-shadow .25s var(--ease);
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--orange);
+  color: var(--white);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.02), inset 0 -1px 0 rgba(0,0,0,0.08);
+}
+.btn-primary:hover { background: var(--orange-ink); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); }
+.btn-ghost {
+  background: transparent;
+  color: var(--near-black);
+  border: 1px solid var(--grey-line);
+}
+.btn-ghost:hover { border-color: var(--near-black); }
+.btn-dark {
+  background: var(--white);
+  color: var(--navy);
+}
+.btn-dark:hover { background: var(--off-white); }
+.btn .arrow {
+  display: inline-block;
+  transition: transform .3s var(--ease);
+}
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* ---------- Shell / layout ---------- */
+.shell {
+  padding-left: var(--shell-x);
+  padding-right: var(--shell-x);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.section { padding-top: var(--section-y); padding-bottom: var(--section-y); }
+.section-grey { background: var(--grey); }
+.section-navy { background: var(--navy); color: var(--white); }
+.section-navy .lead { color: rgba(255,255,255,0.76); }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+.section-navy .eyebrow { color: rgba(255,255,255,0.6); }
+.eyebrow .dot {
+  width: 6px; height: 6px; background: var(--orange); border-radius: 50%;
+}
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: saturate(140%) blur(10px);
+  background: rgba(248,247,244,0.85);
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s var(--ease), background .2s var(--ease);
+}
+.nav.scrolled { border-color: var(--grey-line); }
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+}
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--navy);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+}
+.logo-mark {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  background: var(--navy);
+  color: var(--white);
+  display: grid; place-items: center;
+  font-weight: 900;
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.logo-mark::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 4px;
+  background: var(--orange);
+}
+.nav-links {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+}
+.nav-link {
+  color: var(--near-black);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  padding: 6px 0;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 100%; bottom: 0;
+  height: 1.5px;
+  background: var(--orange);
+  transition: right .3s var(--ease);
+}
+.nav-link:hover::after { right: 0; }
+.nav-cta { padding: 12px 18px; }
+@media (max-width: 820px) {
+  .nav-links .nav-link { display: none; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative;
+  padding-top: clamp(48px, 6vw, 96px);
+  padding-bottom: clamp(60px, 8vw, 120px);
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+@media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
+
+/* Hero animated headline */
+@keyframes heroWordIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: heroWordIn .55s var(--ease) forwards;
+}
+/* line-break placeholder so <br> still works with word-splitting */
+.hero-br { display: block; }
+
+.hero h1 .mark-orange {
+  color: var(--orange);
+  font-style: italic;
+  font-weight: 500;
+}
+.hero h1 .underline-brush {
+  position: relative;
+  white-space: nowrap;
+}
+.hero h1 .underline-brush::after {
+  content: "";
+  position: absolute;
+  left: -2%;
+  right: -2%;
+  bottom: -2px;
+  height: 10px;
+  background: var(--orange);
+  opacity: 0.25;
+  transform: skewX(-8deg);
+}
+
+.hero-sub {
+  margin-top: 28px;
+  max-width: 520px;
+  color: var(--muted);
+}
+.hero-ctas {
+  display: flex;
+  gap: 14px;
+  margin-top: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hero-meta {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid var(--grey-line);
+  max-width: 540px;
+}
+.hero-meta .stat-num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 32px;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+.hero-meta .stat-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* Hero right card */
+.hero-card {
+  position: relative;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero-card::before {
+  content: "";
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,107,53,0.6), rgba(255,107,53,0) 60%);
+}
+.hc-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hc-live {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px;
+  font-family: ui-monospace, Menlo, monospace;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.1em;
+}
+.hc-live::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--orange);
+  animation: pulse 2s infinite;
+}
+.hc-campaign {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.06em;
+}
+.hc-kpi {
+  margin-top: 24px;
+  position: relative;
+  z-index: 1;
+}
+.hc-kpi .num {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 72px;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+}
+.hc-kpi .lbl {
+  color: rgba(255,255,255,0.68);
+  font-size: 14px;
+  margin-top: 8px;
+}
+.hc-kpi .delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(34,197,94,0.18);
+  color: #86efac;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-top: 10px;
+}
+
+.hc-chart {
+  position: relative;
+  height: 110px;
+  z-index: 1;
+  margin-top: 20px;
+}
+.hc-chart svg { width: 100%; height: 100%; }
+
+.hc-rows {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+.hc-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  font-size: 13px;
+}
+.hc-row .name { font-weight: 500; }
+.hc-row .ctr { color: rgba(255,255,255,0.7); font-family: ui-monospace, Menlo, monospace; }
+.hc-row .conv { color: #86efac; font-family: ui-monospace, Menlo, monospace; }
+
+/* ---------- Marquee ---------- */
+.marquee {
+  border-top: 1px solid var(--grey-line);
+  border-bottom: 1px solid var(--grey-line);
+  padding: 20px 0;
+  overflow: hidden;
+  background: var(--off-white);
+}
+.marquee-track {
+  display: flex;
+  gap: 60px;
+  animation: marquee 40s linear infinite;
+  white-space: nowrap;
+  width: max-content;
+}
+.marquee-item {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 60px;
+}
+.marquee-item::after {
+  content: "✦";
+  color: var(--orange);
+  font-size: 12px;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- Problem section ---------- */
+.problem-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+@media (max-width: 880px) { .problem-grid { grid-template-columns: 1fr; } }
+
+.problem-list {
+  display: grid;
+  gap: 4px;
+  margin-top: 8px;
+}
+.problem-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-top: 1px solid var(--grey-line);
+  align-items: start;
+  transition: padding .3s var(--ease);
+}
+.problem-item:last-child { border-bottom: 1px solid var(--grey-line); }
+.problem-item:hover { padding-left: 8px; }
+.problem-num {
+  font-family: ui-monospace, Menlo, monospace;
+  color: var(--muted);
+  font-size: 13px;
+  padding-top: 4px;
+}
+.problem-item h4 {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+.problem-item p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 54ch;
+}
+
+/* ---------- Services ---------- */
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 60px;
+}
+@media (max-width: 760px) { .services-header { grid-template-columns: 1fr; } }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.service-card {
+  grid-column: span 4;
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease);
+  cursor: default;
+  overflow: hidden;
+}
+.service-card.wide { grid-column: span 6; }
+.service-card.feature { grid-column: span 8; background: var(--navy); color: var(--white); border-color: var(--navy); }
+.service-card.feature .s-meta,
+.service-card.feature .s-desc { color: rgba(255,255,255,0.72); }
+.service-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--near-black);
+}
+.service-card.feature:hover { border-color: var(--orange); }
+
+@media (max-width: 980px) {
+  .service-card, .service-card.wide, .service-card.feature { grid-column: span 6; }
+}
+@media (max-width: 620px) {
+  .service-card, .service-card.wide, .service-card.feature { grid-column: span 12; }
+}
+
+.s-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.s-idx {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+.service-card.feature .s-idx { color: rgba(255,255,255,0.5); }
+
+.s-tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--grey);
+  color: var(--navy);
+}
+.service-card.feature .s-tag { background: rgba(255,107,53,0.18); color: var(--orange); }
+
+.s-title {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.015em;
+  margin: 24px 0 10px;
+  line-height: 1.05;
+}
+.service-card.feature .s-title { font-size: 40px; }
+.s-desc {
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 42ch;
+  line-height: 1.55;
+}
+.s-meta {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+  font-size: 13px;
+  color: var(--muted);
+  flex-wrap: wrap;
+}
+.s-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.s-meta span::before {
+  content: "";
+  width: 4px; height: 4px; border-radius: 50%;
+  background: var(--orange);
+}
+
+.s-visual {
+  position: absolute;
+  inset: auto -20px -20px auto;
+  width: 160px;
+  height: 160px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+.service-card.feature .s-visual-big {
+  position: relative;
+  inset: auto;
+  margin-top: 24px;
+  width: 100%;
+  height: 140px;
+  opacity: 1;
+}
+
+/* ---------- Pillars ---------- */
+.pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+@media (max-width: 880px) { .pillars { grid-template-columns: 1fr; } }
+.pillar {
+  padding: 36px 32px;
+  background: var(--off-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+  transition: border-color .3s var(--ease), transform .3s var(--ease);
+  position: relative;
+}
+.section-grey .pillar { background: var(--white); }
+.pillar:hover { transform: translateY(-2px); border-color: var(--orange); }
+.pillar .p-num {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  color: var(--orange);
+  letter-spacing: 0.1em;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.pillar .p-num svg { color: var(--navy); }
+.pillar h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+  color: var(--navy);
+}
+.pillar p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* ---------- About ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: center;
+}
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } }
+
+.about-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--grey);
+}
+.about-photo .placeholder {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(26,46,74,0.05) 0 8px,
+      rgba(26,46,74,0.10) 8px 16px
+    ),
+    var(--grey);
+  display: grid;
+  place-items: center;
+}
+.about-photo .placeholder .lbl {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--navy);
+  background: var(--off-white);
+  padding: 8px 14px;
+  border: 1px solid var(--grey-line);
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.about-photo .photo-tag {
+  position: absolute;
+  left: 20px; bottom: 20px;
+  background: var(--navy);
+  color: var(--white);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.about-photo .photo-tag::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--orange);
+}
+
+.signature {
+  font-family: 'Satoshi', cursive;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--navy);
+  margin-top: 24px;
+  letter-spacing: -0.01em;
+}
+.about-quote {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(24px, 2.5vw, 32px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+.about-quote .q-mark {
+  color: var(--orange);
+  font-size: 1.2em;
+  line-height: 0;
+  vertical-align: -0.1em;
+  margin-right: 4px;
+}
+.about-facts {
+  margin-top: 32px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--grey-line);
+}
+.about-fact .k { font-size: 13px; color: var(--muted); margin-bottom: 2px; }
+.about-fact .v { font-size: 16px; font-weight: 500; color: var(--navy); }
+
+/* ---------- CTA / Contact band ---------- */
+.cta-band {
+  background: var(--navy);
+  color: var(--white);
+  padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: "";
+  position: absolute;
+  right: -200px; top: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,107,53,0.25), rgba(255,107,53,0) 60%);
+  pointer-events: none;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.1fr);
+  gap: clamp(40px, 5vw, 80px);
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 960px) { .contact-grid { grid-template-columns: 1fr; } }
+
+.contact-left h2 { color: var(--white); max-width: 14ch; }
+.contact-left .lead { color: rgba(255,255,255,0.72); max-width: 44ch; }
+
+.contact-meta {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+.contact-meta-item {
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: color .2s var(--ease);
+}
+.contact-meta-item:nth-child(odd) { padding-right: 16px; border-right: 1px solid rgba(255,255,255,0.12); }
+.contact-meta-item:nth-child(even) { padding-left: 16px; }
+a.contact-meta-item:hover .cm-v { color: var(--orange); }
+.cm-k {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.cm-v {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--white);
+  transition: color .2s var(--ease);
+}
+
+.contact-form-wrap {
+  background: var(--off-white);
+  color: var(--near-black);
+  border-radius: var(--radius-lg);
+  padding: clamp(24px, 3vw, 40px);
+  box-shadow: 0 30px 60px -24px rgba(0,0,0,0.4);
+}
+
+.form-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+}
+.form-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+.form-badge {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--grey);
+  padding: 5px 10px;
+  border-radius: 999px;
+}
+
+.contact-form { display: flex; flex-direction: column; gap: 18px; position: relative; }
+.form-row { display: grid; gap: 14px; }
+.form-row.two { grid-template-columns: 1fr 1fr; }
+@media (max-width: 560px) { .form-row.two { grid-template-columns: 1fr; } }
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.01em;
+}
+.field-label .req { color: var(--orange); margin-left: 3px; }
+.field input, .field textarea {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--near-black);
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 8px;
+  padding: 13px 14px;
+  outline: none;
+  transition: border-color .15s var(--ease), box-shadow .15s var(--ease);
+  width: 100%;
+  resize: vertical;
+  font-weight: 400;
+}
+.field input::placeholder, .field textarea::placeholder {
+  color: #9a9ea8;
+}
+.field input:focus, .field textarea:focus {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(26,46,74,0.12);
+}
+.field.has-error input, .field.has-error textarea {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(255,107,53,0.15);
+}
+.field-error {
+  font-size: 12px;
+  color: var(--orange-ink);
+  margin-top: 2px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.chip {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 8px 12px;
+  background: var(--white);
+  color: var(--navy);
+  border: 1px solid var(--grey-line);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .15s var(--ease);
+}
+.chip:hover { border-color: var(--navy); }
+.chip.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
+.form-foot {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid var(--grey-line);
+}
+@media (max-width: 560px) { .form-foot { grid-template-columns: 1fr; } }
+.form-privacy {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  max-width: 40ch;
+}
+.form-privacy a { color: var(--navy); text-decoration: underline; text-underline-offset: 2px; }
+.btn:disabled { opacity: 0.6; cursor: wait; }
+
+.form-success {
+  text-align: left;
+  padding: 20px 0;
+}
+.success-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(47,184,119,0.12);
+  color: #1a8a54;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background: var(--navy-ink);
+  color: rgba(255,255,255,0.7);
+  padding: 80px 0 40px;
+  font-size: 15px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 56px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+@media (max-width: 820px) {
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+.footer h5 {
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+.footer a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 8px;
+  transition: color .2s var(--ease);
+}
+.footer a:hover { color: var(--orange); }
+.footer .logo { color: var(--white); margin-bottom: 20px; }
+.footer .logo-mark { background: var(--white); color: var(--navy); }
+.footer-desc {
+  max-width: 36ch;
+  color: rgba(255,255,255,0.55);
+  font-size: 14px;
+  line-height: 1.55;
+}
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 28px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-bottom a { display: inline; margin: 0 0 0 20px; }
+
+/* ---------- Reveal animation (scroll-triggered) ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Pulse ---------- */
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(34,197,94,0.2); }
+  50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.0); }
+}
+
+/* ---------- Tweaks panel ---------- */
+.tweaks-panel {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 40;
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: 12px;
+  padding: 18px 20px 20px;
+  width: 260px;
+  box-shadow: 0 20px 40px -16px rgba(26,46,74,0.18);
+  font-family: var(--font-body);
+}
+.tweaks-panel h6 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tweaks-panel .sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.tweak-group { margin-top: 12px; }
+.tweak-group .label {
+  font-size: 11px;
+  font-family: ui-monospace, Menlo, monospace;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.tweak-opts {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.tweak-opt {
+  flex: 1;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid var(--grey-line);
+  background: var(--off-white);
+  color: var(--near-black);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all .15s var(--ease);
+}
+.tweak-opt:hover { border-color: var(--navy); }
+.tweak-opt.active {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+.tweak-swatch {
+  display: inline-block;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+  vertical-align: -1px;
+}
+
+/* ---------- Utility ---------- */
+.divider {
+  height: 1px;
+  background: var(--grey-line);
+  margin: 0;
+  border: none;
+}
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--grey);
+  color: var(--navy);
+  border-radius: 999px;
+}
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Netlify Forms bot-detectie: statisch formulier met alle velden -->
+  <form name="contact" netlify netlify-honeypot="honeypot" hidden>
+    <input name="name" />
+    <input name="company" />
+    <input name="email" />
+    <input name="phone" />
+    <input name="service" />
+    <input name="budget" />
+    <textarea name="message"></textarea>
+    <input name="honeypot" />
+  </form>
+
+  <div id="root"></div>
+
+  <script>
+    window.TWEAKS = { accentHue: "orange", heroVariant: "display", density: "tight", language: "nl" };
+  </script>
+
+  <!-- ============================================================
+       COMPONENTS
+       ============================================================ -->
+  <script type="text/babel">
+/* global React */
+const { useEffect, useRef, useState } = React;
+
+const Arrow = ({ size = 14 }) => (
+  <svg className="arrow" width={size} height={size} viewBox="0 0 14 14" fill="none" aria-hidden="true">
+    <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+const Logo = ({ onDark = false }) => (
+  <a href="#top" className="logo" style={onDark ? { color: '#fff' } : undefined}>
+    <span className="logo-mark">R</span>
+    RankEngine
+  </a>
+);
+
+function useReveal() {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    el.querySelectorAll('.reveal').forEach(n => io.observe(n));
+    return () => io.disconnect();
+  }, []);
+  return ref;
+}
+
+const Sparkline = () => {
+  const pts = [
+    [0, 78], [10, 72], [20, 75], [30, 58], [40, 62],
+    [50, 48], [60, 52], [70, 36], [80, 30], [90, 18], [100, 8]
+  ];
+  const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p[0]} ${p[1]}`).join(' ');
+  const area = d + ` L 100 100 L 0 100 Z`;
+  return (
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="spark-fill" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stopColor="#FF6B35" stopOpacity="0.45"/>
+          <stop offset="100%" stopColor="#FF6B35" stopOpacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d={area} fill="url(#spark-fill)" />
+      <path d={d} stroke="#FF6B35" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      {pts.map((p, i) => i === pts.length - 1 && (
+        <circle key={i} cx={p[0]} cy={p[1]} r="2" fill="#fff" stroke="#FF6B35" strokeWidth="1.4"/>
+      ))}
+    </svg>
+  );
+};
+
+const SVisualSearch = ({ dark }) => (
+  <svg viewBox="0 0 160 160" fill="none" aria-hidden="true">
+    <rect x="20" y="30" width="120" height="14" rx="3" fill={dark ? 'rgba(255,255,255,0.08)' : '#EEECE8'} />
+    <rect x="20" y="30" width="70" height="14" rx="3" fill={dark ? 'rgba(255,107,53,0.5)' : '#FF6B35'} opacity="0.85"/>
+    <rect x="20" y="56" width="100" height="8" rx="2" fill={dark ? 'rgba(255,255,255,0.1)' : '#EEECE8'}/>
+    <rect x="20" y="70" width="88" height="8" rx="2" fill={dark ? 'rgba(255,255,255,0.1)' : '#EEECE8'}/>
+    <rect x="20" y="98" width="120" height="14" rx="3" fill={dark ? 'rgba(255,255,255,0.08)' : '#EEECE8'}/>
+    <rect x="20" y="124" width="100" height="8" rx="2" fill={dark ? 'rgba(255,255,255,0.1)' : '#EEECE8'}/>
+    <rect x="12" y="30" width="3" height="14" rx="1.5" fill="#FF6B35"/>
+  </svg>
+);
+
+const SVisualSEO = ({ dark }) => (
+  <svg viewBox="0 0 160 160" fill="none" aria-hidden="true">
+    <g stroke={dark ? 'rgba(255,255,255,0.18)' : '#E1DED8'} strokeWidth="1">
+      <line x1="10" y1="130" x2="150" y2="130"/>
+      <line x1="10" y1="100" x2="150" y2="100"/>
+      <line x1="10" y1="70" x2="150" y2="70"/>
+      <line x1="10" y1="40" x2="150" y2="40"/>
+    </g>
+    <path d="M10 120 L40 110 L70 90 L100 70 L130 50 L150 35"
+      fill="none" stroke="#FF6B35" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+    <circle cx="150" cy="35" r="4" fill="#FF6B35"/>
+    <circle cx="150" cy="35" r="8" fill="#FF6B35" opacity="0.2"/>
+    <text x="10" y="155" fill={dark ? 'rgba(255,255,255,0.4)' : '#5B6070'} fontSize="8" fontFamily="ui-monospace">#1 — #3 — #5</text>
+  </svg>
+);
+
+const SVisualMeta = ({ dark }) => (
+  <svg viewBox="0 0 160 160" fill="none" aria-hidden="true">
+    <rect x="20" y="20" width="120" height="90" rx="6" fill={dark ? 'rgba(255,255,255,0.06)' : '#EEECE8'}/>
+    <rect x="20" y="20" width="120" height="60" rx="6" fill={dark ? 'rgba(26,46,74,0.4)' : '#1A2E4A'} opacity="0.08"/>
+    <circle cx="32" cy="94" r="5" fill="#FF6B35"/>
+    <rect x="44" y="89" width="50" height="4" rx="2" fill={dark ? 'rgba(255,255,255,0.2)' : '#1A2E4A'} opacity="0.6"/>
+    <rect x="44" y="97" width="30" height="3" rx="1.5" fill={dark ? 'rgba(255,255,255,0.15)' : '#1A2E4A'} opacity="0.3"/>
+    <rect x="20" y="120" width="36" height="22" rx="3" fill="#FF6B35"/>
+    <rect x="60" y="120" width="80" height="22" rx="3" fill="none" stroke={dark ? 'rgba(255,255,255,0.2)' : '#E1DED8'}/>
+  </svg>
+);
+
+const SVisualApp = ({ dark }) => (
+  <svg viewBox="0 0 160 160" fill="none" aria-hidden="true">
+    <rect x="50" y="20" width="60" height="110" rx="8" fill="none" stroke={dark ? 'rgba(255,255,255,0.25)' : '#1A2E4A'} strokeWidth="1.2"/>
+    <rect x="58" y="32" width="44" height="22" rx="3" fill={dark ? 'rgba(255,107,53,0.3)' : '#FF6B35'} opacity="0.8"/>
+    <rect x="58" y="60" width="44" height="6" rx="1.5" fill={dark ? 'rgba(255,255,255,0.15)' : '#EEECE8'}/>
+    <rect x="58" y="70" width="32" height="6" rx="1.5" fill={dark ? 'rgba(255,255,255,0.15)' : '#EEECE8'}/>
+    <rect x="58" y="88" width="44" height="14" rx="2" fill="#FF6B35"/>
+    <circle cx="80" cy="124" r="3" fill={dark ? 'rgba(255,255,255,0.3)' : '#1A2E4A'}/>
+  </svg>
+);
+
+const SVisualStrategy = ({ dark, big }) => (
+  <svg viewBox={big ? "0 0 400 140" : "0 0 160 160"} fill="none" aria-hidden="true">
+    {big ? (
+      <g>
+        <line x1="20" y1="70" x2="380" y2="70" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="2 4"/>
+        {[40, 120, 200, 280, 360].map((x, i) => (
+          <g key={i}>
+            <circle cx={x} cy="70" r={i === 2 ? 8 : 5} fill={i === 2 ? '#FF6B35' : 'rgba(255,255,255,0.4)'}/>
+            <text x={x} y="100" textAnchor="middle" fontSize="10" fill="rgba(255,255,255,0.6)" fontFamily="ui-monospace">{['audit','plan','launch','optimise','scale'][i]}</text>
+            <text x={x} y="45" textAnchor="middle" fontSize="9" fill="rgba(255,255,255,0.35)" fontFamily="ui-monospace">{`0${i+1}`}</text>
+          </g>
+        ))}
+      </g>
+    ) : (
+      <g>
+        <circle cx="80" cy="80" r="50" fill="none" stroke={dark ? 'rgba(255,255,255,0.15)' : '#E1DED8'}/>
+        <circle cx="80" cy="80" r="30" fill="none" stroke={dark ? 'rgba(255,255,255,0.15)' : '#E1DED8'}/>
+        <circle cx="80" cy="80" r="5" fill="#FF6B35"/>
+        <line x1="80" y1="30" x2="80" y2="130" stroke={dark ? 'rgba(255,255,255,0.12)' : '#EEECE8'}/>
+        <line x1="30" y1="80" x2="130" y2="80" stroke={dark ? 'rgba(255,255,255,0.12)' : '#EEECE8'}/>
+      </g>
+    )}
+  </svg>
+);
+
+window._RE = { Arrow, Logo, useReveal, Sparkline, SVisualSearch, SVisualSEO, SVisualMeta, SVisualApp, SVisualStrategy };
+  </script>
+
+  <!-- ============================================================
+       TWEAKS
+       ============================================================ -->
+  <script type="text/babel">
+const { useEffect: useEffect2, useState: useState2 } = React;
+
+function TweaksPanel({ visible, tweaks, setTweaks }) {
+  if (!visible) return null;
+  const opt = (key, value, label, swatch) => {
+    const active = tweaks[key] === value;
+    return (
+      <button key={value} className={`tweak-opt ${active ? 'active' : ''}`}
+        onClick={() => setTweaks({ ...tweaks, [key]: value })}>
+        {swatch && <span className="tweak-swatch" style={{ background: swatch }} />}
+        {label}
+      </button>
+    );
+  };
+  return (
+    <div className="tweaks-panel">
+      <h6>Tweaks <span className="mono" style={{ color: 'var(--muted)', fontSize: 10 }}>RE.v1</span></h6>
+      <div className="sub">Mix and match the direction.</div>
+      <div className="tweak-group">
+        <div className="label">Accent</div>
+        <div className="tweak-opts">
+          {opt('accentHue', 'orange', 'Orange', '#FF6B35')}
+          {opt('accentHue', 'crimson', 'Crimson', '#E23A3A')}
+          {opt('accentHue', 'emerald', 'Emerald', '#2FB877')}
+          {opt('accentHue', 'electric', 'Electric', '#3D5BFF')}
+        </div>
+      </div>
+      <div className="tweak-group">
+        <div className="label">Hero headline</div>
+        <div className="tweak-opts">
+          {opt('heroVariant', 'display', 'Display')}
+          {opt('heroVariant', 'editorial', 'Editorial')}
+        </div>
+      </div>
+      <div className="tweak-group">
+        <div className="label">Density</div>
+        <div className="tweak-opts">
+          {opt('density', 'roomy', 'Roomy')}
+          {opt('density', 'tight', 'Tight')}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function useTweaks() {
+  const [tweaks, setTweaksState] = useState2(() => window.TWEAKS || {});
+  const [visible, setVisible] = useState2(false);
+
+  useEffect2(() => {
+    const html = document.documentElement;
+    html.setAttribute('data-accent', tweaks.accentHue || 'orange');
+    html.setAttribute('data-density', tweaks.density || 'roomy');
+  }, [tweaks]);
+
+  useEffect2(() => {
+    const onMsg = (e) => {
+      const d = e.data;
+      if (!d || typeof d !== 'object') return;
+      if (d.type === '__activate_edit_mode') setVisible(true);
+      if (d.type === '__deactivate_edit_mode') setVisible(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const setTweaks = (next) => {
+    setTweaksState(next);
+    const diff = {};
+    Object.keys(next).forEach(k => { if (next[k] !== (window.TWEAKS || {})[k]) diff[k] = next[k]; });
+    if (Object.keys(diff).length) {
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: diff }, '*');
+    }
+  };
+
+  return { tweaks, setTweaks, visible };
+}
+
+window._RE.TweaksPanel = TweaksPanel;
+window._RE.useTweaks = useTweaks;
+  </script>
+
+  <!-- ============================================================
+       SECTIONS
+       ============================================================ -->
+  <script type="text/babel">
+const { useEffect: ue3, useState: us3 } = React;
+const { Arrow, Logo, Sparkline, SVisualSearch, SVisualSEO, SVisualMeta, SVisualApp, SVisualStrategy } = window._RE;
+
+/* -------- NAV -------- */
+function Nav() {
+  const [scrolled, setScrolled] = us3(false);
+  ue3(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return (
+    <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+      <div className="shell nav-inner">
+        <Logo />
+        <div className="nav-links">
+          <a className="nav-link" href="#diensten">Diensten</a>
+          <a className="nav-link" href="#waarom">Waarom</a>
+          <a className="nav-link" href="#thomas">Thomas</a>
+          <a className="nav-link" href="#contact">Contact</a>
+          <a
+            className="btn btn-primary nav-cta"
+            href="#contact"
+            style={{ fontWeight: 900, width: '204px', height: '38px', fontSize: '18px', justifyContent: 'center' }}
+          >
+            Gratis adviesgesprek <Arrow />
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+/* -------- HERO (animated headline) -------- */
+function AnimatedHeadline({ variant }) {
+  const EASE = 'cubic-bezier(.2,.7,.2,1)';
+
+  if (variant === 'editorial') {
+    /* "Meer klanten uit Google en Meta — zonder een duur bureau." */
+    const segments = [
+      { text: 'Meer klanten uit Google en Meta\u00a0\u2014 ', orange: false, br: false },
+      { text: 'zonder', orange: true, br: false },
+      { text: ' een duur bureau.', orange: false, br: false },
+    ];
+    let wordIdx = 0;
+    return (
+      <h1 className="h1">
+        {segments.map((seg, si) => {
+          return seg.text.split(/(\s+)/).map((chunk, ci) => {
+            if (!chunk.trim()) return chunk;
+            const delay = `${wordIdx++ * 0.07}s`;
+            return (
+              <span
+                key={`${si}-${ci}`}
+                className="hero-word"
+                style={{ animationDelay: delay, color: seg.orange ? 'var(--orange)' : undefined, fontStyle: seg.orange ? 'italic' : undefined }}
+              >
+                {chunk}
+                {ci < seg.text.split(/(\s+)/).length - 1 ? '\u00a0' : ''}
+              </span>
+            );
+          });
+        })}
+      </h1>
+    );
+  }
+
+  /* display variant: "Bureau-kwaliteit online marketing. Zonder bureau." */
+  const line1Words = ['Bureau-kwaliteit', 'online', 'marketing.'];
+  const line2Words = ['Zonder', 'bureau.'];
+  let wi = 0;
+  return (
+    <h1 className="h1">
+      {line1Words.map(w => {
+        const delay = `${wi++ * 0.08}s`;
+        return (
+          <React.Fragment key={w}>
+            <span className="hero-word" style={{ animationDelay: delay }}>{w}</span>
+            {' '}
+          </React.Fragment>
+        );
+      })}
+      <span className="hero-br" />
+      <span className="underline-brush" style={{ display: 'inline' }}>
+        {line2Words.map(w => {
+          const delay = `${wi++ * 0.08}s`;
+          return (
+            <React.Fragment key={w}>
+              <span className="hero-word" style={{ animationDelay: delay }}>{w}</span>
+              {' '}
+            </React.Fragment>
+          );
+        })}
+      </span>
+    </h1>
+  );
+}
+
+function Hero({ variant = 'display' }) {
+  return (
+    <header className="hero shell" id="top">
+      <div className="hero-grid">
+        <div>
+          <AnimatedHeadline variant={variant} />
+
+          <p className="lead hero-sub reveal">
+            RankEngine is Thomas Roozemond. Één marketeer die voor Nederlandse
+            ondernemers advertenties draait en vindbaarheid verbetert. Geen
+            accountmanager-laagjes, geen ingewikkelde contracten. Gewoon resultaat.
+          </p>
+
+          <div className="hero-ctas reveal">
+            <a className="btn btn-primary" href="#contact">
+              Plan een gratis adviesgesprek <Arrow />
+            </a>
+            <a className="btn btn-ghost" href="#diensten">
+              Bekijk diensten
+            </a>
+          </div>
+
+        </div>
+
+        <HeroCard />
+      </div>
+    </header>
+  );
+}
+
+function HeroCard() {
+  return (
+    <div className="hero-card reveal" aria-hidden="true">
+      <div className="hc-head">
+        <span className="hc-live">LIVE · GOOGLE ADS</span>
+        <span className="hc-campaign">campagne #RE-0417</span>
+      </div>
+      <div className="hc-kpi">
+        <div className="num">312</div>
+        <div className="lbl">conversies deze maand</div>
+        <div className="delta">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <path d="M5 1v8M1 5l4-4 4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+          </svg>
+          +41% vs. vorige maand
+        </div>
+      </div>
+      <div className="hc-chart"><Sparkline /></div>
+      <div className="hc-rows">
+        <div className="hc-row">
+          <span className="name">Search — Services NL</span>
+          <span className="ctr">CTR 8.2%</span>
+          <span className="conv">+18</span>
+        </div>
+        <div className="hc-row">
+          <span className="name">Shopping — Feed core</span>
+          <span className="ctr">ROAS 6.1×</span>
+          <span className="conv">+44</span>
+        </div>
+        <div className="hc-row">
+          <span className="name">Meta — Lead form</span>
+          <span className="ctr">CPL € 12.40</span>
+          <span className="conv">+9</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* -------- MARQUEE -------- */
+function Marquee() {
+  const items = [
+    'Google Ads', 'SEO', 'Meta Ads', 'LinkedIn Ads', 'Apple Search Ads',
+    'Google UAC', 'Shopping campagnes', 'Technical SEO', 'Content marketing',
+    'Audits & strategie'
+  ];
+  const row = [...items, ...items];
+  return (
+    <section className="marquee" aria-hidden="true">
+      <div className="marquee-track">
+        {row.map((t, i) => <span key={i} className="marquee-item">{t}</span>)}
+      </div>
+    </section>
+  );
+}
+
+/* -------- PROBLEM -------- */
+function Problem() {
+  const items = [
+    { t: 'Grote bureaus zijn duur en traag', p: 'Retainers van €4.000+ per maand, drie accountmanagers en een strategieworkshop voordat er één advertentie live staat.' },
+    { t: 'Rapportages vol impressies en reach', p: 'Mooie cijfers, maar je weet nog steeds niet hoeveel klanten of omzet eruit kwam. Dat werkt niet voor een ZZP\'er of MKB\'er.' },
+    { t: 'Je praat nooit met wie het werk doet', p: 'De sales praat met jou, een junior draait de campagnes. Bij RankEngine is dat één persoon — en dat ben ik.' },
+    { t: 'DIY-tools beloven goud, leveren stress', p: 'Beginnen is makkelijk. Er echt geld mee verdienen vraagt ervaring met biedstrategieën, feeds en zoekintentie.' }
+  ];
+  return (
+    <section className="section section-grey shell">
+      <div className="problem-grid">
+        <div className="reveal">
+          <div className="eyebrow"><span className="dot" /> Het probleem</div>
+          <h2 className="h2">Online adverteren als MKB'er is bijna altijd een tradeoff.</h2>
+          <p className="lead" style={{ marginTop: 20, color: 'var(--muted)', maxWidth: '36ch' }}>
+            Je kiest tussen duur en goed, of goedkoop en onzichtbaar.
+            Er is geen tussenweg — tot nu.
+          </p>
+        </div>
+        <div className="problem-list">
+          {items.map((it, i) => (
+            <div className="problem-item reveal" key={i}>
+              <div className="problem-num">0{i + 1}</div>
+              <div>
+                <h4>{it.t}</h4>
+                <p>{it.p}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------- SERVICES -------- */
+function Services() {
+  return (
+    <section className="section shell" id="diensten">
+      <div className="services-header">
+        <div className="reveal">
+          <div className="eyebrow"><span className="dot" /> Diensten</div>
+          <h2 className="h2">Vijf disciplines. Eén verantwoordelijke.</h2>
+        </div>
+        <p className="lead reveal" style={{ maxWidth: '36ch', color: 'var(--muted)' }}>
+          Ik focus op kanalen die voor MKB en lokaal echt renderen.
+          Meestal draaien we er 2–3 parallel.
+        </p>
+      </div>
+      <div className="services-grid">
+        <article className="service-card feature reveal">
+          <div className="s-head">
+            <span className="s-idx">01 / Google Ads</span>
+            <span className="s-tag">Meest gevraagd</span>
+          </div>
+          <h3 className="s-title">Google Ads die écht<br/>omzet draaien.</h3>
+          <p className="s-desc">Search, Shopping en Video campagnes. Slimme biedstrategieën, scherpe feeds, conversietracking dat klopt. Geen ruis, geen vanity metrics.</p>
+          <div className="s-meta">
+            <span>Search</span><span>Shopping</span><span>YouTube</span><span>Performance Max</span>
+          </div>
+          <div className="s-visual-big"><SVisualStrategy dark big /></div>
+        </article>
+        <article className="service-card reveal">
+          <div className="s-head"><span className="s-idx">02 / SEO</span></div>
+          <h3 className="s-title">SEO</h3>
+          <p className="s-desc">Technische SEO, on-page en content. Zichtbaar worden voor de zoektermen waar jouw klanten naar zoeken.</p>
+          <div className="s-meta"><span>Technical</span><span>Content</span><span>Local</span></div>
+          <div className="s-visual"><SVisualSEO /></div>
+        </article>
+        <article className="service-card wide reveal">
+          <div className="s-head"><span className="s-idx">03 / Meta Ads</span></div>
+          <h3 className="s-title">Social advertising</h3>
+          <p className="s-desc">Facebook, Instagram en LinkedIn campagnes die verder gaan dan mooie bereikcijfers. Doelgroepen, creatives en funnels die converteren.</p>
+          <div className="s-meta"><span>Meta Ads</span><span>LinkedIn Ads</span><span>Retargeting</span></div>
+          <div className="s-visual"><SVisualMeta /></div>
+        </article>
+        <article className="service-card wide reveal">
+          <div className="s-head"><span className="s-idx">04 / App marketing</span></div>
+          <h3 className="s-title">App marketing</h3>
+          <p className="s-desc">Google UAC, Meta App Install en Apple Search Ads. Installs die activeren, betalen en blijven. Geen lege downloads.</p>
+          <div className="s-meta"><span>UAC</span><span>Meta App</span><span>ASA</span></div>
+          <div className="s-visual"><SVisualApp /></div>
+        </article>
+        <article className="service-card reveal">
+          <div className="s-head"><span className="s-idx">05 / Strategie</span></div>
+          <h3 className="s-title">Strategie &amp; audit</h3>
+          <p className="s-desc">Geen campagne? Eerst kijken waar de winst zit. Audit, plan, prioriteiten — dan uitvoering.</p>
+          <div className="s-meta"><span>Audit</span><span>Planning</span><span>Advies</span></div>
+          <div className="s-visual"><SVisualSearch /></div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
+/* -------- PILLARS -------- */
+function Pillars() {
+  const pillars = [
+    { num: '01', h: 'Kwaliteit zonder gedoe', p: 'Jij krijgt wat bedrijven met zeven-cijfer budgetten krijgen — zonder accountmanager-lagen en dikke contracten. Gewoon het werk.' },
+    { num: '02', h: 'Persoonlijk &amp; direct', p: 'Je praat met Thomas. Niet met sales, niet met een junior. Korte lijnen, echte aandacht, reactie binnen uren.' },
+    { num: '03', h: 'Resultaat eerst', p: 'Geen vage rapporten over reach en impressies. Het gaat om klanten en omzet. Wat werkt krijgt meer budget, wat niet werkt gaat uit.' }
+  ];
+  return (
+    <section className="section section-grey shell" id="waarom">
+      <div style={{ maxWidth: '44ch' }} className="reveal">
+        <div className="eyebrow"><span className="dot" /> Waarom RankEngine</div>
+        <h2 className="h2">Drie principes. Geen uitzonderingen.</h2>
+      </div>
+      <div className="pillars">
+        {pillars.map(p => (
+          <div className="pillar reveal" key={p.num}>
+            <div className="p-num">
+              <span>{p.num}</span>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M4 9h10M9 4l5 5-5 5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 dangerouslySetInnerHTML={{ __html: p.h }} />
+            <p>{p.p}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* -------- ABOUT -------- */
+function About() {
+  return (
+    <section className="section shell" id="thomas">
+      <div className="about-grid">
+        <div className="about-photo reveal">
+          <div className="placeholder">
+            <span className="lbl">PHOTO · THOMAS · PORTRAIT 4:5</span>
+          </div>
+          <div className="photo-tag">Aalsmeer, NL</div>
+        </div>
+        <div className="reveal">
+          <div className="eyebrow"><span className="dot" /> Over Thomas</div>
+          <p className="about-quote">
+            <span className="q-mark">"</span>
+            Ik heb jaren voor grote bureaus campagnes gedraaid voor bedrijven met budgetten waar een ZZP'er niet van durft te dromen. Mijn idee met RankEngine: diezelfde aanpak, zonder de factuur ervoor.
+          </p>
+          <p className="lead" style={{ color: 'var(--muted)', maxWidth: '52ch' }}>
+            Zes jaar ervaring met Google Ads, Meta en SEO — eerst bureau-zijde voor
+            e-commerce en app-bedrijven, nu op eigen kracht voor Nederlandse
+            ondernemers die van dichtbij willen werken.
+          </p>
+          <div className="signature">— Thomas Roozemond</div>
+          <div className="about-facts">
+            <div className="about-fact"><div className="k">Gevestigd in</div><div className="v">Aalsmeer, Noord-Holland</div></div>
+            <div className="about-fact"><div className="k">Contractduur</div><div className="v">Maandelijks opzegbaar</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------- CONTACT FORM -------- */
+function Field({ label, required, error, children }) {
+  return (
+    <label className={`field ${error ? 'has-error' : ''}`}>
+      <span className="field-label">
+        {label}{required && <span className="req">*</span>}
+      </span>
+      {children}
+      {error && <span className="field-error">{error}</span>}
+    </label>
+  );
+}
+
+function CtaBand() {
+  const [form, setForm] = us3({
+    name: '', company: '', email: '', phone: '',
+    service: '', budget: '', message: '', honeypot: ''
+  });
+  const [errors, setErrors] = us3({});
+  const [status, setStatus] = us3('idle');
+
+  const services = ['Google Ads', 'SEO', 'Meta Ads', 'App marketing', 'Strategie / audit', 'Weet ik nog niet'];
+  const budgets = ['< €1.000 / maand', '€1.000 – €2.500', '€2.500 – €5.000', '€5.000+', 'Eenmalig project'];
+
+  const update = (k, v) => { setForm(f => ({ ...f, [k]: v })); setErrors(e => ({ ...e, [k]: undefined })); };
+
+  const validate = () => {
+    const e = {};
+    if (!form.name.trim()) e.name = 'Vul je naam in';
+    if (!form.email.trim()) e.email = 'Vul je e-mailadres in';
+    else if (!/^\S+@\S+\.\S+$/.test(form.email)) e.email = 'Dit lijkt geen geldig e-mailadres';
+    if (!form.message.trim() || form.message.trim().length < 10) e.message = 'Vertel kort waar ik je mee kan helpen (min. 10 tekens)';
+    return e;
+  };
+
+  const encode = (data) =>
+    Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+
+  const onSubmit = async (ev) => {
+    ev.preventDefault();
+    if (form.honeypot) return;
+    const e = validate();
+    setErrors(e);
+    if (Object.keys(e).length) return;
+    setStatus('sending');
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...form })
+      });
+      setStatus('sent');
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <section className="cta-band" id="contact">
+      <div className="shell contact-grid">
+        <div className="contact-left reveal">
+          <div className="eyebrow" style={{ color: 'rgba(255,255,255,0.55)' }}><span className="dot" /> Neem contact op</div>
+          <h2 className="h2">Een half uur bellen.<br/>Geen verkooppraatje.</h2>
+          <p className="lead" style={{ marginTop: 20 }}>
+            Gratis adviesgesprek: jij vertelt wat je wil bereiken, ik vertel je
+            eerlijk of ik kan helpen — en zo ja, hoe. Geen match? Dan krijg
+            je alsnog een concreet advies om mee verder te gaan.
+          </p>
+          <div className="contact-meta">
+            <a className="contact-meta-item" href="mailto:thomas@rankengine.nl">
+              <span className="cm-k">E-mail</span>
+              <span className="cm-v">thomas@rankengine.nl</span>
+            </a>
+            <a className="contact-meta-item" href="tel:+31643859989">
+              <span className="cm-k">Telefoon</span>
+              <span className="cm-v">06-43859989</span>
+            </a>
+            <div className="contact-meta-item">
+              <span className="cm-k">Locatie</span>
+              <span className="cm-v">Aalsmeer, NL</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="contact-form-wrap reveal">
+          {status === 'sent' ? (
+            <div className="form-success">
+              <div className="success-badge">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9.5l4 4 8-9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                Bericht verstuurd
+              </div>
+              <h3 className="h3" style={{ color: 'var(--navy)', marginTop: 20 }}>
+                Bedankt, {form.name.split(' ')[0] || 'ondernemer'}.
+              </h3>
+              <p style={{ color: 'var(--muted)', marginTop: 12 }}>
+                Ik lees je bericht vandaag nog en reageer binnen 4 uur op werkdagen. Meestal sneller.
+              </p>
+              <button type="button" className="btn btn-ghost" style={{ marginTop: 24 }}
+                onClick={() => { setStatus('idle'); setForm({ name: '', company: '', email: '', phone: '', service: '', budget: '', message: '', honeypot: '' }); }}>
+                Nog een bericht sturen
+              </button>
+            </div>
+          ) : (
+            <form className="contact-form" name="contact" data-netlify="true" data-netlify-honeypot="honeypot" onSubmit={onSubmit} noValidate>
+              <input type="hidden" name="form-name" value="contact" />
+              <div className="form-head">
+                <h3 className="form-title">Plan een gratis adviesgesprek</h3>
+                <span className="form-badge">± 2 min</span>
+              </div>
+              <div className="form-row two">
+                <Field label="Naam" required error={errors.name}>
+                  <input value={form.name} onChange={e => update('name', e.target.value)} placeholder="Voor- en achternaam" autoComplete="name" />
+                </Field>
+                <Field label="Bedrijf (optioneel)">
+                  <input value={form.company} onChange={e => update('company', e.target.value)} placeholder="Bedrijfsnaam" autoComplete="organization" />
+                </Field>
+              </div>
+              <div className="form-row two">
+                <Field label="E-mail" required error={errors.email}>
+                  <input type="email" value={form.email} onChange={e => update('email', e.target.value)} placeholder="jij@bedrijf.nl" autoComplete="email" />
+                </Field>
+                <Field label="Telefoon (optioneel)">
+                  <input type="tel" value={form.phone} onChange={e => update('phone', e.target.value)} placeholder="06-..." autoComplete="tel" />
+                </Field>
+              </div>
+              <Field label="Waar kan ik je mee helpen?">
+                <div className="chip-row">
+                  {services.map(s => (
+                    <button type="button" key={s}
+                      className={`chip ${form.service === s ? 'active' : ''}`}
+                      onClick={() => update('service', form.service === s ? '' : s)}>
+                      {s}
+                    </button>
+                  ))}
+                </div>
+              </Field>
+              <Field label="Indicatie maandbudget (optioneel)">
+                <div className="chip-row">
+                  {budgets.map(b => (
+                    <button type="button" key={b}
+                      className={`chip ${form.budget === b ? 'active' : ''}`}
+                      onClick={() => update('budget', form.budget === b ? '' : b)}>
+                      {b}
+                    </button>
+                  ))}
+                </div>
+              </Field>
+              <Field label="Vertel kort wat je zoekt" required error={errors.message}>
+                <textarea rows="4" value={form.message} onChange={e => update('message', e.target.value)} placeholder="Waar loop je tegenaan, wat heb je al geprobeerd, wat is het doel..." />
+              </Field>
+              <input type="text" tabIndex="-1" autoComplete="off"
+                value={form.honeypot} onChange={e => update('honeypot', e.target.value)}
+                style={{ position: 'absolute', left: '-9999px', width: 1, height: 1 }} aria-hidden="true" />
+              <div className="form-foot">
+                <p className="form-privacy">
+                  Door te versturen ga je akkoord met mijn <a href="#">privacybeleid</a>.
+                  Ik gebruik je gegevens alleen om te reageren.
+                </p>
+                <button type="submit" className="btn btn-primary" disabled={status === 'sending'}>
+                  {status === 'sending' ? 'Versturen…' : <><span>Verstuur bericht</span> <Arrow /></>}
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* -------- FOOTER -------- */
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="shell">
+        <div className="footer-top">
+          <div>
+            <Logo onDark />
+            <p className="footer-desc">
+              Bureau-kwaliteit online marketing voor Nederlandse ZZP'ers en MKB.
+              Eén marketeer. Geen bureaucratie.
+            </p>
+          </div>
+          <div>
+            <h5>Diensten</h5>
+            <a href="#diensten">Google Ads</a>
+            <a href="#diensten">SEO</a>
+            <a href="#diensten">Meta Ads</a>
+            <a href="#diensten">App marketing</a>
+            <a href="#diensten">Strategie</a>
+          </div>
+          <div>
+            <h5>Contact</h5>
+            <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>
+            <a href="tel:+31643859989">06-43859989</a>
+            <a href="#">Koningsstraat 49</a>
+            <a href="#">1432 PL Aalsmeer</a>
+          </div>
+          <div>
+            <h5>RankEngine</h5>
+            <a href="#thomas">Over Thomas</a>
+            <a href="#waarom">Waarom RankEngine</a>
+            <a href="#">Privacy</a>
+            <a href="#">Algemene voorwaarden</a>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <div>© 2026 RankEngine · Thomas Roozemond</div>
+          <div><a href="#top">Terug naar boven ↑</a></div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+window._RE.Nav = Nav;
+window._RE.Hero = Hero;
+window._RE.Marquee = Marquee;
+window._RE.Problem = Problem;
+window._RE.Services = Services;
+window._RE.Pillars = Pillars;
+window._RE.About = About;
+window._RE.CtaBand = CtaBand;
+window._RE.Footer = Footer;
+  </script>
+
+  <!-- ============================================================
+       APP
+       ============================================================ -->
+  <script type="text/babel">
+const { useEffect: ue4 } = React;
+const { useReveal, useTweaks, TweaksPanel, Nav, Hero, Marquee, Problem, Services, Pillars, About, CtaBand, Footer } = window._RE;
+
+function App() {
+  const { tweaks, setTweaks, visible } = useTweaks();
+  const rootRef = useReveal();
+
+  ue4(() => {
+    const handler = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      const id = a.getAttribute('href');
+      if (id.length <= 1) return;
+      const el = document.querySelector(id);
+      if (el) {
+        e.preventDefault();
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 60, behavior: 'smooth' });
+      }
+    };
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+  }, []);
+
+  return (
+    <div ref={rootRef}>
+      <Nav />
+      <Hero variant={tweaks.heroVariant} />
+      <Marquee />
+      <Problem />
+      <Services />
+      <Pillars />
+      <About />
+      <CtaBand />
+      <Footer />
+      <TweaksPanel visible={visible} tweaks={tweaks} setTweaks={setTweaks} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
