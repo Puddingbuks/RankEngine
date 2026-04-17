@@ -436,6 +436,95 @@ img, svg { display: block; max-width: 100%; }
 .hc-row .ctr { color: rgba(255,255,255,0.7); font-family: ui-monospace, Menlo, monospace; }
 .hc-row .conv { color: #86efac; font-family: ui-monospace, Menlo, monospace; }
 
+/* ---------- Persona selector ---------- */
+.persona-bar {
+  background: var(--grey);
+  border-top: 1px solid var(--grey-line);
+  border-bottom: 1px solid var(--grey-line);
+  padding: clamp(40px, 5vw, 72px) 0;
+}
+.persona-bar .eyebrow { margin-bottom: 28px; }
+.persona-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 720px) { .persona-cards { grid-template-columns: 1fr; } }
+.persona-card {
+  position: relative;
+  background: var(--white);
+  border: 1.5px solid var(--grey-line);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  cursor: pointer;
+  transition: border-color .2s var(--ease), transform .2s var(--ease), box-shadow .2s var(--ease);
+  text-align: left;
+}
+.persona-card:hover {
+  border-color: var(--navy);
+  transform: translateY(-2px);
+}
+.persona-card.active {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+  box-shadow: 0 8px 24px -8px rgba(26,46,74,0.3);
+}
+.pc-label {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+  margin: 0 0 8px;
+  transition: color .2s var(--ease);
+}
+.persona-card.active .pc-label { color: var(--white); }
+.pc-sub {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 0 0 20px;
+  transition: color .2s var(--ease);
+}
+.persona-card.active .pc-sub { color: rgba(255,255,255,0.7); }
+.pc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pc-tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--grey);
+  color: var(--navy);
+  transition: background .2s var(--ease), color .2s var(--ease);
+}
+.persona-card.active .pc-tag {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.9);
+}
+.pc-check {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--orange);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity .2s var(--ease);
+}
+.persona-card.active .pc-check { opacity: 1; }
+
+/* ---------- Persona content transition ---------- */
+.persona-content {
+  transition: opacity .3s var(--ease);
+}
+.persona-content.switching { opacity: 0; }
+
 /* ---------- Marquee ---------- */
 .marquee {
   border-top: 1px solid var(--grey-line);
@@ -1487,17 +1576,15 @@ function AnimatedHeadline({ variant }) {
   );
 }
 
-function Hero({ variant = 'display' }) {
+function Hero({ variant = 'display', persona = 'klein' }) {
   return (
     <header className="hero shell" id="top">
       <div className="hero-grid">
         <div>
           <AnimatedHeadline variant={variant} />
 
-          <p className="lead hero-sub reveal">
-            RankEngine is Thomas Roozemond. Één marketeer die voor Nederlandse
-            ondernemers advertenties draait en vindbaarheid verbetert. Geen
-            accountmanager-laagjes, geen ingewikkelde contracten. Gewoon resultaat.
+          <p className="lead hero-sub reveal persona-content">
+            {(PERSONAS[persona] || PERSONAS.klein).heroSub}
           </p>
 
           <div className="hero-ctas reveal">
@@ -1556,6 +1643,80 @@ function HeroCard() {
   );
 }
 
+/* -------- PERSONA SELECTOR -------- */
+const PERSONAS = {
+  starter: {
+    label: 'Starter',
+    sub: 'Net begonnen als ZZP\'er of pas overgestapt naar eigen rekening.',
+    tags: ['ZZP\'er', 'Eerste klanten', 'Klein budget'],
+    heroSub: 'Net gestart? Ik help je zichtbaar worden voor jouw eerste klanten — zonder budget te verspillen aan kanalen die niet bij je passen.',
+    problemTitle: 'Beginnen is spannend. De eerste klanten binnenhalen hoeft niet ingewikkeld te zijn.',
+    problemLead: 'Met de juiste basis kom je snel organisch gevonden. Ik help je kiezen wat nu werkt.',
+    items: [
+      { t: 'Welk kanaal kies je eerst?', p: 'Google Ads, SEO, social — alles lijkt urgent. Ik help je prioriteren op basis van wat het snelst rendement oplevert voor jouw type werk.' },
+      { t: 'Budget is beperkt, elke euro telt', p: 'Juist als starter wil je geen geld weggooien. We beginnen klein, meten goed en schalen alleen op wat werkt.' },
+      { t: 'Je bent druk met je vak, niet met marketing', p: 'Ondernemen is al genoeg werk. Ik neem de online marketing van je over zodat jij je kunt focussen op wat je goed kunt.' },
+      { t: 'Hoe word je lokaal gevonden?', p: 'Klanten in jouw regio zoeken lokaal. Met de juiste SEO- en advertentiestrategie ben jij de eerste die ze zien.' }
+    ]
+  },
+  klein: {
+    label: 'Kleine onderneming',
+    sub: 'Gevestigd, 1–5 mensen, klaar voor de volgende groeistap.',
+    tags: ['1–5 medewerkers', 'Lokaal actief', 'Meer leads'],
+    heroSub: 'RankEngine helpt kleine ondernemers structureel meer klanten binnenhalen via Google, Meta en SEO. Iemand die je kent en voor je werkt.',
+    problemTitle: 'Online marketing werkt. Maar het kost tijd, kennis en aandacht.',
+    problemLead: 'Dat is precies wat drukke ondernemers niet hebben. Ik neem het over.',
+    items: [
+      { t: 'Je weet niet welk kanaal voor jou werkt', p: 'Google Ads, SEO, Meta, LinkedIn — het aanbod is overweldigend. Welk kanaal past bij jouw type klant en jouw regio?' },
+      { t: 'Elke euro moet renderen', p: 'Als lokale ondernemer kun je je geen weggegooid budget veroorloven. Elke campagne moet klanten opleveren, niet alleen bereik.' },
+      { t: 'Marketing vraagt tijd die je niet hebt', p: 'Je runt een bedrijf. Campagnes bijhouden, optimaliseren en bijsturen kost dagelijks aandacht die je beter in je vak steekt.' },
+      { t: 'Resultaat is moeilijk te meten', p: 'Hoeveel nieuwe klanten heeft die advertentie opgeleverd? Dat moet je gewoon weten — niet via een rapport, maar gewoon in gesprek.' }
+    ]
+  },
+  mkb: {
+    label: 'MKB',
+    sub: 'Groeiend bedrijf, 5–20 medewerkers, meerdere kanalen nodig.',
+    tags: ['5–20 medewerkers', 'Meerdere kanalen', 'Schalen'],
+    heroSub: 'Meerdere kanalen, één verantwoordelijke. Ik coördineer je online marketing van strategie tot uitvoering — en rapporteer wat echt telt.',
+    problemTitle: 'Groeien vraagt meer dan losse campagnes. Je hebt een samenhangende aanpak nodig.',
+    problemLead: 'Ik verbind de kanalen, stuur bij op data en zorg dat marketing bijdraagt aan omzet.',
+    items: [
+      { t: 'Geen consistentie tussen kanalen', p: 'Google, Meta, LinkedIn — ieder kanaal communiceert anders. Ik zorg voor een samenhangende aanpak die versterkt in plaats van versnippert.' },
+      { t: 'Schalen zonder controle verliezen', p: 'Meer budget betekent niet automatisch meer resultaat. Ik schaal op basis van data, niet op gevoel.' },
+      { t: 'ROI per kanaal is onduidelijk', p: 'Welk kanaal levert echt klanten op? Met goede tracking weet je precies waar je budget het hardst werkt.' },
+      { t: 'Strategie en uitvoering zijn losgekoppeld', p: 'Een plan zonder uitvoering is niks waard. Ik doe allebei — en ben direct aanspreekbaar als er iets is.' }
+    ]
+  }
+};
+
+function PersonaSelector({ persona, setPersona }) {
+  return (
+    <section className="persona-bar shell">
+      <div className="eyebrow reveal"><span className="dot" /> Wat omschrijft jou het beste?</div>
+      <div className="persona-cards">
+        {Object.entries(PERSONAS).map(([key, p]) => (
+          <button
+            key={key}
+            className={`persona-card ${persona === key ? 'active' : ''}`}
+            onClick={() => setPersona(key)}
+          >
+            <div className="pc-check">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M2 6.5l3 3 5-6" stroke="white" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="pc-label">{p.label}</h3>
+            <p className="pc-sub">{p.sub}</p>
+            <div className="pc-tags">
+              {p.tags.map(t => <span key={t} className="pc-tag">{t}</span>)}
+            </div>
+          </button>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* -------- MARQUEE -------- */
 function Marquee() {
   const items = [
@@ -1574,27 +1735,31 @@ function Marquee() {
 }
 
 /* -------- PROBLEM -------- */
-function Problem() {
-  const items = [
-    { t: 'Grote bureaus zijn duur en traag', p: 'Retainers van €4.000+ per maand, drie accountmanagers en een strategieworkshop voordat er één advertentie live staat.' },
-    { t: 'Rapportages vol impressies en reach', p: 'Mooie cijfers, maar je weet nog steeds niet hoeveel klanten of omzet eruit kwam. Dat werkt niet voor een ZZP\'er of MKB\'er.' },
-    { t: 'Je praat nooit met wie het werk doet', p: 'De sales praat met jou, een junior draait de campagnes. Bij RankEngine is dat één persoon — en dat ben ik.' },
-    { t: 'DIY-tools beloven goud, leveren stress', p: 'Beginnen is makkelijk. Er echt geld mee verdienen vraagt ervaring met biedstrategieën, feeds en zoekintentie.' }
-  ];
+function Problem({ persona = 'klein' }) {
+  const [switching, setSwitching] = us3(false);
+  const [displayed, setDisplayed] = us3(persona);
+
+  ue3(() => {
+    setSwitching(true);
+    const t = setTimeout(() => { setDisplayed(persona); setSwitching(false); }, 220);
+    return () => clearTimeout(t);
+  }, [persona]);
+
+  const data = PERSONAS[displayed] || PERSONAS.klein;
+
   return (
     <section className="section section-grey shell">
       <div className="problem-grid">
         <div className="reveal">
-          <div className="eyebrow"><span className="dot" /> Het probleem</div>
-          <h2 className="h2">Online adverteren als MKB'er is bijna altijd een tradeoff.</h2>
-          <p className="lead" style={{ marginTop: 20, color: 'var(--muted)', maxWidth: '36ch' }}>
-            Je kiest tussen duur en goed, of goedkoop en onzichtbaar.
-            Er is geen tussenweg — tot nu.
+          <div className="eyebrow"><span className="dot" /> Voor wie</div>
+          <h2 className={`h2 persona-content ${switching ? 'switching' : ''}`}>{data.problemTitle}</h2>
+          <p className={`lead persona-content ${switching ? 'switching' : ''}`} style={{ marginTop: 20, color: 'var(--muted)', maxWidth: '36ch' }}>
+            {data.problemLead}
           </p>
         </div>
         <div className="problem-list">
-          {items.map((it, i) => (
-            <div className="problem-item reveal" key={i}>
+          {data.items.map((it, i) => (
+            <div className={`problem-item reveal persona-content ${switching ? 'switching' : ''}`} key={i}>
               <div className="problem-num">0{i + 1}</div>
               <div>
                 <h4>{it.t}</h4>
@@ -1671,9 +1836,9 @@ function Services() {
 /* -------- PILLARS -------- */
 function Pillars() {
   const pillars = [
-    { num: '01', h: 'Kwaliteit zonder gedoe', p: 'Jij krijgt wat bedrijven met zeven-cijfer budgetten krijgen — zonder accountmanager-lagen en dikke contracten. Gewoon het werk.' },
-    { num: '02', h: 'Persoonlijk &amp; direct', p: 'Je praat met Thomas. Niet met sales, niet met een junior. Korte lijnen, echte aandacht, reactie binnen uren.' },
-    { num: '03', h: 'Resultaat eerst', p: 'Geen vage rapporten over reach en impressies. Het gaat om klanten en omzet. Wat werkt krijgt meer budget, wat niet werkt gaat uit.' }
+    { num: '01', h: 'Lokaal en persoonlijk', p: 'Ik ken de markt van Nederlandse ZZP\'ers en MKB\'ers. Geen generieke aanpak — wat werkt voor jouw klant, in jouw regio.' },
+    { num: '02', h: 'Persoonlijk &amp; direct', p: 'Je praat met Thomas. Korte lijnen, echte aandacht. Geen doorverbinden, geen wachten — gewoon snel schakelen.' },
+    { num: '03', h: 'Resultaat eerst', p: 'We meten wat telt: nieuwe klanten en omzet. Wat werkt krijgt meer budget, wat niet werkt gaat uit. Zo simpel is het.' }
   ];
   return (
     <section className="section section-grey shell" id="waarom">
@@ -1714,7 +1879,7 @@ function About() {
           <div className="eyebrow"><span className="dot" /> Over Thomas</div>
           <p className="about-quote">
             <span className="q-mark">"</span>
-            Ik heb jaren voor grote bureaus campagnes gedraaid voor bedrijven met budgetten waar een ZZP'er niet van durft te dromen. Mijn idee met RankEngine: diezelfde aanpak, zonder de factuur ervoor.
+            Ik werk het liefst voor ondernemers die ergens echt goed in zijn — een loodgieter in Amstelveen, een webshop uit Haarlem, een therapeut in Aalsmeer. Mensen die willen groeien maar geen zin hebben in ingewikkeld.
           </p>
           <p className="lead" style={{ color: 'var(--muted)', maxWidth: '52ch' }}>
             Zes jaar ervaring met Google Ads, Meta en SEO — eerst bureau-zijde voor
@@ -1950,6 +2115,7 @@ function Footer() {
 }
 
 window._RE.Nav = Nav;
+window._RE.PersonaSelector = PersonaSelector;
 window._RE.Hero = Hero;
 window._RE.Marquee = Marquee;
 window._RE.Problem = Problem;
@@ -1964,12 +2130,13 @@ window._RE.Footer = Footer;
        APP
        ============================================================ -->
   <script type="text/babel">
-const { useEffect: ue4 } = React;
-const { useReveal, useTweaks, TweaksPanel, Nav, Hero, Marquee, Problem, Services, Pillars, About, CtaBand, Footer } = window._RE;
+const { useEffect: ue4, useState: us4 } = React;
+const { useReveal, useTweaks, TweaksPanel, Nav, Hero, Marquee, Problem, Services, Pillars, About, CtaBand, Footer, PersonaSelector } = window._RE;
 
 function App() {
   const { tweaks, setTweaks, visible } = useTweaks();
   const rootRef = useReveal();
+  const [persona, setPersona] = us4('klein');
 
   ue4(() => {
     const handler = (e) => {
@@ -1990,9 +2157,10 @@ function App() {
   return (
     <div ref={rootRef}>
       <Nav />
-      <Hero variant={tweaks.heroVariant} />
+      <Hero variant={tweaks.heroVariant} persona={persona} />
+      <PersonaSelector persona={persona} setPersona={setPersona} />
       <Marquee />
-      <Problem />
+      <Problem persona={persona} />
       <Services />
       <Pillars />
       <About />
