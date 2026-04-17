@@ -1120,6 +1120,20 @@ a.contact-meta-item:hover .cm-v { color: var(--orange); }
 }
 .footer-bottom a { display: inline; margin: 0 0 0 20px; }
 
+/* ---------- Sparkline animation ---------- */
+@keyframes sparkDraw {
+  0%   { stroke-dashoffset: 1; }
+  70%  { stroke-dashoffset: 0; }
+  85%  { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 1; }
+}
+@keyframes sparkFade {
+  0%   { opacity: 0; }
+  40%  { opacity: 1; }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 /* ---------- Reveal animation (scroll-triggered) ---------- */
 .reveal {
   opacity: 0;
@@ -1298,10 +1312,15 @@ const Sparkline = () => {
           <stop offset="100%" stopColor="#FF6B35" stopOpacity="0"/>
         </linearGradient>
       </defs>
-      <path d={area} fill="url(#spark-fill)" />
-      <path d={d} stroke="#FF6B35" strokeWidth="1.4" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d={area} fill="url(#spark-fill)"
+        style={{ animation: 'sparkFade 4s cubic-bezier(.2,.7,.2,1) infinite' }} />
+      <path d={d} stroke="#FF6B35" strokeWidth="1.4" fill="none"
+        strokeLinecap="round" strokeLinejoin="round"
+        pathLength="1" strokeDasharray="1"
+        style={{ animation: 'sparkDraw 4s cubic-bezier(.2,.7,.2,1) infinite' }} />
       {pts.map((p, i) => i === pts.length - 1 && (
-        <circle key={i} cx={p[0]} cy={p[1]} r="2" fill="#fff" stroke="#FF6B35" strokeWidth="1.4"/>
+        <circle key={i} cx={p[0]} cy={p[1]} r="2" fill="#fff" stroke="#FF6B35" strokeWidth="1.4"
+          style={{ animation: 'sparkFade 4s cubic-bezier(.2,.7,.2,1) infinite 1.8s' }} />
       ))}
     </svg>
   );
