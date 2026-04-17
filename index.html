@@ -263,18 +263,18 @@ img, svg { display: block; max-width: 100%; }
 }
 @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
 
-/* Hero animated headline */
-@keyframes heroWordIn {
-  from { opacity: 0; transform: translateY(18px); }
+/* Hero rotating headline */
+@keyframes heroLineOut {
+  from { opacity: 1; transform: translateY(0); }
+  to   { opacity: 0; transform: translateY(-22px); }
+}
+@keyframes heroLineIn {
+  from { opacity: 0; transform: translateY(22px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero-word {
-  display: inline-block;
-  opacity: 0;
-  animation: heroWordIn .55s var(--ease) forwards;
-}
-/* line-break placeholder so <br> still works with word-splitting */
-.hero-br { display: block; }
+.hero-line-out { animation: heroLineOut .35s var(--ease) forwards; }
+.hero-line-in  { animation: heroLineIn  .45s var(--ease) forwards; }
+.hero h1 { min-height: 2.1em; }
 
 .hero h1 .mark-orange {
   color: var(--orange);
@@ -1511,69 +1511,38 @@ function Nav() {
   );
 }
 
-/* -------- HERO (animated headline) -------- */
-function AnimatedHeadline({ variant }) {
-  const EASE = 'cubic-bezier(.2,.7,.2,1)';
+/* -------- HERO (rotating headline) -------- */
+const HERO_LINES = [
+  <React.Fragment>
+    Bureau-kwaliteit online marketing.<br/>
+    <span className="underline-brush">Zonder bureau.</span>
+  </React.Fragment>,
+  <React.Fragment>
+    Gevonden worden door klanten<br/>
+    die <span className="mark-orange">bij jou</span> passen.
+  </React.Fragment>,
+  <React.Fragment>
+    Meer omzet uit Google en Meta.<br/>
+    <span className="underline-brush">Eén persoon die het regelt.</span>
+  </React.Fragment>
+];
 
-  if (variant === 'editorial') {
-    /* "Meer klanten uit Google en Meta — zonder een duur bureau." */
-    const segments = [
-      { text: 'Meer klanten uit Google en Meta\u00a0\u2014 ', orange: false, br: false },
-      { text: 'zonder', orange: true, br: false },
-      { text: ' een duur bureau.', orange: false, br: false },
-    ];
-    let wordIdx = 0;
-    return (
-      <h1 className="h1">
-        {segments.map((seg, si) => {
-          return seg.text.split(/(\s+)/).map((chunk, ci) => {
-            if (!chunk.trim()) return chunk;
-            const delay = `${wordIdx++ * 0.07}s`;
-            return (
-              <span
-                key={`${si}-${ci}`}
-                className="hero-word"
-                style={{ animationDelay: delay, color: seg.orange ? 'var(--orange)' : undefined, fontStyle: seg.orange ? 'italic' : undefined }}
-              >
-                {chunk}
-                {ci < seg.text.split(/(\s+)/).length - 1 ? '\u00a0' : ''}
-              </span>
-            );
-          });
-        })}
-      </h1>
-    );
-  }
+function RotatingHeadline() {
+  const [idx, setIdx] = us3(0);
+  const [phase, setPhase] = us3('in');
 
-  /* display variant: "Bureau-kwaliteit online marketing. Zonder bureau." */
-  const line1Words = ['Bureau-kwaliteit', 'online', 'marketing.'];
-  const line2Words = ['Zonder', 'bureau.'];
-  let wi = 0;
-  return (
-    <h1 className="h1">
-      {line1Words.map(w => {
-        const delay = `${wi++ * 0.08}s`;
-        return (
-          <React.Fragment key={w}>
-            <span className="hero-word" style={{ animationDelay: delay }}>{w}</span>
-            {' '}
-          </React.Fragment>
-        );
-      })}
-      <span className="hero-br" />
-      <span className="underline-brush" style={{ display: 'inline' }}>
-        {line2Words.map(w => {
-          const delay = `${wi++ * 0.08}s`;
-          return (
-            <React.Fragment key={w}>
-              <span className="hero-word" style={{ animationDelay: delay }}>{w}</span>
-              {' '}
-            </React.Fragment>
-          );
-        })}
-      </span>
-    </h1>
-  );
+  ue3(() => {
+    const timer = setInterval(() => {
+      setPhase('out');
+      setTimeout(() => {
+        setIdx(i => (i + 1) % HERO_LINES.length);
+        setPhase('in');
+      }, 380);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, []);
+
+  return <h1 className={`h1 hero-line-${phase}`}>{HERO_LINES[idx]}</h1>;
 }
 
 function Hero({ variant = 'display', persona = 'klein' }) {
@@ -1581,7 +1550,7 @@ function Hero({ variant = 'display', persona = 'klein' }) {
     <header className="hero shell" id="top">
       <div className="hero-grid">
         <div>
-          <AnimatedHeadline variant={variant} />
+          <RotatingHeadline />
 
           <p className="lead hero-sub reveal persona-content">
             {(PERSONAS[persona] || PERSONAS.klein).heroSub}
