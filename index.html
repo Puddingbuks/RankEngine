@@ -283,7 +283,6 @@ img, svg { display: block; max-width: 100%; }
 }
 .hero h1 .underline-brush {
   position: relative;
-  white-space: nowrap;
 }
 .hero h1 .underline-brush::after {
   content: "";
@@ -766,6 +765,118 @@ img, svg { display: block; max-width: 100%; }
   color: var(--muted);
   font-size: 15px;
   line-height: 1.55;
+}
+
+/* ---------- Pricing ---------- */
+.pricing-section { background: var(--off-white); }
+.pricing-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  margin-bottom: 48px;
+  gap: 24px;
+}
+@media (max-width: 720px) { .pricing-header { grid-template-columns: 1fr; } }
+.pricing-persona-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--grey);
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+.pricing-persona-hint strong { color: var(--navy); }
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 820px) { .pricing-grid { grid-template-columns: 1fr; } }
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--grey-line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color .25s var(--ease), transform .25s var(--ease);
+}
+.pricing-card:hover { border-color: var(--navy); transform: translateY(-2px); }
+.pricing-card.featured {
+  border-color: var(--navy);
+  background: var(--navy);
+  color: var(--white);
+}
+.pc-type {
+  font-family: ui-monospace, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pricing-card.featured .pc-type { color: rgba(255,255,255,0.55); }
+.pc-price {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(32px, 4vw, 44px);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--navy);
+}
+.pricing-card.featured .pc-price { color: var(--white); }
+.pc-price sup {
+  font-size: 0.45em;
+  vertical-align: super;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.pc-price span {
+  font-size: 0.38em;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+.pricing-card.featured .pc-price span { color: rgba(255,255,255,0.6); }
+.pc-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+  flex: 1;
+}
+.pricing-card.featured .pc-desc { color: rgba(255,255,255,0.7); }
+.pc-includes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 16px;
+  border-top: 1px solid var(--grey-line);
+}
+.pricing-card.featured .pc-includes { border-color: rgba(255,255,255,0.12); }
+.pc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--near-black);
+}
+.pricing-card.featured .pc-item { color: rgba(255,255,255,0.85); }
+.pc-item::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--orange);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+.pricing-disclaimer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
 }
 
 /* ---------- About ---------- */
@@ -1638,6 +1749,11 @@ const PERSONAS = {
     sub: 'Net begonnen als ZZP\'er of pas overgestapt voor eigen rekening.',
     tags: ['ZZP\'er', 'Eerste klanten', 'Klein budget'],
     heroSub: 'Net gestart? Ik help je zichtbaar worden voor jouw eerste klanten — zonder budget te verspillen aan kanalen die niet bij je passen.',
+    pricing: [
+      { type: 'Campagne opzet', price: '299', unit: 'eenmalig', featured: false, includes: ['Zoekwoordenonderzoek', 'Campagnestructuur', 'Advertentieteksten', 'Conversietracking'] },
+      { type: 'Maandelijks beheer', price: '249', unit: '/ maand', featured: true, includes: ['Optimalisatie & bijsturing', 'A/B-testen advertenties', 'Budgetbewaking', 'Maandelijks overleg'] },
+      { type: 'Rapportage', price: 'Altijd gratis', unit: '', featured: false, includes: ['Online rapportageportaal 24/7', 'Maandoverzicht per mail', 'Kliks, kosten & conversies', 'Aanbevelingen voor volgende maand'] },
+    ],
     problemTitle: 'Beginnen is spannend. De eerste klanten binnenhalen hoeft niet ingewikkeld te zijn.',
     problemLead: 'Met de juiste basis kom je snel organisch gevonden. Ik help je kiezen wat nu werkt.',
     items: [
@@ -1652,6 +1768,11 @@ const PERSONAS = {
     sub: 'Gevestigd, 1–5 mensen, klaar voor de volgende groeistap.',
     tags: ['1–5 medewerkers', 'Lokaal actief', 'Meer leads'],
     heroSub: 'RankEngine helpt kleine ondernemers structureel meer klanten binnenhalen via Google, Meta en SEO. Iemand die je kent en voor je werkt.',
+    pricing: [
+      { type: 'Campagne opzet', price: '449', unit: 'eenmalig', featured: false, includes: ['Zoekwoordenonderzoek', 'Campagnestructuur', 'Advertentieteksten', 'Conversietracking', 'Doelgroepinstellingen'] },
+      { type: 'Maandelijks beheer', price: '399', unit: '/ maand', featured: true, includes: ['Optimalisatie & bijsturing', 'A/B-testen advertenties', 'Budgetbewaking', 'Maandelijks overleg', 'Seizoensaanpassingen'] },
+      { type: 'Rapportage', price: 'Altijd gratis', unit: '', featured: false, includes: ['Online rapportageportaal 24/7', 'Maandrapportage per mail', 'Kliks, kosten & conversies', 'Vergelijking vorige periode', 'Korte bespreking per telefoon'] },
+    ],
     problemTitle: 'Online marketing werkt. Maar het kost tijd, kennis en aandacht.',
     problemLead: 'Dat is precies wat drukke ondernemers niet hebben. Ik neem het over.',
     items: [
@@ -1666,6 +1787,11 @@ const PERSONAS = {
     sub: 'Groeiend bedrijf, 5–20 medewerkers, meerdere kanalen nodig.',
     tags: ['5–20 medewerkers', 'Meerdere kanalen', 'Schalen'],
     heroSub: 'Meerdere kanalen, één verantwoordelijke. Ik coördineer je online marketing van strategie tot uitvoering — en rapporteer wat echt telt.',
+    pricing: [
+      { type: 'Campagne opzet', price: 'Op maat', unit: '', featured: false, includes: ['Audit bestaande campagnes', 'Multi-channel strategie', 'Campagnestructuur alle kanalen', 'Tracking & attribuutmodel'] },
+      { type: 'Maandelijks beheer', price: '699', unit: '/ maand', featured: true, includes: ['Beheer alle kanalen', 'Wekelijkse optimalisatie', 'Budgetallocatie per kanaal', 'Maandelijks strategiegesprek', 'Proactieve aanbevelingen'] },
+      { type: 'Rapportage', price: 'Altijd gratis', unit: '', featured: false, includes: ['Online rapportageportaal 24/7', 'Uitgebreide maandrapportage', 'ROI per kanaal', 'Vergelijking vorige periode', 'Strategiegesprek per kwartaal'] },
+    ],
     problemTitle: 'Groeien vraagt meer dan losse campagnes. Je hebt een samenhangende aanpak nodig.',
     problemLead: 'Ik verbind de kanalen, stuur bij op data en zorg dat marketing bijdraagt aan omzet.',
     items: [
@@ -1848,6 +1974,71 @@ function Pillars() {
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+/* -------- PRICING -------- */
+function Pricing({ persona = 'klein', setPersona }) {
+  const [switching, setSwitching] = us3(false);
+  const [displayed, setDisplayed] = us3(persona);
+
+  ue3(() => {
+    setSwitching(true);
+    const t = setTimeout(() => { setDisplayed(persona); setSwitching(false); }, 220);
+    return () => clearTimeout(t);
+  }, [persona]);
+
+  const data = PERSONAS[displayed] || PERSONAS.klein;
+
+  return (
+    <section className="section pricing-section shell" id="tarieven">
+      <div className="reveal" style={{ marginBottom: 48 }}>
+        <div className="eyebrow"><span className="dot" /> Tarieven</div>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 24 }}>
+          <h2 className="h2">Wat kost het?</h2>
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            {Object.entries(PERSONAS).map(([key, p]) => (
+              <button key={key}
+                onClick={() => setPersona(key)}
+                style={{
+                  padding: '9px 18px',
+                  borderRadius: 999,
+                  border: `1.5px solid ${displayed === key ? 'var(--navy)' : 'var(--grey-line)'}`,
+                  background: displayed === key ? 'var(--navy)' : 'var(--white)',
+                  color: displayed === key ? 'var(--white)' : 'var(--near-black)',
+                  fontFamily: 'var(--font-body)',
+                  fontSize: 14,
+                  fontWeight: 500,
+                  cursor: 'pointer',
+                  transition: 'all .15s var(--ease)',
+                }}
+              >{p.label}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className={`pricing-grid persona-content ${switching ? 'switching' : ''}`}>
+        {data.pricing.map((card, i) => (
+          <div key={i} className={`pricing-card reveal ${card.featured ? 'featured' : ''}`}>
+            <div className="pc-type">{card.type}</div>
+            <div className="pc-price">
+              {/^\d/.test(card.price) && <sup>€</sup>}
+              {card.price}
+              {card.unit && <span> {card.unit}</span>}
+            </div>
+            <p className="pc-desc">
+              {card.featured ? 'Maandelijks opzegbaar. Geen langlopende contracten.' : card.type === 'Rapportage' ? 'Altijd inzicht in wat je marketing oplevert.' : 'Eenmalige investering om alles goed op te zetten.'}
+            </p>
+            <div className="pc-includes">
+              {card.includes.map((item, j) => (
+                <div key={j} className="pc-item">{item}</div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+      <p className="pricing-disclaimer">Prijzen zijn indicatief en afhankelijk van scope en aantal kanalen. <a href="#contact" style={{ color: 'var(--navy)', textDecoration: 'underline', textUnderlineOffset: '2px' }}>Vraag een vrijblijvende offerte aan →</a></p>
     </section>
   );
 }
@@ -2104,6 +2295,7 @@ function Footer() {
 
 window._RE.Nav = Nav;
 window._RE.PersonaSelector = PersonaSelector;
+window._RE.Pricing = Pricing;
 window._RE.Hero = Hero;
 window._RE.Marquee = Marquee;
 window._RE.Problem = Problem;
@@ -2119,7 +2311,7 @@ window._RE.Footer = Footer;
        ============================================================ -->
   <script type="text/babel">
 const { useEffect: ue4, useState: us4 } = React;
-const { useReveal, useTweaks, TweaksPanel, Nav, Hero, Marquee, Problem, Services, Pillars, About, CtaBand, Footer, PersonaSelector } = window._RE;
+const { useReveal, useTweaks, TweaksPanel, Nav, Hero, Marquee, Problem, Services, Pillars, Pricing, About, CtaBand, Footer, PersonaSelector } = window._RE;
 
 function App() {
   const { tweaks, setTweaks, visible } = useTweaks();
@@ -2151,6 +2343,7 @@ function App() {
       <Problem persona={persona} />
       <Services />
       <Pillars />
+      <Pricing persona={persona} setPersona={setPersona} />
       <About />
       <CtaBand />
       <Footer />
