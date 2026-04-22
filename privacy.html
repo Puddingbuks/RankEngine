@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacybeleid — RankEngine</title>
+  <meta name="description" content="Privacybeleid van RankEngine. Hoe wij omgaan met je persoonsgegevens." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://rankengine.nl/privacy.html" />
+
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #1A2E4A;
+      --navy-ink: #0F1E33;
+      --orange: #FF6B35;
+      --off-white: #F8F7F4;
+      --grey: #EEECE8;
+      --grey-line: #E1DED8;
+      --near-black: #1A1A1A;
+      --muted: #5B6070;
+      --white: #FFFFFF;
+      --font: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --shell-x: clamp(24px, 5vw, 88px);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--off-white);
+      color: var(--near-black);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--orange); color: var(--white); }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grey-line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--shell-x);
+      height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
+      color: var(--navy); text-decoration: none;
+    }
+    .logo-mark {
+      width: 30px; height: 30px; border-radius: 6px;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 14px; letter-spacing: -0.05em;
+    }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange); color: var(--white);
+      padding: 10px 20px; border-radius: 4px;
+      font-weight: 500; font-size: 15px; text-decoration: none;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: #E45A28; }
+
+    /* Shell */
+    .shell { padding-left: var(--shell-x); padding-right: var(--shell-x); }
+
+    /* Hero strip */
+    .page-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: clamp(60px, 8vw, 120px) var(--shell-x) clamp(40px, 5vw, 80px);
+    }
+    .page-header .eyebrow {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-weight: 500;
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin: 0 0 16px;
+    }
+    .page-header .meta {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* Content */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 100px) var(--shell-x);
+    }
+
+    .content h2 {
+      font-weight: 500;
+      font-size: clamp(22px, 2.5vw, 30px);
+      letter-spacing: -0.015em;
+      color: var(--navy);
+      margin: 48px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--grey-line);
+    }
+    .content h2:first-child { margin-top: 0; }
+
+    .content p {
+      color: var(--muted);
+      margin: 0 0 16px;
+      max-width: 68ch;
+    }
+    .content ul {
+      color: var(--muted);
+      padding-left: 20px;
+      margin: 0 0 16px;
+    }
+    .content ul li { margin-bottom: 6px; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--grey-line);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+    .contact-card p { margin: 4px 0; color: var(--near-black); }
+    .contact-card a { color: var(--orange); text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* Table */
+    .privacy-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 0 24px;
+      font-size: 15px;
+    }
+    .privacy-table th {
+      text-align: left;
+      padding: 10px 16px;
+      background: var(--grey);
+      color: var(--navy);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+    }
+    .privacy-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--grey-line);
+      color: var(--muted);
+      vertical-align: top;
+    }
+    .privacy-table tr:last-child td { border-bottom: none; }
+    .privacy-table th:first-child, .privacy-table td:first-child {
+      color: var(--near-black); font-weight: 500;
+    }
+
+    /* Rights grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .right-item {
+      background: var(--white);
+      border: 1px solid var(--grey-line);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    .right-item strong {
+      display: block;
+      color: var(--navy);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .right-item span { font-size: 14px; color: var(--muted); }
+
+    /* AP banner */
+    .ap-banner {
+      background: var(--grey);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .ap-banner a { color: var(--navy); font-weight: 500; }
+    .ap-banner a:hover { color: var(--orange); }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-ink);
+      color: rgba(255,255,255,0.7);
+      padding: 48px var(--shell-x);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+    }
+    .footer .logo { color: var(--white); }
+    .footer .logo-mark { background: var(--white); color: var(--navy); }
+    .footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer a:hover { color: var(--orange); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark">RE</span>
+        RankEngine
+      </a>
+      <a href="/#contact" class="nav-cta">Gratis gesprek →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="eyebrow">Juridisch</div>
+    <h1>Privacybeleid</h1>
+    <p class="meta">Laatste update: 22 april 2026</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <h2>Verwerkingsverantwoordelijke</h2>
+    <div class="contact-card">
+      <p><strong>RankEngine</strong></p>
+      <p>Koningsstraat 49, 1432 PL Aalsmeer</p>
+      <p>Telefoon: <a href="tel:+31643859989">06-43 85 99 89</a></p>
+      <p>E-mail: <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a></p>
+      <p>KVK: 94381143 · BTW: NL005080200B96</p>
+    </div>
+
+    <h2>Welke gegevens verzamelen wij?</h2>
+    <p>RankEngine verwerkt persoonsgegevens die je zelf verstrekt, bijvoorbeeld via het contactformulier, per e-mail of telefonisch:</p>
+    <ul>
+      <li>Voor- en achternaam</li>
+      <li>Bedrijfsnaam</li>
+      <li>E-mailadres</li>
+      <li>Telefoonnummer</li>
+      <li>Informatie over je bedrijf en online marketing activiteiten (voor dienstverlening)</li>
+    </ul>
+
+    <h2>Waarom verwerken wij je gegevens?</h2>
+    <table class="privacy-table">
+      <thead>
+        <tr>
+          <th>Doel</th>
+          <th>Grondslag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Beantwoorden van contactverzoeken en offertes</td>
+          <td>Gerechtvaardigd belang</td>
+        </tr>
+        <tr>
+          <td>Uitvoering van de overeenkomst (dienstverlening)</td>
+          <td>Uitvoering overeenkomst</td>
+        </tr>
+        <tr>
+          <td>Facturatie en administratie</td>
+          <td>Wettelijke verplichting</td>
+        </tr>
+        <tr>
+          <td>Nieuwsbrief of marketingupdates</td>
+          <td>Toestemming (alleen na opt-in)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Bewaartermijnen</h2>
+    <table class="privacy-table">
+      <thead>
+        <tr>
+          <th>Type gegeven</th>
+          <th>Bewaartermijn</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Klantgegevens en communicatie</td>
+          <td>2 jaar na einde samenwerking</td>
+        </tr>
+        <tr>
+          <td>Facturen en financiële administratie</td>
+          <td>7 jaar (wettelijke bewaarplicht)</td>
+        </tr>
+        <tr>
+          <td>Contactverzoeken zonder vervolg</td>
+          <td>1 jaar</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>Delen met derden</h2>
+    <p>RankEngine verkoopt je gegevens nooit aan derden. Voor de dienstverlening maken wij gebruik van platforms van derden, waaronder:</p>
+    <ul>
+      <li><strong>Google</strong> (Google Ads, Google Analytics) — voor advertentie- en analysediensten</li>
+      <li><strong>Meta</strong> (Facebook, Instagram) — voor advertentiediensten</li>
+      <li><strong>Boekhoudpakket</strong> — voor facturatie en financiële administratie</li>
+    </ul>
+    <p>Met verwerkers die namens ons persoonsgegevens verwerken, zijn verwerkersovereenkomsten afgesloten.</p>
+
+    <h2>Cookies</h2>
+    <p>De RankEngine website kan gebruik maken van analytische cookies (zoals Google Analytics) om websitebezoek te meten. Bij gebruik van niet-functionele cookies wordt een cookiebanner getoond en wordt toestemming gevraagd.</p>
+
+    <h2>Jouw rechten</h2>
+    <div class="rights-grid">
+      <div class="right-item">
+        <strong>Inzage</strong>
+        <span>Opvragen welke gegevens wij van je bewaren.</span>
+      </div>
+      <div class="right-item">
+        <strong>Correctie</strong>
+        <span>Onjuiste gegevens laten aanpassen.</span>
+      </div>
+      <div class="right-item">
+        <strong>Verwijdering</strong>
+        <span>Verzoeken om verwijdering van je gegevens.</span>
+      </div>
+      <div class="right-item">
+        <strong>Beperking</strong>
+        <span>Verwerking tijdelijk laten beperken.</span>
+      </div>
+      <div class="right-item">
+        <strong>Bezwaar</strong>
+        <span>Bezwaar maken tegen verwerking op basis van gerechtvaardigd belang.</span>
+      </div>
+      <div class="right-item">
+        <strong>Dataportabiliteit</strong>
+        <span>Je gegevens in een gangbaar formaat opvragen.</span>
+      </div>
+    </div>
+    <p>Stuur een verzoek naar <a href="mailto:thomas@rankengine.nl" style="color:var(--orange)">thomas@rankengine.nl</a>. Wij reageren binnen 4 weken.</p>
+
+    <h2>Klacht indienen</h2>
+    <p>Ben je niet tevreden over hoe wij met je gegevens omgaan? Dan heb je het recht om een klacht in te dienen bij de toezichthouder:</p>
+    <div class="ap-banner">
+      <div>
+        <strong style="color:var(--navy)">Autoriteit Persoonsgegevens</strong><br>
+        <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">www.autoriteitpersoonsgegevens.nl</a>
+      </div>
+    </div>
+
+    <h2>Beveiliging</h2>
+    <p>RankEngine neemt passende technische en organisatorische maatregelen om je persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik.</p>
+
+    <h2>Wijzigingen</h2>
+    <p>Dit privacybeleid kan worden aangepast. De meest actuele versie is altijd beschikbaar op <a href="https://rankengine.nl/privacy.html" style="color:var(--orange)">rankengine.nl/privacy.html</a>. Bij ingrijpende wijzigingen worden actieve klanten per e-mail geïnformeerd.</p>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark">RE</span>
+        RankEngine
+      </a>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#diensten">Diensten</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+      </div>
+      <div>© 2026 RankEngine · Thomas</div>
+    </div>
+  </footer>
+
+</body>
+</html>
