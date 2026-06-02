@@ -2412,9 +2412,9 @@ function CtaBand() {
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({ 'form-name': 'contact', ...form })
       });
-      setStatus('sent');
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({ event: 'contact_form_submit' });
+      window.location.href = '/bedankt.html';
     } catch {
       setStatus('error');
     }
