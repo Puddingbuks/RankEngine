@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algemene voorwaarden — RankEngine</title>
+  <meta name="description" content="Algemene voorwaarden van RankEngine. Van toepassing op alle diensten en overeenkomsten." />
+  <meta name="robots" content="noindex, follow" />
+  <link rel="canonical" href="https://rankengine.nl/algemene-voorwaarden.html" />
+
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --navy: #1A2E4A;
+      --navy-ink: #0F1E33;
+      --orange: #FF6B35;
+      --off-white: #F8F7F4;
+      --grey: #EEECE8;
+      --grey-line: #E1DED8;
+      --near-black: #1A1A1A;
+      --muted: #5B6070;
+      --white: #FFFFFF;
+      --font: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --shell-x: clamp(24px, 5vw, 88px);
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--off-white);
+      color: var(--near-black);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    ::selection { background: var(--orange); color: var(--white); }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(248, 247, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grey-line);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--shell-x);
+      height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
+      color: var(--navy); text-decoration: none;
+    }
+    .logo-mark {
+      width: 30px; height: 30px; border-radius: 6px;
+      background: var(--navy); color: var(--white);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 14px; letter-spacing: -0.05em;
+    }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--orange); color: var(--white);
+      padding: 10px 20px; border-radius: 4px;
+      font-weight: 500; font-size: 15px; text-decoration: none;
+      transition: background .2s;
+    }
+    .nav-cta:hover { background: #E45A28; }
+
+    /* Shell */
+    .shell { padding-left: var(--shell-x); padding-right: var(--shell-x); }
+
+    /* Page header */
+    .page-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: clamp(60px, 8vw, 120px) var(--shell-x) clamp(40px, 5vw, 80px);
+    }
+    .page-header .eyebrow {
+      font-family: ui-monospace, Menlo, monospace;
+      font-size: 12px; letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .page-header h1 {
+      font-weight: 500;
+      font-size: clamp(36px, 6vw, 64px);
+      letter-spacing: -0.025em;
+      line-height: 1.05;
+      margin: 0 0 16px;
+    }
+    .page-header .meta {
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* Content */
+    .content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 100px) var(--shell-x);
+    }
+
+    .content h2 {
+      font-weight: 500;
+      font-size: clamp(22px, 2.5vw, 30px);
+      letter-spacing: -0.015em;
+      color: var(--navy);
+      margin: 48px 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--grey-line);
+    }
+    .content h2:first-child { margin-top: 0; }
+
+    .content h3 {
+      font-weight: 500;
+      font-size: 17px;
+      color: var(--near-black);
+      margin: 28px 0 8px;
+    }
+
+    .content p {
+      color: var(--muted);
+      margin: 0 0 16px;
+      max-width: 68ch;
+    }
+    .content ol, .content ul {
+      color: var(--muted);
+      padding-left: 20px;
+      margin: 0 0 16px;
+    }
+    .content ol li, .content ul li { margin-bottom: 8px; }
+
+    .content a { color: var(--orange); text-decoration: none; }
+    .content a:hover { text-decoration: underline; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--white);
+      border: 1px solid var(--grey-line);
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+    .contact-card p { margin: 4px 0; color: var(--near-black); }
+    .contact-card a { color: var(--orange); text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; }
+
+    /* Info box */
+    .info-box {
+      background: var(--grey);
+      border-left: 3px solid var(--orange);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+    }
+    .info-box p { margin: 0; font-size: 15px; }
+
+    /* Footer */
+    .footer {
+      background: var(--navy-ink);
+      color: rgba(255,255,255,0.7);
+      padding: 48px var(--shell-x);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 14px;
+    }
+    .footer .logo { color: var(--white); }
+    .footer .logo-mark { background: var(--white); color: var(--navy); }
+    .footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+    .footer a:hover { color: var(--orange); }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark">RE</span>
+        RankEngine
+      </a>
+      <a href="/#contact" class="nav-cta">Gratis gesprek →</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="eyebrow">Juridisch</div>
+    <h1>Algemene voorwaarden</h1>
+    <p class="meta">Versie 1.0 · Geldig vanaf 1 juni 2026</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <h2>Gegevens opdrachtnemer</h2>
+    <div class="contact-card">
+      <p><strong>RankEngine</strong></p>
+      <p>Koningsstraat 49, 1432 PL Aalsmeer</p>
+      <p>Telefoon: <a href="tel:+31643859989">06-43 85 99 89</a></p>
+      <p>E-mail: <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a></p>
+      <p>KVK: 94381143 · BTW: NL005080200B96</p>
+    </div>
+
+    <h2>Artikel 1 — Definities</h2>
+    <p>In deze algemene voorwaarden wordt verstaan onder:</p>
+    <ul>
+      <li><strong>RankEngine:</strong> de eenmanszaak RankEngine, gevestigd in Aalsmeer, ingeschreven bij de KvK onder nummer 94381143.</li>
+      <li><strong>Opdrachtgever:</strong> de natuurlijke persoon of rechtspersoon die RankEngine opdracht geeft tot het verrichten van diensten.</li>
+      <li><strong>Overeenkomst:</strong> de schriftelijke of digitale afspraak tussen RankEngine en opdrachtgever, inclusief offerte en eventuele bijlagen.</li>
+      <li><strong>Diensten:</strong> alle werkzaamheden die RankEngine uitvoert, waaronder maar niet beperkt tot Google Ads-beheer, SEO, Meta Ads-beheer, app marketing en online marketingstrategie.</li>
+    </ul>
+
+    <h2>Artikel 2 — Toepasselijkheid</h2>
+    <ol>
+      <li>Deze algemene voorwaarden zijn van toepassing op alle offertes, overeenkomsten en diensten van RankEngine.</li>
+      <li>Afwijkingen van deze voorwaarden zijn alleen geldig indien schriftelijk overeengekomen.</li>
+      <li>Eventuele algemene voorwaarden van de opdrachtgever worden uitdrukkelijk van de hand gewezen.</li>
+      <li>RankEngine behoudt zich het recht voor deze voorwaarden eenzijdig te wijzigen. De gewijzigde voorwaarden gelden voor nieuwe overeenkomsten vanaf de datum van publicatie op de website.</li>
+    </ol>
+
+    <h2>Artikel 3 — Offertes en totstandkoming</h2>
+    <ol>
+      <li>Alle offertes zijn vrijblijvend en geldig gedurende 30 dagen, tenzij anders vermeld.</li>
+      <li>Een overeenkomst komt tot stand door schriftelijke of digitale bevestiging van de opdrachtgever, of door aanvang van de werkzaamheden door RankEngine.</li>
+      <li>Bij een mondelinge opdracht geldt de opdrachtbevestiging per e-mail als bewijs van de overeenkomst.</li>
+      <li>Wijzigingen in de opdracht na totstandkoming van de overeenkomst zijn alleen bindend indien schriftelijk bevestigd door RankEngine.</li>
+    </ol>
+
+    <h2>Artikel 4 — Uitvoering van de diensten</h2>
+    <ol>
+      <li>RankEngine voert de opdracht naar beste inzicht en vermogen uit, conform de eisen van goed vakmanschap. Het betreft een inspanningsverplichting, geen resultaatsverplichting.</li>
+      <li>RankEngine is gerechtigd derden in te schakelen voor de uitvoering van de opdracht.</li>
+      <li>Opgegeven levertijden en deadlines zijn indicatief. Overschrijding geeft de opdrachtgever niet het recht de overeenkomst te ontbinden of schadevergoeding te vorderen, tenzij partijen schriftelijk een fatale termijn zijn overeengekomen.</li>
+      <li>RankEngine heeft het recht de uitvoering van werkzaamheden op te schorten bij niet-tijdige betaling door de opdrachtgever.</li>
+    </ol>
+
+    <h2>Artikel 5 — Verplichtingen opdrachtgever</h2>
+    <ol>
+      <li>De opdrachtgever zorgt tijdig voor alle informatie, toegangen en materialen die nodig zijn voor de uitvoering van de opdracht.</li>
+      <li>De opdrachtgever garandeert dat de verstrekte informatie juist, volledig en actueel is.</li>
+      <li>De opdrachtgever verleent RankEngine toegang tot relevante advertentieaccounts, analysetools en andere benodigde platforms.</li>
+      <li>Schade als gevolg van onjuiste of onvolledige informatie van de opdrachtgever komt voor rekening van de opdrachtgever.</li>
+    </ol>
+
+    <h2>Artikel 6 — Tarieven en betaling</h2>
+    <ol>
+      <li>Alle tarieven zijn exclusief BTW, tenzij anders vermeld.</li>
+      <li>RankEngine factureert maandelijks vooraf voor retainerdiensten en na oplevering voor projectmatige opdrachten.</li>
+      <li>Betaling dient te geschieden binnen 14 dagen na factuurdatum op de in de factuur vermelde bankrekening.</li>
+      <li>Bij niet-tijdige betaling is de opdrachtgever van rechtswege in verzuim en is de wettelijke handelsrente verschuldigd.</li>
+      <li>Bij buitengerechtelijke incassomaatregelen zijn de kosten voor rekening van de opdrachtgever, met een minimum van €75.</li>
+      <li>Advertentiebudgetten worden altijd separaat door de opdrachtgever betaald, rechtstreeks aan het betreffende platform (Google, Meta, etc.). RankEngine beheert deze budgetten, maar is geen financiële doorgeefluik voor advertentiespend.</li>
+    </ol>
+
+    <h2>Artikel 7 — Annulering en opzegging</h2>
+    <ol>
+      <li>Retainerovereenkomsten worden aangegaan voor minimaal 3 maanden en daarna automatisch verlengd per maand.</li>
+      <li>Opzegging dient schriftelijk per e-mail te geschieden met een opzegtermijn van één kalendermaand.</li>
+      <li>Bij voortijdige beëindiging door de opdrachtgever zijn de kosten voor de resterende overeengekomen looptijd verschuldigd.</li>
+      <li>RankEngine kan de overeenkomst met onmiddellijke ingang beëindigen bij wanbetaling, faillissement of surseance van betaling van de opdrachtgever.</li>
+    </ol>
+
+    <h2>Artikel 8 — Intellectueel eigendom</h2>
+    <ol>
+      <li>Alle door RankEngine ontwikkelde rapportages, strategieën, advertentieteksten en overige werken zijn auteursrechtelijk beschermd en blijven eigendom van RankEngine totdat alle openstaande facturen zijn voldaan.</li>
+      <li>Na volledige betaling verkrijgt de opdrachtgever een niet-exclusief gebruiksrecht op de specifiek voor hem ontwikkelde materialen.</li>
+      <li>Het is de opdrachtgever niet toegestaan geleverde materialen te wijzigen, verder te verkopen of beschikbaar te stellen aan derden zonder voorafgaande toestemming.</li>
+      <li>Campagnestructuren en -instellingen in advertentieaccounts die door RankEngine zijn opgebouwd blijven na beëindiging van de overeenkomst beschikbaar in het account van de opdrachtgever.</li>
+    </ol>
+
+    <h2>Artikel 9 — Geheimhouding</h2>
+    <ol>
+      <li>Beide partijen verplichten zich tot geheimhouding van alle vertrouwelijke informatie die zij in het kader van de overeenkomst van elkaar ontvangen.</li>
+      <li>Informatie geldt als vertrouwelijk als dit door de verstrekkende partij is aangegeven of als dit voortvloeit uit de aard van de informatie.</li>
+      <li>Deze verplichting geldt ook na beëindiging van de overeenkomst.</li>
+    </ol>
+
+    <h2>Artikel 10 — Aansprakelijkheid</h2>
+    <ol>
+      <li>De aansprakelijkheid van RankEngine is beperkt tot directe schade en bedraagt maximaal het bedrag dat in de drie maanden voorafgaand aan de schadeveroorzakende gebeurtenis in rekening is gebracht.</li>
+      <li>RankEngine is niet aansprakelijk voor indirecte schade, gevolgschade, gederfde winst of omzetderving.</li>
+      <li>RankEngine is niet verantwoordelijk voor wijzigingen in algoritmen of beleid van zoekmachines en advertentieplatforms die invloed hebben op de resultaten.</li>
+      <li>RankEngine is niet aansprakelijk voor schade die is veroorzaakt door onjuiste of onvolledige informatie van de opdrachtgever.</li>
+      <li>De opdrachtgever vrijwaart RankEngine voor aanspraken van derden die voortvloeien uit de door de opdrachtgever aangeleverde materialen.</li>
+    </ol>
+
+    <h2>Artikel 11 — Overmacht</h2>
+    <ol>
+      <li>In geval van overmacht is RankEngine niet gehouden tot nakoming van de overeenkomst. Onder overmacht wordt verstaan: ziekte, storingen bij platforms of internetproviders, overheidsmaatregelen en andere omstandigheden buiten de invloedsfeer van RankEngine.</li>
+      <li>Bij overmacht langer dan 30 dagen hebben beide partijen het recht de overeenkomst te ontbinden zonder recht op schadevergoeding.</li>
+    </ol>
+
+    <h2>Artikel 12 — Toepasselijk recht en geschillen</h2>
+    <ol>
+      <li>Op alle overeenkomsten met RankEngine is uitsluitend Nederlands recht van toepassing.</li>
+      <li>Geschillen worden bij voorkeur in goed overleg opgelost. Indien dit niet lukt, worden geschillen voorgelegd aan de bevoegde rechter in het arrondissement Amsterdam.</li>
+    </ol>
+
+    <div class="info-box">
+      <p>Vragen over deze voorwaarden? Stuur een e-mail naar <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a> of bel <a href="tel:+31643859989">06-43 85 99 89</a>.</p>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <a href="/" class="logo">
+        <span class="logo-mark">RE</span>
+        RankEngine
+      </a>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/#diensten">Diensten</a>
+        <a href="/#contact">Contact</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
+      </div>
+      <div>© 2026 RankEngine · Thomas Roozemond</div>
+    </div>
+  </footer>
+
+</body>
+</html>
