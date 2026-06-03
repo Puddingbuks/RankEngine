@@ -166,6 +166,39 @@
     track.parentElement.addEventListener("mouseleave", restart);
   }
 
+  /* -------------------------------------------------- FAQ accordion */
+  document.querySelectorAll(".faq-q").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+      const answer = btn.nextElementSibling;
+
+      // close all others
+      document.querySelectorAll(".faq-q[aria-expanded='true']").forEach((other) => {
+        if (other !== btn) {
+          other.setAttribute("aria-expanded", "false");
+          const otherA = other.nextElementSibling;
+          otherA.style.maxHeight = "0";
+          otherA.style.paddingBottom = "0";
+          setTimeout(() => { if (other.getAttribute("aria-expanded") === "false") otherA.hidden = true; }, 350);
+        }
+      });
+
+      if (expanded) {
+        btn.setAttribute("aria-expanded", "false");
+        answer.style.maxHeight = "0";
+        setTimeout(() => { answer.hidden = true; }, 350);
+      } else {
+        answer.hidden = false;
+        answer.style.maxHeight = "0";
+        answer.style.transition = "max-height .4s cubic-bezier(.2,.7,.3,1)";
+        requestAnimationFrame(() => {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+        });
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+
   /* -------------------------------------------------- CONTACT FORM chips */
   document.querySelectorAll(".chip[data-field]").forEach((chip) => {
     chip.addEventListener("click", () => {

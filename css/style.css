@@ -431,6 +431,53 @@ body.anim-off .caret { animation: none; }
 .tst-arrows button:hover { border-color: var(--accent); color: var(--accent); }
 
 /* ============================================================
+   FAQ — accordion
+   ============================================================ */
+.faq-list { display: flex; flex-direction: column; max-width: 800px; }
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-item:first-child { border-top: 1px solid var(--border); }
+.faq-q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; padding: 22px 0;
+  background: transparent; border: none; color: var(--text);
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  text-align: left; cursor: pointer;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--accent); }
+.faq-q[aria-expanded="true"] { color: var(--accent); }
+.faq-icon {
+  flex: none; width: 28px; height: 28px; border-radius: 50%;
+  border: 1px solid var(--border-2);
+  display: grid; place-items: center;
+  transition: background .25s, border-color .25s, transform .35s var(--ease);
+  position: relative;
+}
+.faq-icon::before, .faq-icon::after {
+  content: ""; position: absolute;
+  background: var(--muted); border-radius: 2px;
+  transition: background .2s, transform .35s var(--ease), opacity .25s;
+}
+.faq-icon::before { width: 12px; height: 1.5px; }
+.faq-icon::after  { width: 1.5px; height: 12px; }
+.faq-q[aria-expanded="true"] .faq-icon {
+  background: var(--accent-soft); border-color: var(--accent);
+}
+.faq-q[aria-expanded="true"] .faq-icon::before,
+.faq-q[aria-expanded="true"] .faq-icon::after { background: var(--accent); }
+.faq-q[aria-expanded="true"] .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+
+.faq-a { overflow: hidden; }
+.faq-a p {
+  color: var(--muted); line-height: 1.75;
+  padding-bottom: 22px;
+  font-size: 1rem;
+}
+
+/* ============================================================
    CONTACT — twee-koloms layout + formulier
    ============================================================ */
 .cta-final { position: relative; overflow: hidden; }
