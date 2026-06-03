@@ -206,7 +206,7 @@ section { position: relative; z-index: 1; }
   margin: 26px 0 0;
 }
 .h1 .static { display: block; color: var(--text); }
-.h1 .type-line { display: block; color: var(--accent); min-height: 1.05em; }
+.h1 .type-line { display: block; color: var(--accent); min-height: 2.2em; }
 .caret {
   display: inline-block; width: .06em; height: .82em; margin-left: .04em;
   background: var(--accent); vertical-align: -.04em;
