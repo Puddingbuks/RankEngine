@@ -647,6 +647,9 @@ body.anim-off .float-cta .pulse::after { animation: none; }
 .foot-col a { display: block; color: var(--muted); padding: 5px 0; transition: color .2s; }
 .foot-col a:hover { color: var(--accent); }
 .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; align-items: center; margin-top: 54px; padding-top: 26px; border-top: 1px solid var(--border); color: var(--faint); font-family: var(--font-mono); font-size: .8rem; }
+.foot-legal { display: flex; gap: 20px; flex-wrap: wrap; }
+.foot-legal a { color: var(--faint); font-family: var(--font-mono); font-size: .8rem; transition: color .2s; }
+.foot-legal a:hover { color: var(--accent); }
 
 /* ============================================================
    RESPONSIVE
