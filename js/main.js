@@ -241,9 +241,29 @@
 
       if (!valid) { e.preventDefault(); return; }
 
-      // show loading state
+      // fetch submit
+      e.preventDefault();
       const btn = document.getElementById("formSubmit");
       if (btn) { btn.textContent = "Versturen…"; btn.disabled = true; }
+
+      const data = Object.fromEntries(new FormData(contactForm).entries());
+
+      fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((r) => {
+          if (r.ok) {
+            window.location.href = "/bedankt.html";
+          } else {
+            throw new Error("server error");
+          }
+        })
+        .catch(() => {
+          if (btn) { btn.textContent = "Verstuur bericht"; btn.disabled = false; }
+          alert("Er ging iets mis. Stuur een e-mail naar thomas@rankengine.nl of bel 06 43 85 99 89.");
+        });
     });
 
     // clear error on input

@@ -1,0 +1,28 @@
+# Vervang rankengine.nl door je eigen domein.
+# Caddy haalt automatisch een Let's Encrypt-certificaat op.
+
+rankengine.nl {
+
+  # Contactformulier doorsturen naar N8N op de host
+  reverse_proxy /api/contact http://host.docker.internal:5678/webhook/rankengine-contact
+
+  # Statische bestanden via Nginx
+  reverse_proxy nginx:80
+
+  # Gzip compressie
+  encode gzip
+
+  # Security headers
+  header {
+    Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    X-Content-Type-Options "nosniff"
+    X-Frame-Options "SAMEORIGIN"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    -Server
+  }
+}
+
+# HTTP → HTTPS redirect (Caddy doet dit automatisch, maar expliciet voor duidelijkheid)
+www.rankengine.nl {
+  redir https://rankengine.nl{uri} permanent
+}
