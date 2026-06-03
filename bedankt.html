@@ -1,263 +1,60 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-  <!-- Consent Mode v2 — standaard alles geweigerd -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      analytics_storage: 'denied',
-      ad_storage: 'denied',
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      wait_for_update: 500
-    });
-  </script>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-W5Q9H46');</script>
-  <!-- End Google Tag Manager -->
-
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bedankt voor je bericht — RankEngine</title>
-  <meta name="description" content="Bedankt voor je bericht aan RankEngine. We nemen zo snel mogelijk contact op." />
-  <meta name="robots" content="noindex, nofollow" />
-
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --navy: #1A2E4A;
-      --navy-ink: #0F1E33;
-      --orange: #FF6B35;
-      --off-white: #F8F7F4;
-      --grey: #EEECE8;
-      --grey-line: #E1DED8;
-      --near-black: #1A1A1A;
-      --muted: #5B6070;
-      --white: #FFFFFF;
-      --font: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      --shell-x: clamp(24px, 5vw, 88px);
-    }
-
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      background: var(--off-white);
-      color: var(--near-black);
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-    }
-    ::selection { background: var(--orange); color: var(--white); }
-
-    /* Nav */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(248, 247, 244, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--grey-line);
-    }
-    .nav-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 var(--shell-x); height: 64px;
-    }
-    .logo {
-      display: flex; align-items: center; gap: 10px;
-      font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
-      color: var(--navy); text-decoration: none;
-    }
-    .logo-mark {
-      width: 30px; height: 30px; border-radius: 6px;
-      background: var(--navy); color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 14px; letter-spacing: -0.05em;
-    }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--orange); color: var(--white);
-      padding: 10px 20px; border-radius: 4px;
-      font-weight: 500; font-size: 15px; text-decoration: none;
-      transition: background .2s;
-    }
-    .nav-cta:hover { background: #E45A28; }
-
-    /* Confirmation page */
-    .confirm-page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: clamp(80px, 12vw, 160px) var(--shell-x);
-      min-height: calc(100vh - 64px - 100px);
-    }
-
-    .confirm-icon {
-      width: 64px; height: 64px;
-      background: #ECFDF5;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 32px;
-    }
-    .confirm-icon svg { width: 28px; height: 28px; }
-
-    .confirm-eyebrow {
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: 12px; letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 16px;
-    }
-
-    .confirm-heading {
-      font-weight: 500;
-      font-size: clamp(36px, 6vw, 64px);
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      color: var(--navy);
-      margin: 0 0 20px;
-    }
-
-    .confirm-sub {
-      font-size: clamp(16px, 1.8vw, 19px);
-      color: var(--muted);
-      max-width: 44ch;
-      margin: 0 auto 48px;
-    }
-
-    .confirm-steps {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 0 auto 48px;
-      max-width: 400px;
-      text-align: left;
-    }
-    .confirm-step {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      background: var(--white);
-      border: 1px solid var(--grey-line);
-      border-radius: 10px;
-      padding: 16px 20px;
-    }
-    .step-num {
-      flex-shrink: 0;
-      width: 24px; height: 24px;
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700;
-      margin-top: 1px;
-    }
-    .step-text strong {
-      display: block;
-      font-weight: 500;
-      color: var(--near-black);
-      font-size: 15px;
-    }
-    .step-text span {
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .confirm-actions {
-      display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
-    }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--orange); color: var(--white);
-      padding: 14px 28px; border-radius: 4px;
-      font-weight: 500; font-size: 16px; text-decoration: none;
-      transition: background .2s;
-    }
-    .btn-primary:hover { background: #E45A28; }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white); color: var(--navy);
-      border: 1px solid var(--grey-line);
-      padding: 14px 28px; border-radius: 4px;
-      font-weight: 500; font-size: 16px; text-decoration: none;
-      transition: border-color .2s;
-    }
-    .btn-secondary:hover { border-color: var(--navy); }
-
-    /* Footer */
-    .footer {
-      background: var(--navy-ink);
-      color: rgba(255,255,255,0.7);
-      padding: 48px var(--shell-x);
-    }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px; font-size: 14px;
-    }
-    .footer .logo { color: var(--white); }
-    .footer .logo-mark { background: var(--white); color: var(--navy); }
-    .footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
-    .footer a:hover { color: var(--orange); }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bedankt - RankEngine</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/pages.css" />
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q9H46"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="logo">
-        <span class="logo-mark">RE</span>
-        RankEngine
-      </a>
-      <a href="/" class="nav-cta">Terug naar home →</a>
-    </div>
-  </nav>
+<header class="sub-nav">
+  <div class="wrap sub-nav-inner">
+    <a href="/" class="logo">
+      <span class="mark" aria-hidden="true"></span>
+      Rank<b>Engine</b>
+    </a>
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Terug naar home
+    </a>
+  </div>
+</header>
 
-  <!-- CONFIRMATION -->
-  <main class="confirm-page">
+<main>
+  <div class="confirm-page">
 
-    <div class="confirm-icon">
-      <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="14" cy="14" r="13" stroke="#22C55E" stroke-width="1.5"/>
-        <path d="M8 14.5l4 4 8-8" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <div class="confirm-icon" aria-hidden="true">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <path d="M6 14.5l5 5 11-11" stroke="#2bd47a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
 
     <div class="confirm-eyebrow">Bericht ontvangen</div>
-    <h1 class="confirm-heading">Bedankt voor<br>je bericht.</h1>
+    <h1>Bedankt voor<br>je bericht.</h1>
     <p class="confirm-sub">Thomas neemt binnen één werkdag contact met je op voor een vrijblijvend gesprek.</p>
 
-    <div class="confirm-steps">
-      <div class="confirm-step">
+    <div class="confirm-steps" role="list">
+      <div class="confirm-step" role="listitem">
         <div class="step-num">1</div>
         <div class="step-text">
           <strong>Bevestiging per e-mail</strong>
           <span>Je ontvangt zo een kopie van je bericht.</span>
         </div>
       </div>
-      <div class="confirm-step">
+      <div class="confirm-step" role="listitem">
         <div class="step-num">2</div>
         <div class="step-text">
           <strong>Thomas neemt contact op</strong>
-          <span>Binnen één werkdag — per telefoon of e-mail.</span>
+          <span>Binnen één werkdag, per telefoon of e-mail.</span>
         </div>
       </div>
-      <div class="confirm-step">
+      <div class="confirm-step" role="listitem">
         <div class="step-num">3</div>
         <div class="step-text">
           <strong>Gratis gesprek van 30 minuten</strong>
@@ -267,46 +64,22 @@
     </div>
 
     <div class="confirm-actions">
-      <a href="/" class="btn-primary">Terug naar home →</a>
-      <a href="/#diensten" class="btn-secondary">Bekijk de diensten</a>
+      <a href="/" class="btn btn-primary">Terug naar home <span class="arrow">→</span></a>
+      <a href="/#diensten" class="btn btn-ghost">Bekijk de diensten</a>
     </div>
 
-  </main>
+  </div>
+</main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <a href="/" class="logo">
-        <span class="logo-mark">RE</span>
-        RankEngine
-      </a>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/#diensten">Diensten</a>
-        <a href="/#contact">Contact</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
-      </div>
-      <div>© 2026 RankEngine · Thomas Roozemond</div>
+<footer class="sub-footer">
+  <div class="wrap sub-footer-inner">
+    <span>© 2026 RankEngine · KvK 94381143</span>
+    <div class="sub-footer-links">
+      <a href="/privacy.html">Privacybeleid</a>
+      <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
     </div>
-  </footer>
-
-  <!-- Cookie consent herstel -->
-  <script>
-    (function() {
-      var consent = localStorage.getItem('re_cookie_consent');
-      if (consent === 'accepted') {
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'update', {
-          analytics_storage: 'granted',
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted'
-        });
-      }
-    })();
-  </script>
+  </div>
+</footer>
 
 </body>
 </html>

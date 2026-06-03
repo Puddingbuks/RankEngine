@@ -1,237 +1,52 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-W5Q9H46');</script>
-  <!-- End Google Tag Manager -->
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pagina niet gevonden — RankEngine</title>
-  <meta name="robots" content="noindex, nofollow" />
-
-  <link rel="preconnect" href="https://api.fontshare.com" />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --navy: #1A2E4A;
-      --navy-ink: #0F1E33;
-      --orange: #FF6B35;
-      --off-white: #F8F7F4;
-      --grey: #EEECE8;
-      --grey-line: #E1DED8;
-      --near-black: #1A1A1A;
-      --muted: #5B6070;
-      --white: #FFFFFF;
-      --font: 'Satoshi', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      --shell-x: clamp(24px, 5vw, 88px);
-    }
-
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0;
-      background: var(--off-white);
-      color: var(--near-black);
-      font-family: var(--font);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      min-height: 100vh;
-    }
-    ::selection { background: var(--orange); color: var(--white); }
-
-    /* Nav */
-    .nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(248, 247, 244, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--grey-line);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 var(--shell-x);
-      height: 64px;
-    }
-    .logo {
-      display: flex; align-items: center; gap: 10px;
-      font-weight: 700; font-size: 18px; letter-spacing: -0.02em;
-      color: var(--navy); text-decoration: none;
-    }
-    .logo-mark {
-      width: 30px; height: 30px; border-radius: 6px;
-      background: var(--navy); color: var(--white);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 900; font-size: 14px; letter-spacing: -0.05em;
-    }
-    .nav-cta {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--orange); color: var(--white);
-      padding: 10px 20px; border-radius: 4px;
-      font-weight: 500; font-size: 15px; text-decoration: none;
-      transition: background .2s;
-    }
-    .nav-cta:hover { background: #E45A28; }
-
-    /* 404 hero */
-    .error-page {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: clamp(80px, 12vw, 160px) var(--shell-x);
-      min-height: calc(100vh - 64px - 100px);
-    }
-
-    .error-code {
-      font-family: ui-monospace, Menlo, monospace;
-      font-size: 12px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--orange);
-      margin-bottom: 24px;
-    }
-
-    .error-heading {
-      font-weight: 500;
-      font-size: clamp(40px, 8vw, 88px);
-      letter-spacing: -0.035em;
-      line-height: 1;
-      color: var(--navy);
-      margin: 0 0 24px;
-    }
-
-    .error-sub {
-      font-size: clamp(17px, 2vw, 20px);
-      color: var(--muted);
-      max-width: 44ch;
-      margin: 0 0 48px;
-    }
-
-    .error-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--orange); color: var(--white);
-      padding: 14px 28px; border-radius: 4px;
-      font-weight: 500; font-size: 16px; text-decoration: none;
-      transition: background .2s;
-    }
-    .btn-primary:hover { background: #E45A28; }
-
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--white); color: var(--navy);
-      border: 1px solid var(--grey-line);
-      padding: 14px 28px; border-radius: 4px;
-      font-weight: 500; font-size: 16px; text-decoration: none;
-      transition: border-color .2s, color .2s;
-    }
-    .btn-secondary:hover { border-color: var(--navy); }
-
-    .shortcut-links {
-      display: flex;
-      gap: 24px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 56px;
-      padding-top: 40px;
-      border-top: 1px solid var(--grey-line);
-      width: 100%;
-      max-width: 560px;
-    }
-    .shortcut-links a {
-      font-size: 14px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color .2s;
-    }
-    .shortcut-links a:hover { color: var(--orange); }
-
-    /* Footer */
-    .footer {
-      background: var(--navy-ink);
-      color: rgba(255,255,255,0.7);
-      padding: 48px var(--shell-x);
-    }
-    .footer-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      font-size: 14px;
-    }
-    .footer .logo { color: var(--white); }
-    .footer .logo-mark { background: var(--white); color: var(--navy); }
-    .footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
-    .footer a:hover { color: var(--orange); }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pagina niet gevonden - RankEngine</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/pages.css" />
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q9H46"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="/" class="logo">
-        <span class="logo-mark">RE</span>
-        RankEngine
-      </a>
-      <a href="/#contact" class="nav-cta">Gratis gesprek →</a>
-    </div>
-  </nav>
+<header class="sub-nav">
+  <div class="wrap sub-nav-inner">
+    <a href="/" class="logo">
+      <span class="mark" aria-hidden="true"></span>
+      Rank<b>Engine</b>
+    </a>
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+      Terug naar home
+    </a>
+  </div>
+</header>
 
-  <!-- ERROR -->
-  <main class="error-page">
+<main>
+  <div class="error-page">
     <div class="error-code">Fout 404</div>
-    <h1 class="error-heading">Pagina niet gevonden.</h1>
+    <h1>Pagina niet gevonden.</h1>
     <p class="error-sub">Deze pagina bestaat niet (meer) of het adres klopt niet. Gelukkig is de rest van de site gewoon bereikbaar.</p>
     <div class="error-actions">
-      <a href="/" class="btn-primary">Terug naar home →</a>
-      <a href="/#contact" class="btn-secondary">Neem contact op</a>
+      <a href="/" class="btn btn-primary">Terug naar home <span class="arrow">→</span></a>
+      <a href="/#contact" class="btn btn-ghost">Neem contact op</a>
     </div>
-    <nav class="shortcut-links" aria-label="Snelle links">
-      <a href="/#diensten">Diensten</a>
-      <a href="/#tarieven">Tarieven</a>
-      <a href="/#waarom">Waarom RankEngine</a>
-      <a href="/#thomas">Over Thomas</a>
-      <a href="/#contact">Contact</a>
-    </nav>
-  </main>
+  </div>
+</main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <a href="/" class="logo">
-        <span class="logo-mark">RE</span>
-        RankEngine
-      </a>
-      <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/#diensten">Diensten</a>
-        <a href="/#contact">Contact</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
-      </div>
-      <div>© 2026 RankEngine · Thomas Roozemond</div>
+<footer class="sub-footer">
+  <div class="wrap sub-footer-inner">
+    <span>© 2026 RankEngine · KvK 94381143</span>
+    <div class="sub-footer-links">
+      <a href="/privacy.html">Privacybeleid</a>
+      <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
     </div>
-  </footer>
+  </div>
+</footer>
 
 </body>
 </html>
