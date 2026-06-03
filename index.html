@@ -272,18 +272,111 @@
   </div>
 </section>
 
-<!-- ============================ FINAL CTA =========================== -->
+<!-- ============================ CONTACT ============================ -->
 <section class="cta-final section-pad" id="contact">
-  <div class="wrap">
-    <div class="cta-box" data-reveal="scale">
-      <span class="kicker" style="justify-content:center;display:flex">Klaar om te groeien?</span>
-      <h2>Bel me of plan een<br/>vrijblijvende kennismaking</h2>
+  <div class="wrap contact-wrap">
+
+    <!-- linker kolom: tekst -->
+    <div class="contact-left" data-reveal="left">
+      <span class="kicker">Klaar om te groeien?</span>
+      <h2>Plan een gratis adviesgesprek</h2>
       <p>Vertel me kort over je bedrijf en je doelen. Binnen een gesprek weet je precies wat online marketing voor jou kan opleveren — zonder verplichtingen.</p>
-      <div class="cta-actions">
-        <a class="btn btn-primary" href="mailto:thomas@rankengine.nl">Plan een gratis gesprek <span class="arrow">→</span></a>
-        <a class="cta-phone" href="tel:+31643859989"><span class="dot"></span>06 43 85 99 89</a>
-      </div>
+      <a class="cta-phone" href="tel:+31643859989" style="margin-top:28px"><span class="dot"></span>06 43 85 99 89</a>
     </div>
+
+    <!-- rechter kolom: formulier -->
+    <div class="contact-right" data-reveal="right" style="--d:100ms">
+
+      <!-- Netlify hidden form voor prerender -->
+      <form name="contact" data-netlify="true" data-netlify-honeypot="honeypot" hidden>
+        <input name="naam" /><input name="bedrijf" /><input name="email" />
+        <input name="telefoon" /><input name="dienst" /><input name="budget" />
+        <textarea name="bericht"></textarea><input name="honeypot" />
+      </form>
+
+      <!-- zichtbaar formulier -->
+      <form class="contact-form" id="contactForm" name="contact"
+            method="POST" data-netlify="true" data-netlify-honeypot="honeypot"
+            action="/bedankt.html" novalidate>
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="form-head">
+          <h3 class="form-title">Stuur een bericht</h3>
+          <span class="form-badge">± 2 min</span>
+        </div>
+
+        <div class="form-row two">
+          <div class="field" id="field-naam">
+            <label>Naam <span class="req">*</span></label>
+            <input type="text" name="naam" placeholder="Voor- en achternaam" autocomplete="name" />
+            <span class="field-err">Vul je naam in</span>
+          </div>
+          <div class="field">
+            <label>Bedrijf <span class="opt">(optioneel)</span></label>
+            <input type="text" name="bedrijf" placeholder="Bedrijfsnaam" autocomplete="organization" />
+          </div>
+        </div>
+
+        <div class="form-row two">
+          <div class="field" id="field-email">
+            <label>E-mail <span class="req">*</span></label>
+            <input type="email" name="email" placeholder="jij@bedrijf.nl" autocomplete="email" />
+            <span class="field-err">Vul een geldig e-mailadres in</span>
+          </div>
+          <div class="field">
+            <label>Telefoon <span class="opt">(optioneel)</span></label>
+            <input type="tel" name="telefoon" placeholder="06-..." autocomplete="tel" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Waar kan ik je mee helpen?</label>
+          <div class="chip-row" id="serviceChips">
+            <button type="button" class="chip" data-field="dienst" data-value="Google Ads">Google Ads</button>
+            <button type="button" class="chip" data-field="dienst" data-value="SEO">SEO</button>
+            <button type="button" class="chip" data-field="dienst" data-value="Meta Ads">Meta Ads</button>
+            <button type="button" class="chip" data-field="dienst" data-value="App marketing">App marketing</button>
+            <button type="button" class="chip" data-field="dienst" data-value="Strategie / audit">Strategie / audit</button>
+            <button type="button" class="chip" data-field="dienst" data-value="Weet ik nog niet">Weet ik nog niet</button>
+          </div>
+          <input type="hidden" name="dienst" id="dienstValue" />
+        </div>
+
+        <div class="field">
+          <label>Indicatie maandbudget <span class="opt">(optioneel)</span></label>
+          <div class="chip-row" id="budgetChips">
+            <button type="button" class="chip" data-field="budget" data-value="&lt; €1.000 / maand">&lt; €1.000 / maand</button>
+            <button type="button" class="chip" data-field="budget" data-value="€1.000 – €2.500">€1.000 – €2.500</button>
+            <button type="button" class="chip" data-field="budget" data-value="€2.500 – €5.000">€2.500 – €5.000</button>
+            <button type="button" class="chip" data-field="budget" data-value="€5.000+">€5.000+</button>
+            <button type="button" class="chip" data-field="budget" data-value="Eenmalig project">Eenmalig project</button>
+          </div>
+          <input type="hidden" name="budget" id="budgetValue" />
+        </div>
+
+        <div class="field" id="field-bericht">
+          <label>Vertel kort wat je zoekt <span class="req">*</span></label>
+          <textarea name="bericht" rows="4" placeholder="Waar loop je tegenaan, wat heb je al geprobeerd, wat is het doel..."></textarea>
+          <span class="field-err">Vul een bericht in</span>
+        </div>
+
+        <!-- honeypot -->
+        <input type="text" name="honeypot" tabindex="-1" autocomplete="off"
+               style="position:absolute;left:-9999px;width:1px;height:1px" aria-hidden="true" />
+
+        <div class="form-foot">
+          <p class="form-privacy">
+            Door te versturen ga je akkoord met mijn
+            <a href="/privacy.html">privacybeleid</a> en
+            <a href="/algemene-voorwaarden.html">algemene voorwaarden</a>.
+          </p>
+          <button type="submit" class="btn btn-primary" id="formSubmit">
+            Verstuur bericht <span class="arrow">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
   </div>
 </section>
 

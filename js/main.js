@@ -166,6 +166,62 @@
     track.parentElement.addEventListener("mouseleave", restart);
   }
 
+  /* -------------------------------------------------- CONTACT FORM chips */
+  document.querySelectorAll(".chip[data-field]").forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const field = chip.dataset.field;
+      const val = chip.dataset.value;
+      const hidden = document.getElementById(field + "Value");
+      const alreadyActive = chip.classList.contains("active");
+
+      // deactivate all chips in this group
+      document.querySelectorAll(`.chip[data-field="${field}"]`).forEach((c) => c.classList.remove("active"));
+
+      if (!alreadyActive) {
+        chip.classList.add("active");
+        if (hidden) hidden.value = val;
+      } else {
+        if (hidden) hidden.value = "";
+      }
+    });
+  });
+
+  /* -------------------------------------------------- CONTACT FORM validation */
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", (e) => {
+      let valid = true;
+
+      const checks = [
+        { id: "field-naam",    input: contactForm.querySelector("[name=naam]"),    test: (v) => v.trim().length > 1 },
+        { id: "field-email",   input: contactForm.querySelector("[name=email]"),   test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { id: "field-bericht", input: contactForm.querySelector("[name=bericht]"), test: (v) => v.trim().length > 5 },
+      ];
+
+      checks.forEach(({ id, input, test }) => {
+        const field = document.getElementById(id) || input?.closest(".field");
+        if (!field) return;
+        const ok = input && test(input.value);
+        field.classList.toggle("has-error", !ok);
+        if (!ok) { valid = false; if (input) input.focus(); }
+      });
+
+      if (!valid) { e.preventDefault(); return; }
+
+      // show loading state
+      const btn = document.getElementById("formSubmit");
+      if (btn) { btn.textContent = "Versturen…"; btn.disabled = true; }
+    });
+
+    // clear error on input
+    contactForm.querySelectorAll("input, textarea").forEach((el) => {
+      el.addEventListener("input", () => {
+        const field = el.closest(".field");
+        if (field) field.classList.remove("has-error");
+      });
+    });
+  }
+
   /* -------------------------------------------------- FLOATING CTA */
   const floatCta = document.getElementById("floatCta");
   const contact = document.getElementById("contact");
