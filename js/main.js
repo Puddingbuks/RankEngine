@@ -28,11 +28,11 @@
 
   /* -------------------------------------------------- HERO typewriter */
   const phrases = [
-    "meer klanten.",
-    "gevonden worden.",
-    "meer omzet.",
+    "de stip bepalen.",
+    "een plan maken.",
     "online groeien.",
-    "vol in de agenda."
+    "gevonden worden.",
+    "stap voor stap."
   ];
   const typed = document.getElementById("typed");
   let pi = 0, ci = 0, deleting = false;
