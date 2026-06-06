@@ -338,26 +338,20 @@ img, svg { display: block; max-width: 100%; }
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 18px;
-  letter-spacing: -0.01em;
+  font-size: 20px;
+  letter-spacing: -0.02em;
 }
 .logo-mark {
-  width: 28px; height: 28px;
-  border-radius: 6px;
-  background: var(--navy);
-  color: var(--white);
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: #0d1f2d;
   display: grid; place-items: center;
-  font-weight: 900;
-  font-size: 14px;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
-.logo-mark::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 4px;
-  background: var(--orange);
+.logo-mark svg {
+  width: 36px; height: 36px;
 }
 .nav-links {
   display: flex;
@@ -1351,7 +1345,7 @@ a.contact-meta-item:hover .cm-v { color: var(--orange); }
 }
 .footer a:hover { color: var(--orange); }
 .footer .logo { color: var(--white); margin-bottom: 20px; }
-.footer .logo-mark { background: var(--white); color: var(--navy); }
+.footer .logo-mark { background: #0d1f2d; }
 .footer-desc {
   max-width: 36ch;
   color: rgba(255,255,255,0.55);
@@ -1646,9 +1640,29 @@ const Arrow = ({ size = 14 }) => (
   </svg>
 );
 
+const LogoIcon = () => (
+  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="2" y="26" width="5" height="10" rx="1.2" fill="#4dd9e0"/>
+    <rect x="9" y="20" width="5" height="16" rx="1.2" fill="#4dd9e0"/>
+    <rect x="16" y="14" width="5" height="22" rx="1.2" fill="#4dd9e0"/>
+    <polyline points="24,12 33,3 33,9" stroke="#4dd9e0" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <line x1="24" y1="12" x2="33" y2="3" stroke="#4dd9e0" strokeWidth="2.2" strokeLinecap="round"/>
+    <circle cx="31" cy="31" r="5" stroke="#4dd9e0" strokeWidth="2" fill="none"/>
+    <circle cx="31" cy="31" r="1.8" fill="#4dd9e0"/>
+    <line x1="31" y1="24.5" x2="31" y2="26.5" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="31" y1="35.5" x2="31" y2="37.5" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="24.5" y1="31" x2="26.5" y2="31" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="35.5" y1="31" x2="37.5" y2="31" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="26.4" y1="26.4" x2="27.8" y2="27.8" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="34.2" y1="34.2" x2="35.6" y2="35.6" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="35.6" y1="26.4" x2="34.2" y2="27.8" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+    <line x1="27.8" y1="34.2" x2="26.4" y2="35.6" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
 const Logo = ({ onDark = false }) => (
   <a href="#top" className="logo" style={onDark ? { color: '#fff' } : undefined}>
-    <span className="logo-mark">R</span>RankEngine
+    <span className="logo-mark"><LogoIcon /></span>RankEngine
   </a>
 );
 
