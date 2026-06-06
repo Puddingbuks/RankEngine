@@ -388,9 +388,8 @@ img, svg { display: block; max-width: 100%; }
   overflow: hidden;
 }
 .hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
-  gap: clamp(32px, 5vw, 80px);
+  display: block;
+  max-width: 68ch;
   align-items: end;
 }
 @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; } }
@@ -1964,48 +1963,8 @@ function Hero({ variant = 'display', persona = 'klein' }) {
 
         </div>
 
-        <HeroCard />
       </div>
     </header>
-  );
-}
-
-function HeroCard() {
-  return (
-    <div className="hero-card reveal" aria-hidden="true">
-      <div className="hc-head">
-        <span className="hc-live">LIVE · GOOGLE ADS</span>
-        <span className="hc-campaign">campagne #RE-0417</span>
-      </div>
-      <div className="hc-kpi">
-        <div className="num">312</div>
-        <div className="lbl">conversies deze maand</div>
-        <div className="delta">
-          <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-            <path d="M5 1v8M1 5l4-4 4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
-          </svg>
-          +41% vs. vorige maand
-        </div>
-      </div>
-      <div className="hc-chart"><Sparkline /></div>
-      <div className="hc-rows">
-        <div className="hc-row">
-          <span className="name">Search — Services NL</span>
-          <span className="ctr">CTR 8.2%</span>
-          <span className="conv">+18</span>
-        </div>
-        <div className="hc-row">
-          <span className="name">Shopping — Feed core</span>
-          <span className="ctr">ROAS 6.1×</span>
-          <span className="conv">+44</span>
-        </div>
-        <div className="hc-row">
-          <span className="name">Meta — Lead form</span>
-          <span className="ctr">CPL € 12.40</span>
-          <span className="conv">+9</span>
-        </div>
-      </div>
-    </div>
   );
 }
 
