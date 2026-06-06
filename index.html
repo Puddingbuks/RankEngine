@@ -342,16 +342,16 @@ img, svg { display: block; max-width: 100%; }
   letter-spacing: -0.02em;
 }
 .logo-mark {
-  width: 44px; height: 44px;
+  width: 48px; height: 48px;
   border-radius: 10px;
   background: #0d1f2d;
   display: grid; place-items: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   flex-shrink: 0;
 }
 .logo-mark svg {
-  width: 36px; height: 36px;
+  width: 40px; height: 40px;
 }
 .nav-links {
   display: flex;
@@ -1641,22 +1641,15 @@ const Arrow = ({ size = 14 }) => (
 );
 
 const LogoIcon = () => (
-  <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <rect x="2" y="26" width="5" height="10" rx="1.2" fill="#4dd9e0"/>
-    <rect x="9" y="20" width="5" height="16" rx="1.2" fill="#4dd9e0"/>
-    <rect x="16" y="14" width="5" height="22" rx="1.2" fill="#4dd9e0"/>
-    <polyline points="24,12 33,3 33,9" stroke="#4dd9e0" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-    <line x1="24" y1="12" x2="33" y2="3" stroke="#4dd9e0" strokeWidth="2.2" strokeLinecap="round"/>
-    <circle cx="31" cy="31" r="5" stroke="#4dd9e0" strokeWidth="2" fill="none"/>
-    <circle cx="31" cy="31" r="1.8" fill="#4dd9e0"/>
-    <line x1="31" y1="24.5" x2="31" y2="26.5" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="31" y1="35.5" x2="31" y2="37.5" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="24.5" y1="31" x2="26.5" y2="31" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="35.5" y1="31" x2="37.5" y2="31" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="26.4" y1="26.4" x2="27.8" y2="27.8" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="34.2" y1="34.2" x2="35.6" y2="35.6" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="35.6" y1="26.4" x2="34.2" y2="27.8" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
-    <line x1="27.8" y1="34.2" x2="26.4" y2="35.6" stroke="#4dd9e0" strokeWidth="2" strokeLinecap="round"/>
+  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="2" y="32" width="6" height="14" rx="1.5" fill="#4dd9e0"/>
+    <rect x="10" y="22" width="6" height="24" rx="1.5" fill="#4dd9e0"/>
+    <rect x="18" y="10" width="6" height="36" rx="1.5" fill="#4dd9e0"/>
+    <path d="M24 10 Q36 10 36 19 Q36 28 24 28 L28 38 Q30 42 34 44" stroke="#4dd9e0" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+    <circle cx="34" cy="44" r="3.5" stroke="#4dd9e0" strokeWidth="2" fill="none"/>
+    <circle cx="34" cy="44" r="1.5" fill="#4dd9e0"/>
+    <line x1="36" y1="10" x2="43" y2="3" stroke="#4dd9e0" strokeWidth="2.5" strokeLinecap="round"/>
+    <polyline points="38,3 43,3 43,8" stroke="#4dd9e0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
   </svg>
 );
 
