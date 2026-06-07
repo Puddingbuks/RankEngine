@@ -200,22 +200,20 @@
   });
 
   /* -------------------------------------------------- CONTACT FORM chips */
-  document.querySelectorAll(".chip[data-field]").forEach((chip) => {
+  const serviceChips = document.querySelectorAll("#serviceChips .chip");
+  const serviceHidden = document.getElementById("service");
+  serviceChips.forEach((chip) => {
     chip.addEventListener("click", () => {
-      const field = chip.dataset.field;
-      const val = chip.dataset.value;
-      const hidden = document.getElementById(field + "Value");
-      const alreadyActive = chip.classList.contains("active");
-
-      // deactivate all chips in this group
-      document.querySelectorAll(`.chip[data-field="${field}"]`).forEach((c) => c.classList.remove("active"));
-
-      if (!alreadyActive) {
+      const wasActive = chip.classList.contains("active");
+      serviceChips.forEach((c) => c.classList.remove("active"));
+      if (!wasActive) {
         chip.classList.add("active");
-        if (hidden) hidden.value = val;
+        if (serviceHidden) serviceHidden.value = chip.dataset.val;
       } else {
-        if (hidden) hidden.value = "";
+        if (serviceHidden) serviceHidden.value = "";
       }
+      const fService = document.getElementById("fService");
+      if (fService) fService.classList.remove("has-error");
     });
   });
 
@@ -226,24 +224,24 @@
       let valid = true;
 
       const checks = [
-        { id: "field-naam",    input: contactForm.querySelector("[name=naam]"),    test: (v) => v.trim().length > 1 },
-        { id: "field-email",   input: contactForm.querySelector("[name=email]"),   test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
-        { id: "field-bericht", input: contactForm.querySelector("[name=bericht]"), test: (v) => v.trim().length > 5 },
+        { fieldId: "fName",    input: contactForm.querySelector("[name=name]"),    test: (v) => v.trim().length > 1 },
+        { fieldId: "fEmail",   input: contactForm.querySelector("[name=email]"),   test: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
+        { fieldId: "fService", input: document.getElementById("service"),          test: (v) => v.trim().length > 0 },
       ];
 
-      checks.forEach(({ id, input, test }) => {
-        const field = document.getElementById(id) || input?.closest(".field");
+      checks.forEach(({ fieldId, input, test }) => {
+        const field = document.getElementById(fieldId) || input?.closest(".field");
         if (!field) return;
         const ok = input && test(input.value);
         field.classList.toggle("has-error", !ok);
-        if (!ok) { valid = false; if (input) input.focus(); }
+        if (!ok) { valid = false; if (input && input.type !== "hidden") input.focus(); }
       });
 
       if (!valid) { e.preventDefault(); return; }
 
       // fetch submit
       e.preventDefault();
-      const btn = document.getElementById("formSubmit");
+      const btn = contactForm.querySelector("[type=submit]");
       if (btn) { btn.textContent = "Versturen…"; btn.disabled = true; }
 
       const data = Object.fromEntries(new FormData(contactForm).entries());
