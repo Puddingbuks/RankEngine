@@ -407,3 +407,90 @@ body.anim-off .float-cta .pulse::after { animation: none; }
   .tst-dots button { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
   .faq-q { min-height: 48px; }
 }
+
+/* NAV ACTIONS (theme toggle wrapper) */
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+
+/* THEME TOGGLE BUTTON */
+.theme-toggle {
+  display: grid; place-items: center;
+  width: 40px; height: 40px; border-radius: 10px;
+  background: transparent; border: 1px solid var(--border-2);
+  color: var(--muted); cursor: pointer;
+  transition: border-color .2s, color .2s, background .2s;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.theme-toggle .icon-moon { display: none; }
+.theme-toggle .icon-sun  { display: block; }
+[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
+
+/* ============================================================
+   LIGHT MODE
+   Cyaan (#00e5ff) is onleesbaar op wit — accent wordt #0070cc
+   ============================================================ */
+[data-theme="light"] {
+  --bg:          #f5f7fc;
+  --bg-2:        #eef1f7;
+  --surface:     #ffffff;
+  --surface-2:   #edf0f6;
+  --border:      rgba(0,0,0,.1);
+  --border-2:    rgba(0,0,0,.18);
+  --text:        #0d1117;
+  --muted:       #4a5568;
+  --faint:       #6b7a90;
+  --accent:      #0070cc;
+  --accent-2:    #1a5fd4;
+  --accent-ink:  #ffffff;
+  --accent-soft: rgba(0,112,204,.12);
+}
+
+/* Grid achtergrond aanpassen voor light mode */
+[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(rgba(0,0,0,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.055) 1px, transparent 1px);
+}
+
+/* Hero glow minder intens in light mode */
+[data-theme="light"] .hero-glow {
+  background: radial-gradient(circle, rgba(0,112,204,.10) 0%, transparent 60%);
+}
+
+/* Nav scrolled achtergrond */
+[data-theme="light"] .nav.scrolled {
+  background: rgba(245,247,252,.88);
+}
+
+/* Vergelijkingskaart highlight */
+[data-theme="light"] .cmp-card.win {
+  background: linear-gradient(165deg, rgba(0,112,204,.08), rgba(26,95,212,.04) 60%, var(--surface));
+}
+
+/* Service kaart glow */
+[data-theme="light"] .svc .glowfield {
+  background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(0,112,204,.08), transparent 60%);
+}
+
+/* Formulier inputs */
+[data-theme="light"] .field input,
+[data-theme="light"] .field textarea {
+  background: var(--bg-2);
+}
+
+/* Float CTA */
+[data-theme="light"] .float-cta {
+  box-shadow: 0 14px 40px -10px rgba(0,112,204,.4), 0 0 0 1px rgba(255,255,255,.3) inset;
+}
+
+/* Logo glow */
+[data-theme="light"] .logo .mark {
+  box-shadow: 0 0 16px -2px rgba(0,112,204,.35);
+}
+
+/* Mobiel menu achtergrond */
+@media (max-width: 680px) {
+  [data-theme="light"] .nav-links.open {
+    background: rgba(245,247,252,.97);
+  }
+}
