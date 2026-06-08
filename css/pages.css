@@ -290,3 +290,12 @@
 @media (max-width: 480px) {
   .rights-grid { grid-template-columns: 1fr; }
 }
+
+/* ---- light mode sub-nav ---- */
+[data-theme="light"] .sub-nav {
+  background: rgba(245,247,252,.92);
+}
+[data-theme="light"] .sub-footer {
+  background: var(--bg-2);
+  border-color: var(--border);
+}
