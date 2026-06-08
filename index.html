@@ -704,7 +704,17 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
     btn.disabled = true;
     btn.textContent = 'Versturen…';
     var data = new FormData(form);
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
+    var payload = {
+      naam:    document.getElementById('name').value.trim(),
+      email:   document.getElementById('email').value.trim(),
+      dienst:  document.getElementById('service').value.trim(),
+      bericht: document.getElementById('message').value.trim()
+    };
+    fetch('https://n8n.rankengine.nl/webhook/rankengine-contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
       .then(function(){ window.location.href = '/bedankt.html'; })
       .catch(function(){
         btn.disabled = false;
