@@ -78,7 +78,8 @@ button{font:inherit;cursor:pointer}
 .logo .mark::before{left:7px;bottom:7px;width:4px;height:8px;border-radius:1px}
 .logo .mark::after{left:13px;bottom:7px;width:4px;height:16px;border-radius:1px;box-shadow:6px 0 0 var(--accent-ink)}
 .logo b{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:34px;list-style:none;margin-left:auto}
+.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
+.nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
 .nav-links li{display:contents}
 .nav-links a.link{font-size:.95rem;color:var(--muted);font-weight:550;position:relative;transition:color .2s}
 .nav-links a.link:hover{color:var(--text)}
@@ -102,18 +103,18 @@ button{font:inherit;cursor:pointer}
 <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
   <div class="wrap nav-inner">
     <a class="logo" href="/" aria-label="RankEngine home"><span class="mark" aria-hidden="true"></span><span>Rank<b>Engine</b></span></a>
-    <ul class="nav-links" id="navLinks" role="list">
-      <li><a class="link" href="/#oplossing">Waarom</a></li>
-      <li><a class="link" href="/google-ads.html">Google Ads</a></li>
-      <li><a class="link" href="/social-ads.html">Social Ads</a></li>
-      <li><a class="link" href="/#over">Over Thomas</a></li>
-      <li><a class="btn btn-primary" href="#contact">Plan een gesprek</a></li>
-    </ul>
-    <div class="nav-actions">
+    <div class="nav-right">
       <button class="theme-toggle" id="themeToggle" aria-label="Schakel naar lichte modus">
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
         <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
       </button>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a class="link" href="/#oplossing">Waarom</a></li>
+        <li><a class="link" href="/google-ads.html">Google Ads</a></li>
+        <li><a class="link" href="/social-ads.html">Social Ads</a></li>
+        <li><a class="link" href="/#over">Over Thomas</a></li>
+        <li><a class="btn btn-primary" href="#contact">Plan een gesprek</a></li>
+      </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true"></span></button>
     </div>
   </div>
