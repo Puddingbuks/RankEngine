@@ -128,9 +128,20 @@ button{font:inherit;cursor:pointer}
 .logo b{color:var(--accent)}
 .nav-links{display:flex;align-items:center;gap:34px;list-style:none}
 .nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
-.nav-links li{display:contents}
+.nav-links li{position:relative}
 .nav-links a.link{font-size:.95rem;color:var(--muted);font-weight:550;position:relative;transition:color .2s}
-.nav-links a.link:hover{color:var(--text)}
+.nav-links a.link:hover,.nav-links button.link:hover{color:var(--text)}
+.nav-links a.link.active,.nav-links button.link.active{color:var(--accent)}
+.nav-links button.link{background:none;border:none;cursor:pointer;padding:0;font-family:var(--font-body);font-size:.95rem;color:var(--muted);font-weight:550;transition:color .2s;display:inline-flex;align-items:center;gap:.35em}
+.has-dropdown{position:relative}
+.dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--surface-2);border:1px solid var(--border-2);border-radius:14px;padding:6px;min-width:190px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;list-style:none;box-shadow:0 8px 32px -8px rgba(0,0,0,.4)}
+.dropdown-toggle[aria-expanded=true] ~ .dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dropdown li{display:block}
+.dropdown a{display:flex;align-items:center;padding:9px 14px;border-radius:8px;font-size:.9rem;font-weight:550;color:var(--muted);transition:color .15s,background .15s;white-space:nowrap}
+.dropdown a:hover{color:var(--text);background:var(--surface)}
+.dropdown a.active{color:var(--accent)}
+.dropdown-chevron{transition:transform .2s;opacity:.5;font-style:normal;font-size:.75em;line-height:1}
+.dropdown-toggle[aria-expanded=true] .dropdown-chevron{transform:rotate(180deg)}
 .nav .btn-primary{padding:11px 20px;font-size:.92rem}
 .nav-actions{display:flex;align-items:center;gap:10px}
 .nav-toggle{display:none}
@@ -158,9 +169,16 @@ button{font:inherit;cursor:pointer}
       </button>
       <ul class="nav-links" id="navLinks" role="list">
         <li><a class="link" href="/#oplossing">Waarom</a></li>
-        <li><a class="link" href="/google-ads.html">Google Ads</a></li>
-        <li><a class="link" href="/seo.html">SEO</a></li>
-        <li><a class="link" href="/social-ads.html">Social Ads</a></li>
+        <li class="has-dropdown">
+          <button class="link active dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+          <ul class="dropdown" role="menu">
+            <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+            <li><a href="/seo.html" role="menuitem">SEO</a></li>
+            <li><a href="/social-ads.html" class="active" role="menuitem" aria-current="page">Meta Ads</a></li>
+            <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+            <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+          </ul>
+        </li>
         <li><a class="link" href="/#over">Over Thomas</a></li>
         <li><a class="btn btn-primary" href="#contact">Plan een gesprek</a></li>
       </ul>
@@ -408,6 +426,13 @@ button{font:inherit;cursor:pointer}
   toggle.addEventListener('click', function(){
     var isOpen = links.classList.toggle('open');
     toggle.setAttribute('aria-expanded', isOpen);
+  });
+})();
+(function(){
+  document.querySelectorAll('.dropdown-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(e){e.stopPropagation();btn.setAttribute('aria-expanded',btn.getAttribute('aria-expanded')!=='true');});
+    document.addEventListener('click',function(){btn.setAttribute('aria-expanded','false');});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')btn.setAttribute('aria-expanded','false');});
   });
 })();
 (function(){
