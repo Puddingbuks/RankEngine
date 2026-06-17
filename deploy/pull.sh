@@ -23,4 +23,7 @@ echo "[$(date '+%Y-%m-%d %H:%M:%S')] Deploy gestart ($(git log -1 --format='%h %
 git pull origin "$BRANCH" --quiet
 sudo cp -r . "$WEB_DIR/"
 
+# Nginx config herladen zodat wijzigingen in nginx.conf direct actief worden
+docker exec rankengine-nginx nginx -s reload >> "$LOG" 2>&1 || true
+
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Deploy klaar" >> "$LOG"
