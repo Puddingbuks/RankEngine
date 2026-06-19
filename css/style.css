@@ -251,8 +251,8 @@ body.anim-off .caret { animation: none; }
   display: flex; align-items: center; gap: 12px;
 }
 .about-photo .ribbon .av { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); flex: none; box-shadow: 0 0 18px -3px var(--accent); }
-.about-photo .ribbon b { font-family: var(--font-display); }
-.about-photo .ribbon span { display: block; color: var(--muted); font-size: .82rem; font-family: var(--font-mono); }
+.about-photo .ribbon b { font-family: var(--font-display); color: #eef1f6; }
+.about-photo .ribbon span { display: block; color: rgba(238,241,246,.65); font-size: .82rem; font-family: var(--font-mono); }
 .about-body h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2rem,4.5vw,3.4rem); letter-spacing: -.03em; line-height: 1.04; margin: 16px 0 0; }
 .about-body p { color: var(--muted); margin-top: 20px; font-size: 1.08rem; max-width: 52ch; text-wrap: pretty; }
 .about-body p strong { color: var(--text); font-weight: 650; }
