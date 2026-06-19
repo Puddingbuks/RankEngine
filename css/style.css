@@ -128,7 +128,7 @@ section { position: relative; z-index: 1; }
   background: radial-gradient(circle, var(--accent-soft) 0%, transparent 60%);
   pointer-events: none; z-index: 0; filter: blur(10px); will-change: transform;
 }
-.hero-inner { position: relative; z-index: 2; max-width: 1000px; }
+.hero-inner { position: relative; z-index: 2; }
 .h1 {
   font-family: var(--font-display); font-weight: 700;
   font-size: clamp(3rem, 9.5vw, 8rem); line-height: .94;

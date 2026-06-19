@@ -101,8 +101,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" /></noscript>
-<link rel="preload" as="style" href="css/style.css?v=2" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/style.css?v=2" /></noscript>
+<link rel="preload" as="style" href="css/style.css?v=3" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/style.css?v=3" /></noscript>
 <script>(function(){var t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
 
 <style>
@@ -153,10 +153,6 @@ button{font:inherit;cursor:pointer}
 [data-theme="light"] .theme-toggle .icon-moon{display:block}
 [data-theme="light"] .theme-toggle .icon-sun{display:none}
 [data-theme="light"] .nav.scrolled{background:rgba(245,247,252,.88)}
-.showcase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.showcase-item{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
-.showcase-item img{width:100%;height:auto;display:block}
-.showcase-item figcaption{padding:14px 18px;font-family:var(--font-mono);font-size:.8rem;color:var(--faint)}
 @media(max-width:680px){.nav-links{display:none}.nav-toggle{display:grid;place-items:center;width:44px;height:44px;background:transparent;border:1px solid var(--border-2);border-radius:12px}}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr!important}}</style>
 </head>
@@ -198,7 +194,7 @@ button{font:inherit;cursor:pointer}
 <!-- HERO -->
 <section style="position:relative;padding:150px 0 clamp(80px,11vw,140px);overflow:hidden">
   <div style="position:absolute;top:0;left:50%;width:600px;height:600px;transform:translate(-50%,-40%);background:radial-gradient(circle,var(--accent-soft),transparent 60%);pointer-events:none;filter:blur(10px)" aria-hidden="true"></div>
-  <div class="wrap" style="position:relative;z-index:2;max-width:900px">
+  <div class="wrap" style="position:relative;z-index:2">
     <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// GEO Optimalisatie</span>
     <h1 style="font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,7vw,5.5rem);line-height:.96;letter-spacing:-.04em;margin:20px 0 0">Gevonden worden<br/>via AI-zoekopdrachten</h1>
     <p style="color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:54ch;margin-top:28px;line-height:1.6">Steeds meer mensen zoeken via ChatGPT, Google AI Overviews en Perplexity in plaats van klassieke zoekresultaten. Ik zorg dat jij degene bent die geciteerd wordt.</p>
@@ -296,17 +292,17 @@ button{font:inherit;cursor:pointer}
       <p style="color:var(--muted);margin-top:16px;font-size:1.05rem">Wat GEO optimalisatie in de praktijk oplevert voor ondernemers.</p>
     </div>
     <div class="showcase-grid">
-      <figure class="showcase-item">
+      <figure class="showcase-item" data-reveal="up">
         <img src="/images/geo-ai-overzicht-google-chatgpt-gevonden.png" alt="Google AI Overzicht met citatie van een lokale ondernemer als beste antwoord" loading="lazy" width="1456" height="816" />
-        <figcaption>Jouw bedrijf als eerste bron in een AI-overzicht</figcaption>
+        <figcaption>Jouw bedrijf als eerste bron in een AI-overzicht<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
       </figure>
-      <figure class="showcase-item">
+      <figure class="showcase-item" data-reveal="up" style="--d:120ms">
         <img src="/images/geo-schema-markup-structured-data-resultaat.png" alt="Schema markup en structured data in Google Search Console voor betere AI-zichtbaarheid" loading="lazy" width="1456" height="816" />
-        <figcaption>Structured data die AI begrijpt</figcaption>
+        <figcaption>Structured data die AI begrijpt<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
       </figure>
-      <figure class="showcase-item">
+      <figure class="showcase-item" data-reveal="up" style="--d:240ms">
         <img src="/images/geo-citaties-perplexity-chatgpt-ai-resultaten.png" alt="Perplexity en ChatGPT die een ondernemer citeren als betrouwbare bron in hun antwoord" loading="lazy" width="1456" height="816" />
-        <figcaption>Geciteerd worden in meerdere AI-platformen</figcaption>
+        <figcaption>Geciteerd worden in meerdere AI-platformen<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
       </figure>
     </div>
   </div>
@@ -440,11 +436,12 @@ button{font:inherit;cursor:pointer}
       <a href="/seo.html" style="color:var(--faint)">SEO</a>
       <a href="/geo-optimalisatie.html" style="color:var(--muted)">GEO</a>
       <a href="/ecommerce.html" style="color:var(--faint)">E-commerce</a>
-      <a href="/social-ads.html" style="color:var(--faint)">Social Ads</a>
-      <a href="/#contact" style="color:var(--faint)">Contact</a>
+      <a href="/social-ads.html" style="color:var(--faint)">Meta Ads</a>
+      <a href="/tiktok-ads.html" style="color:var(--faint)">TikTok Ads</a>
+      <a href="/linkedin-ads.html" style="color:var(--faint)">LinkedIn Ads</a>
       <a href="/privacy.html" style="color:var(--faint)">Privacybeleid</a>
     </div>
-    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--faint)">© 2025 RankEngine · Aalsmeer</span>
+    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--faint)">© 2026 RankEngine · Aalsmeer</span>
   </div>
 </footer>
 

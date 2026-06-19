@@ -101,8 +101,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" /></noscript>
-<link rel="preload" as="style" href="css/style.css?v=2" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/style.css?v=2" /></noscript>
+<link rel="preload" as="style" href="css/style.css?v=3" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/style.css?v=3" /></noscript>
 <script>(function(){var t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
 
 <style>
@@ -153,10 +153,6 @@ button{font:inherit;cursor:pointer}
 [data-theme="light"] .theme-toggle .icon-moon{display:block}
 [data-theme="light"] .theme-toggle .icon-sun{display:none}
 [data-theme="light"] .nav.scrolled{background:rgba(245,247,252,.88)}
-.showcase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
-.showcase-item{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
-.showcase-item img{width:100%;height:auto;display:block}
-.showcase-item figcaption{padding:14px 18px;font-family:var(--font-mono);font-size:.8rem;color:var(--faint)}
 @media(max-width:680px){.nav-links{display:none}.nav-toggle{display:grid;place-items:center;width:44px;height:44px;background:transparent;border:1px solid var(--border-2);border-radius:12px}}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr!important}}</style>
 </head>
@@ -198,7 +194,7 @@ button{font:inherit;cursor:pointer}
 <!-- HERO -->
 <section style="position:relative;padding:150px 0 clamp(80px,11vw,140px);overflow:hidden">
   <div style="position:absolute;top:0;left:50%;width:600px;height:600px;transform:translate(-50%,-40%);background:radial-gradient(circle,var(--accent-soft),transparent 60%);pointer-events:none;filter:blur(10px)" aria-hidden="true"></div>
-  <div class="wrap" style="position:relative;z-index:2;max-width:900px">
+  <div class="wrap" style="position:relative;z-index:2">
     <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// E-commerce &amp; CRO</span>
     <h1 style="font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,7vw,5.5rem);line-height:.96;letter-spacing:-.04em;margin:20px 0 0">Meer omzet<br/>uit je webshop</h1>
     <p style="color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:54ch;margin-top:28px;line-height:1.6">Je hebt al bezoekers. Het probleem is dat te weinig van hen iets kopen. Ik analyseer waar het misgaat in je funnel en fix het — meer omzet zonder extra advertentiebudget.</p>
@@ -296,17 +292,17 @@ button{font:inherit;cursor:pointer}
       <p style="color:var(--muted);margin-top:16px;font-size:1.05rem">Wat e-commerce optimalisatie in de praktijk oplevert voor webshops.</p>
     </div>
     <div class="showcase-grid">
-      <figure class="showcase-item">
+      <figure class="showcase-item" data-reveal="up">
         <img src="/images/ecommerce-conversie-analyse-heatmap-funnel.png" alt="GA4 funnel analyse en heatmap die toont waar webshopbezoekers afhaken in het bestelproces" loading="lazy" width="1456" height="816" />
-        <figcaption>Inzicht in waar bezoekers afhaken</figcaption>
+        <figcaption>Inzicht in waar bezoekers afhaken<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
       </figure>
-      <figure class="showcase-item">
+      <figure class="showcase-item" data-reveal="up" style="--d:120ms">
         <img src="/images/ecommerce-productpagina-optimalisatie-resultaat.png" alt="Geoptimaliseerde productpagina met duidelijke call-to-action, reviews en vertrouwenssignalen" loading="lazy" width="1456" height="816" />
-        <figcaption>Productpagina's die overtuigen</figcaption>
+        <figcaption>Productpagina's die overtuigen<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
       </figure>
-      <figure class="showcase-item">
+      <figure class="showcase-item" data-reveal="up" style="--d:240ms">
         <img src="/images/ecommerce-resultaten-conversieratio-omzet-groei.png" alt="Dashboard met verbeterde conversieratio en omzetgroei na CRO optimalisatie" loading="lazy" width="1456" height="816" />
-        <figcaption>Meetbare groei in conversieratio en omzet</figcaption>
+        <figcaption>Meetbare groei in conversieratio en omzet<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
       </figure>
     </div>
   </div>
@@ -440,11 +436,12 @@ button{font:inherit;cursor:pointer}
       <a href="/seo.html" style="color:var(--faint)">SEO</a>
       <a href="/geo-optimalisatie.html" style="color:var(--faint)">GEO</a>
       <a href="/ecommerce.html" style="color:var(--muted)">E-commerce</a>
-      <a href="/social-ads.html" style="color:var(--faint)">Social Ads</a>
-      <a href="/#contact" style="color:var(--faint)">Contact</a>
+      <a href="/social-ads.html" style="color:var(--faint)">Meta Ads</a>
+      <a href="/tiktok-ads.html" style="color:var(--faint)">TikTok Ads</a>
+      <a href="/linkedin-ads.html" style="color:var(--faint)">LinkedIn Ads</a>
       <a href="/privacy.html" style="color:var(--faint)">Privacybeleid</a>
     </div>
-    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--faint)">© 2025 RankEngine · Aalsmeer</span>
+    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--faint)">© 2026 RankEngine · Aalsmeer</span>
   </div>
 </footer>
 
