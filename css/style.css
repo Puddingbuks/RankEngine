@@ -458,6 +458,16 @@ body.anim-off .float-cta .pulse::after { animation: none; }
   color: var(--muted);
   font-weight: 550;
   letter-spacing: .01em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.showcase-item figcaption .disclaimer {
+  font-size: .75rem;
+  font-weight: 400;
+  color: var(--muted);
+  opacity: .6;
+  letter-spacing: 0;
 }
 @media (max-width: 900px) {
   .showcase-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
