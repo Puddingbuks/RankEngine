@@ -208,8 +208,8 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
 .nav-links button.link:hover{color:var(--text)}
 .nav-links button.link.active{color:var(--accent)}
 .has-dropdown{position:relative}
-.dropdown{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(-6px);background:var(--surface);border:1px solid var(--border-2);border-radius:14px;padding:6px;min-width:190px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;list-style:none;box-shadow:0 8px 32px -8px rgba(0,0,0,.4)}
-.dropdown-toggle[aria-expanded=true] ~ .dropdown{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+.dropdown{position:fixed;top:90px;left:0;transform:translateY(-6px);background:var(--surface);border:1px solid var(--border-2);border-radius:14px;padding:6px;min-width:190px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;list-style:none;box-shadow:0 8px 32px -8px rgba(0,0,0,.4)}
+.dropdown-toggle[aria-expanded=true] ~ .dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
 .dropdown li{display:block}
 .dropdown a{display:flex;align-items:center;padding:9px 14px;border-radius:8px;font-size:.9rem;font-weight:550;color:var(--muted);transition:color .15s,background .15s;white-space:nowrap}
 .dropdown a:hover{color:var(--text);background:var(--surface-2)}
@@ -695,7 +695,7 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
 })();
 (function(){
   document.querySelectorAll('.dropdown-toggle').forEach(function(btn){
-    btn.addEventListener('click',function(e){e.stopPropagation();btn.setAttribute('aria-expanded',btn.getAttribute('aria-expanded')!=='true');});
+    btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);if(open){var dd=btn.parentElement.querySelector('.dropdown');if(dd){var r=btn.getBoundingClientRect();dd.style.left=r.left+'px';dd.style.top=(r.bottom+14)+'px';}}});
     document.addEventListener('click',function(){btn.setAttribute('aria-expanded','false');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')btn.setAttribute('aria-expanded','false');});
   });
