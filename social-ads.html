@@ -203,7 +203,7 @@ button{font:inherit;cursor:pointer}
       <a class="btn btn-primary" href="#contact">Plan een gesprek <span aria-hidden="true">→</span></a>
       <a class="btn btn-ghost" href="#werkwijze">Hoe het werkt</a>
     </div>
-    <div style="display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:44px;font-family:var(--font-mono);font-size:.8rem;color:var(--faint)">
+    <div style="display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:44px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">
       <span>✓ Uurtarief €100</span>
       <span>✓ Maandelijks opzegbaar</span>
       <span>✓ Direct contact</span>
@@ -294,19 +294,28 @@ button{font:inherit;cursor:pointer}
     </div>
     <div class="showcase-grid">
       <figure class="showcase-item">
-        <img src="/images/instagram-advertenties-sponsored-post-feed.png" alt="Instagram advertentie als sponsored post in de feed van een gebruiker" loading="lazy" width="1456" height="816" />
+        <picture>
+          <source type="image/webp" srcset="/images/instagram-advertenties-sponsored-post-feed-750.webp 750w, /images/instagram-advertenties-sponsored-post-feed.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
+          <img src="/images/instagram-advertenties-sponsored-post-feed.png" alt="Instagram advertentie als sponsored post in de feed van een gebruiker" loading="lazy" width="1456" height="816" />
+        </picture>
         <figcaption>Jouw advertentie in de Instagram-feed</figcaption>
       </figure>
       <figure class="showcase-item">
-        <img src="/images/meta-ads-instagram-ads-manager-roas-resultaten.png" alt="Meta Ads Manager dashboard met campagneresultaten en ROAS-groei" loading="lazy" width="1456" height="816" />
+        <picture>
+          <source type="image/webp" srcset="/images/meta-ads-instagram-ads-manager-roas-resultaten-750.webp 750w, /images/meta-ads-instagram-ads-manager-roas-resultaten.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
+          <img src="/images/meta-ads-instagram-ads-manager-roas-resultaten.png" alt="Meta Ads Manager dashboard met campagneresultaten en ROAS-groei" loading="lazy" width="1456" height="816" />
+        </picture>
         <figcaption>Volledig inzicht via Meta Ads Manager</figcaption>
       </figure>
       <figure class="showcase-item">
-        <img src="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas.png" alt="Meta Ads resultaten met meer aanvragen, lagere CPC en verbeterde ROAS" loading="lazy" width="1456" height="816" />
+        <picture>
+          <source type="image/webp" srcset="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas-750.webp 750w, /images/meta-ads-resultaten-meer-aanvragen-cpc-roas.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
+          <img src="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas.png" alt="Meta Ads resultaten met meer aanvragen, lagere CPC en verbeterde ROAS" loading="lazy" width="1456" height="816" />
+        </picture>
         <figcaption>Meetbare groei per campagne</figcaption>
       </figure>
     </div>
-    <p style="color:var(--faint);font-family:var(--font-mono);font-size:.8rem;margin-top:16px">* Indicatieve cijfers — resultaten kunnen variëren per situatie.</p>
+    <p style="color:var(--muted);font-family:var(--font-mono);font-size:.8rem;margin-top:16px">* Indicatieve cijfers — resultaten kunnen variëren per situatie.</p>
   </div>
 </section>
 
@@ -328,7 +337,7 @@ button{font:inherit;cursor:pointer}
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:860px;margin-bottom:24px">
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px">
-        <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)">Onboarding</div>
+        <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Onboarding</div>
         <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px">
           <span style="font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:-.03em">3–5 uur</span>
           <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">eenmalig</span>
@@ -338,7 +347,7 @@ button{font:inherit;cursor:pointer}
         <p style="color:var(--muted);font-size:.9rem;line-height:1.6">Meta Pixel en events instellen, account opzetten, campagnestructuur bepalen en eerste campagnes live zetten.</p>
       </div>
       <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px">
-        <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)">Maandelijks beheer</div>
+        <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Maandelijks beheer</div>
         <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px">
           <span style="font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:-.03em">3–7 uur</span>
           <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">/maand</span>
@@ -349,7 +358,7 @@ button{font:inherit;cursor:pointer}
       </div>
     </div>
     <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:20px 24px;max-width:860px">
-      <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--faint);margin-bottom:12px">Wat de scope bepaalt</div>
+      <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">Wat de scope bepaalt</div>
       <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:.9rem">
         <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Aantal campagnes en advertentiedoelstellingen</li>
         <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Hoe vaak nieuwe creatives aangeleverd worden</li>
@@ -357,7 +366,7 @@ button{font:inherit;cursor:pointer}
         <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Staat van het bestaande ad account</li>
       </ul>
     </div>
-    <p style="color:var(--faint);font-family:var(--font-mono);font-size:.8rem;margin-top:16px">Advertentiebudget is apart — minimaal €200–€400/maand, rechtstreeks aan Meta.</p>
+    <p style="color:var(--muted);font-family:var(--font-mono);font-size:.8rem;margin-top:16px">Advertentiebudget is apart — minimaal €200–€400/maand, rechtstreeks aan Meta.</p>
   </div>
 </section>
 
@@ -417,11 +426,11 @@ button{font:inherit;cursor:pointer}
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px">
-          <label for="message" style="font-size:.875rem;font-weight:600">Bericht <span style="color:var(--faint);font-weight:400;font-size:.82em">(optioneel)</span></label>
+          <label for="message" style="font-size:.875rem;font-weight:600">Bericht <span style="color:var(--muted);font-weight:400;font-size:.82em">(optioneel)</span></label>
           <textarea id="message" name="message" rows="3" placeholder="Vertel kort wat je doet en wat je zoekt…" style="background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:var(--font-body);font-size:.98rem;outline:none;width:100%;resize:none;transition:border-color .2s"></textarea>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)">
-          <p style="font-size:.8rem;color:var(--faint);max-width:36ch">Ik gebruik je gegevens alleen om te reageren. <a href="/privacy.html" style="color:var(--muted);text-decoration:underline">Privacybeleid</a></p>
+          <p style="font-size:.8rem;color:var(--muted);max-width:36ch">Ik gebruik je gegevens alleen om te reageren. <a href="/privacy.html" style="color:var(--muted);text-decoration:underline">Privacybeleid</a></p>
           <button type="submit" class="btn btn-primary">Verstuur <span aria-hidden="true">→</span></button>
         </div>
       </form>
@@ -435,16 +444,16 @@ button{font:inherit;cursor:pointer}
   <div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px">
     <a class="logo" href="/" aria-label="RankEngine home"><span class="mark" aria-hidden="true"></span><span>Rank<b>Engine</b></span></a>
     <div style="display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.8rem">
-      <a href="/google-ads.html" style="color:var(--faint)">Google Ads</a>
-      <a href="/seo.html" style="color:var(--faint)">SEO</a>
-      <a href="/geo-optimalisatie.html" style="color:var(--faint)">GEO</a>
-      <a href="/ecommerce.html" style="color:var(--faint)">E-commerce</a>
+      <a href="/google-ads.html" style="color:var(--muted)">Google Ads</a>
+      <a href="/seo.html" style="color:var(--muted)">SEO</a>
+      <a href="/geo-optimalisatie.html" style="color:var(--muted)">GEO</a>
+      <a href="/ecommerce.html" style="color:var(--muted)">E-commerce</a>
       <a href="/social-ads.html" style="color:var(--muted)">Meta Ads</a>
-      <a href="/tiktok-ads.html" style="color:var(--faint)">TikTok Ads</a>
-      <a href="/linkedin-ads.html" style="color:var(--faint)">LinkedIn Ads</a>
-      <a href="/privacy.html" style="color:var(--faint)">Privacybeleid</a>
+      <a href="/tiktok-ads.html" style="color:var(--muted)">TikTok Ads</a>
+      <a href="/linkedin-ads.html" style="color:var(--muted)">LinkedIn Ads</a>
+      <a href="/privacy.html" style="color:var(--muted)">Privacybeleid</a>
     </div>
-    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--faint)">© 2026 RankEngine · Aalsmeer</span>
+    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">© 2026 RankEngine · Aalsmeer</span>
   </div>
 </footer>
 
@@ -475,7 +484,7 @@ button{font:inherit;cursor:pointer}
 })();
 (function(){
   document.querySelectorAll('.dropdown-toggle').forEach(function(btn){
-    btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);if(open){var dd=btn.parentElement.querySelector('.dropdown');if(dd){var r=btn.getBoundingClientRect();dd.style.left=r.left+'px';dd.style.top=(r.bottom+14)+'px';}}});
+    btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);});
     document.addEventListener('click',function(){btn.setAttribute('aria-expanded','false');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')btn.setAttribute('aria-expanded','false');});
   });

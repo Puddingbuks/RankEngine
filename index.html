@@ -335,19 +335,28 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
     </div>
     <div class="showcase-grid">
       <figure class="showcase-item" data-reveal="up">
-        <img src="/images/seo-nummer-1-google-zoekresultaten.png" alt="Website groeit organisch in Google zoekresultaten dankzij SEO" loading="lazy" width="1456" height="816" />
+        <picture>
+          <source type="image/webp" srcset="/images/seo-nummer-1-google-zoekresultaten-750.webp 750w, /images/seo-nummer-1-google-zoekresultaten.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
+          <img src="/images/seo-nummer-1-google-zoekresultaten.png" alt="Website groeit organisch in Google zoekresultaten dankzij SEO" loading="lazy" width="1456" height="816" />
+        </picture>
         <figcaption>Organisch groeien in Google</figcaption>
       </figure>
       <figure class="showcase-item" data-reveal="up" style="--d:120ms">
-        <img src="/images/lokale-seo-google-maps-vindbaarheid.png" alt="Lokaal bedrijf zichtbaar in Google Maps via lokale SEO" loading="lazy" width="1456" height="816" />
+        <picture>
+          <source type="image/webp" srcset="/images/lokale-seo-google-maps-vindbaarheid-750.webp 750w, /images/lokale-seo-google-maps-vindbaarheid.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
+          <img src="/images/lokale-seo-google-maps-vindbaarheid.png" alt="Lokaal bedrijf zichtbaar in Google Maps via lokale SEO" loading="lazy" width="1456" height="816" />
+        </picture>
         <figcaption>Lokale zichtbaarheid via Google Maps</figcaption>
       </figure>
       <figure class="showcase-item" data-reveal="up" style="--d:240ms">
-        <img src="/images/seo-resultaten-meer-bezoekers-google-analytics.png" alt="Google Analytics toont 47 procent meer bezoekers en meer aanvragen na SEO-traject" loading="lazy" width="1456" height="816" />
+        <picture>
+          <source type="image/webp" srcset="/images/seo-resultaten-meer-bezoekers-google-analytics-750.webp 750w, /images/seo-resultaten-meer-bezoekers-google-analytics.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
+          <img src="/images/seo-resultaten-meer-bezoekers-google-analytics.png" alt="Google Analytics toont 47 procent meer bezoekers en meer aanvragen na SEO-traject" loading="lazy" width="1456" height="816" />
+        </picture>
         <figcaption>+47% meer bezoekers, meer aanvragen</figcaption>
       </figure>
     </div>
-    <p style="color:var(--faint);font-family:var(--font-mono);font-size:.8rem;margin-top:16px">* Indicatieve cijfers — resultaten kunnen variëren per situatie.</p>
+    <p style="color:var(--muted);font-family:var(--font-mono);font-size:.8rem;margin-top:16px">* Indicatieve cijfers — resultaten kunnen variëren per situatie.</p>
   </div>
 </section>
 
@@ -408,7 +417,10 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
 <section class="section-pad" id="over">
   <div class="wrap about">
     <div class="about-photo" data-reveal="left">
-      <img src="/images/thomas.jpg" alt="Thomas Roozemond — RankEngine" style="width:100%;border-radius:20px;display:block;object-fit:cover" />
+      <picture>
+          <source type="image/webp" srcset="/images/thomas-400.webp 400w, /images/thomas.webp 800w" sizes="(max-width:768px) 400px, 800px" />
+          <img src="/images/thomas.jpg" alt="Thomas Roozemond — RankEngine" style="width:100%;border-radius:20px;display:block;object-fit:cover"  width="800" height="800" />
+        </picture>
       <div class="ribbon">
         <span class="av" aria-hidden="true"></span>
         <div>
@@ -533,7 +545,7 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
       </div>
       <div class="foot-cols">
         <div class="foot-col">
-          <h4>Diensten</h4>
+          <h3>Diensten</h3>
           <a href="/google-ads.html">Google Ads</a>
           <a href="/seo.html">SEO</a>
           <a href="/geo-optimalisatie.html">GEO / AI</a>
@@ -543,12 +555,12 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
           <a href="/linkedin-ads.html">LinkedIn Ads</a>
         </div>
         <div class="foot-col">
-          <h4>RankEngine</h4>
+          <h3>RankEngine</h3>
           <a href="#oplossing">Waarom RankEngine</a>
           <a href="#over">Wie ik ben</a>
         </div>
         <div class="foot-col">
-          <h4>Contact</h4>
+          <h3>Contact</h3>
           <a href="#contact">Plan een gesprek</a>
           <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>
         </div>
@@ -700,7 +712,7 @@ body.anim-off [data-reveal]{opacity:1!important;transform:none!important;transit
 })();
 (function(){
   document.querySelectorAll('.dropdown-toggle').forEach(function(btn){
-    btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);if(open){var dd=btn.parentElement.querySelector('.dropdown');if(dd){var r=btn.getBoundingClientRect();dd.style.left=r.left+'px';dd.style.top=(r.bottom+14)+'px';}}});
+    btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);});
     document.addEventListener('click',function(){btn.setAttribute('aria-expanded','false');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')btn.setAttribute('aria-expanded','false');});
   });
