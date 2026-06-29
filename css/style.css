@@ -1,19 +1,19 @@
 /* RankEngine — VOLTAGE house style */
 
 :root {
-  --bg:        #08090c;
-  --bg-2:      #0b0d12;
-  --surface:   #101319;
-  --surface-2: #161a23;
-  --border:    rgba(255,255,255,.08);
-  --border-2:  rgba(255,255,255,.16);
-  --text:  #eef1f6;
-  --muted: #9da7b8;
-  --faint: #717b8e;
-  --accent:     #00e5ff;
-  --accent-2:   #2b7bff;
-  --accent-ink: #04222a;
-  --accent-soft: rgba(0,229,255,.14);
+  --bg:          #f5f7fc;
+  --bg-2:        #eef1f7;
+  --surface:     #ffffff;
+  --surface-2:   #edf0f6;
+  --border:      rgba(0,0,0,.1);
+  --border-2:    rgba(0,0,0,.18);
+  --text:        #0d1117;
+  --muted:       #4a5568;
+  --faint:       #6b7a90;
+  --accent:      #0070cc;
+  --accent-2:    #1a5fd4;
+  --accent-ink:  #ffffff;
+  --accent-soft: rgba(0,112,204,.12);
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body:    "Manrope", system-ui, sans-serif;
   --font-mono:    "Space Mono", ui-monospace, monospace;
@@ -40,8 +40,8 @@ button { font: inherit; cursor: pointer; }
 body::before {
   content: ""; position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.055) 1px, transparent 1px);
   background-size: 64px 64px; pointer-events: none; z-index: 0;
   mask-image: radial-gradient(120% 90% at 50% 0%, #000 35%, transparent 78%);
 }
@@ -96,7 +96,7 @@ section { position: relative; z-index: 1; }
   border-bottom: 1px solid transparent;
 }
 .nav.scrolled {
-  background: rgba(8,9,12,.72);
+  background: rgba(245,247,252,.88);
   backdrop-filter: blur(16px) saturate(140%);
   -webkit-backdrop-filter: blur(16px) saturate(140%);
   border-bottom-color: var(--border);
@@ -181,7 +181,7 @@ body.anim-off .caret { animation: none; }
 .cmp-card .ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--surface-2); margin-bottom: 22px; color: var(--muted); }
 .cmp-card.dim { opacity: .82; }
 .cmp-card.win {
-  background: linear-gradient(165deg, rgba(0,229,255,.12), rgba(43,123,255,.05) 60%, var(--surface));
+  background: linear-gradient(165deg, rgba(0,112,204,.08), rgba(26,95,212,.04) 60%, var(--surface));
   border-color: var(--accent);
   box-shadow: 0 0 0 1px var(--accent), 0 24px 60px -28px var(--accent);
 }
@@ -352,7 +352,7 @@ body.anim-off .caret { animation: none; }
   background: var(--accent); color: var(--accent-ink);
   font-family: var(--font-body); font-weight: 700; font-size: .98rem;
   padding: 14px 20px; border-radius: 999px;
-  box-shadow: 0 14px 40px -10px var(--accent), 0 0 0 1px rgba(255,255,255,.12) inset;
+  box-shadow: 0 14px 40px -10px var(--accent), 0 0 0 1px rgba(255,255,255,.3) inset;
   transform: translateY(140%) scale(.9); opacity: 0;
   transition: transform .55s var(--ease), opacity .45s var(--ease), box-shadow .3s;
   will-change: transform;
@@ -391,7 +391,7 @@ body.anim-off .float-cta .pulse::after { animation: none; }
   .nav-links.open {
     display: flex; flex-direction: column; align-items: flex-start; gap: 18px;
     position: absolute; top: 76px; left: 0; right: 0;
-    background: rgba(8,9,12,.96); backdrop-filter: blur(16px);
+    background: rgba(245,247,252,.97); backdrop-filter: blur(16px);
     padding: 26px var(--gutter) 34px; border-bottom: 1px solid var(--border);
   }
   .nav-links.open li { display: block; width: 100%; }
@@ -408,22 +408,8 @@ body.anim-off .float-cta .pulse::after { animation: none; }
   .faq-q { min-height: 48px; }
 }
 
-/* NAV ACTIONS (theme toggle wrapper) */
+/* NAV ACTIONS */
 .nav-actions { display: flex; align-items: center; gap: 10px; }
-
-/* THEME TOGGLE BUTTON */
-.theme-toggle {
-  display: grid; place-items: center;
-  width: 40px; height: 40px; border-radius: 10px;
-  background: transparent; border: 1px solid var(--border-2);
-  color: var(--muted); cursor: pointer;
-  transition: border-color .2s, color .2s, background .2s;
-}
-.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
-.theme-toggle .icon-moon { display: none; }
-.theme-toggle .icon-sun  { display: block; }
-[data-theme="light"] .theme-toggle .icon-moon { display: block; }
-[data-theme="light"] .theme-toggle .icon-sun  { display: none; }
 
 /* ============================================================
    SHOWCASE SECTIE
@@ -463,72 +449,3 @@ body.anim-off .float-cta .pulse::after { animation: none; }
   .showcase-grid { grid-template-columns: 1fr; max-width: 480px; margin-inline: auto; }
 }
 
-/* ============================================================
-   LIGHT MODE
-   Cyaan (#00e5ff) is onleesbaar op wit — accent wordt #0070cc
-   ============================================================ */
-[data-theme="light"] {
-  --bg:          #f5f7fc;
-  --bg-2:        #eef1f7;
-  --surface:     #ffffff;
-  --surface-2:   #edf0f6;
-  --border:      rgba(0,0,0,.1);
-  --border-2:    rgba(0,0,0,.18);
-  --text:        #0d1117;
-  --muted:       #4a5568;
-  --faint:       #6b7a90;
-  --accent:      #0070cc;
-  --accent-2:    #1a5fd4;
-  --accent-ink:  #ffffff;
-  --accent-soft: rgba(0,112,204,.12);
-}
-
-/* Grid achtergrond aanpassen voor light mode */
-[data-theme="light"] body::before {
-  background-image:
-    linear-gradient(rgba(0,0,0,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,.055) 1px, transparent 1px);
-}
-
-/* Hero glow minder intens in light mode */
-[data-theme="light"] .hero-glow {
-  background: radial-gradient(circle, rgba(0,112,204,.10) 0%, transparent 60%);
-}
-
-/* Nav scrolled achtergrond */
-[data-theme="light"] .nav.scrolled {
-  background: rgba(245,247,252,.88);
-}
-
-/* Vergelijkingskaart highlight */
-[data-theme="light"] .cmp-card.win {
-  background: linear-gradient(165deg, rgba(0,112,204,.08), rgba(26,95,212,.04) 60%, var(--surface));
-}
-
-/* Service kaart glow */
-[data-theme="light"] .svc .glowfield {
-  background: radial-gradient(420px circle at var(--mx,50%) var(--my,0%), rgba(0,112,204,.08), transparent 60%);
-}
-
-/* Formulier inputs */
-[data-theme="light"] .field input,
-[data-theme="light"] .field textarea {
-  background: var(--bg-2);
-}
-
-/* Float CTA */
-[data-theme="light"] .float-cta {
-  box-shadow: 0 14px 40px -10px rgba(0,112,204,.4), 0 0 0 1px rgba(255,255,255,.3) inset;
-}
-
-/* Logo glow */
-[data-theme="light"] .logo .mark {
-  box-shadow: 0 0 16px -2px rgba(0,112,204,.35);
-}
-
-/* Mobiel menu achtergrond */
-@media (max-width: 680px) {
-  [data-theme="light"] .nav-links.open {
-    background: rgba(245,247,252,.97);
-  }
-}

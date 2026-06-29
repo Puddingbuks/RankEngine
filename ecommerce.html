@@ -103,10 +103,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" /></noscript>
 <link rel="preload" as="style" href="css/style.css?v=3" onload="this.onload=null;this.rel='stylesheet'" />
 <noscript><link rel="stylesheet" href="css/style.css?v=3" /></noscript>
-<script>(function(){var t=localStorage.getItem("theme")||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark");document.documentElement.setAttribute("data-theme",t);})();</script>
 
 <style>
-:root{--bg:#08090c;--bg-2:#0b0d12;--surface:#101319;--surface-2:#161a23;--border:rgba(255,255,255,.08);--border-2:rgba(255,255,255,.16);--text:#eef1f6;--muted:#9da7b8;--faint:#717b8e;--accent:#00e5ff;--accent-2:#2b7bff;--accent-ink:#04222a;--accent-soft:rgba(0,229,255,.14);--font-display:"Space Grotesk",system-ui,sans-serif;--font-body:"Manrope",system-ui,sans-serif;--font-mono:"Space Mono",ui-monospace,monospace;--ease:cubic-bezier(.2,.7,.3,1);--maxw:1200px;--gutter:clamp(20px,5vw,64px)}
+:root{--bg:#f5f7fc;--bg-2:#eef1f7;--surface:#ffffff;--surface-2:#edf0f6;--border:rgba(0,0,0,.1);--border-2:rgba(0,0,0,.18);--text:#0d1117;--muted:#4a5568;--faint:#6b7a90;--accent:#0070cc;--accent-2:#1a5fd4;--accent-ink:#ffffff;--accent-soft:rgba(0,112,204,.12);--font-display:"Space Grotesk",system-ui,sans-serif;--font-body:"Manrope",system-ui,sans-serif;--font-mono:"Space Mono",ui-monospace,monospace;--ease:cubic-bezier(.2,.7,.3,1);--maxw:1200px;--gutter:clamp(20px,5vw,64px)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
@@ -146,13 +145,6 @@ button{font:inherit;cursor:pointer}
 .nav .btn-primary{padding:11px 20px;font-size:.92rem}
 .nav-actions{display:flex;align-items:center;gap:10px}
 .nav-toggle{display:none}
-.theme-toggle{display:grid;place-items:center;width:40px;height:40px;border-radius:10px;background:transparent;border:1px solid var(--border-2);color:var(--muted);cursor:pointer;transition:border-color .2s,color .2s}
-.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
-.theme-toggle .icon-moon{display:none}
-[data-theme="light"]{--bg:#f5f7fc;--bg-2:#eef1f7;--surface:#ffffff;--surface-2:#edf0f6;--border:rgba(0,0,0,.1);--border-2:rgba(0,0,0,.18);--text:#0d1117;--muted:#4a5568;--faint:#6b7a90;--accent:#0070cc;--accent-2:#1a5fd4;--accent-ink:#ffffff;--accent-soft:rgba(0,112,204,.12)}
-[data-theme="light"] .theme-toggle .icon-moon{display:block}
-[data-theme="light"] .theme-toggle .icon-sun{display:none}
-[data-theme="light"] .nav.scrolled{background:rgba(245,247,252,.88)}
 @media(max-width:680px){.nav-links{display:none}.nav-toggle{display:grid;place-items:center;width:44px;height:44px;background:transparent;border:1px solid var(--border-2);border-radius:12px}}
 @media(max-width:860px){.contact-grid{grid-template-columns:1fr!important}}</style>
 </head>
@@ -163,10 +155,6 @@ button{font:inherit;cursor:pointer}
   <div class="wrap nav-inner">
     <a class="logo" href="/" aria-label="RankEngine home"><span class="mark" aria-hidden="true"></span><span>Rank<b>Engine</b></span></a>
     <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle" aria-label="Schakel naar lichte modus">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
-      </button>
       <ul class="nav-links" id="navLinks" role="list">
         <li><a class="link" href="/#oplossing">Waarom</a></li>
         <li class="has-dropdown">
@@ -447,17 +435,6 @@ button{font:inherit;cursor:pointer}
 </footer>
 
 <script>
-(function(){
-  var html = document.documentElement;
-  var btn = document.getElementById('themeToggle');
-  function applyTheme(t){
-    html.setAttribute('data-theme', t);
-    if(btn) btn.setAttribute('aria-label', t==='light'?'Schakel naar donkere modus':'Schakel naar lichte modus');
-    localStorage.setItem('theme', t);
-  }
-  applyTheme(localStorage.getItem('theme')||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));
-  if(btn) btn.addEventListener('click',function(){ applyTheme(html.getAttribute('data-theme')==='light'?'dark':'light'); });
-})();
 (function(){
   var nav = document.getElementById('nav');
   window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 30); }, {passive:true});
