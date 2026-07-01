@@ -113,6 +113,7 @@ section { position: relative; z-index: 1; }
 .logo b { color: var(--accent); }
 .nav-links { display: flex; align-items: center; gap: 34px; list-style: none; }
 .nav-links li { display: contents; }
+.nav-links li.has-dropdown { display: inline-flex; align-items: center; }
 .nav-links a.link { font-size: .95rem; color: var(--muted); font-weight: 550; position: relative; transition: color .2s; }
 .nav-links a.link::after { content: ""; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0; background: var(--accent); transition: width .25s var(--ease); }
 .nav-links a.link:hover { color: var(--text); }
