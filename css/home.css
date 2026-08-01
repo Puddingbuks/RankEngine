@@ -1,4 +1,4 @@
-/* RankEngine — homepage "Meetlat" redesign. Scoped to index.html only. */
+/* RankEngine — "Meetlat" design system. Shared across index.html and the service pages. */
 
 :root{
   --paper: #F2EFE7;
@@ -299,6 +299,62 @@ input, textarea{ font:inherit; color:inherit; }
 
 /* outer page footer (below the bordered board) */
 .page-outro{ padding:28px var(--gutter) calc(28px + var(--mobile-bar-h, 0px)); text-align:center; font-family:var(--font-mono); font-size:12px; color:var(--ink-50); }
+
+/* Defensive fix: grid items default to min-width:auto (content-based), which can force
+   a track — and the whole page — wider than the viewport on long/unbreakable content.
+   min-width:0 here neutralizes that for every grid in this system, regardless of how
+   the track itself is sized (bare 1fr, minmax(0,1fr), or a fixed px column). */
+.hero-grid > *, .compare-grid > *, .results-grid > *, .testi-grid > *, .process-grid > *,
+.diensten-grid > *, .faqcontact-grid > *, .feature-grid > *, .showcase-grid > *,
+.tariff-grid > *, .hero-stats-mobile > *{ min-width:0; }
+
+/* ---------- breadcrumb (service pages) ---------- */
+.breadcrumb{ font-family:var(--font-mono); font-size:12px; color:var(--ink-50); margin-bottom:18px; }
+.breadcrumb a{ color:var(--ink-50); }
+.breadcrumb a:hover{ color:var(--ink); }
+.breadcrumb .sep{ margin:0 6px; color:var(--line); }
+.breadcrumb .current{ color:var(--ink-70); }
+
+/* ---------- feature grid (service pages: "wat ik doe") ---------- */
+.feature-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1px; background:var(--ink); border:1px solid var(--ink); }
+.feature-card{ background:var(--paper); padding:24px; display:flex; flex-direction:column; gap:8px; }
+.feature-card .num{ font-family:var(--font-mono); font-size:12px; color:var(--accent); }
+.feature-card h3{ font-size:19px; font-weight:800; letter-spacing:-.02em; }
+.feature-card p{ font-size:14.5px; line-height:1.5; color:var(--ink-65); }
+
+/* ---------- showcase (service pages: voorbeeldscreenshots) ---------- */
+.showcase-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--ink); border:1px solid var(--ink); }
+.showcase-card{ background:var(--paper); display:flex; flex-direction:column; }
+.showcase-card img{ width:100%; height:auto; display:block; border-bottom:1px solid var(--ink); }
+.showcase-card figcaption{ padding:14px 16px; font-size:14px; font-weight:600; }
+.showcase-card .disclaimer{ display:block; font-family:var(--font-mono); font-size:11px; font-weight:400; color:var(--ink-50); margin-top:4px; }
+
+/* ---------- tarieven (service pages) ---------- */
+.tariff-hero{ display:flex; align-items:flex-start; gap:24px; flex-wrap:wrap; margin-bottom:28px; }
+.tariff-badge{ border:1px solid var(--ink); padding:20px 30px; display:flex; flex-direction:column; align-items:center; flex:none; background:var(--paper-soft); }
+.tariff-badge .price-big{ font-size:44px; font-weight:800; letter-spacing:-.03em; line-height:1.15; margin-top:2px; }
+.tariff-badge .unit{ font-family:var(--font-mono); font-size:12px; color:var(--ink-50); }
+.tariff-hero p{ font-size:15px; line-height:1.5; color:var(--ink-65); max-width:44ch; padding-top:6px; }
+
+.tariff-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--ink); border:1px solid var(--ink); margin-bottom:20px; }
+.tariff-card{ background:var(--paper); padding:24px; }
+.tariff-card .range{ display:flex; align-items:baseline; gap:8px; margin-top:8px; }
+.tariff-card .range-value{ font-size:24px; font-weight:800; letter-spacing:-.03em; }
+.tariff-card .range-unit{ font-family:var(--font-mono); font-size:12px; color:var(--ink-50); }
+.tariff-card .est{ font-family:var(--font-mono); font-size:13px; color:var(--accent); margin-top:4px; }
+.tariff-card .divider{ height:1px; background:var(--line); margin:14px 0; }
+.tariff-card p{ font-size:14px; line-height:1.55; color:var(--ink-65); }
+
+.scope-box{ border:1px solid var(--ink); padding:20px 22px; background:var(--paper-soft); }
+.scope-box .hero-stat-label{ margin-bottom:12px; }
+.scope-list{ list-style:none; display:flex; flex-direction:column; gap:8px; font-size:14.5px; color:var(--ink-70); }
+.scope-list li{ display:flex; gap:10px; }
+.scope-list .arrow{ color:var(--accent); flex:none; }
+
+/* ---------- single-column FAQ (service pages) ---------- */
+.faq-full{ padding:40px var(--gutter); border-bottom:1px solid var(--ink); }
+.faq-full h2{ font-size:clamp(1.7rem,3.2vw,2.15rem); font-weight:800; letter-spacing:-.025em; margin:0 0 18px; }
+.faq-full .faq-item{ max-width:780px; }
 
 /* mobile sticky action bar */
 .mobile-bar{
