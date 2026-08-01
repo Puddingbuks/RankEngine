@@ -699,6 +699,29 @@ a{color:inherit;text-decoration:none}
   ];
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) return;
+
+  var h1 = el.closest('.hero-h1');
+  function lockHeight(){
+    if (!h1) return;
+    var original = el.textContent;
+    var max = 0;
+    variants.forEach(function(v){
+      el.textContent = v;
+      max = Math.max(max, el.getBoundingClientRect().height);
+    });
+    el.textContent = original;
+    h1.style.minHeight = max + 'px';
+  }
+  lockHeight();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(lockHeight);
+  }
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(lockHeight, 200);
+  });
+
   var i = 0;
   setInterval(function(){
     el.classList.add('is-fading');
