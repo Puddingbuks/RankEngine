@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
 
-<title>Meta Ads uitbesteden — Facebook & Instagram | RankEngine</title>
+<title>Meta Ads uitbesteden: Facebook & Instagram | RankEngine</title>
 <meta name="description" content="Meta Ads uitbesteden aan één specialist. Facebook en Instagram advertenties die nieuwe klanten bereiken. Geen bureau ertussen. Uurtarief €100." />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://rankengine.nl/social-ads" />
 
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rankengine.nl/social-ads" />
-<meta property="og:title" content="Meta Ads uitbesteden — Facebook & Instagram — RankEngine" />
+<meta property="og:title" content="Meta Ads uitbesteden: Facebook & Instagram | RankEngine" />
 <meta property="og:description" content="Meta Ads uitbesteden aan één specialist. Facebook en Instagram advertenties. Geen bureau ertussen." />
 <meta property="og:locale" content="nl_NL" />
 
@@ -90,6 +90,19 @@
 }
 </script>
 
+<!-- Consent Mode v2: standaard alles geweigerd totdat gebruiker kiest -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -112,8 +125,8 @@ a{color:inherit;text-decoration:none}
 .site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
 </style>
 
-<link rel="preload" as="style" href="css/home.css?v=5" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=5" /></noscript>
+<link rel="preload" as="style" href="css/home.css?v=6" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/home.css?v=6" /></noscript>
 </head>
 <body class="home">
 
@@ -127,7 +140,18 @@ a{color:inherit;text-decoration:none}
     <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
     <ul class="nav-links" role="list">
       <li><a href="/#aanpak">Aanpak</a></li>
-      <li><a href="/#diensten">Diensten</a></li>
+      <li class="has-dropdown">
+        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+          <li><a href="/seo.html" role="menuitem">SEO</a></li>
+          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
+          <li><a href="/ecommerce.html" role="menuitem">E-commerce &amp; CRO</a></li>
+          <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
+          <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+          <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+        </ul>
+      </li>
       <li><a href="/#prijzen">Prijzen</a></li>
       <li><a href="/#cases">Cases</a></li>
       <li><a href="/#thomas">Thomas</a></li>
@@ -142,7 +166,16 @@ a{color:inherit;text-decoration:none}
   </div>
   <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
     <a href="/#aanpak">Aanpak</a>
-    <a href="/#diensten">Diensten</a>
+    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+    <ul class="nav-dropdown" role="menu">
+      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+      <li><a href="/seo.html" role="menuitem">SEO</a></li>
+      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
+      <li><a href="/ecommerce.html" role="menuitem">E-commerce &amp; CRO</a></li>
+      <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
+      <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+      <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+    </ul>
     <a href="/#prijzen">Prijzen</a>
     <a href="/#cases">Cases</a>
     <a href="/#thomas">Thomas</a>
@@ -160,7 +193,7 @@ a{color:inherit;text-decoration:none}
         <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span class="current">Meta Ads</span></div>
         <span class="kicker hero-eyebrow">Dienst · Meta Ads</span>
         <h1 class="hero-h1">Meta Ads voor ZZP en MKB</h1>
-        <p class="hero-sub">Facebook en Instagram advertenties die nieuwe klanten bereiken — of bestaande bezoekers terughalen. Ik beheer alles zelf, geen bureau ertussen.</p>
+        <p class="hero-sub">Facebook en Instagram advertenties die nieuwe klanten bereiken, of bestaande bezoekers terughalen. Ik beheer alles zelf, geen bureau ertussen.</p>
         <div class="hero-cta-row">
           <a class="btn btn-primary" href="#contact">Plan een gesprek →</a>
           <a class="btn btn-ghost" href="#werkwijze">Hoe het werkt</a>
@@ -264,21 +297,21 @@ a{color:inherit;text-decoration:none}
             <source type="image/webp" srcset="/images/instagram-advertenties-sponsored-post-feed-750.webp 750w, /images/instagram-advertenties-sponsored-post-feed.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
             <img src="/images/instagram-advertenties-sponsored-post-feed.png" alt="Instagram advertentie als sponsored post in de feed van een gebruiker" loading="lazy" width="1456" height="816" />
           </picture>
-          <figcaption>Jouw advertentie in de Instagram-feed<span class="disclaimer">Indicatieve cijfers — resultaten kunnen variëren</span></figcaption>
+          <figcaption>Jouw advertentie in de Instagram-feed<span class="disclaimer">Indicatieve cijfers, resultaten kunnen variëren</span></figcaption>
         </figure>
         <figure class="showcase-card">
           <picture>
             <source type="image/webp" srcset="/images/meta-ads-instagram-ads-manager-roas-resultaten-750.webp 750w, /images/meta-ads-instagram-ads-manager-roas-resultaten.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
             <img src="/images/meta-ads-instagram-ads-manager-roas-resultaten.png" alt="Meta Ads Manager dashboard met campagneresultaten en ROAS-groei" loading="lazy" width="1456" height="816" />
           </picture>
-          <figcaption>Volledig inzicht via Meta Ads Manager<span class="disclaimer">Indicatieve cijfers — resultaten kunnen variëren</span></figcaption>
+          <figcaption>Volledig inzicht via Meta Ads Manager<span class="disclaimer">Indicatieve cijfers, resultaten kunnen variëren</span></figcaption>
         </figure>
         <figure class="showcase-card">
           <picture>
             <source type="image/webp" srcset="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas-750.webp 750w, /images/meta-ads-resultaten-meer-aanvragen-cpc-roas.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
             <img src="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas.png" alt="Meta Ads resultaten met meer aanvragen, lagere CPC en verbeterde ROAS" loading="lazy" width="1456" height="816" />
           </picture>
-          <figcaption>Meetbare groei per campagne<span class="disclaimer">Indicatieve cijfers — resultaten kunnen variëren</span></figcaption>
+          <figcaption>Meetbare groei per campagne<span class="disclaimer">Indicatieve cijfers, resultaten kunnen variëren</span></figcaption>
         </figure>
       </div>
     </section>
@@ -289,7 +322,7 @@ a{color:inherit;text-decoration:none}
         <h2>Wat kost het?</h2>
         <span class="meta">Tarieven</span>
       </div>
-      <p class="board-section-sub" style="margin-bottom:24px;">Ik werk op uurbasis. Hoeveel uur nodig is hangt af van jouw situatie — geen vaste pakketten, wel een eerlijke indicatie.</p>
+      <p class="board-section-sub" style="margin-bottom:24px;">Ik werk op uurbasis. Hoeveel uur nodig is hangt af van jouw situatie: geen vaste pakketten, wel een eerlijke indicatie.</p>
 
       <div class="tariff-hero">
         <div class="tariff-badge">
@@ -326,7 +359,7 @@ a{color:inherit;text-decoration:none}
           <li><span class="arrow">→</span> Staat van het bestaande ad account</li>
         </ul>
       </div>
-      <span class="hero-note">Advertentiebudget is apart — minimaal €200–€400/maand, rechtstreeks aan Meta.</span>
+      <span class="hero-note">Advertentiebudget is apart, minimaal €200–€400/maand, rechtstreeks aan Meta.</span>
     </section>
 
     <!-- FAQ -->
@@ -384,7 +417,7 @@ a{color:inherit;text-decoration:none}
 
     <div class="board-footer">
       <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
-      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></span>
+      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a> · <a href="#" onclick="window.reopenCookieSettings(event)">Cookie-instellingen</a></span>
     </div>
   </div>
 
@@ -392,6 +425,14 @@ a{color:inherit;text-decoration:none}
     Andere diensten: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO / AI</a> · <a href="/ecommerce.html">E-commerce &amp; CRO</a> · <a href="/tiktok-ads.html">TikTok Ads</a> · <a href="/linkedin-ads.html">LinkedIn Ads</a>
   </p>
 </main>
+
+<div id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-label="Cookiemelding" aria-live="polite">
+  <p>Deze website gebruikt functionele cookies die noodzakelijk zijn voor het werken van de site. Met jouw toestemming plaatsen we ook analytische cookies (Google Analytics) om bezoekersgedrag te meten, anoniem, zonder persoonlijke gegevens door te sturen. Lees meer in ons <a href="/privacy.html">privacybeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-btn-reject" id="cookie-reject" type="button">Alleen functioneel</button>
+    <button class="cookie-btn cookie-btn-accept" id="cookie-accept" type="button">Akkoord</button>
+  </div>
+</div>
 
 <div class="mobile-bar" role="navigation" aria-label="Snelle acties">
   <a href="tel:+31643859989">Bellen</a>
@@ -416,6 +457,66 @@ a{color:inherit;text-decoration:none}
       toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
+})();
+
+(function(){
+  var toggles = document.querySelectorAll('.dropdown-toggle');
+  if (!toggles.length) return;
+  function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
+  toggles.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      closeAll();
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+})();
+
+(function(){
+  var COOKIE_KEY = 're_cookie_consent';
+  var consent = localStorage.getItem(COOKIE_KEY);
+  var banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  function loadAnalytics(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
+    });
+  }
+  function hideBanner(){ banner.classList.add('hidden'); }
+  function showBanner(){ banner.classList.remove('hidden'); }
+
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem(COOKIE_KEY, 'accepted');
+    hideBanner();
+    loadAnalytics();
+  });
+  document.getElementById('cookie-reject').addEventListener('click', function(){
+    localStorage.setItem(COOKIE_KEY, 'rejected');
+    hideBanner();
+  });
+
+  if (consent === 'accepted') {
+    loadAnalytics();
+  } else if (!consent) {
+    window.addEventListener('DOMContentLoaded', function(){
+      setTimeout(showBanner, 800);
+    });
+  }
+
+  window.reopenCookieSettings = function(e){
+    if (e) e.preventDefault();
+    localStorage.removeItem(COOKIE_KEY);
+    showBanner();
+  };
 })();
 
 (function(){

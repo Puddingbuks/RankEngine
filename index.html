@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
 
+<!-- Consent Mode v2: standaard alles geweigerd totdat gebruiker kiest -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -30,14 +43,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://rankengine.nl/" />
-<meta property="og:title" content="RankEngine — Eén marketeer, geen doorgeefluik" />
+<meta property="og:title" content="RankEngine: Eén marketeer, geen doorgeefluik" />
 <meta property="og:description" content="Betaalbaar online marketingbureau voor ZZP en MKB. Google Ads, SEO, Meta Ads, TikTok Ads en LinkedIn Ads. Persoonlijk contact, geen lange contracten." />
 <meta property="og:locale" content="nl_NL" />
 <meta property="og:site_name" content="RankEngine" />
 
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="RankEngine — Eén marketeer, geen doorgeefluik" />
+<meta name="twitter:title" content="RankEngine: Eén marketeer, geen doorgeefluik" />
 <meta name="twitter:description" content="Betaalbaar online marketingbureau voor ZZP en MKB. Persoonlijk contact, geen lange contracten." />
 
 <!-- JSON-LD Structured Data -->
@@ -119,7 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "Question",
           "name": "Wat kost beheer per maand?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Google Ads-beheer begint bij €249 per maand, exclusief je mediabudget. De prijs hangt af van het aantal campagnes en kanalen — je krijgt vooraf een vast bedrag, geen percentage van je budget." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Google Ads-beheer begint bij €249 per maand, exclusief je mediabudget. De prijs hangt af van het aantal campagnes en kanalen. Je krijgt vooraf een vast bedrag, geen percentage van je budget." }
         },
         {
           "@type": "Question",
@@ -139,7 +152,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "Question",
           "name": "Wanneer kies ik Ads en wanneer SEO?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Google Ads is ideaal als je nu al aanvragen wilt — je vist op bestaande zoekvraag. SEO bouwt aan vindbaarheid zonder per klik te betalen, maar kost meer tijd. Vaak werken beide kanalen het sterkst in combinatie." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Google Ads is ideaal als je nu al aanvragen wilt: je vist op bestaande zoekvraag. SEO bouwt aan vindbaarheid zonder per klik te betalen, maar kost meer tijd. Vaak werken beide kanalen het sterkst in combinatie." }
         },
         {
           "@type": "Question",
@@ -172,8 +185,8 @@ a{color:inherit;text-decoration:none}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/home.css?v=5" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=5" /></noscript>
+<link rel="preload" as="style" href="css/home.css?v=6" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/home.css?v=6" /></noscript>
 </head>
 <body class="home">
 
@@ -188,7 +201,18 @@ a{color:inherit;text-decoration:none}
     <a class="logo" href="#top">RankEngine<span class="dot">.</span></a>
     <ul class="nav-links" role="list">
       <li><a href="#aanpak">Aanpak</a></li>
-      <li><a href="#diensten">Diensten</a></li>
+      <li class="has-dropdown">
+        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+          <li><a href="/seo.html" role="menuitem">SEO</a></li>
+          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
+          <li><a href="/ecommerce.html" role="menuitem">E-commerce &amp; CRO</a></li>
+          <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
+          <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+          <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+        </ul>
+      </li>
       <li><a href="#prijzen">Prijzen</a></li>
       <li><a href="#cases">Cases</a></li>
       <li><a href="#thomas">Thomas</a></li>
@@ -203,7 +227,16 @@ a{color:inherit;text-decoration:none}
   </div>
   <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
     <a href="#aanpak">Aanpak</a>
-    <a href="#diensten">Diensten</a>
+    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+    <ul class="nav-dropdown" role="menu">
+      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+      <li><a href="/seo.html" role="menuitem">SEO</a></li>
+      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
+      <li><a href="/ecommerce.html" role="menuitem">E-commerce &amp; CRO</a></li>
+      <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
+      <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+      <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+    </ul>
     <a href="#prijzen">Prijzen</a>
     <a href="#cases">Cases</a>
     <a href="#thomas">Thomas</a>
@@ -219,7 +252,7 @@ a{color:inherit;text-decoration:none}
     <section class="hero-grid">
       <div class="hero-copy">
         <span class="kicker hero-eyebrow">Voor starters, zzp'ers en kleine bedrijven</span>
-        <h1 class="hero-h1">Eén marketeer. Geen doorgeefluik.</h1>
+        <h1 class="hero-h1"><span class="hero-h1-text" id="heroHeadline">Freelance marketing. Geen duur marketingbureau.</span></h1>
         <p class="hero-sub">Ik bouw en beheer je Google Ads en SEO zelf. Je spreekt met de persoon die het werk doet, je ziet elke maand precies wat er is gebeurd en waarom. Maximaal twaalf klanten.</p>
         <div class="hero-cta-row">
           <a class="btn btn-primary" href="#contact">Gratis scan van je account →</a>
@@ -237,9 +270,8 @@ a{color:inherit;text-decoration:none}
           <div class="hero-stat-value">1 <small>maand opzegtermijn</small></div>
         </div>
         <div class="hero-stat">
-          <span class="ph-tag">Voorbeeld</span>
           <div class="hero-stat-label">Klanten nu</div>
-          <div class="hero-stat-value">9 <small>van 12 — wordt bijgewerkt</small></div>
+          <div class="hero-stat-value">1 <small>tevreden klant</small></div>
         </div>
         <div class="hero-stack-cell">
           <div class="hero-stat-label">Werkt met</div>
@@ -249,7 +281,7 @@ a{color:inherit;text-decoration:none}
       <div class="hero-stats-mobile">
         <div class="hero-stat"><div class="hero-stat-label">Vanaf</div><div class="hero-stat-value">€249</div></div>
         <div class="hero-stat"><div class="hero-stat-label">Opzeg</div><div class="hero-stat-value">1 mnd</div></div>
-        <div class="hero-stat"><div class="hero-stat-label">Klanten*</div><div class="hero-stat-value">9/12</div></div>
+        <div class="hero-stat"><div class="hero-stat-label">Klanten</div><div class="hero-stat-value" style="font-size:18px">1 klant</div></div>
       </div>
     </section>
 
@@ -283,7 +315,7 @@ a{color:inherit;text-decoration:none}
         <article class="compare-card">
           <div class="tag">Groot bureau</div>
           <h3>Eén van de honderd</h3>
-          <p>Je krijgt een accountmanager als aanspreekpunt, maar het werk gaat naar wisselende medewerkers — vaak junior.</p>
+          <p>Je krijgt een accountmanager als aanspreekpunt, maar het werk gaat naar wisselende medewerkers, vaak junior.</p>
           <div class="foot">v.a. €1.500 p/mnd · 12 mnd</div>
         </article>
       </div>
@@ -309,7 +341,7 @@ a{color:inherit;text-decoration:none}
         <div class="process-step">
           <div class="step-meta">Stap 03 · week 2</div>
           <h3>Bouwen &amp; live</h3>
-          <p>Tracking eerst, dan campagnes. Alles in jouw eigen accounts — je blijft eigenaar van wat we bouwen.</p>
+          <p>Tracking eerst, dan campagnes. Alles in jouw eigen accounts. Je blijft eigenaar van wat we bouwen.</p>
         </div>
         <div class="process-step">
           <div class="step-meta">Stap 04 · doorlopend</div>
@@ -329,22 +361,22 @@ a{color:inherit;text-decoration:none}
           <span class="ph-tag">Voorbeeld</span>
           <div class="stat-value">−38%</div>
           <div class="stat-desc">kosten per aanvraag bij een installatiebedrijf, na herbouw van de campagnestructuur.</div>
-          <div class="stat-foot">Voorbeeldcijfer — wordt aangevuld met een echt klantresultaat</div>
+          <div class="stat-foot">Voorbeeldcijfer, wordt aangevuld met een echt klantresultaat</div>
         </div>
         <div class="stat-card">
           <span class="ph-tag">Voorbeeld</span>
           <div class="stat-value">4→1</div>
           <div class="stat-desc">positie op de belangrijkste zoekterm voor een hovenier in Noord-Holland.</div>
-          <div class="stat-foot">Voorbeeldcijfer — wordt aangevuld met een echt klantresultaat</div>
+          <div class="stat-foot">Voorbeeldcijfer, wordt aangevuld met een echt klantresultaat</div>
         </div>
         <div class="stat-card">
           <span class="ph-tag">Voorbeeld</span>
           <div class="stat-value">€0</div>
-          <div class="stat-desc">verspild aan zoektermen die nooit converteerden — na uitsluiting in maand één.</div>
-          <div class="stat-foot">Voorbeeldcijfer — wordt aangevuld met een echt klantresultaat</div>
+          <div class="stat-desc">verspild aan zoektermen die nooit converteerden, na uitsluiting in maand één.</div>
+          <div class="stat-foot">Voorbeeldcijfer, wordt aangevuld met een echt klantresultaat</div>
         </div>
       </div>
-      <p class="placeholder-note results-note">* De cijfers in dit blok zijn voorbeelden ter illustratie van de opmaak — nog geen echte klantresultaten. Ze worden vervangen zodra concrete cases beschikbaar zijn.</p>
+      <p class="placeholder-note results-note">* De cijfers in dit blok zijn voorbeelden ter illustratie van de opmaak, nog geen echte klantresultaten. Ze worden vervangen zodra concrete cases beschikbaar zijn.</p>
     </section>
 
     <!-- DIENSTEN & PRIJZEN + THOMAS -->
@@ -371,7 +403,7 @@ a{color:inherit;text-decoration:none}
               <div class="price mono">v.a. €400</div>
             </div>
             <div class="price-row">
-              <div><span class="num mono">05</span><span class="svc-name">Meta, TikTok &amp; LinkedIn Ads</span><div class="svc-desc">Losse kanalen of naast search — <a href="/social-ads.html">Meta</a> · <a href="/tiktok-ads.html">TikTok</a> · <a href="/linkedin-ads.html">LinkedIn</a></div></div>
+              <div><span class="num mono">05</span><span class="svc-name">Meta, TikTok &amp; LinkedIn Ads</span><div class="svc-desc">Losse kanalen of naast search: <a href="/social-ads.html">Meta</a> · <a href="/tiktok-ads.html">TikTok</a> · <a href="/linkedin-ads.html">LinkedIn</a></div></div>
               <div class="price mono">v.a. €249</div>
             </div>
             <div class="price-foot">
@@ -384,7 +416,7 @@ a{color:inherit;text-decoration:none}
           <div class="thomas-block" id="thomas">
             <picture>
               <source type="image/webp" srcset="/images/thomas-400.webp 400w, /images/thomas.webp 800w" sizes="130px" />
-              <img class="thomas-photo" src="/images/thomas.jpg" alt="Thomas Roozemond — RankEngine" width="400" height="400" loading="lazy" />
+              <img class="thomas-photo" src="/images/thomas.jpg" alt="Thomas Roozemond, RankEngine" width="400" height="400" loading="lazy" />
             </picture>
             <div class="thomas-copy">
               <div class="hero-stat-label">Wie je spreekt</div>
@@ -416,7 +448,7 @@ a{color:inherit;text-decoration:none}
             <button class="faq-q" aria-expanded="false">
               <span>Wat kost beheer per maand?</span><span class="sign" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" hidden><p>Google Ads-beheer begint bij €249 per maand, exclusief je mediabudget. De prijs hangt af van het aantal campagnes en kanalen — je krijgt vooraf een vast bedrag, geen percentage van je budget.</p></div>
+            <div class="faq-a" hidden><p>Google Ads-beheer begint bij €249 per maand, exclusief je mediabudget. De prijs hangt af van het aantal campagnes en kanalen. Je krijgt vooraf een vast bedrag, geen percentage van je budget.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
@@ -440,7 +472,7 @@ a{color:inherit;text-decoration:none}
             <button class="faq-q" aria-expanded="false">
               <span>Wanneer kies ik Ads en wanneer SEO?</span><span class="sign" aria-hidden="true">+</span>
             </button>
-            <div class="faq-a" hidden><p>Google Ads is ideaal als je nu al aanvragen wilt — je vist op bestaande zoekvraag. SEO bouwt aan vindbaarheid zonder per klik te betalen, maar kost meer tijd. Vaak werken beide kanalen het sterkst in combinatie.</p></div>
+            <div class="faq-a" hidden><p>Google Ads is ideaal als je nu al aanvragen wilt: je vist op bestaande zoekvraag. SEO bouwt aan vindbaarheid zonder per klik te betalen, maar kost meer tijd. Vaak werken beide kanalen het sterkst in combinatie.</p></div>
           </div>
           <div class="faq-item">
             <button class="faq-q" aria-expanded="false">
@@ -496,7 +528,7 @@ a{color:inherit;text-decoration:none}
 
     <div class="board-footer">
       <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
-      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></span>
+      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a> · <a href="#" onclick="window.reopenCookieSettings(event)">Cookie-instellingen</a></span>
     </div>
   </div>
 
@@ -506,6 +538,14 @@ a{color:inherit;text-decoration:none}
 </main>
 
 <!-- Mobiele actiebalk -->
+<div id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-label="Cookiemelding" aria-live="polite">
+  <p>Deze website gebruikt functionele cookies die noodzakelijk zijn voor het werken van de site. Met jouw toestemming plaatsen we ook analytische cookies (Google Analytics) om bezoekersgedrag te meten, anoniem, zonder persoonlijke gegevens door te sturen. Lees meer in ons <a href="/privacy.html">privacybeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-btn-reject" id="cookie-reject" type="button">Alleen functioneel</button>
+    <button class="cookie-btn cookie-btn-accept" id="cookie-accept" type="button">Akkoord</button>
+  </div>
+</div>
+
 <div class="mobile-bar" role="navigation" aria-label="Snelle acties">
   <a href="tel:+31643859989">Bellen</a>
   <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
@@ -529,6 +569,87 @@ a{color:inherit;text-decoration:none}
       toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
+})();
+
+(function(){
+  var toggles = document.querySelectorAll('.dropdown-toggle');
+  if (!toggles.length) return;
+  function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
+  toggles.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      closeAll();
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+})();
+
+(function(){
+  var COOKIE_KEY = 're_cookie_consent';
+  var consent = localStorage.getItem(COOKIE_KEY);
+  var banner = document.getElementById('cookie-banner');
+  if (!banner) return;
+
+  function loadAnalytics(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'update', {
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
+    });
+  }
+  function hideBanner(){ banner.classList.add('hidden'); }
+  function showBanner(){ banner.classList.remove('hidden'); }
+
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem(COOKIE_KEY, 'accepted');
+    hideBanner();
+    loadAnalytics();
+  });
+  document.getElementById('cookie-reject').addEventListener('click', function(){
+    localStorage.setItem(COOKIE_KEY, 'rejected');
+    hideBanner();
+  });
+
+  if (consent === 'accepted') {
+    loadAnalytics();
+  } else if (!consent) {
+    window.addEventListener('DOMContentLoaded', function(){
+      setTimeout(showBanner, 800);
+    });
+  }
+
+  window.reopenCookieSettings = function(e){
+    if (e) e.preventDefault();
+    localStorage.removeItem(COOKIE_KEY);
+    showBanner();
+  };
+})();
+
+(function(){
+  var el = document.getElementById('heroHeadline');
+  if (!el) return;
+  var variants = [
+    'Freelance marketing. Geen duur marketingbureau.',
+    'Eén marketeer. Geen doorgeefluik.',
+    'Persoonlijk contact. Geen tussenpersoon.'
+  ];
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+  var i = 0;
+  setInterval(function(){
+    el.classList.add('is-fading');
+    setTimeout(function(){
+      i = (i + 1) % variants.length;
+      el.textContent = variants[i];
+      el.classList.remove('is-fading');
+    }, 350);
+  }, 3800);
 })();
 
 (function(){

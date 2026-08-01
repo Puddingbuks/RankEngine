@@ -22,8 +22,8 @@ a{color:inherit;text-decoration:none}
 .site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
 </style>
 
-<link rel="preload" as="style" href="css/home.css?v=5" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=5" /></noscript>
+<link rel="preload" as="style" href="css/home.css?v=6" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/home.css?v=6" /></noscript>
 </head>
 <body class="home">
 
@@ -34,7 +34,18 @@ a{color:inherit;text-decoration:none}
     <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
     <ul class="nav-links" role="list">
       <li><a href="/#aanpak">Aanpak</a></li>
-      <li><a href="/#diensten">Diensten</a></li>
+      <li class="has-dropdown">
+        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+        <ul class="nav-dropdown" role="menu">
+          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+          <li><a href="/seo.html" role="menuitem">SEO</a></li>
+          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
+          <li><a href="/ecommerce.html" role="menuitem">E-commerce &amp; CRO</a></li>
+          <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
+          <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+          <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+        </ul>
+      </li>
       <li><a href="/#prijzen">Prijzen</a></li>
       <li><a href="/#cases">Cases</a></li>
       <li><a href="/#thomas">Thomas</a></li>
@@ -49,7 +60,16 @@ a{color:inherit;text-decoration:none}
   </div>
   <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
     <a href="/#aanpak">Aanpak</a>
-    <a href="/#diensten">Diensten</a>
+    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
+    <ul class="nav-dropdown" role="menu">
+      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
+      <li><a href="/seo.html" role="menuitem">SEO</a></li>
+      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
+      <li><a href="/ecommerce.html" role="menuitem">E-commerce &amp; CRO</a></li>
+      <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
+      <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
+      <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
+    </ul>
     <a href="/#prijzen">Prijzen</a>
     <a href="/#cases">Cases</a>
     <a href="/#thomas">Thomas</a>
@@ -130,6 +150,22 @@ a{color:inherit;text-decoration:none}
       toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
+})();
+
+(function(){
+  var toggles = document.querySelectorAll('.dropdown-toggle');
+  if (!toggles.length) return;
+  function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
+  toggles.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open = btn.getAttribute('aria-expanded') !== 'true';
+      closeAll();
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+  document.addEventListener('click', closeAll);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
 })();
 </script>
 

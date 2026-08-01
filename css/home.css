@@ -1,4 +1,4 @@
-/* RankEngine — "Meetlat" design system. Shared across index.html and the service pages. */
+/* RankEngine: "Meetlat" design system. Shared across index.html and the service pages. */
 
 :root{
   --paper: #F2EFE7;
@@ -151,6 +151,14 @@ input, textarea{ font:inherit; color:inherit; }
   font-weight:800;
   margin:0 0 22px;
   text-wrap:balance;
+  min-height:2.1em;
+  display:flex;
+  align-items:flex-start;
+}
+.hero-h1-text{ transition:opacity .35s var(--ease); }
+.hero-h1-text.is-fading{ opacity:0; }
+@media (prefers-reduced-motion:reduce){
+  .hero-h1-text{ transition:none; }
 }
 .hero-sub{
   font-size:clamp(1.05rem,1.6vw,1.25rem);
@@ -301,7 +309,7 @@ input, textarea{ font:inherit; color:inherit; }
 .page-outro{ padding:28px var(--gutter) calc(28px + var(--mobile-bar-h, 0px)); text-align:center; font-family:var(--font-mono); font-size:12px; color:var(--ink-50); }
 
 /* Defensive fix: grid items default to min-width:auto (content-based), which can force
-   a track — and the whole page — wider than the viewport on long/unbreakable content.
+   a track, and the whole page, wider than the viewport on long/unbreakable content.
    min-width:0 here neutralizes that for every grid in this system, regardless of how
    the track itself is sized (bare 1fr, minmax(0,1fr), or a fixed px column). */
 .hero-grid > *, .compare-grid > *, .results-grid > *, .testi-grid > *, .process-grid > *,
@@ -369,6 +377,60 @@ input, textarea{ font:inherit; color:inherit; }
   border-right:1px solid var(--dark-border);
 }
 .mobile-bar a:last-child{ border-right:none; font-weight:600; background:var(--accent); }
+
+/* ---------- cookie consent banner ---------- */
+.cookie-banner{
+  position:fixed; left:0; right:0; bottom:0; z-index:300;
+  background:var(--ink); color:var(--paper);
+  padding:18px var(--gutter);
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  border-top:1px solid var(--dark-border);
+  transform:translateY(0); transition:transform .3s var(--ease);
+}
+.cookie-banner.hidden{ transform:translateY(110%); pointer-events:none; }
+.cookie-banner p{ margin:0; flex:1 1 260px; font-size:14px; line-height:1.5; color:var(--dark-muted); }
+.cookie-banner p a{ color:var(--paper); border-bottom:1px solid var(--accent-2); }
+.cookie-actions{ display:flex; gap:10px; flex-wrap:wrap; flex:none; }
+.cookie-btn{ font-family:var(--font-mono); font-size:13px; padding:10px 16px; border:1px solid var(--dark-border); cursor:pointer; white-space:nowrap; background:transparent; color:var(--paper); }
+.cookie-btn-accept{ background:var(--accent); border-color:var(--accent); font-weight:600; }
+.cookie-btn-accept:hover{ background:#AE3D22; }
+.cookie-btn-reject:hover{ border-color:var(--dark-faint); }
+@media (max-width:900px){
+  .cookie-banner{ bottom:54px; }
+}
+
+/* ---------- nav "Diensten" dropdown ---------- */
+.has-dropdown{ position:relative; }
+.nav-links .dropdown-toggle{ font:inherit; background:none; border:none; cursor:pointer; color:inherit; display:inline-flex; align-items:center; gap:.35em; padding:0; }
+.dropdown-chevron{ font-style:normal; font-size:.75em; opacity:.6; transition:transform .18s; }
+.dropdown-toggle[aria-expanded="true"] .dropdown-chevron{ transform:rotate(180deg); }
+.nav-dropdown{
+  position:absolute; top:calc(100% + 14px); left:0;
+  background:var(--paper); border:1px solid var(--ink);
+  min-width:210px; padding:0; margin:0; list-style:none;
+  opacity:0; pointer-events:none; transform:translateY(-6px);
+  transition:opacity .16s, transform .16s;
+  z-index:150;
+}
+.dropdown-toggle[aria-expanded="true"] ~ .nav-dropdown{ opacity:1; pointer-events:auto; transform:translateY(0); }
+.nav-dropdown li{ border-top:1px solid var(--line); }
+.nav-dropdown li:first-child{ border-top:none; }
+.nav-dropdown a{
+  display:block; padding:11px 16px; font-family:var(--font-mono); font-size:12px; letter-spacing:.04em;
+  color:var(--ink-70); white-space:nowrap;
+}
+.nav-dropdown a:hover{ background:var(--paper-soft); color:var(--ink); }
+.nav-mobile-panel .dropdown-toggle{
+  width:100%; display:flex; align-items:center; justify-content:space-between;
+  font-family:var(--font-mono); font-size:13px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-70);
+  padding:14px var(--gutter); border-bottom:1px solid var(--line); background:none; border-top:none; border-left:none; border-right:none;
+}
+.nav-mobile-panel .nav-dropdown{
+  position:static; opacity:1; pointer-events:auto; transform:none; border:none; background:var(--paper-soft);
+  display:none;
+}
+.nav-mobile-panel .dropdown-toggle[aria-expanded="true"] + .nav-dropdown{ display:block; }
+.nav-mobile-panel .nav-dropdown a{ padding-left:calc(var(--gutter) + 14px); text-transform:none; letter-spacing:normal; }
 
 /* ---------- legal / utility pages ---------- */
 .page-hero{ border-bottom:1px solid var(--ink); padding:44px var(--gutter); }
