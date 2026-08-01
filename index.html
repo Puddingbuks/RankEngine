@@ -185,8 +185,8 @@ a{color:inherit;text-decoration:none}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/home.css?v=6" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=6" /></noscript>
+<link rel="preload" as="style" href="css/home.css?v=7" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/home.css?v=7" /></noscript>
 </head>
 <body class="home">
 
@@ -355,28 +355,60 @@ a{color:inherit;text-decoration:none}
     <section class="board-section" id="cases">
       <div class="board-section-head">
         <h2>Wat het oplevert</h2>
+        <span class="meta">Twee vertrekpunten</span>
       </div>
-      <div class="results-grid">
-        <div class="stat-card">
-          <span class="ph-tag">Voorbeeld</span>
-          <div class="stat-value">−38%</div>
-          <div class="stat-desc">kosten per aanvraag bij een installatiebedrijf, na herbouw van de campagnestructuur.</div>
-          <div class="stat-foot">Voorbeeldcijfer, wordt aangevuld met een echt klantresultaat</div>
-        </div>
-        <div class="stat-card">
-          <span class="ph-tag">Voorbeeld</span>
-          <div class="stat-value">4→1</div>
-          <div class="stat-desc">positie op de belangrijkste zoekterm voor een hovenier in Noord-Holland.</div>
-          <div class="stat-foot">Voorbeeldcijfer, wordt aangevuld met een echt klantresultaat</div>
-        </div>
-        <div class="stat-card">
-          <span class="ph-tag">Voorbeeld</span>
-          <div class="stat-value">€0</div>
-          <div class="stat-desc">verspild aan zoektermen die nooit converteerden, na uitsluiting in maand één.</div>
-          <div class="stat-foot">Voorbeeldcijfer, wordt aangevuld met een echt klantresultaat</div>
+      <p class="board-section-sub" style="margin-bottom:24px;">Elke situatie is anders. Dit is hoe het traject er meestal uitziet, afhankelijk van waar je nu staat.</p>
+
+      <div class="scenario-tabs" role="tablist" aria-label="Scenario's">
+        <button class="scenario-tab is-active" id="scenarioTabA" role="tab" aria-selected="true" aria-controls="scenarioPanelA" data-target="scenarioPanelA">
+          <span class="tab-kicker">Scenario 1</span>Nog geen marketing
+        </button>
+        <button class="scenario-tab" id="scenarioTabB" role="tab" aria-selected="false" aria-controls="scenarioPanelB" data-target="scenarioPanelB">
+          <span class="tab-kicker">Scenario 2</span>Wel marketing, geen succes
+        </button>
+      </div>
+
+      <div class="scenario-panel" id="scenarioPanelA" role="tabpanel" aria-labelledby="scenarioTabA">
+        <div class="scenario-steps">
+          <div class="scenario-step">
+            <div class="step-meta">Startpunt</div>
+            <h3>Nog geen campagne</h3>
+            <p>Een lokale ondernemer, bijvoorbeeld een installateur of hovenier, heeft nog geen online marketing. Geen Google Ads, geen tracking, klanten komen nu via via.</p>
+          </div>
+          <div class="scenario-step">
+            <div class="step-meta">Aanpak</div>
+            <h3>Opbouw vanaf nul</h3>
+            <p>Ik richt conversietracking in en bouw een campagnestructuur rond de zoekopdrachten die al gebeuren, zodat elke euro budget meteen relevant wordt ingezet.</p>
+          </div>
+          <div class="scenario-step is-result">
+            <div class="step-meta">Resultaat</div>
+            <div class="result-value">€2 à €4</div>
+            <p>per lead, zodra de campagne binnen enkele weken draait. Indicatief, hangt af van branche en regio.</p>
+          </div>
         </div>
       </div>
-      <p class="placeholder-note results-note">* De cijfers in dit blok zijn voorbeelden ter illustratie van de opmaak, nog geen echte klantresultaten. Ze worden vervangen zodra concrete cases beschikbaar zijn.</p>
+
+      <div class="scenario-panel" id="scenarioPanelB" role="tabpanel" aria-labelledby="scenarioTabB" hidden>
+        <div class="scenario-steps">
+          <div class="scenario-step">
+            <div class="step-meta">Onderzoek</div>
+            <h3>Waar loopt het vast?</h3>
+            <p>Ik analyseer je huidige kanalen, de volledige funnel en de conversies. Vaak zit het probleem niet in het kanaal zelf, maar in hoe het is opgezet.</p>
+          </div>
+          <div class="scenario-step">
+            <div class="step-meta">Plan</div>
+            <h3>Concreet verbeterplan</h3>
+            <p>Op basis van dat onderzoek: wat blijft staan, wat wordt herbouwd en welke aanpassing het eerst het meeste oplevert.</p>
+          </div>
+          <div class="scenario-step is-result">
+            <div class="step-meta">Resultaat</div>
+            <div class="result-value">Lagere kosten<br>per lead</div>
+            <p>en een hogere ROAS ten opzichte van de uitgangssituatie.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="placeholder-note results-note">* Indicatieve cijfers, resultaten kunnen variëren per branche en situatie.</p>
     </section>
 
     <!-- DIENSTEN & PRIJZEN + THOMAS -->
@@ -650,6 +682,23 @@ a{color:inherit;text-decoration:none}
       el.classList.remove('is-fading');
     }, 350);
   }, 3800);
+})();
+
+(function(){
+  var tabs = document.querySelectorAll('.scenario-tab');
+  if (!tabs.length) return;
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+        document.getElementById(t.dataset.target).hidden = true;
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+      document.getElementById(tab.dataset.target).hidden = false;
+    });
+  });
 })();
 
 (function(){
