@@ -306,7 +306,7 @@ input, textarea{ font:inherit; color:inherit; }
   position:fixed; left:0; right:0; bottom:0; z-index:200;
   background:var(--ink);
   border-top:1px solid var(--dark-border);
-  grid-template-columns:1fr 1fr 1.3fr;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1.3fr);
 }
 .mobile-bar a{
   padding:14px 6px; text-align:center; font-family:var(--font-mono); font-size:12px; color:var(--paper);
@@ -332,7 +332,7 @@ input, textarea{ font:inherit; color:inherit; }
   }
   .nav-mobile-panel a:last-child{ border-bottom:none; }
 
-  .hero-grid{ grid-template-columns:1fr; }
+  .hero-grid{ grid-template-columns:minmax(0,1fr); }
   .hero-copy{ border-right:none; border-bottom:1px solid var(--ink); padding:34px var(--gutter) 26px; }
   .hero-h1{ font-size:clamp(2.4rem,9vw,3rem); letter-spacing:-.03em; }
   .hero-stats{ display:none; }
@@ -344,14 +344,14 @@ input, textarea{ font:inherit; color:inherit; }
   .hero-stats-mobile .hero-stat-value{ font-size:22px; }
 
   .board-section, .diensten-col, .right-col, .faq-col, .contact-col{ padding-inline:var(--gutter); }
-  .compare-grid, .results-grid, .testi-grid{ grid-template-columns:1fr; }
-  .process-grid{ grid-template-columns:1fr; }
+  .compare-grid, .results-grid, .testi-grid{ grid-template-columns:minmax(0,1fr); }
+  .process-grid{ grid-template-columns:minmax(0,1fr); }
   .process-step{ border-right:none; border-bottom:1px solid var(--ink); }
   .process-step:last-child{ border-bottom:none; }
-  .diensten-grid, .faqcontact-grid{ grid-template-columns:1fr; }
+  .diensten-grid, .faqcontact-grid{ grid-template-columns:minmax(0,1fr); }
   .diensten-col{ border-right:none; border-bottom:1px solid var(--ink); }
   .faq-col{ border-right:none; border-bottom:1px solid var(--ink); }
-  .contact-form .row2{ grid-template-columns:1fr; }
+  .contact-form .row2{ grid-template-columns:minmax(0,1fr); }
   .thomas-photo{ width:96px; height:120px; }
 
   .mobile-bar{ display:grid; }
