@@ -143,6 +143,8 @@ input, textarea{ font:inherit; color:inherit; }
   border-bottom:1px solid var(--ink);
 }
 .hero-copy{ min-width:0; padding:clamp(40px,6vw,58px) var(--gutter) 42px; border-right:1px solid var(--ink); }
+.hero-grid--solo{ grid-template-columns:minmax(0,1fr); }
+.hero-grid--solo .hero-copy{ border-right:none; }
 .hero-eyebrow{ margin-bottom:20px; }
 .hero-h1{
   font-size:clamp(2.6rem, 6.4vw, 5.5rem);
@@ -177,7 +179,7 @@ input, textarea{ font:inherit; color:inherit; }
 .hero-stat-label{ font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-50); }
 .hero-stat-value{ font-size:clamp(1.6rem,2.4vw,2.2rem); font-weight:800; letter-spacing:-.03em; margin-top:4px; }
 .hero-stat-value small{ font-size:14px; font-weight:500; color:var(--ink-50); }
-.hero-stack-cell{ padding:18px 24px; background:var(--paper-soft); }
+.hero-stack-cell{ padding:18px 24px; }
 .hero-stack-cell .hero-stat-label{ margin-bottom:8px; }
 .hero-stack-list{ font-size:14px; line-height:1.6; color:var(--ink-80); }
 .hero-stats-mobile{ display:none; }
@@ -425,7 +427,7 @@ input, textarea{ font:inherit; color:inherit; }
 
 /* ---------- nav "Diensten" dropdown ---------- */
 .has-dropdown{ position:relative; }
-.nav-links .dropdown-toggle{ font:inherit; background:none; border:none; cursor:pointer; color:inherit; display:inline-flex; align-items:center; gap:.35em; padding:0; }
+.nav-links .dropdown-toggle{ font:inherit; text-transform:uppercase; background:none; border:none; cursor:pointer; color:inherit; display:inline-flex; align-items:center; gap:.35em; padding:0; }
 .dropdown-chevron{ font-style:normal; font-size:.75em; opacity:.6; transition:transform .18s; }
 .dropdown-toggle[aria-expanded="true"] .dropdown-chevron{ transform:rotate(180deg); }
 .nav-dropdown{
