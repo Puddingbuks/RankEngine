@@ -440,6 +440,16 @@ button{font:inherit;cursor:pointer}
   window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 30); }, {passive:true});
 })();
 (function(){
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(function(el){ io.observe(el); });
+})();
+(function(){
   var toggle = document.getElementById('navToggle');
   var links = document.getElementById('navLinks');
   if(!toggle) return;
