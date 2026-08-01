@@ -99,400 +99,370 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" /></noscript>
-<link rel="preload" as="style" href="css/style.css?v=3" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/style.css?v=3" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
 
 <style>
-:root{--bg:#f5f7fc;--bg-2:#eef1f7;--surface:#ffffff;--surface-2:#edf0f6;--border:rgba(0,0,0,.1);--border-2:rgba(0,0,0,.18);--text:#0d1117;--muted:#4a5568;--faint:#6b7a90;--accent:#0070cc;--accent-2:#1a5fd4;--accent-ink:#ffffff;--accent-soft:rgba(0,112,204,.12);--font-display:"Space Grotesk",system-ui,sans-serif;--font-body:"Manrope",system-ui,sans-serif;--font-mono:"Space Mono",ui-monospace,monospace;--ease:cubic-bezier(.2,.7,.3,1);--maxw:1200px;--gutter:clamp(20px,5vw,64px)}
+:root{--paper:#F2EFE7;--ink:#14140F;--accent:#C4472A}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.home{background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-button{font:inherit;cursor:pointer}
-.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter)}
-.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--font-body);font-weight:650;font-size:1rem;padding:15px 26px;border-radius:999px;border:1px solid transparent;transition:transform .25s var(--ease),background .25s,box-shadow .35s var(--ease),color .25s;white-space:nowrap}
-.btn-primary{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 30px -8px var(--accent)}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 0 6px var(--accent-soft),0 16px 44px -10px var(--accent)}
-.btn-ghost{background:transparent;color:var(--text);border-color:var(--border-2)}
-.btn-ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-.nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
-.nav.scrolled{background:rgba(8,9,12,.72);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);border-bottom-color:var(--border)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:76px}
-.logo{display:inline-flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:700;font-size:1.28rem;letter-spacing:-.02em}
-.logo .mark{width:30px;height:30px;border-radius:8px;background:var(--accent);position:relative;box-shadow:0 0 22px -2px var(--accent);overflow:hidden}
-.logo .mark::before,.logo .mark::after{content:"";position:absolute;background:var(--accent-ink)}
-.logo .mark::before{left:7px;bottom:7px;width:4px;height:8px;border-radius:1px}
-.logo .mark::after{left:13px;bottom:7px;width:4px;height:16px;border-radius:1px;box-shadow:6px 0 0 var(--accent-ink)}
-.logo b{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:34px;list-style:none}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
-.nav-links li{position:relative}
-.nav-links a.link{font-size:.95rem;color:var(--muted);font-weight:550;position:relative;transition:color .2s}
-.nav-links a.link:hover,.nav-links button.link:hover{color:var(--text)}
-.nav-links a.link.active,.nav-links button.link.active{color:var(--accent)}
-.nav-links button.link{background:none;border:none;cursor:pointer;padding:0;font-family:var(--font-body);font-size:.95rem;color:var(--muted);font-weight:550;transition:color .2s;display:inline-flex;align-items:center;gap:.35em}
-.has-dropdown{position:relative}
-.dropdown{position:fixed;top:90px;left:0;transform:translateY(-6px);background:var(--surface-2);border:1px solid var(--border-2);border-radius:14px;padding:6px;min-width:220px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;z-index:200;list-style:none;box-shadow:0 8px 32px -8px rgba(0,0,0,.4)}
-.dropdown-toggle[aria-expanded=true] ~ .dropdown{opacity:1;pointer-events:auto;transform:translateY(0)}
-.dropdown li{display:block}
-.dropdown a{display:flex;align-items:center;padding:9px 14px;border-radius:8px;font-size:.9rem;font-weight:550;color:var(--muted);transition:color .15s,background .15s;white-space:nowrap}
-.dropdown a:hover{color:var(--text);background:var(--surface)}
-.dropdown a.active{color:var(--accent)}
-.dropdown-chevron{transition:transform .2s;opacity:.5;font-style:normal;font-size:.75em;line-height:1}
-.dropdown-toggle[aria-expanded=true] .dropdown-chevron{transform:rotate(180deg)}
-.nav .btn-primary{padding:11px 20px;font-size:.92rem}
-.nav-actions{display:flex;align-items:center;gap:10px}
-.nav-toggle{display:none}
-@media(max-width:680px){.nav-links{display:none}.nav-toggle{display:grid;place-items:center;width:44px;height:44px;background:transparent;border:1px solid var(--border-2);border-radius:12px}}
-@media(max-width:860px){.contact-grid{grid-template-columns:1fr!important}}</style>
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
+</style>
+
+<link rel="preload" as="style" href="css/home.css?v=4" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/home.css?v=4" /></noscript>
 </head>
-<body>
+<body class="home">
+
+<a class="skip-link" href="#main-content">Direct naar inhoud</a>
+
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q9H46" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+<!-- NAV -->
+<header class="site-nav">
   <div class="wrap nav-inner">
-    <a class="logo" href="/" aria-label="RankEngine home"><span class="mark" aria-hidden="true"></span><span>Rank<b>Engine</b></span></a>
+    <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#aanpak">Aanpak</a></li>
+      <li><a href="/#diensten">Diensten</a></li>
+      <li><a href="/#prijzen">Prijzen</a></li>
+      <li><a href="/#cases">Cases</a></li>
+      <li><a href="/#thomas">Thomas</a></li>
+    </ul>
     <div class="nav-right">
-      <ul class="nav-links" id="navLinks" role="list">
-        <li><a class="link" href="/#oplossing">Waarom</a></li>
-        <li class="has-dropdown">
-          <button class="link active dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-          <ul class="dropdown" role="menu">
-            <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-            <li><a href="/seo.html" role="menuitem">SEO</a></li>
-            <li><a href="/geo-optimalisatie.html" role="menuitem">GEO / AI-zoekopdrachten</a></li>
-            <li><a href="/ecommerce.html" class="active" role="menuitem" aria-current="page">E-commerce &amp; CRO</a></li>
-            <li><a href="/social-ads.html" role="menuitem">Meta Ads</a></li>
-            <li><a href="/tiktok-ads.html" role="menuitem">TikTok Ads</a></li>
-            <li><a href="/linkedin-ads.html" role="menuitem">LinkedIn Ads</a></li>
-          </ul>
-        </li>
-        <li><a class="link" href="/#over">Over Thomas</a></li>
-        <li><a class="btn btn-primary" href="#contact">Plan een gesprek</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navLinks"><span aria-hidden="true"></span></button>
+      <a class="nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
+      <a class="btn btn-dark nav-cta" href="#contact">Gratis scan →</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
+        <span></span><span></span>
+      </button>
     </div>
   </div>
-</nav>
+  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+    <a href="/#aanpak">Aanpak</a>
+    <a href="/#diensten">Diensten</a>
+    <a href="/#prijzen">Prijzen</a>
+    <a href="/#cases">Cases</a>
+    <a href="/#thomas">Thomas</a>
+    <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
+    <a href="#contact">Gratis scan →</a>
+  </nav>
+</header>
 
 <main id="main-content">
+  <div class="hero-board">
 
-<!-- HERO -->
-<section style="position:relative;padding:150px 0 clamp(80px,11vw,140px);overflow:hidden">
-  <div style="position:absolute;top:0;left:50%;width:600px;height:600px;transform:translate(-50%,-40%);background:radial-gradient(circle,var(--accent-soft),transparent 60%);pointer-events:none;filter:blur(10px)" aria-hidden="true"></div>
-  <div class="wrap" style="position:relative;z-index:2"><div style="max-width:900px">
-    <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// E-commerce &amp; CRO</span>
-    <h1 style="font-family:var(--font-display);font-weight:700;font-size:clamp(2.6rem,7vw,5.5rem);line-height:.96;letter-spacing:-.04em;margin:20px 0 0">Meer omzet<br/>uit je webshop</h1>
-    <p style="color:var(--muted);font-size:clamp(1.05rem,1.6vw,1.25rem);max-width:54ch;margin-top:28px;line-height:1.6">Je hebt al bezoekers. Het probleem is dat te weinig van hen iets kopen. Ik analyseer waar het misgaat in je funnel en fix het — meer omzet zonder extra advertentiebudget.</p>
-    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:36px">
-      <a class="btn btn-primary" href="#contact">Plan een gesprek <span aria-hidden="true">→</span></a>
-      <a class="btn btn-ghost" href="#werkwijze">Hoe het werkt</a>
-    </div>
-    <div style="display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:44px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">
-      <span>✓ Uurtarief €100</span>
-      <span>✓ Maandelijks opzegbaar</span>
-      <span>✓ Geen dure redesigns</span>
-    </div>
-  </div>
-</div>
-</section>
+    <!-- HERO -->
+    <section class="hero-grid">
+      <div class="hero-copy">
+        <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span class="current">E-commerce &amp; CRO</span></div>
+        <span class="kicker hero-eyebrow">Dienst · E-commerce &amp; CRO</span>
+        <h1 class="hero-h1">Meer omzet uit je webshop</h1>
+        <p class="hero-sub">Je hebt al bezoekers. Het probleem is dat te weinig van hen iets kopen. Ik analyseer waar het misgaat in je funnel en fix het — meer omzet zonder extra advertentiebudget.</p>
+        <div class="hero-cta-row">
+          <a class="btn btn-primary" href="#contact">Plan een gesprek →</a>
+          <a class="btn btn-ghost" href="#werkwijze">Hoe het werkt</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-label">Uurtarief</div>
+          <div class="hero-stat-value">€100<small>/uur excl. btw</small></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">Opzegtermijn</div>
+          <div class="hero-stat-value" style="font-size:26px">Maandelijks<small style="display:block;margin-top:2px">opzegbaar</small></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-label">Aanpak</div>
+          <div class="hero-stat-value" style="font-size:20px">Geen redesign<small style="display:block;margin-top:2px">kleine aanpassingen die werken</small></div>
+        </div>
+        <div class="hero-stack-cell">
+          <div class="hero-stat-label">Pijlers</div>
+          <div class="hero-stack-list">Conversie-analyse · Productpagina's · Checkout optimalisatie · E-mail automation</div>
+        </div>
+      </div>
+      <div class="hero-stats-mobile">
+        <div class="hero-stat"><div class="hero-stat-label">Uurtarief</div><div class="hero-stat-value">€100</div></div>
+        <div class="hero-stat"><div class="hero-stat-label">Opzeg</div><div class="hero-stat-value" style="font-size:16px">Maandelijks</div></div>
+        <div class="hero-stat"><div class="hero-stat-label">Aanpak</div><div class="hero-stat-value" style="font-size:15px">Geen redesign</div></div>
+      </div>
+    </section>
 
-<!-- WAT IK DOE -->
-<section style="padding:clamp(60px,10vw,120px) 0;border-top:1px solid var(--border)">
-  <div class="wrap">
-    <div style="max-width:680px;margin-bottom:clamp(40px,6vw,64px)">
-      <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// Wat ik doe</span>
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.03em;margin-top:14px">Van bezoeker naar koper</h2>
-      <p style="color:var(--muted);margin-top:16px;font-size:1.05rem">CRO is geen trucje maar een systematisch proces. Ik combineer data-analyse, gebruikerspsychologie en praktische aanpassingen om je conversieratio structureel te verbeteren.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px 28px">
-        <div style="width:46px;height:46px;border-radius:12px;background:var(--accent-soft);border:1px solid rgba(0,229,255,.2);display:grid;place-items:center;color:var(--accent);margin-bottom:18px">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;letter-spacing:-.02em">Conversie-analyse</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.97rem">Funnel-analyse in GA4, heatmaps en sessie-opnames om te zien waar bezoekers afhaken. Welke pagina's lekken? Waar verlies je kopers?</p>
+    <!-- WAT IK DOE -->
+    <section class="board-section">
+      <div class="board-section-head">
+        <h2>Van bezoeker naar koper</h2>
+        <span class="meta">Wat ik doe</span>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px 28px">
-        <div style="width:46px;height:46px;border-radius:12px;background:var(--accent-soft);border:1px solid rgba(0,229,255,.2);display:grid;place-items:center;color:var(--accent);margin-bottom:18px">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <p class="board-section-sub" style="margin-bottom:24px;">CRO is geen trucje maar een systematisch proces. Ik combineer data-analyse, gebruikerspsychologie en praktische aanpassingen om je conversieratio structureel te verbeteren.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="num">01</div>
+          <h3>Conversie-analyse</h3>
+          <p>Funnel-analyse in GA4, heatmaps en sessie-opnames om te zien waar bezoekers afhaken. Welke pagina's lekken? Waar verlies je kopers?</p>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;letter-spacing:-.02em">Productpagina's</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.97rem">Betere productteksten, duidelijkere call-to-actions, reviews strategisch plaatsen en urgentie-elementen toevoegen. Kleine aanpassingen met meetbaar effect.</p>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px 28px">
-        <div style="width:46px;height:46px;border-radius:12px;background:var(--accent-soft);border:1px solid rgba(0,229,255,.2);display:grid;place-items:center;color:var(--accent);margin-bottom:18px">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <div class="feature-card">
+          <div class="num">02</div>
+          <h3>Productpagina's</h3>
+          <p>Betere productteksten, duidelijkere call-to-actions, reviews strategisch plaatsen en urgentie-elementen toevoegen. Kleine aanpassingen met meetbaar effect.</p>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;letter-spacing:-.02em">Checkout optimalisatie</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.97rem">Minder stappen, minder afleiding, betere vertrouwenssignalen. Gemiddeld haakt 70% van de shoppers af bij de checkout — daar valt enorm veel te winnen.</p>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:30px 28px">
-        <div style="width:46px;height:46px;border-radius:12px;background:var(--accent-soft);border:1px solid rgba(0,229,255,.2);display:grid;place-items:center;color:var(--accent);margin-bottom:18px">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="feature-card">
+          <div class="num">03</div>
+          <h3>Checkout optimalisatie</h3>
+          <p>Minder stappen, minder afleiding, betere vertrouwenssignalen. Gemiddeld haakt 70% van de shoppers af bij de checkout — daar valt enorm veel te winnen.</p>
         </div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;letter-spacing:-.02em">E-mail capture &amp; automation</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.97rem">Verlaten winkelwagen e-mails, welkomstreeksen en upsell-flows. Bezoekers die nu niet kopen, komen morgen terug via e-mail.</p>
+        <div class="feature-card">
+          <div class="num">04</div>
+          <h3>E-mail capture &amp; automation</h3>
+          <p>Verlaten winkelwagen e-mails, welkomstreeksen en upsell-flows. Bezoekers die nu niet kopen, komen morgen terug via e-mail.</p>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- WERKWIJZE -->
-<section id="werkwijze" style="padding:clamp(60px,10vw,120px) 0;border-top:1px solid var(--border)">
-  <div class="wrap">
-    <div style="max-width:680px;margin-bottom:clamp(40px,6vw,64px)">
-      <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// Werkwijze</span>
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.03em;margin-top:14px">Hoe het werkt</h2>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;counter-reset:steps">
-      <div style="padding:32px 28px 32px 0;border-right:1px solid var(--border)">
-        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--accent);opacity:.3;line-height:1">01</div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-top:16px">Data-analyse</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.95rem">GA4, heatmaps en sessie-opnames instellen en analyseren. Waar haken bezoekers af? Welke pagina's presteren slecht? Wat vertelt de data ons?</p>
+    <!-- WERKWIJZE -->
+    <section class="board-section" id="werkwijze">
+      <div class="board-section-head">
+        <h2>Hoe het werkt</h2>
       </div>
-      <div style="padding:32px 28px;border-right:1px solid var(--border)">
-        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--accent);opacity:.3;line-height:1">02</div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-top:16px">Prioriteiten</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.95rem">Op basis van de analyse stel ik een prioriteitenlijst op: wat levert de meeste omzetgroei op met de minste inspanning? Quick wins eerst.</p>
-      </div>
-      <div style="padding:32px 28px;border-right:1px solid var(--border)">
-        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--accent);opacity:.3;line-height:1">03</div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-top:16px">Implementatie</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.95rem">Aanpassingen doorvoeren in je webshop. Ik werk samen met je webshop-beheerder of doe kleine aanpassingen direct. Geen groot redesign, wel meetbare verbeteringen.</p>
-      </div>
-      <div style="padding:32px 0 32px 28px">
-        <div style="font-family:var(--font-mono);font-size:2rem;font-weight:700;color:var(--accent);opacity:.3;line-height:1">04</div>
-        <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-top:16px">Meten &amp; itereren</h3>
-        <p style="color:var(--muted);margin-top:10px;font-size:.95rem">Resultaten bijhouden en bijsturen. Wat werkt, bouwen we verder uit. Maandelijks rapport met conversieratio, omzet per bezoeker en volgende acties.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SHOWCASE -->
-<section style="padding:clamp(60px,10vw,120px) 0;border-top:1px solid var(--border);background:var(--bg-2)">
-  <div class="wrap">
-    <div style="max-width:680px;margin-bottom:clamp(40px,6vw,64px)">
-      <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// Zo ziet het eruit</span>
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.03em;margin-top:14px">Van data tot omzet</h2>
-      <p style="color:var(--muted);margin-top:16px;font-size:1.05rem">Wat e-commerce optimalisatie in de praktijk oplevert voor webshops.</p>
-    </div>
-    <div class="showcase-grid">
-      <figure class="showcase-item" data-reveal="up">
-        <img src="/images/ecommerce-conversie-analyse-heatmap-funnel.png" alt="GA4 funnel analyse en heatmap die toont waar webshopbezoekers afhaken in het bestelproces" loading="lazy" width="1456" height="816" />
-        <figcaption>Inzicht in waar bezoekers afhaken<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
-      </figure>
-      <figure class="showcase-item" data-reveal="up" style="--d:120ms">
-        <img src="/images/ecommerce-productpagina-optimalisatie-resultaat.png" alt="Geoptimaliseerde productpagina met duidelijke call-to-action, reviews en vertrouwenssignalen" loading="lazy" width="1456" height="816" />
-        <figcaption>Productpagina's die overtuigen<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
-      </figure>
-      <figure class="showcase-item" data-reveal="up" style="--d:240ms">
-        <img src="/images/ecommerce-resultaten-conversieratio-omzet-groei.png" alt="Dashboard met verbeterde conversieratio en omzetgroei na CRO optimalisatie" loading="lazy" width="1456" height="816" />
-        <figcaption>Meetbare groei in conversieratio en omzet<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- TARIEVEN -->
-<section style="padding:clamp(60px,10vw,120px) 0;border-top:1px solid var(--border)">
-  <div class="wrap">
-    <div style="max-width:680px;margin-bottom:clamp(40px,6vw,64px)">
-      <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// Tarieven</span>
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.03em;margin-top:14px">Wat kost het?</h2>
-      <p style="color:var(--muted);margin-top:16px;font-size:1.05rem">Ik werk op uurbasis. Hoeveel uur nodig is hangt af van de omvang van je webshop, de kwaliteit van de huidige data en hoeveel aanpassingen er nodig zijn.</p>
-    </div>
-    <div style="display:flex;align-items:flex-start;gap:24px;margin-bottom:36px;flex-wrap:wrap">
-      <div style="background:var(--surface);border:1px solid var(--accent);border-radius:16px;padding:22px 32px;display:inline-flex;flex-direction:column;align-items:center;flex:none">
-        <span style="font-family:var(--font-mono);font-size:.72rem;color:var(--accent);text-transform:uppercase;letter-spacing:.06em">Uurtarief</span>
-        <span style="font-family:var(--font-display);font-weight:700;font-size:3rem;letter-spacing:-.04em;color:var(--text);line-height:1.15;margin-top:4px">€100</span>
-        <span style="font-family:var(--font-mono);font-size:.78rem;color:var(--muted)">/uur excl. btw</span>
-      </div>
-      <p style="color:var(--muted);font-size:1rem;max-width:44ch;padding-top:4px">Geen pakketten, geen verborgen kosten. Je betaalt voor daadwerkelijk gewerkte uren. Na een intake maak ik een schatting op maat.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;max-width:860px;margin-bottom:24px">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px">
-        <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Audit & quick wins</div>
-        <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px">
-          <span style="font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:-.03em">5–10 uur</span>
-          <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">eenmalig</span>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-meta">Stap 01</div>
+          <h3>Data-analyse</h3>
+          <p>GA4, heatmaps en sessie-opnames instellen en analyseren. Waar haken bezoekers af? Welke pagina's presteren slecht? Wat vertelt de data ons?</p>
         </div>
-        <div style="font-family:var(--font-mono);font-size:.82rem;color:var(--accent);margin-top:4px">≈ €500–€1.000</div>
-        <div style="height:1px;background:var(--border);margin:16px 0"></div>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.6">Funnel-analyse, heatmaps instellen, prioriteitenlijst en de eerste quick wins doorvoeren.</p>
-      </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px">
-        <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)">Maandelijks</div>
-        <div style="margin-top:10px;display:flex;align-items:baseline;gap:10px">
-          <span style="font-family:var(--font-display);font-weight:700;font-size:1.7rem;letter-spacing:-.03em">4–10 uur</span>
-          <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">/maand</span>
+        <div class="process-step">
+          <div class="step-meta">Stap 02</div>
+          <h3>Prioriteiten</h3>
+          <p>Op basis van de analyse stel ik een prioriteitenlijst op: wat levert de meeste omzetgroei op met de minste inspanning? Quick wins eerst.</p>
         </div>
-        <div style="font-family:var(--font-mono);font-size:.82rem;color:var(--accent);margin-top:4px">≈ €400–€1.000</div>
-        <div style="height:1px;background:var(--border);margin:16px 0"></div>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.6">Doorlopende optimalisatie: aanpassingen doorvoeren, testen, e-mail flows bouwen en maandrapportage.</p>
-      </div>
-    </div>
-    <div style="background:var(--surface-2);border:1px solid var(--border);border-radius:14px;padding:20px 24px;max-width:860px">
-      <div style="font-family:var(--font-mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:12px">Wat de scope bepaalt</div>
-      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;color:var(--muted);font-size:.9rem">
-        <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Het aantal pagina's en producten in je webshop</li>
-        <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Of er al data beschikbaar is (GA4, heatmaps, sessie-opnames)</li>
-        <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Hoeveel aanpassingen direct doorgevoerd kunnen worden</li>
-        <li style="display:flex;gap:10px"><span style="color:var(--accent);flex:none">→</span> Of e-mail automation opgezet moet worden</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section style="padding:clamp(60px,10vw,120px) 0;border-top:1px solid var(--border)">
-  <div class="wrap">
-    <div style="max-width:680px;margin-bottom:clamp(40px,6vw,64px)">
-      <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// FAQ</span>
-      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.03em;margin-top:14px">Veelgestelde vragen</h2>
-    </div>
-    <div style="max-width:780px;display:flex;flex-direction:column" id="faqList">
-      <div style="border-bottom:1px solid var(--border);border-top:1px solid var(--border)" class="faq-item">
-        <button class="faq-q" aria-expanded="false" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:transparent;border:none;color:var(--text);font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,1.4vw,1.1rem);text-align:left;cursor:pointer">Wat is een normale conversieratio voor een webshop?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a" hidden><p style="color:var(--muted);padding-bottom:22px;line-height:1.75">De gemiddelde conversieratio van een Nederlandse webshop ligt tussen 1% en 3%. Maar het gemiddelde zegt weinig — wat goed is hangt af van je branche, product en prijspunt. Met gerichte optimalisatie is een verbetering van 20% tot 50% haalbaar zonder extra bezoekers.</p></div>
-      </div>
-      <div style="border-bottom:1px solid var(--border)" class="faq-item">
-        <button class="faq-q" aria-expanded="false" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:transparent;border:none;color:var(--text);font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,1.4vw,1.1rem);text-align:left;cursor:pointer">Heb ik veel bezoekers nodig voor A/B testen?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a" hidden><p style="color:var(--muted);padding-bottom:22px;line-height:1.75">A/B testen werkt het best met 500 of meer bezoekers per variant per week. Bij kleinere webshops focus ik liever op kwalitatieve analyse: heatmaps, sessie-opnames en directe klantfeedback. Dat levert ook bij minder verkeer bruikbare inzichten op.</p></div>
-      </div>
-      <div style="border-bottom:1px solid var(--border)" class="faq-item">
-        <button class="faq-q" aria-expanded="false" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:transparent;border:none;color:var(--text);font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,1.4vw,1.1rem);text-align:left;cursor:pointer">Werkt dit ook voor kleinere webshops?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a" hidden><p style="color:var(--muted);padding-bottom:22px;line-height:1.75">Ja. Juist bij kleinere webshops is de winst vaak het grootst. Een paar slimme aanpassingen aan de productpagina of het checkout-proces kunnen direct impact hebben op je omzet. Ik prioriteer altijd op basis van impact versus inspanning.</p></div>
-      </div>
-      <div style="border-bottom:1px solid var(--border)" class="faq-item">
-        <button class="faq-q" aria-expanded="false" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:transparent;border:none;color:var(--text);font-family:var(--font-display);font-weight:600;font-size:clamp(1rem,1.4vw,1.1rem);text-align:left;cursor:pointer">Moet ik mijn webshop helemaal opnieuw bouwen?<span class="faq-icon" aria-hidden="true"></span></button>
-        <div class="faq-a" hidden><p style="color:var(--muted);padding-bottom:22px;line-height:1.75">Bijna nooit. De meeste verbeteringen zijn aanpassingen aan bestaande pagina's: betere productteksten, duidelijkere call-to-actions, vertrouwenssignalen toevoegen of het checkout-proces verkorten. Een nieuw platform is zelden de oplossing voor een lage conversieratio.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" style="padding:clamp(60px,10vw,120px) 0;border-top:1px solid var(--border)">
-  <div class="wrap">
-    <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(40px,6vw,96px);align-items:start">
-      <div>
-        <span style="font-family:var(--font-mono);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:.55em">// Contact</span>
-        <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:-.03em;line-height:1.04;margin-top:14px">Plan een kennismaking</h2>
-        <p style="color:var(--muted);margin-top:16px;font-size:1.05rem;max-width:36ch">We kijken samen waar de grootste winst zit in jouw webshop en wat de eerste stap zou zijn. Duurt 20–30 minuten, geen verplichtingen.</p>
-        <div style="margin-top:24px;display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:.95rem">
-          <span style="width:8px;height:8px;border-radius:50%;background:#2bd47a;box-shadow:0 0 10px #2bd47a;flex:none"></span>Bereikbaar op werkdagen
+        <div class="process-step">
+          <div class="step-meta">Stap 03</div>
+          <h3>Implementatie</h3>
+          <p>Aanpassingen doorvoeren in je webshop. Ik werk samen met je webshop-beheerder of doe kleine aanpassingen direct. Geen groot redesign, wel meetbare verbeteringen.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-meta">Stap 04</div>
+          <h3>Meten &amp; itereren</h3>
+          <p>Resultaten bijhouden en bijsturen. Wat werkt, bouwen we verder uit. Maandelijks rapport met conversieratio, omzet per bezoeker en volgende acties.</p>
         </div>
       </div>
-      <form style="background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:clamp(28px,4vw,48px)" id="contactForm">
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
-          <span style="font-family:var(--font-display);font-weight:700;font-size:1.2rem">Stuur een bericht</span>
-          <span style="font-family:var(--font-mono);font-size:.74rem;color:var(--accent);background:var(--accent-soft);border:1px solid rgba(0,229,255,.22);padding:4px 10px;border-radius:999px">E-commerce</span>
+    </section>
+
+    <!-- SHOWCASE -->
+    <section class="board-section">
+      <div class="board-section-head">
+        <h2>Van data tot omzet</h2>
+        <span class="meta">Zo ziet het eruit</span>
+      </div>
+      <p class="board-section-sub" style="margin-bottom:24px;">Wat e-commerce optimalisatie in de praktijk oplevert voor webshops.</p>
+      <div class="showcase-grid">
+        <figure class="showcase-card">
+          <img src="/images/ecommerce-conversie-analyse-heatmap-funnel.png" alt="GA4 funnel analyse en heatmap die toont waar webshopbezoekers afhaken in het bestelproces" loading="lazy" width="1456" height="816" />
+          <figcaption>Inzicht in waar bezoekers afhaken<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
+        </figure>
+        <figure class="showcase-card">
+          <img src="/images/ecommerce-productpagina-optimalisatie-resultaat.png" alt="Geoptimaliseerde productpagina met duidelijke call-to-action, reviews en vertrouwenssignalen" loading="lazy" width="1456" height="816" />
+          <figcaption>Productpagina's die overtuigen<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
+        </figure>
+        <figure class="showcase-card">
+          <img src="/images/ecommerce-resultaten-conversieratio-omzet-groei.png" alt="Dashboard met verbeterde conversieratio en omzetgroei na CRO optimalisatie" loading="lazy" width="1456" height="816" />
+          <figcaption>Meetbare groei in conversieratio en omzet<span class="disclaimer">Indicatieve cijfers – resultaten kunnen variëren</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- TARIEVEN -->
+    <section class="board-section">
+      <div class="board-section-head">
+        <h2>Wat kost het?</h2>
+        <span class="meta">Tarieven</span>
+      </div>
+      <p class="board-section-sub" style="margin-bottom:24px;">Ik werk op uurbasis. Hoeveel uur nodig is hangt af van de omvang van je webshop, de kwaliteit van de huidige data en hoeveel aanpassingen er nodig zijn.</p>
+
+      <div class="tariff-hero">
+        <div class="tariff-badge">
+          <div class="hero-stat-label">Uurtarief</div>
+          <div class="price-big">€100</div>
+          <div class="unit">/uur excl. btw</div>
         </div>
-        <div style="display:flex;gap:14px">
-          <div style="flex:1;display:flex;flex-direction:column;gap:7px;margin-bottom:16px" id="fName">
-            <label for="name" style="font-size:.875rem;font-weight:600">Naam <span style="color:var(--accent)">*</span></label>
-            <input type="text" id="name" name="name" placeholder="Je naam" autocomplete="name" required style="background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:var(--font-body);font-size:.98rem;outline:none;width:100%;transition:border-color .2s,box-shadow .2s" />
+        <p>Geen pakketten, geen verborgen kosten. Je betaalt voor daadwerkelijk gewerkte uren. Na een intake maak ik een schatting op maat.</p>
+      </div>
+
+      <div class="tariff-grid">
+        <div class="tariff-card">
+          <div class="hero-stat-label">Audit &amp; quick wins</div>
+          <div class="range"><span class="range-value">5–10 uur</span><span class="range-unit">eenmalig</span></div>
+          <div class="est">≈ €500–€1.000</div>
+          <div class="divider"></div>
+          <p>Funnel-analyse, heatmaps instellen, prioriteitenlijst en de eerste quick wins doorvoeren.</p>
+        </div>
+        <div class="tariff-card">
+          <div class="hero-stat-label">Maandelijks</div>
+          <div class="range"><span class="range-value">4–10 uur</span><span class="range-unit">/maand</span></div>
+          <div class="est">≈ €400–€1.000</div>
+          <div class="divider"></div>
+          <p>Doorlopende optimalisatie: aanpassingen doorvoeren, testen, e-mail flows bouwen en maandrapportage.</p>
+        </div>
+      </div>
+
+      <div class="scope-box">
+        <div class="hero-stat-label">Wat de scope bepaalt</div>
+        <ul class="scope-list">
+          <li><span class="arrow">→</span> Het aantal pagina's en producten in je webshop</li>
+          <li><span class="arrow">→</span> Of er al data beschikbaar is (GA4, heatmaps, sessie-opnames)</li>
+          <li><span class="arrow">→</span> Hoeveel aanpassingen direct doorgevoerd kunnen worden</li>
+          <li><span class="arrow">→</span> Of e-mail automation opgezet moet worden</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-full">
+      <h2>Veelgestelde vragen</h2>
+      <div id="faqList">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Wat is een normale conversieratio voor een webshop?</span><span class="sign" aria-hidden="true">+</span></button>
+          <div class="faq-a" hidden><p>De gemiddelde conversieratio van een Nederlandse webshop ligt tussen 1% en 3%. Maar het gemiddelde zegt weinig — wat goed is hangt af van je branche, product en prijspunt. Met gerichte optimalisatie is een verbetering van 20% tot 50% haalbaar zonder extra bezoekers.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Heb ik veel bezoekers nodig voor A/B testen?</span><span class="sign" aria-hidden="true">+</span></button>
+          <div class="faq-a" hidden><p>A/B testen werkt het best met 500 of meer bezoekers per variant per week. Bij kleinere webshops focus ik liever op kwalitatieve analyse: heatmaps, sessie-opnames en directe klantfeedback. Dat levert ook bij minder verkeer bruikbare inzichten op.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Werkt dit ook voor kleinere webshops?</span><span class="sign" aria-hidden="true">+</span></button>
+          <div class="faq-a" hidden><p>Ja. Juist bij kleinere webshops is de winst vaak het grootst. Een paar slimme aanpassingen aan de productpagina of het checkout-proces kunnen direct impact hebben op je omzet. Ik prioriteer altijd op basis van impact versus inspanning.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false"><span>Moet ik mijn webshop helemaal opnieuw bouwen?</span><span class="sign" aria-hidden="true">+</span></button>
+          <div class="faq-a" hidden><p>Bijna nooit. De meeste verbeteringen zijn aanpassingen aan bestaande pagina's: betere productteksten, duidelijkere call-to-actions, vertrouwenssignalen toevoegen of het checkout-proces verkorten. Een nieuw platform is zelden de oplossing voor een lage conversieratio.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-col" id="contact">
+      <span class="kicker">Plan een kennismaking</span>
+      <h2>We kijken of dit bij je past</h2>
+      <p>20–30 minuten, geen verplichtingen. We kijken samen waar de grootste winst zit in jouw webshop en wat de eerste stap zou zijn.</p>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="row2">
+          <div class="field" id="fName">
+            <label class="visually-hidden" for="name" style="position:absolute;left:-9999px">Naam</label>
+            <input type="text" id="name" name="name" placeholder="Naam" autocomplete="name" required />
+            <span class="field-err">Vul je naam in</span>
           </div>
-          <div style="flex:1;display:flex;flex-direction:column;gap:7px;margin-bottom:16px" id="fEmail">
-            <label for="email" style="font-size:.875rem;font-weight:600">E-mail <span style="color:var(--accent)">*</span></label>
-            <input type="email" id="email" name="email" placeholder="je@email.nl" autocomplete="email" required style="background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:var(--font-body);font-size:.98rem;outline:none;width:100%;transition:border-color .2s,box-shadow .2s" />
+          <div class="field" id="fEmail">
+            <label class="visually-hidden" for="email" style="position:absolute;left:-9999px">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="E-mail" autocomplete="email" required />
+            <span class="field-err">Vul een geldig e-mailadres in</span>
           </div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:7px;margin-bottom:16px">
-          <label for="message" style="font-size:.875rem;font-weight:600">Bericht <span style="color:var(--muted);font-weight:400;font-size:.82em">(optioneel)</span></label>
-          <textarea id="message" name="message" rows="3" placeholder="Vertel kort over je webshop en wat je zoekt…" style="background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-family:var(--font-body);font-size:.98rem;outline:none;width:100%;resize:none;transition:border-color .2s,box-shadow .2s"></textarea>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)">
-          <p style="font-size:.8rem;color:var(--muted);max-width:36ch">Ik gebruik je gegevens alleen om te reageren. <a href="/privacy.html" style="color:var(--muted);text-decoration:underline">Privacybeleid</a></p>
-          <button type="submit" class="btn btn-primary">Verstuur <span aria-hidden="true">→</span></button>
+        <label class="visually-hidden" for="message" style="position:absolute;left:-9999px">Bericht</label>
+        <textarea id="message" name="message" rows="3" placeholder="Vertel kort wat je doet en wat je zoekt… (optioneel)"></textarea>
+        <button type="submit" class="btn btn-primary send-btn">Verstuur →</button>
+        <p class="form-status" id="contactStatus"></p>
+        <div class="contact-footnote">
+          <span>Of: <a href="tel:+31643859989">06 43 85 99 89</a></span>
+          <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>
         </div>
       </form>
+    </section>
+
+    <div class="board-footer">
+      <span>© 2026 RankEngine · Aalsmeer</span>
+      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></span>
     </div>
   </div>
-</section>
 
+  <p class="page-outro">
+    Andere diensten: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO / AI</a> · <a href="/social-ads.html">Meta Ads</a> · <a href="/tiktok-ads.html">TikTok Ads</a> · <a href="/linkedin-ads.html">LinkedIn Ads</a>
+  </p>
 </main>
 
-<footer style="border-top:1px solid var(--border);padding:50px 0 36px">
-  <div class="wrap" style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px">
-    <a class="logo" href="/" aria-label="RankEngine home"><span class="mark" aria-hidden="true"></span><span>Rank<b>Engine</b></span></a>
-    <div style="display:flex;gap:24px;flex-wrap:wrap;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">
-      <a href="/google-ads.html" style="color:var(--muted)">Google Ads</a>
-      <a href="/seo.html" style="color:var(--muted)">SEO</a>
-      <a href="/geo-optimalisatie.html" style="color:var(--muted)">GEO</a>
-      <a href="/ecommerce.html" style="color:var(--muted)">E-commerce</a>
-      <a href="/social-ads.html" style="color:var(--muted)">Meta Ads</a>
-      <a href="/tiktok-ads.html" style="color:var(--muted)">TikTok Ads</a>
-      <a href="/linkedin-ads.html" style="color:var(--muted)">LinkedIn Ads</a>
-      <a href="/privacy.html" style="color:var(--muted)">Privacybeleid</a>
-    </div>
-    <span style="font-family:var(--font-mono);font-size:.8rem;color:var(--muted)">© 2026 RankEngine · Aalsmeer</span>
-  </div>
-</footer>
+<div class="mobile-bar" role="navigation" aria-label="Snelle acties">
+  <a href="tel:+31643859989">Bellen</a>
+  <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="#contact">Gratis scan →</a>
+</div>
 
 <script>
 (function(){
-  var nav = document.getElementById('nav');
-  window.addEventListener('scroll', function(){ nav.classList.toggle('scrolled', window.scrollY > 30); }, {passive:true});
-})();
-(function(){
-  var els = document.querySelectorAll('[data-reveal]');
-  if (!els.length) return;
-  var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  els.forEach(function(el){ io.observe(el); });
-})();
-(function(){
   var toggle = document.getElementById('navToggle');
-  var links = document.getElementById('navLinks');
-  if(!toggle) return;
+  var panel = document.getElementById('navMobilePanel');
+  if (!toggle) return;
   toggle.addEventListener('click', function(){
-    var isOpen = links.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', isOpen);
+    var open = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+    });
   });
 })();
-(function(){
-  document.querySelectorAll('.dropdown-toggle').forEach(function(btn){
-    btn.addEventListener('click',function(e){e.stopPropagation();var open=btn.getAttribute('aria-expanded')!=='true';btn.setAttribute('aria-expanded',open);});
-    document.addEventListener('click',function(){btn.setAttribute('aria-expanded','false');});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')btn.setAttribute('aria-expanded','false');});
-  });
-})();
+
 (function(){
   document.querySelectorAll('.faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var expanded = btn.getAttribute('aria-expanded')==='true';
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      var panel = btn.nextElementSibling;
       btn.setAttribute('aria-expanded', !expanded);
-      btn.nextElementSibling.hidden = expanded;
+      btn.querySelector('.sign').textContent = expanded ? '+' : '−';
+      panel.hidden = expanded;
     });
   });
 })();
+
 (function(){
   var form = document.getElementById('contactForm');
-  if(!form) return;
+  if (!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    var ok = true;
+    function check(fieldId, test){
+      var wrap = document.getElementById(fieldId);
+      var pass = test();
+      wrap.classList.toggle('has-error', !pass);
+      if (!pass) ok = false;
+    }
+    check('fName', function(){ return document.getElementById('name').value.trim().length > 0; });
+    check('fEmail', function(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('email').value.trim()); });
+    if (!ok) return;
+
+    var status = document.getElementById('contactStatus');
     var btn = form.querySelector('[type=submit]');
-    var name = document.getElementById('name').value.trim();
-    var email = document.getElementById('email').value.trim();
-    if(!name || !email) return;
     btn.disabled = true;
     btn.textContent = 'Versturen…';
+    status.classList.remove('is-error');
+    status.textContent = '';
+
     fetch('https://n8n.rankengine.nl/webhook/rankengine-contact', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ naam: name, email: email, dienst: 'E-commerce & CRO', bericht: document.getElementById('message').value.trim() })
-    }).then(function(){ window.location.href = '/bedankt.html'; })
-      .catch(function(){ btn.disabled=false; btn.innerHTML='Verstuur <span aria-hidden="true">→</span>'; alert('Er ging iets mis. Mail naar thomas@rankengine.nl.'); });
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        naam: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        dienst: 'E-commerce & CRO',
+        bericht: document.getElementById('message').value.trim()
+      })
+    })
+      .then(function(){ window.location.href = '/bedankt.html'; })
+      .catch(function(){
+        btn.disabled = false;
+        btn.textContent = 'Verstuur →';
+        status.classList.add('is-error');
+        status.textContent = 'Er ging iets mis. Stuur een e-mail naar thomas@rankengine.nl.';
+      });
   });
 })();
 </script>
+
 </body>
 </html>
