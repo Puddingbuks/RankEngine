@@ -92,9 +92,10 @@ ul{ margin:0; padding:0; list-style:none; }
 @media (min-width:768px){ .lu-mobile-panel{ display:none !important; } }
 
 /* -------------------------------------------------- hero */
-.lu-hero{ position:relative; padding-top:96px; padding-bottom:128px; overflow:hidden; z-index:0; }
-.lu-hero-decor{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.2; display:none; }
-@media (min-width:1024px){ .lu-hero-decor{ display:block; } }
+#main-content{ position:relative; }
+.lu-page-decor{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.2; display:none; }
+@media (min-width:1024px){ .lu-page-decor{ display:block; } }
+.lu-hero{ position:relative; padding-top:96px; padding-bottom:128px; overflow:hidden; z-index:1; }
 .lu-flow-path{ stroke-dasharray:10; animation:lu-dash 30s linear infinite; }
 @keyframes lu-dash{ to{ stroke-dashoffset:-1000; } }
 
