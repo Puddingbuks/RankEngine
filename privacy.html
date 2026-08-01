@@ -6,189 +6,236 @@
 <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
 <title>Privacybeleid - RankEngine</title>
 <meta name="description" content="Privacybeleid van RankEngine. Hoe wij omgaan met je persoonsgegevens." />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/style.css?v=3" />
-<link rel="stylesheet" href="css/pages.css?v=3" />
-</head>
-<body>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
 
-<header class="sub-nav">
-  <div class="wrap sub-nav-inner">
-    <a href="/" class="logo"><span class="mark" aria-hidden="true"></span><span>Rank<b>Engine</b></span></a>
-    <a href="/" class="back-link">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-      Terug naar home
-    </a>
+<style>
+:root{--paper:#F2EFE7;--ink:#14140F;--accent:#C4472A}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body.home{background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
+</style>
+
+<link rel="preload" as="style" href="css/home.css?v=5" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/home.css?v=5" /></noscript>
+</head>
+<body class="home">
+
+<a class="skip-link" href="#main-content">Direct naar inhoud</a>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
+    <ul class="nav-links" role="list">
+      <li><a href="/#aanpak">Aanpak</a></li>
+      <li><a href="/#diensten">Diensten</a></li>
+      <li><a href="/#prijzen">Prijzen</a></li>
+      <li><a href="/#cases">Cases</a></li>
+      <li><a href="/#thomas">Thomas</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
+      <a class="btn btn-dark nav-cta" href="/#contact">Gratis scan →</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
+        <span></span><span></span>
+      </button>
+    </div>
   </div>
+  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+    <a href="/#aanpak">Aanpak</a>
+    <a href="/#diensten">Diensten</a>
+    <a href="/#prijzen">Prijzen</a>
+    <a href="/#cases">Cases</a>
+    <a href="/#thomas">Thomas</a>
+    <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
+    <a href="/#contact">Gratis scan →</a>
+  </nav>
 </header>
 
-<div class="page-hero">
-  <div class="wrap">
-    <span class="page-kicker">Juridisch</span>
-    <h1>Privacybeleid</h1>
-    <p class="page-meta">Laatste update: 22 april 2026</p>
-  </div>
-</div>
+<main id="main-content">
+  <div class="hero-board">
 
-<div class="wrap">
-  <div class="page-body">
+    <div class="page-hero">
+      <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span class="current">Privacybeleid</span></div>
+      <span class="kicker">Juridisch</span>
+      <h1>Privacybeleid</h1>
+      <p class="page-meta">Laatste update: 22 april 2026</p>
+    </div>
 
-    <!-- TOC -->
-    <nav class="page-toc" aria-label="Inhoudsopgave">
-      <div class="toc-title">Inhoud</div>
-      <ul class="toc-list">
-        <li><a href="#verantwoordelijke">Verwerkingsverantwoordelijke</a></li>
-        <li><a href="#gegevens">Welke gegevens?</a></li>
-        <li><a href="#waarom">Waarom verwerken?</a></li>
-        <li><a href="#bewaartermijnen">Bewaartermijnen</a></li>
-        <li><a href="#derden">Delen met derden</a></li>
-        <li><a href="#cookies">Cookies</a></li>
-        <li><a href="#rechten">Jouw rechten</a></li>
-        <li><a href="#klacht">Klacht indienen</a></li>
-        <li><a href="#beveiliging">Beveiliging</a></li>
-        <li><a href="#wijzigingen">Wijzigingen</a></li>
-      </ul>
-    </nav>
+    <div class="page-body">
+      <nav class="page-toc" aria-label="Inhoudsopgave">
+        <div class="toc-title">Inhoud</div>
+        <ul class="toc-list">
+          <li><a href="#verantwoordelijke">Verwerkingsverantwoordelijke</a></li>
+          <li><a href="#gegevens">Welke gegevens?</a></li>
+          <li><a href="#waarom">Waarom verwerken?</a></li>
+          <li><a href="#bewaartermijnen">Bewaartermijnen</a></li>
+          <li><a href="#derden">Delen met derden</a></li>
+          <li><a href="#cookies">Cookies</a></li>
+          <li><a href="#rechten">Jouw rechten</a></li>
+          <li><a href="#klacht">Klacht indienen</a></li>
+          <li><a href="#beveiliging">Beveiliging</a></li>
+          <li><a href="#wijzigingen">Wijzigingen</a></li>
+        </ul>
+      </nav>
 
-    <!-- Content -->
-    <main class="prose">
+      <div class="prose">
 
-      <h2 id="verantwoordelijke">Verwerkingsverantwoordelijke</h2>
-      <div class="contact-card">
-        <p><strong>RankEngine</strong></p>
-        <p>Koningsstraat 49, 1432 PL Aalsmeer</p>
-        <p>Telefoon: <a href="tel:+31643859989">06-43 85 99 89</a></p>
-        <p>E-mail: <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a></p>
-        <p>KVK: 94381143 · BTW: NL005080200B96</p>
-      </div>
-
-      <h2 id="gegevens">Welke gegevens verzamelen wij?</h2>
-      <p>RankEngine verwerkt persoonsgegevens die je zelf verstrekt, bijvoorbeeld via het contactformulier, per e-mail of telefonisch:</p>
-      <ul>
-        <li>Voor- en achternaam</li>
-        <li>Bedrijfsnaam</li>
-        <li>E-mailadres</li>
-        <li>Telefoonnummer</li>
-        <li>Informatie over je bedrijf en online marketing activiteiten (voor dienstverlening)</li>
-      </ul>
-
-      <h2 id="waarom">Waarom verwerken wij je gegevens?</h2>
-      <table class="privacy-table">
-        <thead>
-          <tr><th>Doel</th><th>Grondslag</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Beantwoorden van contactverzoeken en offertes</td><td>Gerechtvaardigd belang</td></tr>
-          <tr><td>Uitvoering van de overeenkomst (dienstverlening)</td><td>Uitvoering overeenkomst</td></tr>
-          <tr><td>Facturatie en administratie</td><td>Wettelijke verplichting</td></tr>
-          <tr><td>Nieuwsbrief of marketingupdates</td><td>Toestemming (alleen na opt-in)</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="bewaartermijnen">Bewaartermijnen</h2>
-      <table class="privacy-table">
-        <thead>
-          <tr><th>Type gegeven</th><th>Bewaartermijn</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Klantgegevens en communicatie</td><td>2 jaar na einde samenwerking</td></tr>
-          <tr><td>Facturen en financiële administratie</td><td>7 jaar (wettelijke bewaarplicht)</td></tr>
-          <tr><td>Contactverzoeken zonder vervolg</td><td>1 jaar</td></tr>
-        </tbody>
-      </table>
-
-      <h2 id="derden">Delen met derden</h2>
-      <p>RankEngine verkoopt je gegevens nooit aan derden. Voor de dienstverlening maken wij gebruik van platforms van derden, waaronder:</p>
-      <ul>
-        <li><strong>Google</strong> (Google Ads, Google Analytics) - voor advertentie- en analysediensten</li>
-        <li><strong>Meta</strong> (Facebook, Instagram) - voor advertentiediensten</li>
-        <li><strong>Boekhoudpakket</strong> - voor facturatie en financiële administratie</li>
-      </ul>
-      <p>Met verwerkers die namens ons persoonsgegevens verwerken, zijn verwerkersovereenkomsten afgesloten.</p>
-
-      <h2 id="cookies">Cookies</h2>
-      <p>De RankEngine website kan gebruik maken van analytische cookies (zoals Google Analytics) om websitebezoek te meten. Bij gebruik van niet-functionele cookies wordt een cookiebanner getoond en wordt toestemming gevraagd.</p>
-
-      <h2 id="rechten">Jouw rechten</h2>
-      <div class="rights-grid">
-        <div class="right-item">
-          <strong>Inzage</strong>
-          <span>Opvragen welke gegevens wij van je bewaren.</span>
+        <h2 id="verantwoordelijke">Verwerkingsverantwoordelijke</h2>
+        <div class="contact-card">
+          <p><strong>RankEngine</strong></p>
+          <p>Koningsstraat 49, 1432 PL Aalsmeer</p>
+          <p>Telefoon: <a href="tel:+31643859989">06-43 85 99 89</a></p>
+          <p>E-mail: <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a></p>
+          <p>KVK: 94381143 · BTW: NL005080200B96</p>
         </div>
-        <div class="right-item">
-          <strong>Correctie</strong>
-          <span>Onjuiste gegevens laten aanpassen.</span>
-        </div>
-        <div class="right-item">
-          <strong>Verwijdering</strong>
-          <span>Verzoeken om verwijdering van je gegevens.</span>
-        </div>
-        <div class="right-item">
-          <strong>Beperking</strong>
-          <span>Verwerking tijdelijk laten beperken.</span>
-        </div>
-        <div class="right-item">
-          <strong>Bezwaar</strong>
-          <span>Bezwaar maken tegen verwerking op basis van gerechtvaardigd belang.</span>
-        </div>
-        <div class="right-item">
-          <strong>Dataportabiliteit</strong>
-          <span>Je gegevens in een gangbaar formaat opvragen.</span>
-        </div>
-      </div>
-      <p>Stuur een verzoek naar <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>. Wij reageren binnen 4 weken.</p>
 
-      <h2 id="klacht">Klacht indienen</h2>
-      <p>Ben je niet tevreden over hoe wij met je gegevens omgaan? Dan heb je het recht om een klacht in te dienen bij de toezichthouder:</p>
-      <div class="ap-banner">
-        <div>
+        <h2 id="gegevens">Welke gegevens verzamelen wij?</h2>
+        <p>RankEngine verwerkt persoonsgegevens die je zelf verstrekt, bijvoorbeeld via het contactformulier, per e-mail of telefonisch:</p>
+        <ul>
+          <li>Voor- en achternaam</li>
+          <li>Bedrijfsnaam</li>
+          <li>E-mailadres</li>
+          <li>Telefoonnummer</li>
+          <li>Informatie over je bedrijf en online marketing activiteiten (voor dienstverlening)</li>
+        </ul>
+
+        <h2 id="waarom">Waarom verwerken wij je gegevens?</h2>
+        <table class="privacy-table">
+          <thead>
+            <tr><th>Doel</th><th>Grondslag</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Beantwoorden van contactverzoeken en offertes</td><td>Gerechtvaardigd belang</td></tr>
+            <tr><td>Uitvoering van de overeenkomst (dienstverlening)</td><td>Uitvoering overeenkomst</td></tr>
+            <tr><td>Facturatie en administratie</td><td>Wettelijke verplichting</td></tr>
+            <tr><td>Nieuwsbrief of marketingupdates</td><td>Toestemming (alleen na opt-in)</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="bewaartermijnen">Bewaartermijnen</h2>
+        <table class="privacy-table">
+          <thead>
+            <tr><th>Type gegeven</th><th>Bewaartermijn</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Klantgegevens en communicatie</td><td>2 jaar na einde samenwerking</td></tr>
+            <tr><td>Facturen en financiële administratie</td><td>7 jaar (wettelijke bewaarplicht)</td></tr>
+            <tr><td>Contactverzoeken zonder vervolg</td><td>1 jaar</td></tr>
+          </tbody>
+        </table>
+
+        <h2 id="derden">Delen met derden</h2>
+        <p>RankEngine verkoopt je gegevens nooit aan derden. Voor de dienstverlening maken wij gebruik van platforms van derden, waaronder:</p>
+        <ul>
+          <li><strong>Google</strong> (Google Ads, Google Analytics) — voor advertentie- en analysediensten</li>
+          <li><strong>Meta</strong> (Facebook, Instagram) — voor advertentiediensten</li>
+          <li><strong>Boekhoudpakket</strong> — voor facturatie en financiële administratie</li>
+        </ul>
+        <p>Met verwerkers die namens ons persoonsgegevens verwerken, zijn verwerkersovereenkomsten afgesloten.</p>
+
+        <h2 id="cookies">Cookies</h2>
+        <p>De RankEngine website kan gebruik maken van analytische cookies (zoals Google Analytics) om websitebezoek te meten. Bij gebruik van niet-functionele cookies wordt een cookiebanner getoond en wordt toestemming gevraagd.</p>
+
+        <h2 id="rechten">Jouw rechten</h2>
+        <div class="rights-grid">
+          <div class="right-item">
+            <strong>Inzage</strong>
+            <span>Opvragen welke gegevens wij van je bewaren.</span>
+          </div>
+          <div class="right-item">
+            <strong>Correctie</strong>
+            <span>Onjuiste gegevens laten aanpassen.</span>
+          </div>
+          <div class="right-item">
+            <strong>Verwijdering</strong>
+            <span>Verzoeken om verwijdering van je gegevens.</span>
+          </div>
+          <div class="right-item">
+            <strong>Beperking</strong>
+            <span>Verwerking tijdelijk laten beperken.</span>
+          </div>
+          <div class="right-item">
+            <strong>Bezwaar</strong>
+            <span>Bezwaar maken tegen verwerking op basis van gerechtvaardigd belang.</span>
+          </div>
+          <div class="right-item">
+            <strong>Dataportabiliteit</strong>
+            <span>Je gegevens in een gangbaar formaat opvragen.</span>
+          </div>
+        </div>
+        <p>Stuur een verzoek naar <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>. Wij reageren binnen 4 weken.</p>
+
+        <h2 id="klacht">Klacht indienen</h2>
+        <p>Ben je niet tevreden over hoe wij met je gegevens omgaan? Dan heb je het recht om een klacht in te dienen bij de toezichthouder:</p>
+        <div class="ap-banner">
           <strong>Autoriteit Persoonsgegevens</strong><br>
           <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">www.autoriteitpersoonsgegevens.nl</a>
         </div>
+
+        <h2 id="beveiliging">Beveiliging</h2>
+        <p>RankEngine neemt passende technische en organisatorische maatregelen om je persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik.</p>
+
+        <h2 id="wijzigingen">Wijzigingen</h2>
+        <p>Dit privacybeleid kan worden aangepast. De meest actuele versie is altijd beschikbaar op <a href="https://rankengine.nl/privacy.html">rankengine.nl/privacy.html</a>. Bij ingrijpende wijzigingen worden actieve klanten per e-mail geïnformeerd.</p>
+
       </div>
+    </div>
 
-      <h2 id="beveiliging">Beveiliging</h2>
-      <p>RankEngine neemt passende technische en organisatorische maatregelen om je persoonsgegevens te beschermen tegen ongeoorloofde toegang, verlies of misbruik.</p>
-
-      <h2 id="wijzigingen">Wijzigingen</h2>
-      <p>Dit privacybeleid kan worden aangepast. De meest actuele versie is altijd beschikbaar op <a href="https://rankengine.nl/privacy.html">rankengine.nl/privacy.html</a>. Bij ingrijpende wijzigingen worden actieve klanten per e-mail geïnformeerd.</p>
-
-    </main>
-  </div>
-</div>
-
-<footer class="sub-footer">
-  <div class="wrap sub-footer-inner">
-    <span>© 2026 RankEngine · KvK 94381143</span>
-    <div class="sub-footer-links">
-      <a href="/privacy.html" aria-current="page">Privacybeleid</a>
-      <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
+    <div class="board-footer">
+      <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
+      <span><a href="/privacy.html" aria-current="page">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></span>
     </div>
   </div>
-</footer>
+</main>
+
+<div class="mobile-bar" role="navigation" aria-label="Snelle acties">
+  <a href="tel:+31643859989">Bellen</a>
+  <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
+  <a href="/#contact">Gratis scan →</a>
+</div>
 
 <script>
-// Highlight active TOC item on scroll
-(function() {
-  const links = document.querySelectorAll('.toc-list a');
-  const headings = Array.from(document.querySelectorAll('.prose h2[id]'));
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var panel = document.getElementById('navMobilePanel');
+  if (!toggle) return;
+  toggle.addEventListener('click', function(){
+    var open = panel.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Menu openen');
+    });
+  });
+})();
+
+(function(){
+  var links = document.querySelectorAll('.toc-list a');
+  var headings = Array.from(document.querySelectorAll('.prose h2[id]'));
   if (!links.length || !headings.length) return;
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => l.classList.remove('active'));
-        const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){
+        links.forEach(function(l){ l.classList.remove('active'); });
+        var active = document.querySelector('.toc-list a[href="#' + e.target.id + '"]');
         if (active) active.classList.add('active');
       }
     });
   }, { rootMargin: '-10% 0px -80% 0px' });
-  headings.forEach(h => io.observe(h));
+  headings.forEach(function(h){ io.observe(h); });
 })();
 </script>
 
-<script>
-</script>
 </body>
 </html>
