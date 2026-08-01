@@ -1,0 +1,199 @@
+/* ============================================================
+   RankEngine — Lumina Flow (homepage-only design)
+   1:1 vertaling van de Stitch-mockup. Alleen gebruikt door
+   index.html — andere pagina's blijven op css/home.css staan.
+   ============================================================ */
+
+:root{
+  --surface: #f8f9ff;
+  --surface-low: #eff4ff;
+  --surface-container: #e5eeff;
+  --white: #ffffff;
+
+  --ink: #0b1c30;
+  --ink-variant: #464554;
+  --outline-variant: #d7d5e4;
+
+  --primary: #4648d4;
+  --primary-soft: rgba(70,72,212,.08);
+  --secondary: #b4136d;
+  --secondary-soft: rgba(180,19,109,.08);
+  --tertiary: #006577;
+  --tertiary-soft: rgba(0,101,119,.08);
+
+  --gradient-primary: linear-gradient(135deg, #4648d4 0%, #b4136d 100%);
+
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  --shadow-card: 0 10px 30px rgba(70,72,212,.10);
+  --shadow-btn: 0 12px 24px rgba(70,72,212,.24);
+
+  --font-head: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+
+  --max: 1280px;
+  --gutter-desktop: 40px;
+  --gutter-mobile: 20px;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body.lumina{ margin:0; background:var(--surface); color:var(--ink); font-family:var(--font-body); font-size:16px; line-height:1.6; overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; }
+h1,h2,h3{ font-family:var(--font-head); margin:0; color:var(--ink); }
+p{ margin:0; }
+ul{ margin:0; padding:0; list-style:none; }
+
+.lu-wrap{ max-width:var(--max); margin-inline:auto; padding-inline:var(--gutter-mobile); }
+@media (min-width:1024px){ .lu-wrap{ padding-inline:var(--gutter-desktop); } }
+
+.visually-hidden{ position:absolute; left:-9999px; }
+.skip-link{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--ink); color:var(--white); padding:12px 18px; border-radius:0 0 8px 0; font-family:var(--font-head); font-size:14px; }
+.skip-link:focus{ left:0; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+}
+:focus-visible{ outline:2px solid var(--primary); outline-offset:2px; }
+
+/* -------------------------------------------------- reveal on scroll */
+[data-reveal]{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+[data-reveal].in{ opacity:1; transform:translateY(0); }
+
+/* -------------------------------------------------- buttons */
+.lu-btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; border-radius:.75rem; border:none; cursor:pointer; font-family:var(--font-head); font-weight:700; font-size:15px; padding:14px 28px; transition:transform .2s ease, box-shadow .2s ease; white-space:nowrap; }
+.lu-btn:active{ transform:scale(.97); }
+.lu-btn-primary{ background:var(--gradient-primary); color:var(--white); box-shadow:var(--shadow-btn); }
+.lu-btn-primary:hover{ box-shadow:0 16px 32px rgba(70,72,212,.32); transform:scale(1.02); }
+.lu-btn-pill{ border-radius:999px; padding:10px 22px; font-size:14px; }
+.lu-btn-block{ width:100%; }
+
+/* -------------------------------------------------- nav */
+.lu-nav{ position:sticky; top:0; z-index:100; background:rgba(248,249,255,.85); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); box-shadow:var(--shadow-card); }
+.lu-nav-inner{ display:flex; align-items:center; justify-content:space-between; height:80px; }
+.lu-logo{ font-family:var(--font-head); font-weight:800; font-size:20px; color:var(--primary); letter-spacing:-.01em; }
+.lu-nav-links{ display:none; align-items:center; gap:32px; }
+.lu-nav-links a{ font-family:var(--font-head); font-weight:600; font-size:14px; color:var(--ink-variant); }
+.lu-nav-links a:hover{ color:var(--primary); }
+.lu-nav-toggle{ display:flex; background:none; border:none; color:var(--primary); padding:4px; }
+@media (min-width:768px){
+  .lu-nav-links{ display:flex; }
+  .lu-nav-toggle{ display:none; }
+}
+.lu-mobile-panel{ display:none; flex-direction:column; gap:4px; padding:8px var(--gutter-mobile) 20px; border-top:1px solid var(--outline-variant); }
+.lu-mobile-panel.is-open{ display:flex; }
+.lu-mobile-panel a{ font-family:var(--font-head); font-weight:600; font-size:15px; color:var(--ink); padding:12px 4px; }
+.lu-mobile-panel .lu-btn{ margin-top:8px; }
+@media (min-width:768px){ .lu-mobile-panel{ display:none !important; } }
+
+/* -------------------------------------------------- hero */
+.lu-hero{ position:relative; padding-top:96px; padding-bottom:128px; overflow:hidden; z-index:0; }
+.lu-hero-decor{ position:absolute; inset:0; z-index:0; pointer-events:none; opacity:.2; display:none; }
+@media (min-width:1024px){ .lu-hero-decor{ display:block; } }
+.lu-flow-path{ stroke-dasharray:10; animation:lu-dash 30s linear infinite; }
+@keyframes lu-dash{ to{ stroke-dashoffset:-1000; } }
+
+.lu-hero-grid{ position:relative; z-index:1; display:grid; gap:64px; align-items:center; }
+@media (min-width:1024px){ .lu-hero-grid{ grid-template-columns:1fr 1fr; } }
+
+.lu-hero-h1{ font-size:32px; font-weight:800; letter-spacing:-.02em; line-height:1.2; margin-bottom:32px; }
+@media (min-width:640px){ .lu-hero-h1{ font-size:40px; } }
+@media (min-width:1024px){ .lu-hero-h1{ font-size:48px; line-height:56px; } }
+.lu-hero-h1 span{ color:var(--primary); }
+
+.lu-hero-checks{ display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
+.lu-hero-checks li{ display:flex; align-items:center; gap:12px; font-size:18px; color:var(--ink-variant); }
+.lu-hero-checks svg{ flex-shrink:0; color:var(--primary); }
+
+.lu-hero-visual{ position:relative; }
+.lu-hero-photo-card{ position:relative; border-radius:var(--radius-2xl); overflow:hidden; aspect-ratio:1/1; padding:16px; background:rgba(255,255,255,.7); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.3); box-shadow:var(--shadow-card); }
+.lu-hero-photo-card img{ width:100%; height:100%; object-fit:cover; object-position:top center; border-radius:calc(var(--radius-2xl) - 16px); }
+.lu-hero-badge{ position:absolute; left:-24px; bottom:-24px; padding:24px; border-radius:var(--radius-xl); background:rgba(255,255,255,.7); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.3); box-shadow:var(--shadow-card); animation:lu-bounce 3s infinite; }
+.lu-hero-badge strong{ display:block; font-family:var(--font-head); font-weight:800; font-size:24px; color:var(--primary); }
+.lu-hero-badge span{ font-size:12px; font-weight:600; color:var(--ink-variant); }
+@keyframes lu-bounce{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
+
+/* -------------------------------------------------- section scaffolding */
+.lu-section{ position:relative; padding-block:96px; z-index:1; }
+.lu-section-head{ margin-bottom:64px; }
+.lu-section-head.is-center{ text-align:center; }
+.lu-h2{ font-size:26px; line-height:1.25; font-weight:700; margin-bottom:16px; }
+@media (min-width:768px){ .lu-h2{ font-size:32px; } }
+.lu-lede{ font-size:18px; color:var(--ink-variant); }
+
+.lu-card{ background:rgba(255,255,255,.7); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,.3); box-shadow:var(--shadow-card); }
+
+/* -------------------------------------------------- wie ben ik */
+.lu-wieben{ background:rgba(229,238,255,.5); }
+.lu-wieben-inner{ max-width:48rem; }
+.lu-wieben p{ font-size:18px; color:var(--ink-variant); line-height:1.7; margin-bottom:24px; }
+.lu-wieben p:last-child{ margin-bottom:0; }
+
+/* -------------------------------------------------- diensten */
+.lu-services-grid{ display:grid; gap:32px; }
+@media (min-width:768px){ .lu-services-grid{ grid-template-columns:repeat(3,1fr); } }
+.lu-service-card{ padding:32px; border-radius:var(--radius-xl); border-top:4px solid var(--primary); transition:transform .3s ease; }
+.lu-service-card:hover{ transform:translateY(-8px); }
+.lu-service-card[data-accent="secondary"]{ border-top-color:var(--secondary); }
+.lu-service-card[data-accent="tertiary"]{ border-top-color:var(--tertiary); }
+.lu-service-icon{ width:64px; height:64px; border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; margin-bottom:24px; background:var(--primary-soft); color:var(--primary); }
+.lu-service-card[data-accent="secondary"] .lu-service-icon{ background:var(--secondary-soft); color:var(--secondary); }
+.lu-service-card[data-accent="tertiary"] .lu-service-icon{ background:var(--tertiary-soft); color:var(--tertiary); }
+.lu-service-card h3{ font-size:22px; font-weight:600; margin-bottom:16px; }
+.lu-service-card p{ font-size:15px; color:var(--ink-variant); margin-bottom:24px; }
+.lu-service-list{ display:flex; flex-direction:column; gap:10px; }
+.lu-service-list li{ display:flex; align-items:center; gap:8px; font-family:var(--font-head); font-weight:600; font-size:13px; color:var(--ink); }
+.lu-service-list svg{ flex-shrink:0; }
+.lu-service-card[data-accent="primary"] .lu-service-list svg{ color:var(--primary); }
+.lu-service-card[data-accent="secondary"] .lu-service-list svg{ color:var(--secondary); }
+.lu-service-card[data-accent="tertiary"] .lu-service-list svg{ color:var(--tertiary); }
+
+/* -------------------------------------------------- stappenplan */
+.lu-process-grid{ display:grid; gap:16px; }
+@media (min-width:768px){ .lu-process-grid{ grid-template-columns:repeat(4,1fr); } }
+.lu-process-step{ background:var(--white); padding:32px; border-radius:var(--radius-xl); box-shadow:0 1px 2px rgba(11,28,48,.06); border:1px solid rgba(199,196,215,.3); text-align:center; }
+@media (min-width:768px){ .lu-process-step:nth-child(2), .lu-process-step:nth-child(4){ transform:translateY(32px); } }
+.lu-process-num{ width:40px; height:40px; border-radius:50%; background:var(--primary); color:var(--white); font-family:var(--font-head); font-weight:700; font-size:16px; display:flex; align-items:center; justify-content:center; margin:0 auto 16px; }
+.lu-process-step h3{ font-size:18px; font-weight:600; margin-bottom:8px; }
+.lu-process-step p{ font-size:14px; color:var(--ink-variant); }
+
+/* -------------------------------------------------- testimonial */
+.lu-testimonial-card{ padding:32px; border-radius:2.5rem; display:flex; flex-direction:column; gap:32px; align-items:center; text-align:center; }
+@media (min-width:768px){ .lu-testimonial-card{ flex-direction:row; text-align:left; padding:48px; } }
+.lu-avatar{ width:96px; height:96px; border-radius:50%; flex-shrink:0; background:var(--gradient-primary); color:var(--white); font-family:var(--font-head); font-weight:800; font-size:32px; display:flex; align-items:center; justify-content:center; }
+.lu-stars{ display:flex; gap:2px; color:var(--secondary); margin-bottom:16px; justify-content:center; }
+@media (min-width:768px){ .lu-stars{ justify-content:flex-start; } }
+.lu-testimonial-card blockquote{ font-family:var(--font-head); font-size:20px; font-style:italic; color:var(--ink); line-height:1.5; margin-bottom:16px; }
+.lu-testimonial-card cite{ font-family:var(--font-head); font-weight:600; font-size:14px; color:var(--primary); font-style:normal; }
+
+/* -------------------------------------------------- contact */
+.lu-contact-grid{ display:grid; gap:64px; }
+@media (min-width:1024px){ .lu-contact-grid{ grid-template-columns:1fr 1fr; } }
+.lu-contact-info{ display:flex; flex-direction:column; gap:24px; margin-top:48px; }
+.lu-contact-info-row{ display:flex; align-items:center; gap:16px; }
+.lu-contact-icon{ width:48px; height:48px; border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; background:var(--primary-soft); color:var(--primary); flex-shrink:0; }
+.lu-contact-info-row:nth-child(2) .lu-contact-icon{ background:var(--secondary-soft); color:var(--secondary); }
+.lu-contact-info-row span{ font-family:var(--font-head); font-weight:600; font-size:18px; }
+.lu-contact-form-card{ padding:40px; border-radius:var(--radius-xl); }
+.lu-field{ display:flex; flex-direction:column; gap:8px; margin-bottom:24px; }
+.lu-field label{ font-family:var(--font-head); font-weight:600; font-size:12px; color:var(--ink); }
+.lu-input, .lu-textarea{ width:100%; height:48px; padding:0 16px; border-radius:var(--radius-lg); border:none; background:var(--surface-container); font-family:var(--font-body); font-size:14px; color:var(--ink); }
+.lu-textarea{ height:auto; padding:14px 16px; resize:vertical; min-height:96px; }
+.lu-input:focus, .lu-textarea:focus{ outline:none; box-shadow:0 0 0 2px var(--primary); }
+.lu-form-status{ font-size:13px; color:var(--tertiary); min-height:18px; margin-top:8px; }
+.lu-form-status.is-error{ color:#ba1a1a; }
+
+/* -------------------------------------------------- footer */
+.lu-footer{ padding-block:64px 32px; background:var(--surface-low); margin-top:80px; }
+.lu-footer-inner{ display:flex; flex-direction:column; gap:24px; align-items:center; text-align:center; }
+@media (min-width:768px){ .lu-footer-inner{ flex-direction:row; justify-content:space-between; text-align:left; } }
+.lu-footer-logo{ font-family:var(--font-head); font-weight:800; font-size:20px; color:var(--primary); }
+.lu-footer-links{ display:flex; flex-wrap:wrap; justify-content:center; gap:32px; }
+.lu-footer-links a{ font-size:14px; color:var(--ink-variant); }
+.lu-footer-links a:hover{ color:var(--secondary); }
+.lu-footer-fine{ font-size:14px; color:var(--ink-variant); }

@@ -168,25 +168,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
 <!-- Google Fonts asynchroon laden (render-blocking verwijderd) -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" /></noscript>
 
 <!-- Kritieke CSS inline (boven de vouw) -->
 <style>
-:root{--paper:#F2EFE7;--ink:#14140F;--accent:#C4472A}
+:root{--surface:#f8f9ff;--ink:#0b1c30;--primary:#4648d4}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body.home{background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:hidden}
+body.lumina{background:var(--surface);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
+.lu-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,255,.85)}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/home.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=8" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=1" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=1" /></noscript>
 </head>
-<body class="home">
+<body class="lumina">
 
 <a class="skip-link" href="#main-content">Direct naar inhoud</a>
 
@@ -194,421 +194,216 @@ a{color:inherit;text-decoration:none}
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q9H46" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- NAV -->
-<header class="site-nav" id="top">
-  <div class="wrap nav-inner">
-    <a class="logo" href="#top">RankEngine<span class="dot">.</span></a>
-    <ul class="nav-links" role="list">
-      <li><a href="#aanpak">Aanpak</a></li>
-      <li class="has-dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-        <ul class="nav-dropdown" role="menu">
-          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-          <li><a href="/seo.html" role="menuitem">SEO</a></li>
-          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-          <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-          <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-        </ul>
-      </li>
-      <li><a href="#prijzen">Prijzen</a></li>
-      <li><a href="#cases">Cases</a></li>
-      <li><a href="#thomas">Thomas</a></li>
-    </ul>
-    <div class="nav-right">
-      <a class="nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
-      <a class="btn btn-dark nav-cta" href="#contact">Gratis scan →</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
-        <span></span><span></span>
-      </button>
-    </div>
+<header class="lu-nav" id="top">
+  <div class="lu-wrap lu-nav-inner">
+    <a class="lu-logo" href="#top">RankEngine</a>
+    <nav class="lu-nav-links">
+      <a href="#diensten">Diensten</a>
+      <a href="#hoe-het-werkt">Stappenplan</a>
+      <a href="#wie-ben-ik">Over mij</a>
+      <a class="lu-btn lu-btn-primary lu-btn-pill" href="#contact">Laten we beginnen</a>
+    </nav>
+    <button class="lu-nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
-  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
-    <a href="#aanpak">Aanpak</a>
-    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-    <ul class="nav-dropdown" role="menu">
-      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-      <li><a href="/seo.html" role="menuitem">SEO</a></li>
-      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-      <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-      <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-    </ul>
-    <a href="#prijzen">Prijzen</a>
-    <a href="#cases">Cases</a>
-    <a href="#thomas">Thomas</a>
-    <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
-    <a href="#contact">Gratis scan →</a>
+  <nav class="lu-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+    <a href="#diensten">Diensten</a>
+    <a href="#hoe-het-werkt">Stappenplan</a>
+    <a href="#wie-ben-ik">Over mij</a>
+    <a class="lu-btn lu-btn-primary lu-btn-block" href="#contact">Laten we beginnen</a>
   </nav>
 </header>
 
 <main id="main-content">
-  <div class="hero-board">
 
-    <!-- HERO -->
-    <section class="hero-grid hero-grid--solo">
-      <div class="hero-copy">
-        <span class="kicker hero-eyebrow">Voor starters, zzp'ers en kleine bedrijven</span>
-        <h1 class="hero-h1"><span class="hero-h1-text" id="heroHeadline">Freelance marketing. Geen duur marketingbureau.</span></h1>
-        <p class="hero-sub">Ik bouw en beheer je Google Ads en SEO zelf. Je spreekt met de persoon die het werk doet, je ziet elke maand precies wat er is gebeurd en waarom. Maximaal twaalf klanten.</p>
-        <div class="hero-cta-row">
-          <a class="btn btn-primary" href="#contact">Gratis scan van je account →</a>
-          <a class="btn btn-ghost" href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp direct</a>
-          <span class="hero-note">Antwoord binnen 4 uur op werkdagen</span>
-        </div>
+  <!-- HERO -->
+  <section class="lu-hero">
+    <div class="lu-hero-decor" aria-hidden="true">
+      <svg width="100%" height="100%" viewBox="0 0 1440 1000" preserveAspectRatio="none" style="position:absolute;inset:0;">
+        <path class="lu-flow-path" d="M200 100 C 600 400, 800 100, 1200 600 S 200 900, 400 1300" stroke="url(#lu-flow-grad)" stroke-width="4" fill="none"/>
+        <defs><linearGradient id="lu-flow-grad" x1="0" y1="0" x2="0" y2="1000"><stop stop-color="#4648d4"/><stop offset="1" stop-color="#b4136d"/></linearGradient></defs>
+      </svg>
+    </div>
+    <div class="lu-wrap lu-hero-grid">
+      <div>
+        <h1 class="lu-hero-h1">Online marketing <span>simpel gemaakt</span> voor jouw start-up.</h1>
+        <ul class="lu-hero-checks">
+          <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Geen moeilijke termen, wel meer klanten</li>
+          <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Duidelijk stappenplan</li>
+          <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Persoonlijke aanpak</li>
+        </ul>
+        <a class="lu-btn lu-btn-primary" href="#contact">Laten we beginnen</a>
       </div>
-    </section>
-
-    <!-- TICKER -->
-    <div class="ticker-strip" aria-hidden="true">
-      <div class="ticker-track">
-        <span>Google Ads</span><span class="sep">/</span><span>SEO</span><span class="sep">/</span><span>GEO &amp; AI-optimalisatie</span><span class="sep">/</span><span>Social Media Ads</span><span class="sep">/</span><span>B2B Marketing</span><span class="sep">/</span>
-        <span>Google Ads</span><span class="sep">/</span><span>SEO</span><span class="sep">/</span><span>GEO &amp; AI-optimalisatie</span><span class="sep">/</span><span>Social Media Ads</span><span class="sep">/</span><span>B2B Marketing</span><span class="sep">/</span>
+      <div class="lu-hero-visual">
+        <div class="lu-hero-photo-card">
+          <picture>
+            <source type="image/webp" srcset="/images/thomas-400.webp" />
+            <img src="/images/thomas.jpg" alt="Thomas Roozemond, oprichter van RankEngine" width="600" height="600" loading="eager" fetchpriority="high" />
+          </picture>
+        </div>
+        <div class="lu-hero-badge">
+          <strong>8 jaar</strong>
+          <span>ervaring in online marketing</span>
+        </div>
       </div>
     </div>
+  </section>
 
-    <!-- DRIE MANIEREN -->
-    <section class="board-section" id="vergelijking">
-      <div class="board-section-head">
-        <h2>Drie manieren om het te regelen</h2>
-        <span class="meta">Eerlijk vergeleken</span>
+  <!-- WIE BEN IK -->
+  <section class="lu-section lu-wieben" id="wie-ben-ik">
+    <div class="lu-wrap">
+      <div class="lu-wieben-inner" data-reveal>
+        <h2 class="lu-h2">Hoi, ik ben jouw partner in groei</h2>
+        <p>Ik help beginnende ondernemers om online zichtbaar te worden zonder dat ze hoeven te verdrinken in technische praatjes. Bij RankEngine geloven we dat marketing begrijpelijk en eerlijk moet zijn.</p>
+        <p>Samen bouwen we aan een fundament dat niet alleen vandaag werkt, maar meegroeit met jouw succes. Jouw ambitie is de motor, ik zorg voor de juiste weg.</p>
       </div>
-      <div class="compare-grid">
-        <article class="compare-card">
-          <div class="tag">Zelf doen</div>
-          <h3>Tijd die je niet hebt</h3>
-          <p>Ads en SEO bijhouden kost tientallen uren per maand. Die uren gaan van je eigen werk af, en fouten kosten mediabudget.</p>
-          <div class="foot">€0 beheer · 20+ uur p/mnd</div>
+    </div>
+  </section>
+
+  <!-- DIENSTEN -->
+  <section class="lu-section" id="diensten">
+    <div class="lu-wrap">
+      <div class="lu-section-head is-center" data-reveal>
+        <h2 class="lu-h2">Wat kan ik voor je betekenen?</h2>
+        <p class="lu-lede">Duidelijke pakketten zonder verborgen addertjes onder het gras.</p>
+      </div>
+      <div class="lu-services-grid">
+        <article class="lu-service-card lu-card" data-accent="primary" data-reveal>
+          <div class="lu-service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4.5-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <h3>Hoger in de zoekresultaten</h3>
+          <p>We zorgen dat jouw website gevonden wordt door de mensen die echt op zoek zijn naar jouw product of dienst.</p>
+          <ul class="lu-service-list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Zoekwoord onderzoek</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Tekst optimalisatie</li>
+          </ul>
         </article>
-        <article class="compare-card is-win">
-          <div class="tag">RankEngine</div>
-          <h3>Direct contact, geen laag ertussen</h3>
-          <p>Je belt of mailt rechtstreeks met mij. Ik beheer je campagnes zelf en leg elke maand uit wat er is gedaan en waarom.</p>
-          <div class="foot">v.a. €249 p/mnd · 1 mnd opzeg</div>
+        <article class="lu-service-card lu-card" data-accent="secondary" data-reveal>
+          <div class="lu-service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M5 3l15 6.5-6.2 2.3L11.5 18 5 3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h3>Gevonden worden in Google</h3>
+          <p>Direct bovenaan staan? Met slimme advertenties bereik je precies jouw doelgroep op het juiste moment.</p>
+          <ul class="lu-service-list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Campagne beheer</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Dagelijkse monitoring</li>
+          </ul>
         </article>
-        <article class="compare-card">
-          <div class="tag">Groot bureau</div>
-          <h3>Eén van de honderd</h3>
-          <p>Je krijgt een accountmanager als aanspreekpunt, maar het werk gaat naar wisselende medewerkers, vaak junior.</p>
-          <div class="foot">v.a. €1.500 p/mnd · 12 mnd</div>
+        <article class="lu-service-card lu-card" data-accent="tertiary" data-reveal>
+          <div class="lu-service-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="2"/><path d="M9 12h6M9 8.5h6M9 15.5h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Slimme AI Hulp</h3>
+          <p>Bespaar tijd met moderne technieken. We automatiseren jouw marketing zodat jij je kunt focussen op ondernemen.</p>
+          <ul class="lu-service-list">
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> AI Content generatie</li>
+            <li><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8.5l3 3 7-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Automatische rapportage</li>
+          </ul>
         </article>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- HOE HET GAAT / AANPAK -->
-    <section class="board-section" id="aanpak">
-      <div class="board-section-head">
-        <h2>Hoe het gaat</h2>
+  <!-- STAPPENPLAN -->
+  <section class="lu-section" id="hoe-het-werkt" style="background:var(--surface-container);">
+    <div class="lu-wrap">
+      <div class="lu-section-head is-center" data-reveal>
+        <h2 class="lu-h2">Stappenplan naar succes</h2>
+        <p class="lu-lede">In 4 heldere stappen van idee naar resultaat.</p>
       </div>
-      <p class="board-section-sub" style="margin-bottom:8px;">Van eerste gesprek tot lopende campagne in ongeveer twee weken.</p>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="step-meta">Stap 01 · dag 1</div>
-          <h3>Gesprek van 20 min</h3>
-          <p>Wat verkoop je, aan wie, en wat mag een klant kosten. Ik zeg meteen of ik iets voor je kan betekenen.</p>
+      <div class="lu-process-grid">
+        <div class="lu-process-step" data-reveal>
+          <div class="lu-process-num">1</div>
+          <h3>Kennismaking</h3>
+          <p>We bespreken jouw doelen onder het genot van een (digitale) kop koffie.</p>
         </div>
-        <div class="process-step">
-          <div class="step-meta">Stap 02 · dag 2–4</div>
-          <h3>Scan &amp; plan</h3>
-          <p>Ik kijk in je account, site en zoekmarkt. Je krijgt een plan met kanaalkeuze, verwacht budget en vaste prijs.</p>
+        <div class="lu-process-step" data-reveal>
+          <div class="lu-process-num">2</div>
+          <h3>Plan van aanpak</h3>
+          <p>Ik maak een op maat gemaakt plan dat past bij jouw budget en ambities.</p>
         </div>
-        <div class="process-step">
-          <div class="step-meta">Stap 03 · week 2</div>
-          <h3>Bouwen &amp; live</h3>
-          <p>Tracking eerst, dan campagnes. Alles in jouw eigen accounts. Je blijft eigenaar van wat we bouwen.</p>
+        <div class="lu-process-step" data-reveal>
+          <div class="lu-process-num">3</div>
+          <h3>Campagne Live</h3>
+          <p>We zetten alles in gang en beginnen direct met het trekken van klanten.</p>
         </div>
-        <div class="process-step">
-          <div class="step-meta">Stap 04 · doorlopend</div>
-          <h3>Bijsturen &amp; uitleggen</h3>
-          <p>Wekelijks in het account, maandelijks een verslag in gewone taal. Bellen mag altijd tussendoor.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- WAT HET OPLEVERT / CASES -->
-    <section class="board-section" id="cases">
-      <div class="board-section-head">
-        <h2>Wat het oplevert</h2>
-        <span class="meta">Twee vertrekpunten</span>
-      </div>
-      <p class="board-section-sub" style="margin-bottom:24px;">Elke situatie is anders. Dit is hoe het traject er meestal uitziet, afhankelijk van waar je nu staat.</p>
-
-      <div class="scenario-tabs" role="tablist" aria-label="Scenario's">
-        <button class="scenario-tab is-active" id="scenarioTabA" role="tab" aria-selected="true" aria-controls="scenarioPanelA" data-target="scenarioPanelA">
-          <span class="tab-kicker">Scenario 1</span>Nog geen marketing
-        </button>
-        <button class="scenario-tab" id="scenarioTabB" role="tab" aria-selected="false" aria-controls="scenarioPanelB" data-target="scenarioPanelB">
-          <span class="tab-kicker">Scenario 2</span>Wel marketing, geen succes
-        </button>
-      </div>
-
-      <div class="scenario-panel" id="scenarioPanelA" role="tabpanel" aria-labelledby="scenarioTabA">
-        <div class="scenario-steps">
-          <div class="scenario-step">
-            <div class="step-meta">Startpunt</div>
-            <h3>Nog geen campagne</h3>
-            <p>Een lokale ondernemer, bijvoorbeeld een installateur of hovenier, heeft nog geen online marketing. Geen Google Ads, geen tracking, klanten komen nu via via.</p>
-          </div>
-          <div class="scenario-step">
-            <div class="step-meta">Aanpak</div>
-            <h3>Opbouw vanaf nul</h3>
-            <p>Ik richt conversietracking in en bouw een campagnestructuur rond de zoekopdrachten die al gebeuren, zodat elke euro budget meteen relevant wordt ingezet.</p>
-          </div>
-          <div class="scenario-step is-result">
-            <div class="step-meta">Resultaat</div>
-            <div class="result-value">€2 à €4</div>
-            <p>per lead, zodra de campagne binnen enkele weken draait. Indicatief, hangt af van branche en regio.</p>
-          </div>
+        <div class="lu-process-step" data-reveal>
+          <div class="lu-process-num">4</div>
+          <h3>Rapportage</h3>
+          <p>Je ziet precies wat het oplevert in begrijpelijke overzichten.</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="scenario-panel" id="scenarioPanelB" role="tabpanel" aria-labelledby="scenarioTabB" hidden>
-        <div class="scenario-steps">
-          <div class="scenario-step">
-            <div class="step-meta">Onderzoek</div>
-            <h3>Waar loopt het vast?</h3>
-            <p>Ik analyseer je huidige kanalen, de volledige funnel en de conversies. Vaak zit het probleem niet in het kanaal zelf, maar in hoe het is opgezet.</p>
+  <!-- TESTIMONIAL -->
+  <section class="lu-section">
+    <div class="lu-wrap">
+      <div class="lu-testimonial-card lu-card" data-reveal>
+        <div class="lu-avatar">L</div>
+        <div>
+          <div class="lu-stars" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4 1.3 6-5.4-3.2L4.6 17.2l1.3-6-4.6-4 6.1-.6z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4 1.3 6-5.4-3.2L4.6 17.2l1.3-6-4.6-4 6.1-.6z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4 1.3 6-5.4-3.2L4.6 17.2l1.3-6-4.6-4 6.1-.6z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4 1.3 6-5.4-3.2L4.6 17.2l1.3-6-4.6-4 6.1-.6z"/></svg>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.6 5.6 6.1.6-4.6 4 1.3 6-5.4-3.2L4.6 17.2l1.3-6-4.6-4 6.1-.6z"/></svg>
           </div>
-          <div class="scenario-step">
-            <div class="step-meta">Plan</div>
-            <h3>Concreet verbeterplan</h3>
-            <p>Op basis van dat onderzoek: wat blijft staan, wat wordt herbouwd en welke aanpassing het eerst het meeste oplevert.</p>
+          <blockquote>"Eindelijk iemand die me niet vermoeit met data en grafieken waar ik niks van begrijp. RankEngine heeft mijn start-up binnen 3 maanden op de kaart gezet!"</blockquote>
+          <cite>— Lisa, Founder van EcoBox</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="lu-section" id="contact">
+    <div class="lu-wrap lu-contact-grid">
+      <div data-reveal>
+        <h2 class="lu-h2">Klaar voor de volgende stap?</h2>
+        <p class="lu-lede">Stuur me een berichtje voor een gratis analyse van je huidige online aanwezigheid.</p>
+        <div class="lu-contact-info">
+          <div class="lu-contact-info-row">
+            <div class="lu-contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v3a2 2 0 01-2 2C10.5 19 5 13.5 5 6a2 2 0 011-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+            <span>06 43 85 99 89</span>
           </div>
-          <div class="scenario-step is-result">
-            <div class="step-meta">Resultaat</div>
-            <div class="result-value">Lagere kosten<br>per lead</div>
-            <p>en een hogere ROAS ten opzichte van de uitgangssituatie.</p>
+          <div class="lu-contact-info-row">
+            <div class="lu-contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1-5A8 8 0 1121 12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+            <span>Stuur een WhatsApp</span>
           </div>
         </div>
       </div>
-
-      <p class="placeholder-note results-note">* Indicatieve cijfers, resultaten kunnen variëren per branche en situatie.</p>
-    </section>
-
-    <!-- DIENSTEN & PRIJZEN + THOMAS -->
-    <section id="diensten">
-      <div class="diensten-grid">
-        <div class="diensten-col">
-          <h2 id="prijzen">Diensten &amp; vanaf-prijs</h2>
-          <p>Kies het profiel dat het beste bij je past. Onderstaande bedragen zijn een indicatie, geen vast pakket.</p>
-
-          <div class="scenario-tabs" role="tablist" aria-label="Prijsprofielen">
-            <button class="scenario-tab is-active" id="pricingTabStarter" role="tab" aria-selected="true" aria-controls="pricingPanelStarter" data-target="pricingPanelStarter">
-              <span class="tab-kicker">Profiel 1</span>Starter
-            </button>
-            <button class="scenario-tab" id="pricingTabZzp" role="tab" aria-selected="false" aria-controls="pricingPanelZzp" data-target="pricingPanelZzp">
-              <span class="tab-kicker">Profiel 2</span>ZZP
-            </button>
-            <button class="scenario-tab" id="pricingTabMkb" role="tab" aria-selected="false" aria-controls="pricingPanelMkb" data-target="pricingPanelMkb">
-              <span class="tab-kicker">Profiel 3</span>MKB
-            </button>
+      <div class="lu-contact-form-card lu-card" data-reveal>
+        <form id="contactForm" novalidate>
+          <div class="lu-field">
+            <label for="name">Je Naam</label>
+            <input class="lu-input" type="text" id="name" name="name" placeholder="Hoe mogen we je noemen?" autocomplete="name" required />
           </div>
-
-          <div class="scenario-panel" id="pricingPanelStarter" role="tabpanel" aria-labelledby="pricingTabStarter">
-            <div class="scenario-steps">
-              <div class="scenario-step">
-                <div class="step-meta">Voor wie</div>
-                <h3>Starter</h3>
-                <p>Net begonnen of nog weinig historie. We bouwen rustig op met één kanaal, met veel uitleg onderweg.</p>
-              </div>
-              <div class="scenario-step is-result">
-                <div class="step-meta">Opstartkosten</div>
-                <div class="result-value">v.a. €200</div>
-                <p>eenmalig, afhankelijk van kanaal en huidige situatie.</p>
-              </div>
-              <div class="scenario-step is-result">
-                <div class="step-meta">Maandtarief</div>
-                <div class="result-value">v.a. €249</div>
-                <p>per maand, exclusief mediabudget.</p>
-              </div>
-            </div>
+          <div class="lu-field">
+            <label for="email">E-mail</label>
+            <input class="lu-input" type="email" id="email" name="email" placeholder="jij@voorbeeld.nl" autocomplete="email" required />
           </div>
-
-          <div class="scenario-panel" id="pricingPanelZzp" role="tabpanel" aria-labelledby="pricingTabZzp" hidden>
-            <div class="scenario-steps">
-              <div class="scenario-step">
-                <div class="step-meta">Voor wie</div>
-                <h3>ZZP</h3>
-                <p>Een lopend bedrijf dat gestructureerd wil groeien, met ruimte voor één of twee kanalen naast elkaar.</p>
-              </div>
-              <div class="scenario-step is-result">
-                <div class="step-meta">Opstartkosten</div>
-                <div class="result-value">v.a. €400</div>
-                <p>eenmalig, afhankelijk van kanaal en huidige situatie.</p>
-              </div>
-              <div class="scenario-step is-result">
-                <div class="step-meta">Maandtarief</div>
-                <div class="result-value">v.a. €400</div>
-                <p>per maand, exclusief mediabudget.</p>
-              </div>
-            </div>
+          <div class="lu-field">
+            <label for="message">Waar kunnen we je mee helpen?</label>
+            <textarea class="lu-textarea" id="message" name="message" rows="4" placeholder="Vertel kort iets over jouw start-up..."></textarea>
           </div>
-
-          <div class="scenario-panel" id="pricingPanelMkb" role="tabpanel" aria-labelledby="pricingTabMkb" hidden>
-            <div class="scenario-steps">
-              <div class="scenario-step">
-                <div class="step-meta">Voor wie</div>
-                <h3>MKB</h3>
-                <p>Meerdere medewerkers of vestigingen, vaak meerdere kanalen tegelijk en meer afstemming nodig.</p>
-              </div>
-              <div class="scenario-step is-result">
-                <div class="step-meta">Opstartkosten</div>
-                <div class="result-value">v.a. €600</div>
-                <p>eenmalig, afhankelijk van kanaal en huidige situatie.</p>
-              </div>
-              <div class="scenario-step is-result">
-                <div class="step-meta">Maandtarief</div>
-                <div class="result-value">v.a. €700</div>
-                <p>per maand, exclusief mediabudget.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="info-box" style="margin-top:16px;">
-            <strong>Let op: dit zijn indicaties, geen pakketten.</strong> Elke samenwerking wordt op maat samengesteld op basis van je kanalen, situatie en doelen. Er bestaat geen vast Starter-, ZZP- of MKB-pakket, dit is een reëel startpunt om het gesprek mee te beginnen.
-          </div>
-
-          <div class="price-foot">
-            <span class="price-foot-note">Per dienst: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO/AI</a> · <a href="/social-ads.html">Social Media Ads</a> · <a href="/b2b-marketing.html">B2B Marketing</a></span>
-            <a class="price-foot-link" href="#contact">Offerte op maat →</a>
-          </div>
-        </div>
-        <div class="right-col">
-          <div class="thomas-block" id="thomas">
-            <picture>
-              <source type="image/webp" srcset="/images/thomas-400.webp 400w, /images/thomas.webp 800w" sizes="130px" />
-              <img class="thomas-photo" src="/images/thomas.jpg" alt="Thomas Roozemond, RankEngine" width="400" height="400" loading="lazy" />
-            </picture>
-            <div class="thomas-copy">
-              <div class="hero-stat-label">Wie je spreekt</div>
-              <div class="thomas-name">Thomas Roozemond</div>
-              <p>Freelance online marketeer in Aalsmeer. Geen medewerkers, geen onderaannemers. Ik zeg het ook als een kanaal niet bij je past.</p>
-              <div class="mono" style="font-size:12px;color:var(--ink-50)">Google Ads gecertificeerd · 8 jaar ervaring</div>
-            </div>
-          </div>
-          <div class="scan-box">
-            <h3>Gratis scan van je Google Ads-account</h3>
-            <p>Ik kijk mee in je bestaande account of website en stuur binnen twee werkdagen drie concrete verbeterpunten. Geen verkooppraatje, geen verplichting.</p>
-            <form class="inline-form" id="scanForm" novalidate>
-              <label class="visually-hidden" for="scanEmail" style="position:absolute;left:-9999px">E-mailadres</label>
-              <input type="email" id="scanEmail" name="scanEmail" placeholder="je@bedrijf.nl" autocomplete="email" required />
-              <button type="submit" class="btn btn-dark">Stuur scan →</button>
-            </form>
-            <p class="form-status" id="scanStatus"></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ + CONTACT -->
-    <section class="faqcontact-grid">
-      <div class="faq-col">
-        <h2>Antwoorden</h2>
-        <div id="faqList">
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Wat kost beheer per maand?</span><span class="sign" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" hidden><p>Google Ads-beheer begint bij €249 per maand, exclusief je mediabudget. De prijs hangt af van het aantal campagnes en kanalen. Je krijgt vooraf een vast bedrag, geen percentage van je budget.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Moet ik een lang contract tekenen?</span><span class="sign" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" hidden><p>Nee. Alle samenwerkingen lopen maandelijks door met één maand opzegtermijn. Geen langlopend contract, geen boetebeding.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Hoe snel staan campagnes live?</span><span class="sign" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" hidden><p>Van eerste gesprek tot lopende campagne duurt het ongeveer twee weken. Eerst wordt de tracking op orde gebracht, daarna gaan de campagnes live.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Werk je ook buiten Aalsmeer?</span><span class="sign" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" hidden><p>Ja. RankEngine is gevestigd in Aalsmeer maar werkt voor ondernemers door heel Nederland. Alles verloopt online of telefonisch.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Wanneer kies ik Ads en wanneer SEO?</span><span class="sign" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" hidden><p>Google Ads is ideaal als je nu al aanvragen wilt: je vist op bestaande zoekvraag. SEO bouwt aan vindbaarheid zonder per klik te betalen, maar kost meer tijd. Vaak werken beide kanalen het sterkst in combinatie.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-q" aria-expanded="false">
-              <span>Blijf ik eigenaar van mijn accounts?</span><span class="sign" aria-hidden="true">+</span>
-            </button>
-            <div class="faq-a" hidden><p>Ja. Alles wordt gebouwd in jouw eigen Google Ads-, Analytics- en Search Console-accounts. Je blijft daar te allen tijde eigenaar van.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="contact-col" id="contact">
-        <span class="kicker">Plan een kennismaking</span>
-        <h2>20 minuten, geen verplichting</h2>
-        <p>We kijken samen wat er speelt en of ik daar wat mee kan. Online of telefonisch.</p>
-        <form class="contact-form" id="contactForm" novalidate>
-          <div class="row2">
-            <div class="field" id="fName">
-              <label class="visually-hidden" for="name" style="position:absolute;left:-9999px">Naam</label>
-              <input type="text" id="name" name="name" placeholder="Naam" autocomplete="name" required />
-              <span class="field-err">Vul je naam in</span>
-            </div>
-            <div class="field" id="fEmail">
-              <label class="visually-hidden" for="email" style="position:absolute;left:-9999px">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="E-mail" autocomplete="email" required />
-              <span class="field-err">Vul een geldig e-mailadres in</span>
-            </div>
-          </div>
-          <div class="field" id="fService">
-            <div class="chip-row" id="serviceChips">
-              <button type="button" class="chip" data-val="Google Ads">Google Ads</button>
-              <button type="button" class="chip" data-val="SEO">SEO</button>
-              <button type="button" class="chip" data-val="GEO / AI">GEO / AI</button>
-              <button type="button" class="chip" data-val="Social Media Ads">Social Media Ads</button>
-              <button type="button" class="chip" data-val="B2B Marketing">B2B Marketing</button>
-              <button type="button" class="chip" data-val="Weet ik nog niet">Weet ik nog niet</button>
-            </div>
-            <input type="hidden" id="service" name="service" />
-            <span class="field-err">Kies minimaal één optie</span>
-          </div>
-          <label class="visually-hidden" for="budget" style="position:absolute;left:-9999px">Mediabudget per maand</label>
-          <input type="text" id="budget" name="budget" placeholder="Mediabudget per maand (optioneel)" />
-          <label class="visually-hidden" for="message" style="position:absolute;left:-9999px">Bericht</label>
-          <textarea id="message" name="message" rows="3" placeholder="Vertel kort wat je doet en wat je zoekt… (optioneel)"></textarea>
-          <button type="submit" class="btn btn-primary send-btn">Verstuur bericht →</button>
-          <p class="form-status" id="contactStatus"></p>
-          <div class="contact-footnote">
-            <span>Of: <a href="tel:+31643859989">06 43 85 99 89</a></span>
-            <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
-            <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>
-          </div>
+          <button type="submit" class="lu-btn lu-btn-primary lu-btn-block">Verstuur Bericht</button>
+          <p class="lu-form-status" id="contactStatus"></p>
         </form>
       </div>
-    </section>
-
-    <div class="board-footer">
-      <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
-      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a> · <a href="#" onclick="window.reopenCookieSettings(event)">Cookie-instellingen</a></span>
     </div>
-  </div>
+  </section>
 
-  <p class="page-outro">
-    Diensten: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO &amp; AI-optimalisatie</a> · <a href="/social-ads.html">Social Media Ads</a> · <a href="/b2b-marketing.html">B2B Marketing</a>
-  </p>
 </main>
 
-<!-- Mobiele actiebalk -->
-<div id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-label="Cookiemelding" aria-live="polite">
-  <p>Deze website gebruikt functionele cookies die noodzakelijk zijn voor het werken van de site. Met jouw toestemming plaatsen we ook analytische cookies (Google Analytics) om bezoekersgedrag te meten, anoniem, zonder persoonlijke gegevens door te sturen. Lees meer in ons <a href="/privacy.html">privacybeleid</a>.</p>
-  <div class="cookie-actions">
-    <button class="cookie-btn cookie-btn-reject" id="cookie-reject" type="button">Alleen functioneel</button>
-    <button class="cookie-btn cookie-btn-accept" id="cookie-accept" type="button">Akkoord</button>
+<!-- FOOTER -->
+<footer class="lu-footer">
+  <div class="lu-wrap lu-footer-inner">
+    <div class="lu-footer-logo">RankEngine</div>
+    <div class="lu-footer-links">
+      <a href="/privacy.html">Privacybeleid</a>
+      <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="lu-footer-fine">© 2026 RankEngine. Built for momentum.</div>
   </div>
-</div>
-
-<div class="mobile-bar" role="navigation" aria-label="Snelle acties">
-  <a href="tel:+31643859989">Bellen</a>
-  <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
-  <a href="#contact">Gratis scan →</a>
-</div>
+</footer>
 
 <script>
 (function(){
@@ -616,33 +411,27 @@ a{color:inherit;text-decoration:none}
   var panel = document.getElementById('navMobilePanel');
   if (!toggle) return;
   toggle.addEventListener('click', function(){
-    var open = panel.classList.toggle('open');
+    var open = panel.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', open);
-    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
   });
   panel.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
-      panel.classList.remove('open');
+      panel.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
 })();
 
 (function(){
-  var toggles = document.querySelectorAll('.dropdown-toggle');
-  if (!toggles.length) return;
-  function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
-  toggles.forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = btn.getAttribute('aria-expanded') !== 'true';
-      closeAll();
-      btn.setAttribute('aria-expanded', open);
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (!revealEls.length) return;
+  if (!('IntersectionObserver' in window)) { revealEls.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
     });
-  });
-  document.addEventListener('click', closeAll);
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+  }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
 })();
 
 (function(){
@@ -661,8 +450,8 @@ a{color:inherit;text-decoration:none}
       ad_personalization: 'granted'
     });
   }
-  function hideBanner(){ banner.classList.add('hidden'); }
-  function showBanner(){ banner.classList.remove('hidden'); }
+  function hideBanner(){ banner.classList.add('is-hidden'); }
+  function showBanner(){ banner.classList.remove('is-hidden'); }
 
   document.getElementById('cookie-accept').addEventListener('click', function(){
     localStorage.setItem(COOKIE_KEY, 'accepted');
@@ -682,97 +471,14 @@ a{color:inherit;text-decoration:none}
     });
   }
 
-  window.reopenCookieSettings = function(e){
-    if (e) e.preventDefault();
-    localStorage.removeItem(COOKIE_KEY);
-    showBanner();
-  };
-})();
-
-(function(){
-  var el = document.getElementById('heroHeadline');
-  if (!el) return;
-  var variants = [
-    'Freelance marketing. Geen duur marketingbureau.',
-    'Eén marketeer. Geen doorgeefluik.',
-    'Persoonlijk contact. Geen tussenpersoon.'
-  ];
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) return;
-
-  var h1 = el.closest('.hero-h1');
-  function lockHeight(){
-    if (!h1) return;
-    var original = el.textContent;
-    var max = 0;
-    variants.forEach(function(v){
-      el.textContent = v;
-      max = Math.max(max, el.getBoundingClientRect().height);
+  var settingsLink = document.getElementById('cookieSettingsLink');
+  if (settingsLink) {
+    settingsLink.addEventListener('click', function(e){
+      e.preventDefault();
+      localStorage.removeItem(COOKIE_KEY);
+      showBanner();
     });
-    el.textContent = original;
-    h1.style.minHeight = max + 'px';
   }
-  lockHeight();
-  if (document.fonts && document.fonts.ready) {
-    document.fonts.ready.then(lockHeight);
-  }
-  var resizeTimer;
-  window.addEventListener('resize', function(){
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(lockHeight, 200);
-  });
-
-  var i = 0;
-  setInterval(function(){
-    el.classList.add('is-fading');
-    setTimeout(function(){
-      i = (i + 1) % variants.length;
-      el.textContent = variants[i];
-      el.classList.remove('is-fading');
-    }, 350);
-  }, 3800);
-})();
-
-(function(){
-  document.querySelectorAll('.scenario-tabs').forEach(function(group){
-    var tabs = group.querySelectorAll('.scenario-tab');
-    tabs.forEach(function(tab){
-      tab.addEventListener('click', function(){
-        tabs.forEach(function(t){
-          t.classList.remove('is-active');
-          t.setAttribute('aria-selected', 'false');
-          document.getElementById(t.dataset.target).hidden = true;
-        });
-        tab.classList.add('is-active');
-        tab.setAttribute('aria-selected', 'true');
-        document.getElementById(tab.dataset.target).hidden = false;
-      });
-    });
-  });
-})();
-
-(function(){
-  document.querySelectorAll('.faq-q').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var expanded = btn.getAttribute('aria-expanded') === 'true';
-      var panel = btn.nextElementSibling;
-      btn.setAttribute('aria-expanded', !expanded);
-      btn.querySelector('.sign').textContent = expanded ? '+' : '−';
-      panel.hidden = expanded;
-    });
-  });
-})();
-
-(function(){
-  var chips = document.querySelectorAll('#serviceChips .chip');
-  var hidden = document.getElementById('service');
-  chips.forEach(function(chip){
-    chip.addEventListener('click', function(){
-      chip.classList.toggle('active');
-      var vals = Array.from(document.querySelectorAll('#serviceChips .chip.active')).map(function(c){ return c.dataset.val; });
-      hidden.value = vals.join(', ');
-    });
-  });
 })();
 
 function sendToWebhook(payload){
@@ -788,57 +494,17 @@ function sendToWebhook(payload){
   if (!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var ok = true;
-    function check(fieldId, test){
-      var wrap = document.getElementById(fieldId);
-      var pass = test();
-      wrap.classList.toggle('has-error', !pass);
-      if (!pass) ok = false;
-    }
-    check('fName', function(){ return document.getElementById('name').value.trim().length > 0; });
-    check('fEmail', function(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('email').value.trim()); });
-    check('fService', function(){ return document.getElementById('service').value.trim().length > 0; });
-    if (!ok) return;
-
-    var status = document.getElementById('contactStatus');
-    var btn = form.querySelector('[type=submit]');
-    btn.disabled = true;
-    btn.textContent = 'Versturen…';
-    status.classList.remove('is-error');
-    status.textContent = '';
-
-    var budget = document.getElementById('budget').value.trim();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
     var message = document.getElementById('message').value.trim();
-    var bericht = (budget ? 'Mediabudget: ' + budget + '. ' : '') + message;
+    var status = document.getElementById('contactStatus');
 
-    sendToWebhook({
-      naam: document.getElementById('name').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      dienst: document.getElementById('service').value.trim(),
-      bericht: bericht
-    })
-      .then(function(){ window.location.href = '/bedankt.html'; })
-      .catch(function(){
-        btn.disabled = false;
-        btn.textContent = 'Verstuur bericht →';
-        status.classList.add('is-error');
-        status.textContent = 'Er ging iets mis. Stuur een e-mail naar thomas@rankengine.nl.';
-      });
-  });
-})();
-
-(function(){
-  var form = document.getElementById('scanForm');
-  if (!form) return;
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var input = document.getElementById('scanEmail');
-    var status = document.getElementById('scanStatus');
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value.trim())){
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       status.classList.add('is-error');
-      status.textContent = 'Vul een geldig e-mailadres in.';
+      status.textContent = 'Vul je naam en een geldig e-mailadres in.';
       return;
     }
+
     var btn = form.querySelector('[type=submit]');
     btn.disabled = true;
     btn.textContent = 'Versturen…';
@@ -846,15 +512,15 @@ function sendToWebhook(payload){
     status.textContent = '';
 
     sendToWebhook({
-      naam: '',
-      email: input.value.trim(),
-      dienst: 'Gratis scan aanvraag',
-      bericht: 'Aangevraagd via het scan-formulier op de homepage.'
+      naam: name,
+      email: email,
+      dienst: 'Website contactformulier',
+      bericht: message
     })
       .then(function(){ window.location.href = '/bedankt.html'; })
       .catch(function(){
         btn.disabled = false;
-        btn.textContent = 'Stuur scan →';
+        btn.textContent = 'Verstuur Bericht';
         status.classList.add('is-error');
         status.textContent = 'Er ging iets mis. Stuur een e-mail naar thomas@rankengine.nl.';
       });
