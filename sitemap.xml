@@ -31,17 +31,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://rankengine.nl/tiktok-ads</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rankengine.nl/linkedin-ads</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://rankengine.nl/ecommerce</loc>
+    <loc>https://rankengine.nl/b2b-marketing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
