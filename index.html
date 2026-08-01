@@ -416,32 +416,87 @@ a{color:inherit;text-decoration:none}
       <div class="diensten-grid">
         <div class="diensten-col">
           <h2 id="prijzen">Diensten &amp; vanaf-prijs</h2>
-          <p>Per maand, exclusief mediabudget. Eerste maand geen setup-fee.</p>
-          <div class="price-list">
-            <div class="price-row">
-              <div><span class="num mono">01</span><a class="svc-name" href="/google-ads.html">Google Ads</a><div class="svc-desc">Search, Shopping, Performance Max, App</div></div>
-              <div class="price mono">v.a. €249</div>
+          <p>Kies het profiel dat het beste bij je past. Onderstaande bedragen zijn een indicatie, geen vast pakket.</p>
+
+          <div class="scenario-tabs" role="tablist" aria-label="Prijsprofielen">
+            <button class="scenario-tab is-active" id="pricingTabStarter" role="tab" aria-selected="true" aria-controls="pricingPanelStarter" data-target="pricingPanelStarter">
+              <span class="tab-kicker">Profiel 1</span>Starter
+            </button>
+            <button class="scenario-tab" id="pricingTabZzp" role="tab" aria-selected="false" aria-controls="pricingPanelZzp" data-target="pricingPanelZzp">
+              <span class="tab-kicker">Profiel 2</span>ZZP
+            </button>
+            <button class="scenario-tab" id="pricingTabMkb" role="tab" aria-selected="false" aria-controls="pricingPanelMkb" data-target="pricingPanelMkb">
+              <span class="tab-kicker">Profiel 3</span>MKB
+            </button>
+          </div>
+
+          <div class="scenario-panel" id="pricingPanelStarter" role="tabpanel" aria-labelledby="pricingTabStarter">
+            <div class="scenario-steps">
+              <div class="scenario-step">
+                <div class="step-meta">Voor wie</div>
+                <h3>Starter</h3>
+                <p>Net begonnen of nog weinig historie. We bouwen rustig op met één kanaal, met veel uitleg onderweg.</p>
+              </div>
+              <div class="scenario-step is-result">
+                <div class="step-meta">Opstartkosten</div>
+                <div class="result-value">v.a. €200</div>
+                <p>eenmalig, afhankelijk van kanaal en huidige situatie.</p>
+              </div>
+              <div class="scenario-step is-result">
+                <div class="step-meta">Maandtarief</div>
+                <div class="result-value">v.a. €249</div>
+                <p>per maand, exclusief mediabudget.</p>
+              </div>
             </div>
-            <div class="price-row">
-              <div><span class="num mono">02</span><a class="svc-name" href="/seo.html">SEO</a><div class="svc-desc">Techniek, content, lokale vindbaarheid</div></div>
-              <div class="price mono">v.a. €299</div>
+          </div>
+
+          <div class="scenario-panel" id="pricingPanelZzp" role="tabpanel" aria-labelledby="pricingTabZzp" hidden>
+            <div class="scenario-steps">
+              <div class="scenario-step">
+                <div class="step-meta">Voor wie</div>
+                <h3>ZZP</h3>
+                <p>Een lopend bedrijf dat gestructureerd wil groeien, met ruimte voor één of twee kanalen naast elkaar.</p>
+              </div>
+              <div class="scenario-step is-result">
+                <div class="step-meta">Opstartkosten</div>
+                <div class="result-value">v.a. €400</div>
+                <p>eenmalig, afhankelijk van kanaal en huidige situatie.</p>
+              </div>
+              <div class="scenario-step is-result">
+                <div class="step-meta">Maandtarief</div>
+                <div class="result-value">v.a. €400</div>
+                <p>per maand, exclusief mediabudget.</p>
+              </div>
             </div>
-            <div class="price-row">
-              <div><span class="num mono">03</span><a class="svc-name" href="/geo-optimalisatie.html">GEO / AI-zoekopdrachten</a><div class="svc-desc">Vindbaar in ChatGPT en AI Overviews</div></div>
-              <div class="price mono">v.a. €300</div>
+          </div>
+
+          <div class="scenario-panel" id="pricingPanelMkb" role="tabpanel" aria-labelledby="pricingTabMkb" hidden>
+            <div class="scenario-steps">
+              <div class="scenario-step">
+                <div class="step-meta">Voor wie</div>
+                <h3>MKB</h3>
+                <p>Meerdere medewerkers of vestigingen, vaak meerdere kanalen tegelijk en meer afstemming nodig.</p>
+              </div>
+              <div class="scenario-step is-result">
+                <div class="step-meta">Opstartkosten</div>
+                <div class="result-value">v.a. €600</div>
+                <p>eenmalig, afhankelijk van kanaal en huidige situatie.</p>
+              </div>
+              <div class="scenario-step is-result">
+                <div class="step-meta">Maandtarief</div>
+                <div class="result-value">v.a. €700</div>
+                <p>per maand, exclusief mediabudget.</p>
+              </div>
             </div>
-            <div class="price-row">
-              <div><span class="num mono">04</span><a class="svc-name" href="/ecommerce.html">E-commerce &amp; CRO</a><div class="svc-desc">Feed, Shopping en conversie op de site</div></div>
-              <div class="price mono">v.a. €400</div>
-            </div>
-            <div class="price-row">
-              <div><span class="num mono">05</span><span class="svc-name">Meta, TikTok &amp; LinkedIn Ads</span><div class="svc-desc">Losse kanalen of naast search: <a href="/social-ads.html">Meta</a> · <a href="/tiktok-ads.html">TikTok</a> · <a href="/linkedin-ads.html">LinkedIn</a></div></div>
-              <div class="price mono">v.a. €249</div>
-            </div>
-            <div class="price-foot">
-              <span class="price-foot-note">Twee kanalen combineren? Dan één prijs.</span>
-              <a class="price-foot-link" href="#contact">Alle prijzen →</a>
-            </div>
+          </div>
+
+          <div class="info-box" style="margin-top:16px;">
+            <strong>Let op: dit zijn indicaties, geen pakketten.</strong> Elke samenwerking wordt op maat samengesteld op basis van je kanalen, situatie en doelen. Er bestaat geen vast Starter-, ZZP- of MKB-pakket, dit is een reëel startpunt om het gesprek mee te beginnen.
+          </div>
+
+          <div class="price-foot">
+            <span class="price-foot-note">Per dienst: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO/AI</a> · <a href="/ecommerce.html">E-commerce</a> · <a href="/social-ads.html">Meta</a> · <a href="/tiktok-ads.html">TikTok</a> · <a href="/linkedin-ads.html">LinkedIn</a></span>
+            <a class="price-foot-link" href="#contact">Offerte op maat →</a>
           </div>
         </div>
         <div class="right-col">
@@ -685,18 +740,19 @@ a{color:inherit;text-decoration:none}
 })();
 
 (function(){
-  var tabs = document.querySelectorAll('.scenario-tab');
-  if (!tabs.length) return;
-  tabs.forEach(function(tab){
-    tab.addEventListener('click', function(){
-      tabs.forEach(function(t){
-        t.classList.remove('is-active');
-        t.setAttribute('aria-selected', 'false');
-        document.getElementById(t.dataset.target).hidden = true;
+  document.querySelectorAll('.scenario-tabs').forEach(function(group){
+    var tabs = group.querySelectorAll('.scenario-tab');
+    tabs.forEach(function(tab){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){
+          t.classList.remove('is-active');
+          t.setAttribute('aria-selected', 'false');
+          document.getElementById(t.dataset.target).hidden = true;
+        });
+        tab.classList.add('is-active');
+        tab.setAttribute('aria-selected', 'true');
+        document.getElementById(tab.dataset.target).hidden = false;
       });
-      tab.classList.add('is-active');
-      tab.setAttribute('aria-selected', 'true');
-      document.getElementById(tab.dataset.target).hidden = false;
     });
   });
 })();
