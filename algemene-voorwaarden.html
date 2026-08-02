@@ -9,85 +9,61 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" /></noscript>
 
 <style>
-:root{--paper:#F2EFE7;--ink:#14140F;--accent:#C4472A}
+:root{--surface:#f8f9ff;--ink:#0b1c30;--primary:#4648d4}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body.home{background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:hidden}
+body.lumina{background:var(--surface);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
+.lu-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,255,.85)}
 </style>
 
-<link rel="preload" as="style" href="css/home.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=8" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=5" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=5" /></noscript>
 </head>
-<body class="home">
+<body class="lumina">
 
 <a class="skip-link" href="#main-content">Direct naar inhoud</a>
 
-<header class="site-nav">
-  <div class="wrap nav-inner">
-    <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
-    <ul class="nav-links" role="list">
-      <li><a href="/#aanpak">Aanpak</a></li>
-      <li class="has-dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-        <ul class="nav-dropdown" role="menu">
-          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-          <li><a href="/seo.html" role="menuitem">SEO</a></li>
-          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-          <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-          <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-        </ul>
-      </li>
-      <li><a href="/#prijzen">Prijzen</a></li>
-      <li><a href="/#cases">Cases</a></li>
-      <li><a href="/#thomas">Thomas</a></li>
-    </ul>
-    <div class="nav-right">
-      <a class="nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
-      <a class="btn btn-dark nav-cta" href="/#contact">Gratis scan →</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
-        <span></span><span></span>
-      </button>
-    </div>
+<header class="lu-nav" id="top">
+  <div class="lu-wrap lu-nav-inner">
+    <a class="lu-logo" href="/">RankEngine</a>
+    <nav class="lu-nav-links">
+      <a href="/#diensten">Diensten</a>
+      <a href="/#hoe-het-werkt">Stappenplan</a>
+      <a href="/#wie-ben-ik">Over mij</a>
+      <a class="lu-btn lu-btn-primary lu-btn-pill" href="/#contact">Laten we beginnen</a>
+    </nav>
+    <button class="lu-nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
-  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
-    <a href="/#aanpak">Aanpak</a>
-    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-    <ul class="nav-dropdown" role="menu">
-      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-      <li><a href="/seo.html" role="menuitem">SEO</a></li>
-      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-      <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-      <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-    </ul>
-    <a href="/#prijzen">Prijzen</a>
-    <a href="/#cases">Cases</a>
-    <a href="/#thomas">Thomas</a>
-    <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
-    <a href="/#contact">Gratis scan →</a>
+  <nav class="lu-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+    <a href="/#diensten">Diensten</a>
+    <a href="/#hoe-het-werkt">Stappenplan</a>
+    <a href="/#wie-ben-ik">Over mij</a>
+    <a class="lu-btn lu-btn-primary lu-btn-block" href="/#contact">Laten we beginnen</a>
   </nav>
 </header>
 
 <main id="main-content">
-  <div class="hero-board">
+  <div class="lu-wrap">
 
-    <div class="page-hero">
-      <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span class="current">Algemene voorwaarden</span></div>
-      <span class="kicker">Juridisch</span>
+    <div class="lu-legal-hero" data-reveal>
+      <div class="lu-breadcrumb"><a href="/">Home</a><span class="lu-crumb-sep">/</span><span class="lu-crumb-current">Algemene voorwaarden</span></div>
+      <span class="lu-eyebrow">Juridisch</span>
       <h1>Algemene voorwaarden</h1>
-      <p class="page-meta">Versie 1.0 · Geldig vanaf 1 juni 2026</p>
+      <p class="lu-legal-meta">Versie 1.0 · Geldig vanaf 1 juni 2026</p>
     </div>
 
-    <div class="page-body">
-      <nav class="page-toc" aria-label="Inhoudsopgave">
-        <div class="toc-title">Artikelen</div>
-        <ul class="toc-list">
+    <div class="lu-legal-body">
+      <nav class="lu-toc lu-card" aria-label="Inhoudsopgave">
+        <div class="lu-toc-title">Artikelen</div>
+        <ul class="lu-toc-list">
           <li><a href="#opdrachtnemer">Gegevens</a></li>
           <li><a href="#art1">Artikel 1: Definities</a></li>
           <li><a href="#art2">Artikel 2: Toepasselijkheid</a></li>
@@ -104,10 +80,10 @@ a{color:inherit;text-decoration:none}
         </ul>
       </nav>
 
-      <div class="prose">
+      <div class="lu-prose lu-card">
 
         <h2 id="opdrachtnemer">Gegevens opdrachtnemer</h2>
-        <div class="contact-card">
+        <div class="lu-contact-card">
           <p><strong>RankEngine</strong></p>
           <p>Koningsstraat 49, 1432 PL Aalsmeer</p>
           <p>Telefoon: <a href="tel:+31643859989">06-43 85 99 89</a></p>
@@ -210,25 +186,27 @@ a{color:inherit;text-decoration:none}
           <li>Geschillen worden bij voorkeur in goed overleg opgelost. Indien dit niet lukt, worden geschillen voorgelegd aan de bevoegde rechter in het arrondissement Amsterdam.</li>
         </ol>
 
-        <div class="info-box">
+        <div class="lu-info-box">
           <p>Vragen over deze voorwaarden? Stuur een e-mail naar <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a> of bel <a href="tel:+31643859989">06-43 85 99 89</a>.</p>
         </div>
 
       </div>
     </div>
 
-    <div class="board-footer">
-      <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
-      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html" aria-current="page">Algemene voorwaarden</a></span>
-    </div>
   </div>
 </main>
 
-<div class="mobile-bar" role="navigation" aria-label="Snelle acties">
-  <a href="tel:+31643859989">Bellen</a>
-  <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
-  <a href="/#contact">Gratis scan →</a>
-</div>
+<footer class="lu-footer">
+  <div class="lu-wrap lu-footer-inner">
+    <div class="lu-footer-logo">RankEngine</div>
+    <div class="lu-footer-links">
+      <a href="/privacy.html">Privacybeleid</a>
+      <a href="/algemene-voorwaarden.html" aria-current="page">Algemene voorwaarden</a>
+      <a href="/#contact">Contact</a>
+    </div>
+    <div class="lu-footer-fine">© 2026 RankEngine · Aalsmeer · KvK 94381143</div>
+  </div>
+</footer>
 
 <script>
 (function(){
@@ -236,45 +214,39 @@ a{color:inherit;text-decoration:none}
   var panel = document.getElementById('navMobilePanel');
   if (!toggle) return;
   toggle.addEventListener('click', function(){
-    var open = panel.classList.toggle('open');
+    var open = panel.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', open);
-    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
   });
   panel.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
-      panel.classList.remove('open');
+      panel.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
 })();
 
 (function(){
-  var toggles = document.querySelectorAll('.dropdown-toggle');
-  if (!toggles.length) return;
-  function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
-  toggles.forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = btn.getAttribute('aria-expanded') !== 'true';
-      closeAll();
-      btn.setAttribute('aria-expanded', open);
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (!revealEls.length) return;
+  if (!('IntersectionObserver' in window)) { revealEls.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
     });
-  });
-  document.addEventListener('click', closeAll);
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+  }, { threshold: .15 });
+  revealEls.forEach(function(el){ io.observe(el); });
 })();
 
 (function(){
-  var links = document.querySelectorAll('.toc-list a');
-  var headings = Array.from(document.querySelectorAll('.prose h2[id]'));
+  var links = document.querySelectorAll('.lu-toc-list a');
+  var headings = Array.from(document.querySelectorAll('.lu-prose h2[id]'));
   if (!links.length || !headings.length) return;
   var io = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if (e.isIntersecting){
-        links.forEach(function(l){ l.classList.remove('active'); });
-        var active = document.querySelector('.toc-list a[href="#' + e.target.id + '"]');
-        if (active) active.classList.add('active');
+        links.forEach(function(l){ l.classList.remove('is-active'); });
+        var active = document.querySelector('.lu-toc-list a[href="#' + e.target.id + '"]');
+        if (active) active.classList.add('is-active');
       }
     });
   }, { rootMargin: '-10% 0px -80% 0px' });
