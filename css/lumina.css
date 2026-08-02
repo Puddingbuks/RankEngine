@@ -307,6 +307,7 @@ ul{ margin:0; padding:0; list-style:none; }
 @media (min-width:1024px){ .lu-svc-hero-grid{ grid-template-columns:1.15fr .85fr; gap:56px; } }
 .lu-svc-hero h1{ font-size:32px; font-weight:800; letter-spacing:-.02em; line-height:1.15; margin-bottom:20px; }
 @media (min-width:768px){ .lu-svc-hero h1{ font-size:42px; } }
+.lu-svc-hero h1 span{ color:var(--primary); }
 .lu-svc-hero-sub{ font-size:17px; color:var(--ink-variant); margin-bottom:32px; max-width:36rem; }
 .lu-svc-cta-row{ display:flex; flex-wrap:wrap; gap:16px; }
 

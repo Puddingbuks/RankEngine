@@ -125,8 +125,8 @@ a{color:inherit;text-decoration:none}
 .lu-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,255,.85)}
 </style>
 
-<link rel="preload" as="style" href="css/lumina.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/lumina.css?v=8" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=9" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=9" /></noscript>
 </head>
 <body class="lumina">
 
@@ -183,10 +183,10 @@ a{color:inherit;text-decoration:none}
 
       <div class="lu-svc-hero-grid">
         <div>
-          <h1>SEO uitbesteden voor ZZP en MKB</h1>
+          <h1>SEO uitbesteden voor ZZP en MKB<br><span id="heroTyped">Gevonden worden zonder te betalen per klik</span></h1>
           <p class="lu-svc-hero-sub">Gevonden worden door klanten die actief zoeken naar wat jij aanbiedt. Ik optimaliseer je website technisch en inhoudelijk, zodat Google je serieus neemt.</p>
           <div class="lu-svc-cta-row">
-            <a class="lu-btn lu-btn-primary" href="#contact">Plan een gesprek</a>
+            <a class="lu-btn lu-btn-primary" href="#contact">Plan een SEO-gesprek</a>
             <a class="lu-btn lu-btn-ghost" href="#werkwijze">Hoe het werkt</a>
           </div>
         </div>
@@ -495,6 +495,59 @@ a{color:inherit;text-decoration:none}
     });
   }, { threshold: .1 });
   revealEls.forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  var typedEl = document.getElementById('heroTyped');
+  if (!typedEl) return;
+  var h1 = typedEl.closest('h1');
+  var phrases = [
+    'Gevonden worden zonder te betalen per klik',
+    'Bovenaan in Google, dag in dag uit',
+    'Meer organisch verkeer, meer klanten',
+    'Lokaal gevonden worden'
+  ];
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) { typedEl.textContent = phrases[0]; return; }
+
+  function lockHeight(){
+    if (!h1) return;
+    var original = typedEl.textContent;
+    var max = 0;
+    phrases.forEach(function(p){
+      typedEl.textContent = p;
+      max = Math.max(max, h1.getBoundingClientRect().height);
+    });
+    typedEl.textContent = original;
+    h1.style.minHeight = max + 'px';
+  }
+  lockHeight();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(lockHeight);
+  }
+  var resizeTimer;
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(lockHeight, 200);
+  });
+
+  var pi = 0, ci = 0, deleting = false;
+  function tick(){
+    var word = phrases[pi];
+    if (!deleting) {
+      ci++;
+      typedEl.textContent = word.slice(0, ci);
+      if (ci >= word.length) { deleting = true; return setTimeout(tick, 1700); }
+      setTimeout(tick, 55 + Math.random() * 50);
+    } else {
+      ci--;
+      typedEl.textContent = word.slice(0, ci);
+      if (ci <= 0) { deleting = false; pi = (pi + 1) % phrases.length; return setTimeout(tick, 300); }
+      setTimeout(tick, 30);
+    }
+  }
+  setTimeout(tick, 1000);
 })();
 
 (function(){
