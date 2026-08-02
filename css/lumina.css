@@ -106,6 +106,8 @@ ul{ margin:0; padding:0; list-style:none; }
 @media (min-width:640px){ .lu-hero-h1{ font-size:40px; } }
 @media (min-width:1024px){ .lu-hero-h1{ font-size:48px; line-height:56px; } }
 .lu-hero-h1 span{ color:var(--primary); }
+#heroTyped::after{ content:''; display:inline-block; width:3px; height:.85em; background:currentColor; margin-left:4px; vertical-align:-.05em; animation:lu-caret-blink .9s steps(1) infinite; }
+@keyframes lu-caret-blink{ 50%{ opacity:0; } }
 
 .lu-hero-checks{ display:flex; flex-direction:column; gap:16px; margin-bottom:32px; }
 .lu-hero-checks li{ display:flex; align-items:center; gap:12px; font-size:18px; color:var(--ink-variant); }
