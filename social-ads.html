@@ -112,324 +112,361 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" /></noscript>
 
 <style>
-:root{--paper:#F2EFE7;--ink:#14140F;--accent:#C4472A}
+:root{--surface:#f8f9ff;--ink:#0b1c30;--primary:#4648d4}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body.home{background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:hidden}
+body.lumina{background:var(--surface);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
+.lu-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,255,.85)}
 </style>
 
-<link rel="preload" as="style" href="css/home.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=8" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=8" /></noscript>
 </head>
-<body class="home">
+<body class="lumina">
 
 <a class="skip-link" href="#main-content">Direct naar inhoud</a>
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q9H46" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- NAV -->
-<header class="site-nav">
-  <div class="wrap nav-inner">
-    <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
-    <ul class="nav-links" role="list">
-      <li><a href="/#hoe-het-werkt">Stappenplan</a></li>
-      <li class="has-dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-        <ul class="nav-dropdown" role="menu">
-          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-          <li><a href="/seo.html" role="menuitem">SEO</a></li>
-          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-          <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-          <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-        </ul>
-      </li>
-      <li><a href="/#wie-ben-ik">Over mij</a></li>
-    </ul>
-    <div class="nav-right">
-      <a class="nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
-      <a class="btn btn-dark nav-cta" href="#contact">Gratis scan →</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
-        <span></span><span></span>
-      </button>
-    </div>
+<header class="lu-nav" id="top">
+  <div class="lu-wrap lu-nav-inner">
+    <a class="lu-logo" href="/">RankEngine</a>
+    <nav class="lu-nav-links">
+      <a href="/#hoe-het-werkt">Stappenplan</a>
+      <div class="lu-has-dropdown">
+        <button class="lu-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="lu-dropdown-chevron" aria-hidden="true">▾</em></button>
+        <div class="lu-nav-dropdown" role="menu">
+          <a href="/google-ads.html" role="menuitem">Google Ads</a>
+          <a href="/seo.html" role="menuitem">SEO</a>
+          <a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a>
+          <a href="/social-ads.html" role="menuitem" aria-current="page">Social Media Ads</a>
+          <a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a>
+        </div>
+      </div>
+      <a href="/#wie-ben-ik">Over mij</a>
+      <a class="lu-nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
+      <a class="lu-btn lu-btn-primary lu-btn-pill" href="#contact">Plan een gesprek</a>
+    </nav>
+    <button class="lu-nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
-  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+  <nav class="lu-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
     <a href="/#hoe-het-werkt">Stappenplan</a>
-    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-    <ul class="nav-dropdown" role="menu">
-      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-      <li><a href="/seo.html" role="menuitem">SEO</a></li>
-      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-      <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-      <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-    </ul>
+    <button class="lu-dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="lu-dropdown-chevron" aria-hidden="true">▾</em></button>
+    <div class="lu-nav-dropdown" role="menu">
+      <a href="/google-ads.html" role="menuitem">Google Ads</a>
+      <a href="/seo.html" role="menuitem">SEO</a>
+      <a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a>
+      <a href="/social-ads.html" role="menuitem" aria-current="page">Social Media Ads</a>
+      <a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a>
+    </div>
     <a href="/#wie-ben-ik">Over mij</a>
     <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
-    <a href="#contact">Gratis scan →</a>
+    <a class="lu-btn lu-btn-primary lu-btn-block" href="#contact">Plan een gesprek</a>
   </nav>
 </header>
 
 <main id="main-content">
-  <div class="hero-board">
 
     <!-- HERO -->
-    <section class="hero-grid">
-      <div class="hero-copy">
-        <div class="breadcrumb"><a href="/">Home</a><span class="sep">/</span><span class="current">Social Media Ads</span></div>
-        <span class="kicker hero-eyebrow">Dienst · Social Media Ads</span>
-        <h1 class="hero-h1">Social Media Ads voor ZZP en MKB</h1>
-        <p class="hero-sub">Facebook, Instagram en TikTok advertenties die nieuwe klanten bereiken, of bestaande bezoekers terughalen. Ik beheer alles zelf, geen bureau ertussen.</p>
-        <div class="hero-cta-row">
-          <a class="btn btn-primary" href="#contact">Plan een gesprek →</a>
-          <a class="btn btn-ghost" href="#werkwijze">Hoe het werkt</a>
+    <section class="lu-svc-hero" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-breadcrumb"><a href="/">Home</a><span class="lu-crumb-sep">/</span><span class="lu-crumb-current">Social Media Ads</span></div>
+      <span class="lu-eyebrow">Dienst · Social Media Ads</span>
+
+      <div class="lu-svc-hero-grid">
+        <div>
+          <h1>Social Media Ads voor ZZP en MKB</h1>
+          <p class="lu-svc-hero-sub">Facebook, Instagram en TikTok advertenties die nieuwe klanten bereiken, of bestaande bezoekers terughalen. Ik beheer alles zelf, geen bureau ertussen.</p>
+          <div class="lu-svc-cta-row">
+            <a class="lu-btn lu-btn-primary" href="#contact">Plan een gesprek</a>
+            <a class="lu-btn lu-btn-ghost" href="#werkwijze">Hoe het werkt</a>
+          </div>
+        </div>
+
+        <div class="lu-stat-grid">
+          <div class="lu-stat-card lu-card">
+            <div class="lu-stat-label">Uurtarief</div>
+            <div class="lu-stat-value">€100<small>/uur excl. btw</small></div>
+          </div>
+          <div class="lu-stat-card lu-card">
+            <div class="lu-stat-label">Opzegtermijn</div>
+            <div class="lu-stat-value" style="font-size:22px">Maandelijks<small>opzegbaar</small></div>
+          </div>
+          <div class="lu-stat-card lu-card is-wide">
+            <div class="lu-stat-label">Contact</div>
+            <div class="lu-stat-value" style="font-size:20px">Direct<small>geen bureau ertussen</small></div>
+          </div>
+          <div class="lu-stat-card lu-card is-wide">
+            <div class="lu-stat-label">Platformen</div>
+            <div class="lu-stat-list">Meta (Facebook &amp; Instagram) · TikTok · Retargeting · Lookalike doelgroepen</div>
+          </div>
         </div>
       </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-label">Uurtarief</div>
-          <div class="hero-stat-value">€100<small>/uur excl. btw</small></div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-label">Opzegtermijn</div>
-          <div class="hero-stat-value" style="font-size:26px">Maandelijks<small style="display:block;margin-top:2px">opzegbaar</small></div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-label">Contact</div>
-          <div class="hero-stat-value" style="font-size:20px">Direct<small style="display:block;margin-top:2px">geen bureau ertussen</small></div>
-        </div>
-        <div class="hero-stack-cell">
-          <div class="hero-stat-label">Platformen</div>
-          <div class="hero-stack-list">Meta (Facebook &amp; Instagram) · TikTok · Retargeting · Lookalike doelgroepen</div>
-        </div>
-      </div>
-      <div class="hero-stats-mobile">
-        <div class="hero-stat"><div class="hero-stat-label">Uurtarief</div><div class="hero-stat-value">€100</div></div>
-        <div class="hero-stat"><div class="hero-stat-label">Opzeg</div><div class="hero-stat-value" style="font-size:16px">Maandelijks</div></div>
-        <div class="hero-stat"><div class="hero-stat-label">Contact</div><div class="hero-stat-value" style="font-size:18px">Direct</div></div>
       </div>
     </section>
 
     <!-- WAT IK DOE -->
-    <section class="board-section">
-      <div class="board-section-head">
-        <h2>Welke campagnes pak ik aan</h2>
-        <span class="meta">Wat ik doe</span>
+    <section class="lu-section" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-section-head">
+        <span class="lu-eyebrow">Wat ik doe</span>
+        <h2 class="lu-h2">Welke campagnes pak ik aan</h2>
+        <p class="lu-lede">Social media ads werken anders dan Google Ads. Je bereikt mensen die nog niet naar jou zochten. Meta en TikTok vragen elk hun eigen aanpak.</p>
       </div>
-      <p class="board-section-sub" style="margin-bottom:24px;">Social media ads werken anders dan Google Ads. Je bereikt mensen die nog niet naar jou zochten. Meta en TikTok vragen elk hun eigen aanpak.</p>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="num">01</div>
+      <div class="lu-feature-grid">
+        <div class="lu-feature-card lu-card">
+          <span class="lu-feature-num">01</span>
           <h3>Meta: Facebook &amp; Instagram</h3>
           <p>Advertenties in de feed, stories en reels. Volwassen platform, sterk voor retargeting en conversie.</p>
         </div>
-        <div class="feature-card">
-          <div class="num">02</div>
+        <div class="lu-feature-card lu-card">
+          <span class="lu-feature-num">02</span>
           <h3>TikTok Ads</h3>
           <p>Short-form video met lage CPC en weinig concurrentie in Nederland. Wie nu instapt, bouwt een voorsprong op.</p>
         </div>
-        <div class="feature-card">
-          <div class="num">03</div>
+        <div class="lu-feature-card lu-card">
+          <span class="lu-feature-num">03</span>
           <h3>Retargeting &amp; lookalikes</h3>
           <p>Bereik mensen die je website al bezochten, of laat het platform zoeken naar mensen die op je klanten lijken.</p>
         </div>
-        <div class="feature-card">
-          <div class="num">04</div>
+        <div class="lu-feature-card lu-card">
+          <span class="lu-feature-num">04</span>
           <h3>Creative &amp; lead-advertenties</h3>
           <p>Briefings voor content die werkt per platform, plus contactformulieren direct in de advertentie voor dienstverleners.</p>
         </div>
       </div>
+      </div>
     </section>
 
     <!-- WERKWIJZE -->
-    <section class="board-section" id="werkwijze">
-      <div class="board-section-head">
-        <h2>Hoe het werkt</h2>
+    <section class="lu-section" id="werkwijze" style="background:var(--surface-container);" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-section-head">
+        <span class="lu-eyebrow">Werkwijze</span>
+        <h2 class="lu-h2">Hoe het werkt</h2>
       </div>
-      <div class="process-grid">
-        <div class="process-step">
-          <div class="step-meta">Stap 01</div>
+      <div class="lu-process-grid lu-process-grid--flat">
+        <div class="lu-process-step">
+          <div class="lu-process-num">1</div>
           <h3>Kennismaking</h3>
           <p>We bespreken je doelgroep, aanbod en welk platform het beste past: Meta, TikTok of allebei.</p>
         </div>
-        <div class="process-step">
-          <div class="step-meta">Stap 02</div>
+        <div class="lu-process-step">
+          <div class="lu-process-num">2</div>
           <h3>Opzet</h3>
           <p>Pixels installeren, doelgroepen instellen, advertenties bouwen. Campagnes gaan live binnen 1 week.</p>
         </div>
-        <div class="process-step">
-          <div class="step-meta">Stap 03</div>
+        <div class="lu-process-step">
+          <div class="lu-process-num">3</div>
           <h3>Testen en bijsturen</h3>
           <p>Wat werkt schaal ik op, wat niet werkt stop ik. Zo gaat het budget naar de best presterende advertenties.</p>
         </div>
-        <div class="process-step">
-          <div class="step-meta">Stap 04</div>
+        <div class="lu-process-step">
+          <div class="lu-process-num">4</div>
           <h3>Rapportage</h3>
           <p>Maandelijks overzicht van bereik, kosten en leads per platform, inclusief wat ik bijstuur.</p>
         </div>
       </div>
+      </div>
     </section>
 
     <!-- SHOWCASE -->
-    <section class="board-section">
-      <div class="board-section-head">
-        <h2>Van advertentie tot resultaat</h2>
-        <span class="meta">Zo ziet het eruit</span>
+    <section class="lu-section" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-section-head">
+        <span class="lu-eyebrow">Zo ziet het eruit</span>
+        <h2 class="lu-h2">Van advertentie tot resultaat</h2>
+        <p class="lu-lede">Wat je kunt verwachten als Meta en TikTok Ads goed ingericht zijn.</p>
       </div>
-      <p class="board-section-sub" style="margin-bottom:24px;">Wat je kunt verwachten als Meta en TikTok Ads goed ingericht zijn.</p>
-      <div class="showcase-grid">
-        <figure class="showcase-card">
+      <div class="lu-showcase-grid">
+        <figure class="lu-showcase-card lu-card">
           <picture>
             <source type="image/webp" srcset="/images/instagram-advertenties-sponsored-post-feed-750.webp 750w, /images/instagram-advertenties-sponsored-post-feed.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
             <img src="/images/instagram-advertenties-sponsored-post-feed.png" alt="Instagram advertentie als sponsored post in de feed van een gebruiker" loading="lazy" width="1456" height="816" />
           </picture>
-          <figcaption>Jouw advertentie in de Instagram-feed<span class="disclaimer">Indicatieve cijfers, resultaten kunnen variëren</span></figcaption>
+          <figcaption class="lu-showcase-caption">
+            <strong>Jouw advertentie in de Instagram-feed</strong>
+            <span>Indicatieve cijfers, resultaten kunnen variëren</span>
+          </figcaption>
         </figure>
-        <figure class="showcase-card">
+        <figure class="lu-showcase-card lu-card">
           <picture>
             <source type="image/webp" srcset="/images/tiktok-advertentie-for-you-page-in-feed-ad-750.webp 750w, /images/tiktok-advertentie-for-you-page-in-feed-ad.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
             <img src="/images/tiktok-advertentie-for-you-page-in-feed-ad.png" alt="TikTok In-Feed advertentie op de For You Page met gesponsord label en call-to-action" loading="lazy" width="1456" height="816" />
           </picture>
-          <figcaption>Jouw advertentie op de TikTok For You Page<span class="disclaimer">Indicatieve cijfers, resultaten kunnen variëren</span></figcaption>
+          <figcaption class="lu-showcase-caption">
+            <strong>Jouw advertentie op de TikTok For You Page</strong>
+            <span>Indicatieve cijfers, resultaten kunnen variëren</span>
+          </figcaption>
         </figure>
-        <figure class="showcase-card">
+        <figure class="lu-showcase-card lu-card">
           <picture>
             <source type="image/webp" srcset="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas-750.webp 750w, /images/meta-ads-resultaten-meer-aanvragen-cpc-roas.webp 1456w" sizes="(max-width:768px) 750px, 1456px" />
             <img src="/images/meta-ads-resultaten-meer-aanvragen-cpc-roas.png" alt="Meta Ads resultaten met meer aanvragen, lagere CPC en verbeterde ROAS" loading="lazy" width="1456" height="816" />
           </picture>
-          <figcaption>Meetbare groei per campagne<span class="disclaimer">Indicatieve cijfers, resultaten kunnen variëren</span></figcaption>
+          <figcaption class="lu-showcase-caption">
+            <strong>Meetbare groei per campagne</strong>
+            <span>Indicatieve cijfers, resultaten kunnen variëren</span>
+          </figcaption>
         </figure>
+      </div>
       </div>
     </section>
 
     <!-- TARIEVEN -->
-    <section class="board-section">
-      <div class="board-section-head">
-        <h2>Wat kost het?</h2>
-        <span class="meta">Tarieven</span>
+    <section class="lu-section" style="background:var(--surface-container);" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-section-head">
+        <span class="lu-eyebrow">Tarieven</span>
+        <h2 class="lu-h2">Wat kost het?</h2>
+        <p class="lu-lede">Ik werk op uurbasis. Hoeveel uur nodig is hangt af van jouw situatie en op hoeveel platformen je actief wil zijn: geen vaste pakketten, wel een eerlijke indicatie.</p>
       </div>
-      <p class="board-section-sub" style="margin-bottom:24px;">Ik werk op uurbasis. Hoeveel uur nodig is hangt af van jouw situatie en op hoeveel platformen je actief wil zijn: geen vaste pakketten, wel een eerlijke indicatie.</p>
 
-      <div class="tariff-hero">
-        <div class="tariff-badge">
-          <div class="hero-stat-label">Uurtarief</div>
-          <div class="price-big">€100</div>
-          <div class="unit">/uur excl. btw</div>
-        </div>
+      <div class="lu-tariff-hero">
+        <div class="lu-tariff-price">€100<span>/uur excl. btw</span></div>
         <p>Geen pakketten, geen verborgen kosten. Je betaalt voor daadwerkelijk gewerkte uren. Na een intake maak ik een schatting op maat.</p>
       </div>
 
-      <div class="tariff-grid">
-        <div class="tariff-card">
-          <div class="hero-stat-label">Opzetten</div>
-          <div class="range"><span class="range-value">3–6 uur</span><span class="range-unit">eenmalig</span></div>
-          <div class="est">≈ €300–€600</div>
-          <div class="divider"></div>
+      <div class="lu-tariff-grid">
+        <div class="lu-tariff-card lu-card">
+          <div class="lu-stat-label">Opzetten</div>
+          <div class="lu-tariff-range"><strong>3-6 uur</strong><span>eenmalig</span></div>
+          <div class="lu-tariff-est">≈ €300-€600</div>
           <p>Pixel(s) en events instellen, accounts opzetten, campagnestructuur bepalen en eerste campagnes live zetten op Meta en/of TikTok.</p>
         </div>
-        <div class="tariff-card">
-          <div class="hero-stat-label">Beheer</div>
-          <div class="range"><span class="range-value">2–7 uur</span><span class="range-unit">/maand</span></div>
-          <div class="est">≈ €200–€700</div>
-          <div class="divider"></div>
+        <div class="lu-tariff-card lu-card">
+          <div class="lu-stat-label">Beheer</div>
+          <div class="lu-tariff-range"><strong>2-7 uur</strong><span>/maand</span></div>
+          <div class="lu-tariff-est">≈ €200-€700</div>
           <p>Doelgroepen bijsturen, creatives roteren, A/B testen en maandrapportage.</p>
         </div>
       </div>
 
-      <div class="scope-box" style="margin-bottom:16px;">
-        <div class="hero-stat-label">Wat de scope bepaalt</div>
-        <ul class="scope-list">
-          <li><span class="arrow">→</span> Eén platform of Meta én TikTok samen</li>
-          <li><span class="arrow">→</span> Hoe vaak nieuwe creatives aangeleverd worden</li>
-          <li><span class="arrow">→</span> Of er retargeting-doelgroepen opgezet worden</li>
-          <li><span class="arrow">→</span> Staat van het bestaande ad account</li>
+      <div class="lu-scope-box lu-card">
+        <div class="lu-stat-label">Wat de scope bepaalt</div>
+        <ul class="lu-scope-list">
+          <li><span class="lu-scope-arrow">→</span> Eén platform of Meta én TikTok samen</li>
+          <li><span class="lu-scope-arrow">→</span> Hoe vaak nieuwe creatives aangeleverd worden</li>
+          <li><span class="lu-scope-arrow">→</span> Of er retargeting-doelgroepen opgezet worden</li>
+          <li><span class="lu-scope-arrow">→</span> Staat van het bestaande ad account</li>
         </ul>
       </div>
-      <span class="hero-note">Advertentiebudget is apart en betaal je rechtstreeks aan Meta en/of TikTok, op basis van het budget waar jij zelf akkoord op geeft.</span>
+      <span class="lu-tariff-note">Advertentiebudget is apart en betaal je rechtstreeks aan Meta en/of TikTok, op basis van het budget waar jij zelf akkoord op geeft.</span>
+      </div>
     </section>
 
     <!-- FAQ -->
-    <section class="faq-full">
-      <h2>Veelgestelde vragen</h2>
-      <div id="faqList">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Heb ik al advertentie-accounts nodig voor Meta en TikTok?</span><span class="sign" aria-hidden="true">+</span></button>
-          <div class="faq-a" hidden><p>Nee, dat regel ik voor je. Ik maak een Meta Business Manager en/of TikTok for Business account aan op jouw naam en koppel je pagina's en pixels. Jij blijft eigenaar.</p></div>
+    <section class="lu-section" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-section-head is-center">
+        <h2 class="lu-h2">Veelgestelde vragen</h2>
+      </div>
+      <div class="lu-faq" id="faqList">
+        <div class="lu-faq-item">
+          <button class="lu-faq-q" aria-expanded="false"><span>Heb ik al advertentie-accounts nodig voor Meta en TikTok?</span><span class="lu-faq-sign" aria-hidden="true">+</span></button>
+          <div class="lu-faq-a" hidden><p>Nee, dat regel ik voor je. Ik maak een Meta Business Manager en/of TikTok for Business account aan op jouw naam en koppel je pagina's en pixels. Jij blijft eigenaar.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Moet ik zelf content aanleveren?</span><span class="sign" aria-hidden="true">+</span></button>
-          <div class="faq-a" hidden><p>Foto's en video's lever jij aan, ik zorg voor de teksten, opmaak en briefing. Op TikTok scoort authenticiteit vaak beter dan gepolijste producties, dus een telefoonvideo is vaak al genoeg.</p></div>
+        <div class="lu-faq-item">
+          <button class="lu-faq-q" aria-expanded="false"><span>Moet ik zelf content aanleveren?</span><span class="lu-faq-sign" aria-hidden="true">+</span></button>
+          <div class="lu-faq-a" hidden><p>Foto's en video's lever jij aan, ik zorg voor de teksten, opmaak en briefing. Op TikTok scoort authenticiteit vaak beter dan gepolijste producties, dus een telefoonvideo is vaak al genoeg.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Werkt dit ook voor lokale bedrijven of een oudere doelgroep?</span><span class="sign" aria-hidden="true">+</span></button>
-          <div class="faq-a" hidden><p>Ja. Op Meta kun je binnen een straal van een paar kilometer adverteren, ideaal voor lokale dienstverleners. TikTok heeft inmiddels ook een groot en snelgroeiend aandeel gebruikers boven de 35.</p></div>
+        <div class="lu-faq-item">
+          <button class="lu-faq-q" aria-expanded="false"><span>Werkt dit ook voor lokale bedrijven of een oudere doelgroep?</span><span class="lu-faq-sign" aria-hidden="true">+</span></button>
+          <div class="lu-faq-a" hidden><p>Ja. Op Meta kun je binnen een straal van een paar kilometer adverteren, ideaal voor lokale dienstverleners. TikTok heeft inmiddels ook een groot en snelgroeiend aandeel gebruikers boven de 35.</p></div>
         </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false"><span>Wat is het verschil tussen Meta en TikTok, en kan ik ze combineren?</span><span class="sign" aria-hidden="true">+</span></button>
-          <div class="faq-a" hidden><p>Meta (Facebook/Instagram) is volwassener en competitiever. TikTok draait om video en ontdekking, met lagere CPC en minder concurrentie. Vaak combineer ik beide: TikTok voor bereik en lage kosten, Meta voor retargeting en conversie.</p></div>
+        <div class="lu-faq-item">
+          <button class="lu-faq-q" aria-expanded="false"><span>Wat is het verschil tussen Meta en TikTok, en kan ik ze combineren?</span><span class="lu-faq-sign" aria-hidden="true">+</span></button>
+          <div class="lu-faq-a" hidden><p>Meta (Facebook/Instagram) is volwassener en competitiever. TikTok draait om video en ontdekking, met lagere CPC en minder concurrentie. Vaak combineer ik beide: TikTok voor bereik en lage kosten, Meta voor retargeting en conversie.</p></div>
         </div>
+      </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="contact-col" id="contact">
-      <span class="kicker">Plan een kennismaking</span>
-      <h2>We kijken of dit bij je past</h2>
-      <p>20–30 minuten, geen verplichtingen. We bespreken je doelen en of Social Media Ads iets voor jou is.</p>
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="row2">
-          <div class="field" id="fName">
-            <label class="visually-hidden" for="name" style="position:absolute;left:-9999px">Naam</label>
-            <input type="text" id="name" name="name" placeholder="Naam" autocomplete="name" required />
-            <span class="field-err">Vul je naam in</span>
-          </div>
-          <div class="field" id="fEmail">
-            <label class="visually-hidden" for="email" style="position:absolute;left:-9999px">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="E-mail" autocomplete="email" required />
-            <span class="field-err">Vul een geldig e-mailadres in</span>
+    <section class="lu-section" id="contact" data-reveal>
+      <div class="lu-wrap">
+      <div class="lu-contact-grid">
+        <div>
+          <span class="lu-eyebrow">Plan een kennismaking</span>
+          <h2 class="lu-h2">We kijken of dit bij je past</h2>
+          <p class="lu-lede">20-30 minuten, geen verplichtingen. We bespreken je doelen en of Social Media Ads iets voor jou is.</p>
+          <div class="lu-contact-info">
+            <div class="lu-contact-info-row">
+              <span class="lu-contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span><a href="tel:+31643859989">06 43 85 99 89</a></span>
+            </div>
+            <div class="lu-contact-info-row">
+              <span class="lu-contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              </span>
+              <span><a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a></span>
+            </div>
+            <div class="lu-contact-info-row">
+              <span class="lu-contact-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M20.5 3.5a11 11 0 00-17 13.6L3 21l4-1.4A11 11 0 1020.5 3.5z" stroke="currentColor" stroke-width="1.6"/></svg>
+              </span>
+              <span><a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a></span>
+            </div>
           </div>
         </div>
-        <label class="visually-hidden" for="message" style="position:absolute;left:-9999px">Bericht</label>
-        <textarea id="message" name="message" rows="3" placeholder="Vertel kort wat je doet en wat je zoekt… (optioneel)"></textarea>
-        <button type="submit" class="btn btn-primary send-btn">Verstuur →</button>
-        <p class="form-status" id="contactStatus"></p>
-        <div class="contact-footnote">
-          <span>Of: <a href="tel:+31643859989">06 43 85 99 89</a></span>
-          <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
-          <a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a>
+
+        <div class="lu-contact-form-card lu-card">
+          <form id="contactForm" novalidate>
+            <div class="lu-field" id="fName">
+              <label for="name">Naam</label>
+              <input class="lu-input" type="text" id="name" name="name" placeholder="Hoe mag ik je noemen?" autocomplete="name" required />
+            </div>
+            <div class="lu-field" id="fEmail">
+              <label for="email">E-mail</label>
+              <input class="lu-input" type="email" id="email" name="email" placeholder="jij@voorbeeld.nl" autocomplete="email" required />
+            </div>
+            <div class="lu-field">
+              <label for="message">Bericht</label>
+              <textarea class="lu-textarea" id="message" name="message" rows="4" placeholder="Vertel kort wat je doet en wat je zoekt... (optioneel)"></textarea>
+            </div>
+            <button type="submit" class="lu-btn lu-btn-primary lu-btn-block">Verstuur</button>
+            <p class="lu-form-status" id="contactStatus"></p>
+          </form>
         </div>
-      </form>
+      </div>
+      </div>
     </section>
 
-    <div class="board-footer">
-      <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
-      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a> · <a href="#" onclick="window.reopenCookieSettings(event)">Cookie-instellingen</a></span>
+    <div class="lu-wrap">
+    <p class="lu-page-outro">
+      Andere diensten: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO &amp; AI-optimalisatie</a> · <a href="/b2b-marketing.html">B2B Marketing</a>
+    </p>
     </div>
-  </div>
-
-  <p class="page-outro">
-    Andere diensten: <a href="/google-ads.html">Google Ads</a> · <a href="/seo.html">SEO</a> · <a href="/geo-optimalisatie.html">GEO &amp; AI-optimalisatie</a> · <a href="/b2b-marketing.html">B2B Marketing</a>
-  </p>
 </main>
 
-<div id="cookie-banner" class="cookie-banner hidden" role="dialog" aria-label="Cookiemelding" aria-live="polite">
-  <p>Deze website gebruikt functionele cookies die noodzakelijk zijn voor het werken van de site. Met jouw toestemming plaatsen we ook analytische cookies (Google Analytics) om bezoekersgedrag te meten, anoniem, zonder persoonlijke gegevens door te sturen. Lees meer in ons <a href="/privacy.html">privacybeleid</a>.</p>
-  <div class="cookie-actions">
-    <button class="cookie-btn cookie-btn-reject" id="cookie-reject" type="button">Alleen functioneel</button>
-    <button class="cookie-btn cookie-btn-accept" id="cookie-accept" type="button">Akkoord</button>
+<footer class="lu-footer">
+  <div class="lu-wrap lu-footer-inner">
+    <div class="lu-footer-logo">RankEngine</div>
+    <div class="lu-footer-links">
+      <a href="/privacy.html">Privacybeleid</a>
+      <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
+      <a href="#" onclick="window.reopenCookieSettings(event)">Cookie-instellingen</a>
+    </div>
+    <div class="lu-footer-fine">© 2026 RankEngine · Aalsmeer · KvK 94381143</div>
   </div>
-</div>
+</footer>
 
-<div class="mobile-bar" role="navigation" aria-label="Snelle acties">
-  <a href="tel:+31643859989">Bellen</a>
-  <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
-  <a href="#contact">Gratis scan →</a>
+<div id="cookie-banner" class="lu-cookie-banner is-hidden" role="dialog" aria-label="Cookiemelding" aria-live="polite">
+  <p>Deze website gebruikt functionele cookies die noodzakelijk zijn voor het werken van de site. Met jouw toestemming plaatsen we ook analytische cookies (Google Analytics) om bezoekersgedrag te meten, anoniem, zonder persoonlijke gegevens door te sturen. Lees meer in ons <a href="/privacy.html">privacybeleid</a>.</p>
+  <div class="lu-cookie-actions">
+    <button class="lu-cookie-btn lu-cookie-btn-reject" id="cookie-reject" type="button">Alleen functioneel</button>
+    <button class="lu-cookie-btn lu-cookie-btn-accept" id="cookie-accept" type="button">Akkoord</button>
+  </div>
 </div>
 
 <script>
@@ -438,21 +475,31 @@ a{color:inherit;text-decoration:none}
   var panel = document.getElementById('navMobilePanel');
   if (!toggle) return;
   toggle.addEventListener('click', function(){
-    var open = panel.classList.toggle('open');
+    var open = panel.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', open);
-    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
   });
   panel.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
-      panel.classList.remove('open');
+      panel.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
 })();
 
 (function(){
-  var toggles = document.querySelectorAll('.dropdown-toggle');
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (!revealEls.length) return;
+  if (!('IntersectionObserver' in window)) { revealEls.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { threshold: .1 });
+  revealEls.forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  var toggles = document.querySelectorAll('.lu-dropdown-toggle');
   if (!toggles.length) return;
   function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
   toggles.forEach(function(btn){
@@ -483,8 +530,8 @@ a{color:inherit;text-decoration:none}
       ad_personalization: 'granted'
     });
   }
-  function hideBanner(){ banner.classList.add('hidden'); }
-  function showBanner(){ banner.classList.remove('hidden'); }
+  function hideBanner(){ banner.classList.add('is-hidden'); }
+  function showBanner(){ banner.classList.remove('is-hidden'); }
 
   document.getElementById('cookie-accept').addEventListener('click', function(){
     localStorage.setItem(COOKIE_KEY, 'accepted');
@@ -512,12 +559,12 @@ a{color:inherit;text-decoration:none}
 })();
 
 (function(){
-  document.querySelectorAll('.faq-q').forEach(function(btn){
+  document.querySelectorAll('.lu-faq-q').forEach(function(btn){
     btn.addEventListener('click', function(){
       var expanded = btn.getAttribute('aria-expanded') === 'true';
       var panel = btn.nextElementSibling;
       btn.setAttribute('aria-expanded', !expanded);
-      btn.querySelector('.sign').textContent = expanded ? '+' : '−';
+      btn.querySelector('.lu-faq-sign').textContent = expanded ? '+' : '−';
       panel.hidden = expanded;
     });
   });
@@ -532,7 +579,7 @@ a{color:inherit;text-decoration:none}
     function check(fieldId, test){
       var wrap = document.getElementById(fieldId);
       var pass = test();
-      wrap.classList.toggle('has-error', !pass);
+      if (wrap) wrap.classList.toggle('has-error', !pass);
       if (!pass) ok = false;
     }
     check('fName', function(){ return document.getElementById('name').value.trim().length > 0; });
@@ -542,7 +589,7 @@ a{color:inherit;text-decoration:none}
     var status = document.getElementById('contactStatus');
     var btn = form.querySelector('[type=submit]');
     btn.disabled = true;
-    btn.textContent = 'Versturen…';
+    btn.textContent = 'Versturen...';
     status.classList.remove('is-error');
     status.textContent = '';
 
@@ -559,7 +606,7 @@ a{color:inherit;text-decoration:none}
       .then(function(){ window.location.href = '/bedankt.html'; })
       .catch(function(){
         btn.disabled = false;
-        btn.textContent = 'Verstuur →';
+        btn.textContent = 'Verstuur';
         status.classList.add('is-error');
         status.textContent = 'Er ging iets mis. Stuur een e-mail naar thomas@rankengine.nl.';
       });

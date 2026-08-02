@@ -82,6 +82,8 @@ ul{ margin:0; padding:0; list-style:none; }
 .lu-nav-links{ display:none; align-items:center; gap:32px; }
 .lu-nav-links a{ font-family:var(--font-head); font-weight:600; font-size:14px; color:var(--ink-variant); }
 .lu-nav-links a:hover{ color:var(--primary); }
+.lu-nav-links a.lu-btn-primary, .lu-mobile-panel a.lu-btn-primary{ color:var(--white); }
+.lu-nav-links a.lu-btn-primary:hover{ color:var(--white); }
 .lu-nav-toggle{ display:flex; background:none; border:none; color:var(--primary); padding:4px; }
 @media (min-width:768px){
   .lu-nav-links{ display:flex; }
