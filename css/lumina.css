@@ -159,6 +159,12 @@ ul{ margin:0; padding:0; list-style:none; }
 .lu-service-card[data-accent="primary"] .lu-service-list svg{ color:var(--primary); }
 .lu-service-card[data-accent="secondary"] .lu-service-list svg{ color:var(--secondary); }
 .lu-service-card[data-accent="tertiary"] .lu-service-list svg{ color:var(--tertiary); }
+.lu-service-links{ display:flex; flex-wrap:wrap; gap:16px 20px; margin-top:20px; }
+.lu-service-more{ display:inline-flex; align-items:center; gap:6px; font-family:var(--font-head); font-weight:700; font-size:14px; color:var(--primary); }
+.lu-service-card[data-accent="secondary"] .lu-service-more{ color:var(--secondary); }
+.lu-service-card[data-accent="tertiary"] .lu-service-more{ color:var(--tertiary); }
+.lu-service-more svg{ transition:transform .2s ease; }
+.lu-service-more:hover svg{ transform:translateX(3px); }
 
 /* -------------------------------------------------- stappenplan */
 .lu-process-grid{ display:grid; gap:16px; }
