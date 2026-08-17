@@ -9,90 +9,79 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" /></noscript>
 
 <style>
-:root{--paper:#F2EFE7;--ink:#14140F;--accent:#C4472A}
+:root{--surface:#f8f9ff;--ink:#0b1c30;--primary:#4648d4}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body.home{background:var(--paper);color:var(--ink);font-family:Archivo,system-ui,sans-serif;overflow-x:hidden}
+body.lumina{background:var(--surface);color:var(--ink);font-family:'Be Vietnam Pro',system-ui,sans-serif;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
-.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--ink)}
+.lu-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,255,.85)}
 </style>
 
-<link rel="preload" as="style" href="css/home.css?v=8" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/home.css?v=8" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=9" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=9" /></noscript>
 </head>
-<body class="home">
+<body class="lumina">
 
 <a class="skip-link" href="#main-content">Direct naar inhoud</a>
 
-<header class="site-nav">
-  <div class="wrap nav-inner">
-    <a class="logo" href="/">RankEngine<span class="dot">.</span></a>
-    <ul class="nav-links" role="list">
-      <li><a href="/#hoe-het-werkt">Stappenplan</a></li>
-      <li class="has-dropdown">
-        <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-        <ul class="nav-dropdown" role="menu">
-          <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-          <li><a href="/seo.html" role="menuitem">SEO</a></li>
-          <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-          <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-          <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-        </ul>
-      </li>
-      <li><a href="/#wie-ben-ik">Over mij</a></li>
-    </ul>
-    <div class="nav-right">
-      <a class="nav-phone" href="tel:+31643859989">06 43 85 99 89</a>
-      <a class="btn btn-dark nav-cta" href="/#contact">Gratis scan →</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
-        <span></span><span></span>
-      </button>
-    </div>
+<header class="lu-nav" id="top">
+  <div class="lu-wrap lu-nav-inner">
+    <a class="lu-logo" href="/">RankEngine</a>
+    <nav class="lu-nav-links">
+      <a href="/#diensten">Diensten</a>
+      <a href="/#hoe-het-werkt">Stappenplan</a>
+      <a href="/#wie-ben-ik">Over mij</a>
+      <a class="lu-btn lu-btn-primary lu-btn-pill" href="/#contact">Laten we beginnen</a>
+    </nav>
+    <button class="lu-nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="navMobilePanel">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
   </div>
-  <nav class="nav-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+  <nav class="lu-mobile-panel" id="navMobilePanel" aria-label="Mobiele navigatie">
+    <a href="/#diensten">Diensten</a>
     <a href="/#hoe-het-werkt">Stappenplan</a>
-    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">Diensten <em class="dropdown-chevron" aria-hidden="true">▾</em></button>
-    <ul class="nav-dropdown" role="menu">
-      <li><a href="/google-ads.html" role="menuitem">Google Ads</a></li>
-      <li><a href="/seo.html" role="menuitem">SEO</a></li>
-      <li><a href="/geo-optimalisatie.html" role="menuitem">GEO &amp; AI-optimalisatie</a></li>
-      <li><a href="/social-ads.html" role="menuitem">Social Media Ads</a></li>
-      <li><a href="/b2b-marketing.html" role="menuitem">B2B Marketing</a></li>
-    </ul>
     <a href="/#wie-ben-ik">Over mij</a>
-    <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
-    <a href="/#contact">Gratis scan →</a>
+    <a class="lu-btn lu-btn-primary lu-btn-block" href="/#contact">Laten we beginnen</a>
   </nav>
 </header>
 
 <main id="main-content">
-  <div class="hero-board">
-    <div class="error-page">
-      <div class="error-code">Fout 404</div>
-      <h1>Pagina niet gevonden.</h1>
-      <p class="error-sub">Deze pagina bestaat niet (meer) of het adres klopt niet. Gelukkig is de rest van de site gewoon bereikbaar.</p>
-      <div class="error-actions">
-        <a href="/" class="btn btn-primary">Terug naar home →</a>
-        <a href="/#contact" class="btn btn-ghost">Neem contact op</a>
+  <div class="lu-wrap">
+    <div class="lu-confirm" data-reveal>
+      <div class="lu-confirm-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <path d="M8 8l12 12M20 8L8 20" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </div>
-    </div>
-    <div class="board-footer">
-      <span>© 2026 RankEngine · Aalsmeer · KvK 94381143</span>
-      <span><a href="/privacy.html">Privacybeleid</a> · <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a></span>
+
+      <span class="lu-eyebrow">Fout 404</span>
+      <h1>Deze pagina bestaat niet (meer).</h1>
+      <p class="lu-confirm-sub">Het adres klopt niet, of de pagina is verplaatst. De rest van de site is gewoon bereikbaar.</p>
+
+      <div class="lu-confirm-actions">
+        <a href="/" class="lu-btn lu-btn-primary">Terug naar home</a>
+        <a href="/#diensten" class="lu-btn lu-btn-ghost">Bekijk de diensten</a>
+      </div>
     </div>
   </div>
 </main>
 
-<div class="mobile-bar" role="navigation" aria-label="Snelle acties">
-  <a href="tel:+31643859989">Bellen</a>
-  <a href="https://wa.me/31643859989" target="_blank" rel="noopener">WhatsApp</a>
-  <a href="/#contact">Gratis scan →</a>
-</div>
+<footer class="lu-footer">
+  <div class="lu-wrap lu-footer-inner">
+    <div class="lu-footer-logo">RankEngine</div>
+    <div class="lu-footer-links">
+      <a href="/privacy.html">Privacybeleid</a>
+      <a href="/algemene-voorwaarden.html">Algemene voorwaarden</a>
+      <a href="/#contact">Contact</a>
+    </div>
+    <div class="lu-footer-fine">© 2026 RankEngine · Aalsmeer · KvK 94381143</div>
+  </div>
+</footer>
 
 <script>
 (function(){
@@ -100,33 +89,27 @@ a{color:inherit;text-decoration:none}
   var panel = document.getElementById('navMobilePanel');
   if (!toggle) return;
   toggle.addEventListener('click', function(){
-    var open = panel.classList.toggle('open');
+    var open = panel.classList.toggle('is-open');
     toggle.setAttribute('aria-expanded', open);
-    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
   });
   panel.querySelectorAll('a').forEach(function(a){
     a.addEventListener('click', function(){
-      panel.classList.remove('open');
+      panel.classList.remove('is-open');
       toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'Menu openen');
     });
   });
 })();
 
 (function(){
-  var toggles = document.querySelectorAll('.dropdown-toggle');
-  if (!toggles.length) return;
-  function closeAll(){ toggles.forEach(function(b){ b.setAttribute('aria-expanded', 'false'); }); }
-  toggles.forEach(function(btn){
-    btn.addEventListener('click', function(e){
-      e.stopPropagation();
-      var open = btn.getAttribute('aria-expanded') !== 'true';
-      closeAll();
-      btn.setAttribute('aria-expanded', open);
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  if (!revealEls.length) return;
+  if (!('IntersectionObserver' in window)) { revealEls.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
     });
-  });
-  document.addEventListener('click', closeAll);
-  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+  }, { threshold: .15 });
+  revealEls.forEach(function(el){ io.observe(el); });
 })();
 </script>
 
