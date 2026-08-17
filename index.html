@@ -183,8 +183,8 @@ a{color:inherit;text-decoration:none}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/lumina.css?v=11" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/lumina.css?v=11" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=12" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=12" /></noscript>
 </head>
 <body class="lumina">
 
@@ -268,10 +268,16 @@ a{color:inherit;text-decoration:none}
     <div class="lu-wrap">
       <div class="lu-wieben-inner" data-reveal>
         <h2 class="lu-h2">Hoi, ik ben Thomas</h2>
-        <p>Ik ben RankEngine begonnen omdat ik het gedoe van een bureau zat was: zoveel lagen van mensen met een mening, en een lange doorlooptijd naar dingen die eigenlijk snel horen te gaan. Als ondernemer wil je vooruit, niet wachten op de derde goedkeuringsronde van een account manager die je nog nooit gesproken hebt.</p>
-        <p>Daarom werk ik alleen, rechtstreeks met jou. Geen lagen, geen wachttijd, geen jargon: ik ontzorg je als ondernemer, zodat jij kan doen waar je goed in bent en de dingen die snel moeten gaan ook snel gaan.</p>
-        <p>Ik begon niet achter een bureau. Via een stage leerde ik de basis van Google Ads en groeide ik uit tot allround online marketeer. Die 8 jaar praktijkervaring neem ik mee in elk project, geen dikke rapporten vol impressies, wel duidelijke keuzes die je omzet vooruit helpen.</p>
-        <p>Jouw ambitie is de motor, ik zorg voor de juiste weg ernaartoe.</p>
+        <div class="lu-wieben-collapse" id="wiebenCollapse">
+          <p>Ik ben RankEngine begonnen omdat ik het gedoe van een bureau zat was: zoveel lagen van mensen met een mening, en een lange doorlooptijd naar dingen die eigenlijk snel horen te gaan. Als ondernemer wil je vooruit, niet wachten op de derde goedkeuringsronde van een account manager die je nog nooit gesproken hebt.</p>
+          <p>Daarom werk ik alleen, rechtstreeks met jou. Geen lagen, geen wachttijd, geen jargon: ik ontzorg je als ondernemer, zodat jij kan doen waar je goed in bent en de dingen die snel moeten gaan ook snel gaan.</p>
+          <p>Ik begon niet achter een bureau. Via een stage leerde ik de basis van Google Ads en groeide ik uit tot allround online marketeer. Die 8 jaar praktijkervaring neem ik mee in elk project, geen dikke rapporten vol impressies, wel duidelijke keuzes die je omzet vooruit helpen.</p>
+          <p>Jouw ambitie is de motor, ik zorg voor de juiste weg ernaartoe.</p>
+        </div>
+        <button type="button" class="lu-wieben-more" id="wiebenToggle" aria-expanded="false" aria-controls="wiebenCollapse">
+          <span>Lees meer</span>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -367,11 +373,15 @@ a{color:inherit;text-decoration:none}
         <div class="lu-contact-info">
           <div class="lu-contact-info-row">
             <div class="lu-contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v3a2 2 0 01-2 2C10.5 19 5 13.5 5 6a2 2 0 011-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-            <span>06 43 85 99 89</span>
+            <span><a href="tel:+31643859989">06 43 85 99 89</a></span>
           </div>
           <div class="lu-contact-info-row">
-            <div class="lu-contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 12a8 8 0 01-11.5 7.2L4 20l1-5A8 8 0 1121 12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
-            <span>Stuur een WhatsApp</span>
+            <div class="lu-contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+            <span><a href="mailto:thomas@rankengine.nl">thomas@rankengine.nl</a></span>
+          </div>
+          <div class="lu-contact-info-row">
+            <div class="lu-contact-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.44-1.43a9.9 9.9 0 004.6 1.17h.005c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.83 14.09c-.24.68-1.4 1.32-1.93 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.62-.6-2.86-1.24-4.72-4.13-4.86-4.32-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.38c.26-.28.56-.35.75-.35.19 0 .38 0 .54.01.17.01.4-.07.63.48.24.57.81 1.98.88 2.12.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.16-.19.68-.79.87-1.06.19-.28.37-.23.62-.14.26.09 1.63.77 1.91.91.28.14.47.21.54.33.07.12.07.68-.17 1.36z"/></svg></div>
+            <span><a href="https://wa.me/31643859989" target="_blank" rel="noopener">Stuur een WhatsApp</a></span>
           </div>
         </div>
       </div>
@@ -477,6 +487,21 @@ a{color:inherit;text-decoration:none}
     });
   }, { threshold: .12, rootMargin: '0px 0px -8% 0px' });
   revealEls.forEach(function(el){ io.observe(el); });
+})();
+
+(function(){
+  var toggle = document.getElementById('wiebenToggle');
+  var collapse = document.getElementById('wiebenCollapse');
+  if (!toggle || !collapse) return;
+  toggle.addEventListener('click', function(){
+    var expanded = collapse.classList.toggle('is-expanded');
+    toggle.setAttribute('aria-expanded', expanded);
+    toggle.querySelector('span').textContent = expanded ? 'Lees minder' : 'Lees meer';
+    if (expanded) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'bio_lees_meer_click' });
+    }
+  });
 })();
 
 (function(){

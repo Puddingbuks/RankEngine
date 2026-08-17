@@ -140,6 +140,13 @@ ul{ margin:0; padding:0; list-style:none; }
 .lu-wieben-inner{ max-width:48rem; }
 .lu-wieben p{ font-size:18px; color:var(--ink-variant); line-height:1.7; margin-bottom:24px; }
 .lu-wieben p:last-child{ margin-bottom:0; }
+.lu-wieben-collapse{ position:relative; max-height:190px; overflow:hidden; transition:max-height .6s ease; }
+.lu-wieben-collapse::after{ content:''; position:absolute; left:0; right:0; bottom:0; height:90px; background:linear-gradient(to bottom, rgba(229,238,255,0), rgba(229,238,255,1)); transition:opacity .4s ease; pointer-events:none; }
+.lu-wieben-collapse.is-expanded{ max-height:900px; }
+.lu-wieben-collapse.is-expanded::after{ opacity:0; }
+.lu-wieben-more{ margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:none; border:none; padding:0; font-family:var(--font-head); font-weight:700; font-size:15px; color:var(--primary); cursor:pointer; }
+.lu-wieben-more svg{ transition:transform .3s ease; }
+.lu-wieben-more[aria-expanded="true"] svg{ transform:rotate(180deg); }
 
 /* -------------------------------------------------- diensten */
 .lu-services-grid{ display:grid; gap:32px; }
