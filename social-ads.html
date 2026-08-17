@@ -141,8 +141,8 @@ a{color:inherit;text-decoration:none}
 .lu-nav{position:sticky;top:0;z-index:100;background:rgba(248,249,255,.85)}
 </style>
 
-<link rel="preload" as="style" href="css/lumina.css?v=10" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/lumina.css?v=10" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=11" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=11" /></noscript>
 </head>
 <body class="lumina">
 
@@ -448,11 +448,25 @@ a{color:inherit;text-decoration:none}
           <form id="contactForm" novalidate>
             <div class="lu-field" id="fName">
               <label for="name">Naam</label>
-              <input class="lu-input" type="text" id="name" name="name" placeholder="Hoe mag ik je noemen?" autocomplete="name" required />
+              <input class="lu-input" type="text" id="name" name="name" placeholder="Voor- en achternaam" autocomplete="name" required />
             </div>
             <div class="lu-field" id="fEmail">
               <label for="email">E-mail</label>
               <input class="lu-input" type="email" id="email" name="email" placeholder="jij@voorbeeld.nl" autocomplete="email" required />
+            </div>
+            <div class="lu-field" id="fDienst">
+              <label for="dienst">Dienst</label>
+              <div class="lu-select-wrap">
+                <select class="lu-select" id="dienst" name="dienst" required>
+                  <option value="" disabled>Kies een dienst</option>
+                  <option value="Google Ads">Google Ads</option>
+                  <option value="SEO">SEO</option>
+                  <option value="GEO & AI-optimalisatie">GEO &amp; AI-optimalisatie</option>
+                  <option value="Social Media Ads" selected>Social Media Ads</option>
+                  <option value="B2B Marketing">B2B Marketing</option>
+                  <option value="Nog niet zeker">Nog niet zeker / iets anders</option>
+                </select>
+              </div>
             </div>
             <div class="lu-field">
               <label for="message">Bericht</label>
@@ -661,10 +675,12 @@ a{color:inherit;text-decoration:none}
     }
     check('fName', function(){ return document.getElementById('name').value.trim().length > 0; });
     check('fEmail', function(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('email').value.trim()); });
+    check('fDienst', function(){ return document.getElementById('dienst').value.trim().length > 0; });
     if (!ok) return;
 
     var status = document.getElementById('contactStatus');
     var btn = form.querySelector('[type=submit]');
+    var dienst = document.getElementById('dienst').value.trim();
     btn.disabled = true;
     btn.textContent = 'Versturen...';
     status.classList.remove('is-error');
@@ -676,11 +692,11 @@ a{color:inherit;text-decoration:none}
       body: JSON.stringify({
         naam: document.getElementById('name').value.trim(),
         email: document.getElementById('email').value.trim(),
-        dienst: 'Social Media Ads',
+        dienst: dienst,
         bericht: document.getElementById('message').value.trim()
       })
     })
-      .then(function(){ window.location.href = '/bedankt.html'; })
+      .then(function(){ window.location.href = '/bedankt.html?dienst=' + encodeURIComponent(dienst); })
       .catch(function(){
         btn.disabled = false;
         btn.textContent = 'Verstuur';

@@ -183,8 +183,8 @@ a{color:inherit;text-decoration:none}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/lumina.css?v=10" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/lumina.css?v=10" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=11" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=11" /></noscript>
 </head>
 <body class="lumina">
 
@@ -377,17 +377,31 @@ a{color:inherit;text-decoration:none}
       </div>
       <div class="lu-contact-form-card lu-card" data-reveal>
         <form id="contactForm" novalidate>
-          <div class="lu-field">
-            <label for="name">Je Naam</label>
-            <input class="lu-input" type="text" id="name" name="name" placeholder="Hoe mogen we je noemen?" autocomplete="name" required />
+          <div class="lu-field" id="fName">
+            <label for="name">Naam</label>
+            <input class="lu-input" type="text" id="name" name="name" placeholder="Voor- en achternaam" autocomplete="name" required />
           </div>
-          <div class="lu-field">
+          <div class="lu-field" id="fEmail">
             <label for="email">E-mail</label>
             <input class="lu-input" type="email" id="email" name="email" placeholder="jij@voorbeeld.nl" autocomplete="email" required />
           </div>
+          <div class="lu-field" id="fDienst">
+            <label for="dienst">Dienst</label>
+            <div class="lu-select-wrap">
+              <select class="lu-select" id="dienst" name="dienst" required>
+                <option value="" disabled selected>Kies een dienst</option>
+                <option value="Google Ads">Google Ads</option>
+                <option value="SEO">SEO</option>
+                <option value="GEO & AI-optimalisatie">GEO &amp; AI-optimalisatie</option>
+                <option value="Social Media Ads">Social Media Ads</option>
+                <option value="B2B Marketing">B2B Marketing</option>
+                <option value="Nog niet zeker">Nog niet zeker / iets anders</option>
+              </select>
+            </div>
+          </div>
           <div class="lu-field">
-            <label for="message">Waar kunnen we je mee helpen?</label>
-            <textarea class="lu-textarea" id="message" name="message" rows="4" placeholder="Vertel kort iets over jouw start-up..."></textarea>
+            <label for="message">Bericht</label>
+            <textarea class="lu-textarea" id="message" name="message" rows="4" placeholder="Vertel kort wat je doet en wat je zoekt... (optioneel)"></textarea>
           </div>
           <button type="submit" class="lu-btn lu-btn-primary lu-btn-block">Verstuur Bericht</button>
           <p class="lu-form-status" id="contactStatus"></p>
@@ -570,30 +584,37 @@ function sendToWebhook(payload){
   if (!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
-    var name = document.getElementById('name').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var message = document.getElementById('message').value.trim();
+    var ok = true;
+    function check(fieldId, test){
+      var wrap = document.getElementById(fieldId);
+      var pass = test();
+      if (wrap) wrap.classList.toggle('has-error', !pass);
+      if (!pass) ok = false;
+    }
+    check('fName', function(){ return document.getElementById('name').value.trim().length > 0; });
+    check('fEmail', function(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('email').value.trim()); });
+    check('fDienst', function(){ return document.getElementById('dienst').value.trim().length > 0; });
     var status = document.getElementById('contactStatus');
-
-    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    if (!ok) {
       status.classList.add('is-error');
-      status.textContent = 'Vul je naam en een geldig e-mailadres in.';
+      status.textContent = 'Vul je naam, e-mailadres en dienst in.';
       return;
     }
 
     var btn = form.querySelector('[type=submit]');
+    var dienst = document.getElementById('dienst').value.trim();
     btn.disabled = true;
     btn.textContent = 'Versturen…';
     status.classList.remove('is-error');
     status.textContent = '';
 
     sendToWebhook({
-      naam: name,
-      email: email,
-      dienst: 'Website contactformulier',
-      bericht: message
+      naam: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      dienst: dienst,
+      bericht: document.getElementById('message').value.trim()
     })
-      .then(function(){ window.location.href = '/bedankt.html'; })
+      .then(function(){ window.location.href = '/bedankt.html?dienst=' + encodeURIComponent(dienst); })
       .catch(function(){
         btn.disabled = false;
         btn.textContent = 'Verstuur Bericht';
