@@ -439,16 +439,22 @@ ul{ margin:0; padding:0; list-style:none; }
   .lu-tariff-grid{ margin-bottom:24px; }
 }
 
-/* -------------------------------------------------- compact mode (homepage desktop) */
+/* -------------------------------------------------- compact mode (desktop, sitebreed) */
 @media (min-width:768px){
+  .lu-section{ padding-block:64px; }
+  .lu-section-head{ margin-bottom:40px; }
+  .lu-contact-grid{ gap:48px; }
+  .lu-contact-info{ margin-top:32px; }
+  .lu-footer{ margin-top:56px; }
+
   #home .lu-hero{ padding-top:72px; padding-bottom:88px; }
   #home .lu-hero-grid{ gap:48px; }
   #home .lu-hero-h1{ margin-bottom:24px; }
   #home .lu-hero-checks{ gap:12px; margin-bottom:24px; }
-  #home .lu-section{ padding-block:64px; }
-  #home .lu-section-head{ margin-bottom:40px; }
   #home .lu-services-grid{ gap:24px; }
-  #home .lu-contact-grid{ gap:48px; }
-  #home .lu-contact-info{ margin-top:32px; }
-  #home .lu-footer{ margin-top:56px; }
+
+  .lu-svc-hero{ padding-top:40px; padding-bottom:48px; }
+  .lu-svc-hero-grid{ gap:32px; }
+  .lu-svc-hero h1{ margin-bottom:14px; }
+  .lu-svc-hero-sub{ margin-bottom:22px; }
 }
