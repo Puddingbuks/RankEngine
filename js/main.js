@@ -253,7 +253,7 @@
       })
         .then((r) => {
           if (r.ok) {
-            window.location.href = "/bedankt.html";
+            window.location.href = "/bedankt";
           } else {
             throw new Error("server error");
           }
