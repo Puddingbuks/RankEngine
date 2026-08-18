@@ -105,14 +105,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .lu-hero{ position:relative; padding-top:96px; padding-bottom:128px; overflow:hidden; z-index:1; }
 .lu-flow-path{ opacity:.2; stroke-dasharray:10; animation:lu-dash 30s linear infinite; }
 @keyframes lu-dash{ to{ stroke-dashoffset:-1000; } }
-.lu-flow-gear{
-  opacity:.5;
-  offset-path: path("M200 0 C 600 400, 800 100, 1200 600 S 200 900, 400 1300 S 1200 1700, 900 2200 S 200 2700, 500 3200 S 1200 3600, 800 4100");
-  offset-rotate: 0deg;
-  offset-distance: 0%;
-  animation: lu-gear-move 26s linear infinite;
-}
-@keyframes lu-gear-move{ to{ offset-distance:100%; } }
+.lu-flow-gear{ opacity:.35; }
 .lu-flow-gear-spin{
   transform-box: fill-box;
   transform-origin: center;
