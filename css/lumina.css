@@ -399,3 +399,25 @@ ul{ margin:0; padding:0; list-style:none; }
 .lu-page-outro{ text-align:center; font-size:14px; color:var(--ink-variant); padding-bottom:48px; }
 .lu-page-outro a{ color:var(--primary); }
 .lu-page-outro a:hover{ text-decoration:underline; }
+
+/* -------------------------------------------------- compact mode (mobiel) */
+@media (max-width:767px){
+  .lu-hero{ padding-top:56px; padding-bottom:48px; }
+  .lu-hero-grid{ gap:40px; }
+  .lu-hero-h1{ margin-bottom:20px; }
+  .lu-hero-checks{ gap:12px; margin-bottom:24px; }
+  .lu-svc-hero{ padding-top:40px; padding-bottom:36px; }
+  .lu-svc-hero-grid{ gap:28px; }
+  .lu-svc-hero h1{ margin-bottom:14px; }
+  .lu-svc-hero-sub{ margin-bottom:24px; }
+  .lu-section{ padding-block:56px; }
+  .lu-section-head{ margin-bottom:36px; }
+  .lu-contact-grid{ gap:40px; }
+  .lu-contact-info{ margin-top:32px; }
+  .lu-footer{ margin-top:48px; padding-block:40px 24px; }
+  .lu-confirm{ padding-block:40px 56px; }
+  .lu-legal-hero{ padding-top:40px; padding-bottom:28px; }
+  .lu-legal-body{ padding-bottom:56px; }
+  .lu-tariff-hero{ padding:24px; margin-bottom:24px; }
+  .lu-tariff-grid{ margin-bottom:24px; }
+}
