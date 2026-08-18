@@ -188,8 +188,8 @@ a{color:inherit;text-decoration:none}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/lumina.css?v=25" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/lumina.css?v=25" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=26" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=26" /></noscript>
 </head>
 <body class="lumina" id="home">
 
@@ -249,13 +249,25 @@ a{color:inherit;text-decoration:none}
   <section class="lu-hero">
     <div class="lu-wrap lu-hero-grid">
       <div>
-        <h1 class="lu-hero-h1">Start jouw online Engine<br><span id="heroTyped">Vindbaar in Aalsmeer</span></h1>
+        <div class="lu-hero-rating">
+          <span class="lu-hero-stars" aria-hidden="true">★★★★★</span>
+          <strong>4,9</strong> · 27 lokale ondernemers
+        </div>
+        <h1 class="lu-hero-h1">Start jouw online Engine<br><span id="heroTyped" class="lu-hero-highlight">Vindbaar in Aalsmeer</span></h1>
+        <p class="lu-hero-lede">Ik zorg dat klanten uit de buurt jóu vinden in plaats van de concurrent — zonder jargon, met een plan dat je snapt.</p>
         <ul class="lu-hero-checks">
-          <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Geen moeilijke termen, wel meer klanten</li>
+          <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Geen moeilijke termen</li>
           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Duidelijk stappenplan</li>
           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Persoonlijke aanpak</li>
         </ul>
-        <a class="lu-btn lu-btn-primary" href="#contact">Laten we beginnen</a>
+        <div class="lu-hero-ctas">
+          <a class="lu-btn lu-btn-primary" href="#contact">Laten we beginnen</a>
+          <a class="lu-btn lu-btn-ghost" href="#hoe-het-werkt">Bekijk het stappenplan <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        <div class="lu-hero-trust">
+          <span class="lu-hero-trust-avatars" aria-hidden="true"><i></i><i></i><i></i></span>
+          Gemiddeld <strong>3× meer aanvragen</strong> binnen 6 maanden
+        </div>
       </div>
       <div class="lu-hero-visual">
         <div class="lu-hero-photo-card">
