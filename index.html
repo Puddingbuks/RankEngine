@@ -188,8 +188,8 @@ a{color:inherit;text-decoration:none}
 </style>
 
 <!-- Volledige CSS asynchroon laden -->
-<link rel="preload" as="style" href="css/lumina.css?v=28" onload="this.onload=null;this.rel='stylesheet'" />
-<noscript><link rel="stylesheet" href="css/lumina.css?v=28" /></noscript>
+<link rel="preload" as="style" href="css/lumina.css?v=29" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="css/lumina.css?v=29" /></noscript>
 </head>
 <body class="lumina" id="home">
 
@@ -254,7 +254,7 @@ a{color:inherit;text-decoration:none}
           <strong>4,9</strong> · 3 lokale ondernemers
         </div>
         <h1 class="lu-hero-h1">Start jouw online Engine<br><span id="heroTyped" class="lu-hero-highlight">Vindbaar in Aalsmeer</span></h1>
-        <p class="lu-hero-lede">Ik zorg dat klanten uit de buurt jóu vinden in plaats van de concurrent — zonder jargon, met een plan dat je snapt.</p>
+        <p class="lu-hero-lede">Ik zorg dat klanten uit de buurt jóu vinden in plaats van de concurrent, zonder jargon en met een plan dat je snapt.</p>
         <ul class="lu-hero-checks">
           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Geen moeilijke termen</li>
           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="currentColor" opacity=".12"/><path d="M7 12.5l3 3L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Duidelijk stappenplan</li>
@@ -594,9 +594,21 @@ a{color:inherit;text-decoration:none}
     resizeTimer = setTimeout(lockHeight, 200);
   });
 
-  var pi = 0, ci = 0, deleting = false;
+  function isLocationPhrase(p){ return p.indexOf('Vindbaar in') === 0; }
+  function pickNext(prev){
+    var pool = phrases.filter(function(p){
+      if (p === prev) return false;
+      if (prev && isLocationPhrase(prev) && isLocationPhrase(p)) return false;
+      return true;
+    });
+    if (!pool.length) pool = phrases;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  var currentWord = phrases[Math.floor(Math.random() * phrases.length)];
+  var ci = 0, deleting = false;
   function tick(){
-    var word = phrases[pi];
+    var word = currentWord;
     if (!deleting) {
       ci++;
       typedEl.textContent = word.slice(0, ci);
@@ -605,7 +617,7 @@ a{color:inherit;text-decoration:none}
     } else {
       ci--;
       typedEl.textContent = word.slice(0, ci);
-      if (ci <= 0) { deleting = false; pi = (pi + 1) % phrases.length; return setTimeout(tick, 300); }
+      if (ci <= 0) { deleting = false; currentWord = pickNext(word); return setTimeout(tick, 300); }
       setTimeout(tick, 30);
     }
   }
