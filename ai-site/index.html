@@ -145,11 +145,21 @@ nav.top{ position:sticky; top:0; z-index:100; border-bottom:1px solid var(--bord
 .demo-card{ background:rgba(20,19,28,.88); border:1px solid var(--border-3); border-radius:10px; backdrop-filter:blur(8px); overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.4); }
 .demo-card-head{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:10.5px; color:var(--ink-ghost); letter-spacing:.08em; }
 .demo-card-head .live{ color:var(--green); }
-.demo-card-body{ display:flex; flex-direction:column; gap:12px; padding:16px; }
+.demo-card-body{ display:flex; flex-direction:column; padding:16px; min-height:230px; overflow:hidden; }
+@media (min-width:768px){ .demo-card-body{ min-height:200px; } }
+.chat-stack{ display:flex; flex-direction:column; gap:12px; transition:transform .45s ease, opacity .45s ease; }
+.chat-stack.is-hidden{ opacity:0; transform:translateY(18px); }
 .msg-user{ align-self:flex-end; max-width:88%; background:var(--purple); color:#12111a; font-size:14px; line-height:1.45; padding:10px 13px; border-radius:10px 10px 3px 10px; }
-.msg-ai{ max-width:94%; background:rgba(255,255,255,.045); border:1px solid var(--border); font-size:14px; line-height:1.5; padding:12px 13px; border-radius:10px 10px 10px 3px; color:#ddd9ec; }
-.msg-tags{ display:flex; gap:8px; flex-wrap:wrap; font-family:var(--font-mono); font-size:10px; color:var(--ink-faint); }
+.msg-ai{ max-width:94%; min-height:20px; background:rgba(255,255,255,.045); border:1px solid var(--border); font-size:14px; line-height:1.5; padding:12px 13px; border-radius:10px 10px 10px 3px; color:#ddd9ec; }
+.msg-ai.is-empty{ display:none; }
+.msg-tags{ display:flex; gap:8px; flex-wrap:wrap; font-family:var(--font-mono); font-size:10px; color:var(--ink-faint); min-height:0; opacity:0; transition:opacity .35s ease; }
+.msg-tags.is-visible{ opacity:1; }
 .msg-tags span{ padding:5px 9px; border:1px solid var(--border-3); border-radius:4px; }
+.typing-dots{ display:inline-flex; gap:4px; align-items:center; padding:2px 0; }
+.typing-dots i{ width:5px; height:5px; border-radius:50%; background:var(--ink-faint); animation:typingBounce 1.2s infinite ease-in-out; }
+.typing-dots i:nth-child(2){ animation-delay:.15s; }
+.typing-dots i:nth-child(3){ animation-delay:.3s; }
+@keyframes typingBounce{ 0%,60%,100%{ transform:translateY(0); opacity:.5; } 30%{ transform:translateY(-3px); opacity:1; } }
 .hero-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; }
 .hero-stats > div{ padding:12px 14px; background:var(--card); border:1px solid var(--border); border-radius:6px; }
 .hero-stats .num{ font-size:20px; font-weight:600; letter-spacing:-.02em; }
@@ -388,13 +398,11 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
       <div style="display:flex; flex-direction:column; gap:14px;">
         <div class="demo-card">
           <div class="demo-card-head"><span>SECOND BRAIN · jouw omgeving</span><span class="live">● live</span></div>
-          <div class="demo-card-body">
-            <div class="msg-user">Wat had ik met Bakkerij Van Dijk afgesproken over levertijden?</div>
-            <div class="msg-ai">Levering vóór 07:00, uiterlijk woensdag aanleveren. Vastgelegd in het gespreksverslag van 12 juni en verwerkt in factuurregel 2024-118.<span class="caret"></span></div>
-            <div class="msg-tags">
-              <span>↳ verslag_12-06.md</span>
-              <span>↳ klant/van-dijk</span>
-              <span>↳ factuur 2024-118</span>
+          <div class="demo-card-body" id="heroChatBody">
+            <div class="chat-stack" id="heroChatStack">
+              <div class="msg-user" id="heroChatUser">Wat had ik met Bakkerij Van Dijk afgesproken over levertijden?</div>
+              <div class="msg-ai" id="heroChatAi"><span id="heroChatAiText"></span><span class="caret" id="heroChatCaret" hidden></span><span class="typing-dots" id="heroChatDots" hidden><i></i><i></i><i></i></span></div>
+              <div class="msg-tags" id="heroChatTags"></div>
             </div>
           </div>
         </div>
@@ -898,6 +906,116 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
 })();
 
 /* FAQ plus-icon already handled via CSS details[open] .plus */
+
+/* hero chat: roterende voorbeeldgesprekken, geanimeerd als een echte chat */
+(function(){
+  var stack = document.getElementById('heroChatStack');
+  var userEl = document.getElementById('heroChatUser');
+  var aiEl = document.getElementById('heroChatAi');
+  var aiTextEl = document.getElementById('heroChatAiText');
+  var caretEl = document.getElementById('heroChatCaret');
+  var dotsEl = document.getElementById('heroChatDots');
+  var tagsEl = document.getElementById('heroChatTags');
+  if (!stack || !userEl || !aiTextEl) return;
+
+  var conversations = [
+    {
+      user: 'Wat had ik met Bakkerij Van Dijk afgesproken over levertijden?',
+      ai: 'Levering vóór 07:00, uiterlijk woensdag aanleveren. Vastgelegd in het gespreksverslag van 12 juni en verwerkt in factuurregel 2024-118.',
+      tags: ['↳ verslag_12-06.md', '↳ klant/van-dijk', '↳ factuur 2024-118']
+    },
+    {
+      user: 'Welke klanten hebben nog een openstaande factuur?',
+      ai: 'Drie openstaand: Van Dijk (€480), Terra Hoveniers (€1.250), Studio Mees (€310). Totaal €2.040.',
+      tags: ['↳ facturatie', '↳ 3 records']
+    },
+    {
+      user: 'Wat is mijn standaardprocedure voor een spoedopdracht?',
+      ai: 'Spoedtarief +35%, bevestiging per mail vóór start, levering binnen 48 uur.',
+      tags: ['↳ procedures/spoed.md']
+    },
+    {
+      user: 'Maak een offerte voor Terra op basis van vorig project.',
+      ai: 'Concept klaar: zelfde posten, prijzen geïndexeerd met 4%. Klaar om te controleren en te versturen.',
+      tags: ['↳ project 2024-041', '↳ prijslijst']
+    },
+    {
+      user: 'Wanneer sprak ik voor het laatst met Studio Mees?',
+      ai: '14 augustus, telefonisch. Afgesproken: nieuw voorstel vóór 1 september.',
+      tags: ['↳ contactlog', '↳ klant/studio-mees']
+    }
+  ];
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) {
+    var first = conversations[0];
+    userEl.textContent = first.user;
+    aiTextEl.textContent = first.ai;
+    tagsEl.innerHTML = first.tags.map(function(t){ return '<span>' + t + '</span>'; }).join('');
+    tagsEl.classList.add('is-visible');
+    return;
+  }
+
+  var idx = 0;
+  var timer;
+
+  function typeAi(text, done){
+    var i = 0;
+    caretEl.hidden = false;
+    (function tick(){
+      i++;
+      aiTextEl.textContent = text.slice(0, i);
+      if (i >= text.length) { caretEl.hidden = true; done(); return; }
+      timer = setTimeout(tick, 14 + Math.random() * 16);
+    })();
+  }
+
+  function runCycle(){
+    var c = conversations[idx];
+
+    // reset
+    aiEl.classList.add('is-empty');
+    aiTextEl.textContent = '';
+    dotsEl.hidden = true;
+    caretEl.hidden = true;
+    tagsEl.innerHTML = '';
+    tagsEl.classList.remove('is-visible');
+    userEl.textContent = c.user;
+
+    // 1. bericht van de gebruiker verschijnt
+    stack.classList.add('is-hidden');
+    timer = setTimeout(function(){
+      stack.classList.remove('is-hidden');
+
+      // 2. korte pauze, dan "aan het typen"
+      timer = setTimeout(function(){
+        aiEl.classList.remove('is-empty');
+        dotsEl.hidden = false;
+
+        timer = setTimeout(function(){
+          dotsEl.hidden = true;
+
+          // 3. AI-antwoord typt uit
+          typeAi(c.ai, function(){
+            tagsEl.innerHTML = c.tags.map(function(t){ return '<span>' + t + '</span>'; }).join('');
+            requestAnimationFrame(function(){ tagsEl.classList.add('is-visible'); });
+
+            // 4. even laten staan, dan wegscrollen naar het volgende gesprek
+            timer = setTimeout(function(){
+              stack.classList.add('is-hidden');
+              timer = setTimeout(function(){
+                idx = (idx + 1) % conversations.length;
+                runCycle();
+              }, 500);
+            }, 3200);
+          });
+        }, 700);
+      }, 550);
+    }, 30);
+  }
+
+  runCycle();
+})();
 </script>
 
 </body>
