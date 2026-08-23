@@ -262,6 +262,17 @@ h2{ margin:0; font-size:26px; line-height:1.15; font-weight:600; letter-spacing:
 .re-answer{ position:absolute; left:50%; transform:translate(-50%,0); display:flex; align-items:center; gap:9px; white-space:nowrap; padding:10px 16px; background:rgba(20,19,28,.9); border:1px solid rgba(125,224,176,.35); border-radius:8px; font-size:13.5px; color:#d3d0e0; animation:reClaudeIn 18s linear infinite; z-index:2; }
 .re-answer .dot{ width:6px; height:6px; border-radius:50%; background:var(--green); display:inline-block; }
 
+.re-timeline{ display:flex; align-items:center; gap:12px; margin-top:24px; }
+.re-timeline-time{ font-family:var(--font-mono); font-size:11px; color:var(--ink-ghost); flex-shrink:0; }
+.re-timeline-track{ position:relative; display:flex; flex:1; height:5px; border-radius:3px; overflow:visible; }
+.re-timeline-seg{ height:100%; }
+.re-timeline-seg:first-child{ border-radius:3px 0 0 3px; }
+.re-timeline-seg:last-child{ border-radius:0 3px 3px 0; }
+.re-timeline-seg.seg-1{ flex:0 0 32%; background:var(--amber); opacity:.55; }
+.re-timeline-seg.seg-2{ flex:0 0 32%; background:var(--purple); opacity:.55; }
+.re-timeline-seg.seg-3{ flex:0 0 36%; background:var(--green); opacity:.55; }
+.re-timeline-playhead{ position:absolute; top:50%; left:0; width:11px; height:11px; border-radius:50%; background:#fff; box-shadow:0 0 0 3px rgba(255,255,255,.18), 0 2px 8px rgba(0,0,0,.45); transform:translate(-50%,-50%); animation:reTimelinePlay 18s linear infinite; }
+@keyframes reTimelinePlay{ 0%{ left:0% } 100%{ left:100% } }
 .re-steps{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:22px; }
 @media (min-width:768px){ .re-steps{ grid-template-columns:repeat(3,1fr); gap:14px; } }
 .re-step{ display:flex; flex-direction:column; gap:7px; padding-top:16px; border-top:2px solid var(--amber); }
@@ -274,10 +285,11 @@ h2{ margin:0; font-size:26px; line-height:1.15; font-weight:600; letter-spacing:
 .re-step h3{ margin:0; font-size:18px; font-weight:600; }
 .re-step p{ margin:0; font-size:14px; line-height:1.55; color:var(--ink-mute); }
 @media (prefers-reduced-motion: reduce){
-  .re-card, .re-card .ping-wrap, .re-card .ping, .re-noconn, .re-vault, .re-claude, .re-answer, .re-step, .re-diagram svg line{ animation:none !important; }
+  .re-card, .re-card .ping-wrap, .re-card .ping, .re-noconn, .re-vault, .re-claude, .re-answer, .re-step, .re-diagram svg line, .re-timeline-playhead{ animation:none !important; }
   .re-vault, .re-claude, .re-answer{ opacity:1; transform:translate(-50%,-50%); }
   .re-claude, .re-answer{ transform:translate(-50%,0); }
   .re-noconn{ opacity:0; }
+  .re-timeline-playhead{ left:100%; }
 }
 
 /* wat het is */
@@ -529,22 +541,22 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
 
       <div class="re-diagram re-desktop" style="margin-top:32px;">
         <svg viewBox="0 0 1328 660" preserveAspectRatio="none">
-            <line x1="124" y1="99" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="334" y1="55" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="604" y1="49" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="894" y1="53" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="1154" y1="84" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="1224" y1="234" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="1204" y1="419" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="924" y1="589" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="584" y1="589" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="264" y1="459" x2="664" y2="340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="124" y1="99" x2="664" y2="340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="604" y1="49" x2="664" y2="340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="1154" y1="84" x2="664" y2="340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="1204" y1="419" x2="664" y2="340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="584" y1="589" x2="664" y2="340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="264" y1="459" x2="664" y2="340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" style="animation:reFlow 18s linear infinite"></line>
+            <path d="M 197.5,140.0 Q 418.8,268.0 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 376.0,96.0 Q 534.6,200.7 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 612.6,88.0 Q 623.2,217.1 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 867.1,90.0 Q 780.5,227.2 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 1086.2,125.0 Q 862.2,207.2 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 1141.0,251.9 Q 907.8,324.6 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 1120.0,409.7 Q 896.2,347.5 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 893.5,563.0 Q 765.4,465.3 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 594.5,559.0 Q 642.4,453.7 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 352.0,438.9 Q 502.1,370.7 664,340" stroke="rgba(169,155,255,.45)" stroke-width="1.1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 197.5,140.0 Q 418.8,268.0 664,340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 612.6,88.0 Q 623.2,217.1 664,340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 1086.2,125.0 Q 862.2,207.2 664,340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 1120.0,409.7 Q 896.2,347.5 664,340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 594.5,559.0 Q 642.4,453.7 664,340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 352.0,438.9 Q 502.1,370.7 664,340" stroke="#cbb9ff" stroke-width="2" stroke-dasharray="5 22" fill="none" style="animation:reFlow 18s linear infinite"></path>
             <line x1="628" y1="204" x2="628" y2="256" stroke="#a99bff" stroke-width="1.6" stroke-dasharray="4 8" style="animation:reBeam 18s linear infinite"></line>
             <line x1="700" y1="256" x2="700" y2="204" stroke="#7de0b0" stroke-width="1.6" stroke-dasharray="4 8" style="animation:reBeam 18s linear infinite"></line>
         </svg>
@@ -621,17 +633,17 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
 
       <div class="re-diagram re-mobile" style="margin-top:32px;">
         <svg viewBox="0 0 354 500" preserveAspectRatio="none">
-            <line x1="60" y1="48" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="178" y1="26" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="292" y1="62" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="54" y1="223" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="300" y1="228" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="58" y1="418" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="172" y1="468" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="298" y1="428" x2="177" y2="320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" style="animation:reDraw 18s linear infinite"></line>
-            <line x1="178" y1="26" x2="177" y2="320" stroke="#cbb9ff" stroke-width="1.8" stroke-dasharray="4 18" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="58" y1="418" x2="177" y2="320" stroke="#cbb9ff" stroke-width="1.8" stroke-dasharray="4 18" style="animation:reFlow 18s linear infinite"></line>
-            <line x1="300" y1="228" x2="177" y2="320" stroke="#cbb9ff" stroke-width="1.8" stroke-dasharray="4 18" style="animation:reFlow 18s linear infinite"></line>
+            <path d="M 72.5,79.0 Q 110.3,205.8 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 178.4,56.0 Q 193.5,188.1 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 283.7,87.0 Q 216.4,197.1 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 85.2,252.0 Q 138.2,276.4 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 260.4,257.0 Q 211.5,278.9 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 81.1,403.0 Q 121.2,352.4 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 174.9,445.0 Q 187.9,382.7 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 269.1,407.0 Q 214.8,372.2 177,320" stroke="rgba(169,155,255,.45)" stroke-width="1" stroke-dasharray="700" fill="none" style="animation:reDraw 18s linear infinite"></path>
+            <path d="M 178.4,56.0 Q 193.5,188.1 177,320" stroke="#cbb9ff" stroke-width="1.8" stroke-dasharray="4 18" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 260.4,257.0 Q 211.5,278.9 177,320" stroke="#cbb9ff" stroke-width="1.8" stroke-dasharray="4 18" fill="none" style="animation:reFlow 18s linear infinite"></path>
+            <path d="M 81.1,403.0 Q 121.2,352.4 177,320" stroke="#cbb9ff" stroke-width="1.8" stroke-dasharray="4 18" fill="none" style="animation:reFlow 18s linear infinite"></path>
             <line x1="158" y1="172" x2="158" y2="262" stroke="#a99bff" stroke-width="1.4" stroke-dasharray="4 8" style="animation:reBeam 18s linear infinite"></line>
             <line x1="198" y1="262" x2="198" y2="172" stroke="#7de0b0" stroke-width="1.4" stroke-dasharray="4 8" style="animation:reBeam 18s linear infinite"></line>
         </svg>
@@ -671,6 +683,17 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
           <div class="re-vault-row" style="font-size:12.5px; padding:6px 8px;"><span>Klanten</span><span>87</span></div>
           <div class="re-vault-row" style="font-size:12.5px; padding:6px 8px;"><span>Facturen</span><span>240</span></div>
         </div>
+      </div>
+
+      <div class="re-timeline">
+        <span class="re-timeline-time">0s</span>
+        <div class="re-timeline-track">
+          <span class="re-timeline-seg seg-1"></span>
+          <span class="re-timeline-seg seg-2"></span>
+          <span class="re-timeline-seg seg-3"></span>
+          <span class="re-timeline-playhead"></span>
+        </div>
+        <span class="re-timeline-time">18s</span>
       </div>
 
       <div class="re-steps">
