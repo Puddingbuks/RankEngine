@@ -99,8 +99,9 @@ button{ font-family:inherit; }
 /* ---------- NAV ---------- */
 .pilot-bar{ display:flex; align-items:center; justify-content:center; gap:10px; padding:9px 20px; background:rgba(139,124,246,.12); border-bottom:1px solid rgba(139,124,246,.2); font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--purple-glow); text-align:center; }
 .pilot-bar .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); flex-shrink:0; }
-nav.top{ position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:16px 40px; border-bottom:1px solid var(--border); background:rgba(22,21,31,.86); backdrop-filter:blur(10px); }
-@media (max-width:767px){ nav.top{ padding:14px 18px; } }
+nav.top{ position:sticky; top:0; z-index:100; border-bottom:1px solid var(--border); background:rgba(22,21,31,.86); backdrop-filter:blur(10px); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; padding:16px 0; }
+@media (max-width:767px){ .nav-inner{ padding:14px 0; } }
 .logo{ display:flex; align-items:center; gap:10px; }
 .logo-mark{ width:22px; height:22px; border-radius:6px; background:linear-gradient(140deg,var(--purple),#4b3fc4); box-shadow:0 0 14px rgba(139,124,246,.5); flex-shrink:0; }
 .logo-text{ font-size:16px; font-weight:600; letter-spacing:-.01em; }
@@ -129,8 +130,8 @@ nav.top{ position:sticky; top:0; z-index:100; display:flex; align-items:center; 
 #graph{ position:absolute; inset:0; width:100%; height:100%; display:block; }
 .hero-scrim{ position:absolute; inset:0; background:radial-gradient(120% 80% at 22% 40%, rgba(22,21,31,.95) 0%, rgba(22,21,31,.74) 42%, rgba(22,21,31,0) 78%); }
 @media (max-width:767px){ .hero-scrim{ background:radial-gradient(120% 70% at 50% 30%, rgba(22,21,31,.72) 0%, rgba(22,21,31,.93) 62%); } }
-.hero-inner{ position:relative; display:grid; grid-template-columns:1fr; gap:32px; padding:44px 18px 40px; }
-@media (min-width:768px){ .hero-inner{ grid-template-columns:1.05fr .95fr; gap:56px; padding:88px 40px 76px; } }
+.hero-inner{ position:relative; display:grid; grid-template-columns:1fr; gap:32px; padding:44px 0 40px; }
+@media (min-width:768px){ .hero-inner{ grid-template-columns:1.05fr .95fr; gap:56px; padding:88px 0 76px; } }
 .hero-copy{ display:flex; flex-direction:column; gap:24px; max-width:620px; }
 .hero-copy h1{ margin:0; font-size:34px; line-height:1.08; font-weight:600; letter-spacing:-.03em; text-wrap:pretty; }
 @media (min-width:768px){ .hero-copy h1{ font-size:60px; line-height:1.03; letter-spacing:-.035em; } }
@@ -332,24 +333,26 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
 <div class="pilot-bar"><span class="dot"></span>PILOTFASE · 4 VAN 6 PLEKKEN BESCHIKBAAR · START BINNEN 2 WEKEN</div>
 
 <nav class="top" id="top">
-  <div class="nav-left">
-    <a href="#top" class="logo"><span class="logo-mark"></span><span class="logo-text">RankEngine<span> AI</span></span></a>
-    <div class="nav-links">
-      <a href="#wat">Wat het is</a>
-      <a href="#demo">Demo</a>
-      <a href="#werkwijze">Werkwijze</a>
-      <a href="#bronnen">Databronnen</a>
-      <a href="#prijs">Pilot &amp; prijs</a>
-      <a href="#faq">FAQ</a>
+  <div class="wrap nav-inner">
+    <div class="nav-left">
+      <a href="#top" class="logo"><span class="logo-mark"></span><span class="logo-text">RankEngine<span> AI</span></span></a>
+      <div class="nav-links">
+        <a href="#wat">Wat het is</a>
+        <a href="#demo">Demo</a>
+        <a href="#werkwijze">Werkwijze</a>
+        <a href="#bronnen">Databronnen</a>
+        <a href="#prijs">Pilot &amp; prijs</a>
+        <a href="#faq">FAQ</a>
+      </div>
     </div>
+    <div class="nav-right">
+      <a href="tel:+31643859989" class="nav-phone">06 43 85 99 89</a>
+      <a href="#contact" class="btn btn-primary">Pilotplek aanvragen</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobilePanel">
+      <span></span><span></span>
+    </button>
   </div>
-  <div class="nav-right">
-    <a href="tel:+31643859989" class="nav-phone">06 43 85 99 89</a>
-    <a href="#contact" class="btn btn-primary">Pilotplek aanvragen</a>
-  </div>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobilePanel">
-    <span></span><span></span>
-  </button>
 </nav>
 <div class="mobile-panel" id="mobilePanel">
   <a href="#wat">Wat het is</a>
@@ -366,6 +369,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   <section class="hero">
     <canvas id="graph"></canvas>
     <div class="hero-scrim"></div>
+    <div class="wrap">
     <div class="hero-inner">
       <div class="hero-copy">
         <div class="eyebrow"><span class="dot"></span>AI Second Brain · door RankEngine</div>
@@ -400,6 +404,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
           <div><div class="num">4</div><div class="lbl">pilotplekken over</div></div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 
