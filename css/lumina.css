@@ -208,6 +208,16 @@ ul{ margin:0; padding:0; list-style:none; }
 .lu-service-more svg{ transition:transform .2s ease; }
 .lu-service-more:hover svg{ transform:translateX(3px); }
 
+.lu-service-spotlight{ grid-column:1 / -1; padding:40px; border-radius:var(--radius-xl); border-top:none; background:var(--gradient-primary); color:var(--white); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:32px; }
+.lu-service-spotlight:hover{ transform:none; }
+.lu-service-spotlight-badge{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-head); font-weight:700; font-size:13px; letter-spacing:.02em; color:var(--white); background:rgba(255,255,255,.16); padding:8px 16px; border-radius:999px; margin-bottom:20px; }
+.lu-service-spotlight h3{ color:var(--white); font-size:26px; margin-bottom:12px; }
+.lu-service-spotlight p{ color:rgba(255,255,255,.9); font-size:15px; max-width:34rem; margin-bottom:0; }
+.lu-service-spotlight-cta{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-head); font-weight:700; font-size:15px; color:var(--primary); background:var(--white); padding:14px 24px; border-radius:999px; flex-shrink:0; white-space:nowrap; }
+.lu-service-spotlight-cta svg{ transition:transform .2s ease; }
+.lu-service-spotlight-cta:hover svg{ transform:translateX(3px); }
+@media (max-width:767px){ .lu-service-spotlight{ padding:28px; } }
+
 /* -------------------------------------------------- stappenplan */
 .lu-process-grid{ display:grid; gap:16px; }
 @media (min-width:768px){ .lu-process-grid{ grid-template-columns:repeat(4,1fr); } }
