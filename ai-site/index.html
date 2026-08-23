@@ -306,16 +306,16 @@ h2{ margin:0; font-size:26px; line-height:1.15; font-weight:600; letter-spacing:
 
 /* demo */
 .section-demo{ background:rgba(139,124,246,.03); }
-.demo-grid{ display:flex; gap:10px; overflow-x:auto; margin:20px -18px 0; padding:0 18px 6px; }
-@media (min-width:768px){ .demo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:20px 0 0; padding:0; overflow:visible; } }
-.demo-q{ min-width:250px; background:rgba(20,19,28,.7); border:1px solid var(--border-3); border-radius:8px; padding:16px; display:flex; flex-direction:column; gap:10px; }
-@media (min-width:768px){ .demo-q{ min-width:0; padding:18px; } }
-.demo-q .qlabel{ font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; color:var(--purple-lt); }
-.demo-q .qtext{ margin:0; font-size:14.5px; line-height:1.45; font-weight:500; }
-.demo-q .atext{ margin:0; font-size:13.5px; line-height:1.55; color:var(--ink-mute); border-top:1px solid var(--border); padding-top:10px; }
-.demo-q .src{ font-family:var(--font-mono); font-size:9.5px; color:var(--ink-ghost2); }
-.demo-swipe-hint{ display:block; margin-top:10px; font-family:var(--font-mono); font-size:10px; color:var(--ink-ghost2); }
-@media (min-width:768px){ .demo-swipe-hint{ display:none; } }
+.funnel{ display:grid; grid-template-columns:1fr; gap:16px; margin-top:32px; align-items:start; }
+@media (min-width:768px){ .funnel{ grid-template-columns:repeat(2,1fr); gap:14px; } }
+.funnel-step{ background:var(--card); border:1px solid var(--border); border-top:3px solid var(--amber); border-radius:10px; padding:24px; display:flex; flex-direction:column; gap:14px; }
+.funnel-step.f2{ border-top-color:var(--purple); }
+.funnel-num{ font-family:var(--font-mono); font-size:11px; letter-spacing:.12em; color:var(--amber); }
+.funnel-step.f2 .funnel-num{ color:var(--purple-lt); }
+.funnel-step h3{ margin:0; font-size:19px; font-weight:600; }
+.funnel-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px; }
+.funnel-list li{ font-size:14px; line-height:1.5; color:var(--ink-mute); padding-left:18px; position:relative; }
+.funnel-list li::before{ content:"→"; position:absolute; left:0; top:0; color:var(--ink-ghost); }
 
 /* werkwijze */
 .step-quote{ margin-top:10px; padding:18px; border:1px solid var(--border-2); border-radius:8px; background:rgba(255,255,255,.025); }
@@ -732,32 +732,38 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
 
   <!-- DEMO -->
   <section class="section section-demo" id="demo">
-    <div class="wrap section-2col narrow-first">
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="eyebrow">03 · Demo</div>
-        <h2>Zo voelt het in de praktijk</h2>
-        <p class="lede">Drie vragen die klanten in de pilot dagelijks stellen. Het antwoord komt altijd uit je eigen administratie, met de bron erbij, nooit uit de losse hand.</p>
-        <span class="demo-swipe-hint">← swipe · voorbeeld met fictieve data</span>
-        <span style="font-family:var(--font-mono); font-size:11.5px; color:var(--ink-ghost); display:none;" class="demo-desktop-note">Voorbeeld met fictieve data</span>
-      </div>
-      <div class="demo-grid">
-        <div class="demo-q">
-          <span class="qlabel">VRAAG 01</span>
-          <p class="qtext">"Welke klanten hebben nog een open factuur van vorige maand?"</p>
-          <p class="atext">Drie openstaand: Van Dijk (€480), Terra Hoveniers (€1.250), Studio Mees (€310). Totaal €2.040.</p>
-          <span class="src">bron: facturatie · 3 records</span>
+    <div class="wrap">
+      <div class="eyebrow">03 · Demo</div>
+      <h2 style="margin-top:16px; max-width:640px;">Van opzet tot dagelijks gebruik</h2>
+      <p class="lede" style="margin-top:14px; max-width:640px;">Dit is wat er allemaal gebeurt: van de eerste kennismaking met je kluis tot het moment dat je hem dagelijks gebruikt om je bedrijf te runnen.</p>
+
+      <div class="funnel">
+        <div class="funnel-step">
+          <span class="funnel-num">STAP 01</span>
+          <h3>Het maken van de kluis</h3>
+          <ul class="funnel-list">
+            <li>Opzetten van je kluis</li>
+            <li>Vertellen wie je bent en wat je bedrijf doet</li>
+            <li>Huisstijl en tone of voice koppelen</li>
+            <li>Je tools koppelen</li>
+            <li>Vaste routines inrichten</li>
+          </ul>
         </div>
-        <div class="demo-q">
-          <span class="qlabel">VRAAG 02</span>
-          <p class="qtext">"Wat is mijn standaardprocedure voor een spoedopdracht?"</p>
-          <p class="atext">Spoedtarief +35%, bevestiging per mail vóór start, levering binnen 48 uur. Uit je kennisbank.</p>
-          <span class="src">bron: procedures/spoed.md</span>
-        </div>
-        <div class="demo-q">
-          <span class="qlabel">VRAAG 03</span>
-          <p class="qtext">"Maak een offerte voor Terra op basis van vorig project."</p>
-          <p class="atext">Concept klaar: zelfde posten, prijzen geïndexeerd met 4%. Klaar om te controleren en te versturen.</p>
-          <span class="src">bron: project 2024-041 · prijslijst</span>
+        <div class="funnel-step f2">
+          <span class="funnel-num">STAP 02</span>
+          <h3>Werken met de kluis</h3>
+          <ul class="funnel-list">
+            <li>Dagelijkse start: overzicht van wat er speelt</li>
+            <li>Mails lezen, agenda checken en hulp krijgen bij reageren</li>
+            <li>Afspraken maken en vastleggen</li>
+            <li>Offertes en facturen opstellen</li>
+            <li>Klantvragen razendsnel beantwoorden, met bron</li>
+            <li>Onderzoek doen naar verbeteringen in je eigen data</li>
+            <li>Klanten analyseren en nieuwe leads zoeken</li>
+            <li>Je website maken of verbeteren</li>
+            <li>Content schrijven voor social media of nieuwsbrief</li>
+            <li>Je voorbereiden op een klantgesprek</li>
+          </ul>
         </div>
       </div>
     </div>
