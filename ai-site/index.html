@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+
+<title>AI Second Brain voor ondernemers | RankEngine AI</title>
+<meta name="description" content="Je hele bedrijf in één doorzoekbaar brein. Kennisbank, klanten en facturatie in één afgeschermde AI-omgeving, ingericht en onderhouden door RankEngine. Pilotfase, beperkt aantal plekken." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://ai.rankengine.nl/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://ai.rankengine.nl/" />
+<meta property="og:title" content="AI Second Brain voor ondernemers | RankEngine AI" />
+<meta property="og:description" content="Kennisbank, klanten en facturatie in één afgeschermde AI-omgeving. Je stelt een vraag in gewone taal, het systeem leest je eigen data en antwoordt — met bronvermelding." />
+<meta property="og:locale" content="nl_NL" />
+<meta property="og:image" content="https://rankengine.nl/images/og-rankengine.jpg" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "name": "AI Second Brain voor ondernemers",
+      "provider": {
+        "@type": "LocalBusiness",
+        "@id": "https://rankengine.nl/#business"
+      },
+      "description": "Beheerde AI-omgeving voor kleine ondernemers: kennisbank, klantenbestand en facturatie op één plek, ingericht en onderhouden door RankEngine.",
+      "url": "https://ai.rankengine.nl/",
+      "areaServed": [{ "@type": "Country", "name": "Nederland" }]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Wat is een AI Second Brain?", "acceptedAnswer": { "@type": "Answer", "text": "Een afgeschermde omgeving waarin je bedrijfsinformatie als gelinkte notities staat, met een AI-laag erbovenop die daarin zoekt en antwoordt. Geen chatbot die dingen verzint: hij leest je eigen data en verwijst naar de bron." } },
+        { "@type": "Question", "name": "Is mijn data gescheiden van andere klanten?", "acceptedAnswer": { "@type": "Answer", "text": "Ja. Iedere klant krijgt een eigen instantie met een eigen index. Er wordt nooit data van een ander bedrijf in jouw antwoorden gebruikt." } },
+        { "@type": "Question", "name": "Moet ik iets nieuws leren?", "acceptedAnswer": { "@type": "Answer", "text": "Nee. Je stelt vragen in gewone taal, zoals in een appje. De structuur eronder houdt RankEngine bij." } },
+        { "@type": "Question", "name": "Waarom pilotfase?", "acceptedAnswer": { "@type": "Answer", "text": "Omdat de opzet scherp gezet wordt met echte bedrijven. Je betaalt een pilotprijs en hebt directe invloed op wat er gebouwd wordt." } },
+        { "@type": "Question", "name": "Wat als het niet werkt voor mij?", "acceptedAnswer": { "@type": "Answer", "text": "30 dagen opzegtermijn en je data komt mee als gewone bestanden. Geen langlopend contract." } }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- Consent Mode v2 -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied', ad_storage: 'denied',
+    ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
+  });
+</script>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W5Q9H46');</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
+
+<style>
+:root{
+  --bg:#0e0d13; --panel:#16151f; --panel-2:#1b1a26; --panel-3:#141320;
+  --ink:#e8e6f0; --ink-dim:#a5a2b8; --ink-mute:#9a97ad; --ink-faint:#8e8aa3;
+  --ink-ghost:#6f6c85; --ink-ghost2:#5b5872;
+  --purple:#8b7cf6; --purple-hub:#c9c2ff; --purple-lt:#a99bff; --purple-glow:#c3bbff;
+  --amber:#f0a24b; --green:#7de0b0;
+  --border:rgba(255,255,255,.07); --border-2:rgba(255,255,255,.09); --border-3:rgba(255,255,255,.1); --border-4:rgba(255,255,255,.14);
+  --card:rgba(255,255,255,.03); --card-hover:rgba(139,124,246,.05);
+  --font-head:'Space Grotesk',system-ui,sans-serif; --font-mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-head); overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+a:hover{ color:var(--purple-lt); }
+button{ font-family:inherit; }
+.wrap{ max-width:1280px; margin:0 auto; padding:0 40px; }
+@media (max-width:767px){ .wrap{ padding:0 18px; } }
+
+@keyframes caret{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
+@keyframes sheen{ 0%{background-position:0% 50%} 100%{background-position:200% 50%} }
+.gradient-text{ background:linear-gradient(96deg,var(--ink),var(--purple-lt) 55%,var(--ink)); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:sheen 9s linear infinite; }
+.caret{ display:inline-block; width:7px; height:15px; margin-left:3px; vertical-align:-2px; background:var(--purple-lt); animation:caret 1.1s step-end infinite; }
+
+.eyebrow{ display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--purple); }
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background:var(--purple); box-shadow:0 0 8px var(--purple); }
+
+/* ---------- NAV ---------- */
+.pilot-bar{ display:flex; align-items:center; justify-content:center; gap:10px; padding:9px 20px; background:rgba(139,124,246,.12); border-bottom:1px solid rgba(139,124,246,.2); font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--purple-glow); text-align:center; }
+.pilot-bar .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); flex-shrink:0; }
+nav.top{ position:sticky; top:0; z-index:100; display:flex; align-items:center; justify-content:space-between; padding:16px 40px; border-bottom:1px solid var(--border); background:rgba(22,21,31,.86); backdrop-filter:blur(10px); }
+@media (max-width:767px){ nav.top{ padding:14px 18px; } }
+.logo{ display:flex; align-items:center; gap:10px; }
+.logo-mark{ width:22px; height:22px; border-radius:6px; background:linear-gradient(140deg,var(--purple),#4b3fc4); box-shadow:0 0 14px rgba(139,124,246,.5); flex-shrink:0; }
+.logo-text{ font-size:16px; font-weight:600; letter-spacing:-.01em; }
+.logo-text span{ color:var(--purple); }
+.nav-left{ display:flex; align-items:center; gap:36px; }
+.nav-links{ display:none; gap:26px; font-size:14.5px; color:var(--ink-dim); }
+.nav-right{ display:none; align-items:center; gap:16px; }
+.nav-phone{ font-family:var(--font-mono); font-size:12.5px; color:var(--ink-faint); }
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:8px; font-size:14.5px; font-weight:500; padding:11px 18px; border-radius:6px; border:0; cursor:pointer; }
+.btn-primary{ color:#0e0d13; background:var(--purple-lt); box-shadow:0 0 0 1px rgba(169,155,255,.6), 0 12px 34px rgba(139,124,246,.3); }
+.btn-ghost{ color:#d8d6e4; border:1px solid var(--border-4); background:transparent; }
+.nav-toggle{ display:flex; flex-direction:column; justify-content:center; gap:5px; align-items:center; width:44px; height:44px; background:transparent; border:1px solid var(--border-3); border-radius:8px; cursor:pointer; }
+.nav-toggle span{ display:block; width:16px; height:1.5px; background:var(--ink); }
+.mobile-panel{ display:none; flex-direction:column; gap:2px; padding:12px 18px 20px; border-bottom:1px solid var(--border); background:var(--panel-3); }
+.mobile-panel.is-open{ display:flex; }
+.mobile-panel a{ padding:12px 4px; font-size:15.5px; color:var(--ink-dim); border-bottom:1px solid var(--border); }
+.mobile-panel a:last-child{ border-bottom:0; }
+@media (min-width:768px){
+  .nav-links{ display:flex; }
+  .nav-right{ display:flex; }
+  .nav-toggle, .mobile-panel{ display:none !important; }
+}
+
+/* ---------- HERO ---------- */
+.hero{ position:relative; overflow:hidden; border-bottom:1px solid var(--border); }
+#graph{ position:absolute; inset:0; width:100%; height:100%; display:block; }
+.hero-scrim{ position:absolute; inset:0; background:radial-gradient(120% 80% at 22% 40%, rgba(22,21,31,.95) 0%, rgba(22,21,31,.74) 42%, rgba(22,21,31,0) 78%); }
+@media (max-width:767px){ .hero-scrim{ background:radial-gradient(120% 70% at 50% 30%, rgba(22,21,31,.72) 0%, rgba(22,21,31,.93) 62%); } }
+.hero-inner{ position:relative; display:grid; grid-template-columns:1fr; gap:32px; padding:44px 18px 40px; }
+@media (min-width:768px){ .hero-inner{ grid-template-columns:1.05fr .95fr; gap:56px; padding:88px 40px 76px; } }
+.hero-copy{ display:flex; flex-direction:column; gap:24px; max-width:620px; }
+.hero-copy h1{ margin:0; font-size:34px; line-height:1.08; font-weight:600; letter-spacing:-.03em; text-wrap:pretty; }
+@media (min-width:768px){ .hero-copy h1{ font-size:60px; line-height:1.03; letter-spacing:-.035em; } }
+.hero-copy p.lede{ margin:0; font-size:16px; line-height:1.56; color:var(--ink-dim); max-width:530px; }
+@media (min-width:768px){ .hero-copy p.lede{ font-size:19px; } }
+.hero-ctas{ display:flex; flex-direction:column; gap:10px; }
+@media (min-width:768px){ .hero-ctas{ flex-direction:row; align-items:center; gap:12px; } }
+.hero-ctas .btn{ padding:15px 22px; font-size:15.5px; }
+.hero-trustbar{ display:flex; flex-wrap:wrap; gap:16px 30px; padding-top:16px; border-top:1px solid var(--border); font-family:var(--font-mono); font-size:11px; color:var(--ink-ghost); }
+
+.demo-card{ background:rgba(20,19,28,.88); border:1px solid var(--border-3); border-radius:10px; backdrop-filter:blur(8px); overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.4); }
+.demo-card-head{ display:flex; align-items:center; justify-content:space-between; padding:12px 16px; border-bottom:1px solid var(--border); font-family:var(--font-mono); font-size:10.5px; color:var(--ink-ghost); letter-spacing:.08em; }
+.demo-card-head .live{ color:var(--green); }
+.demo-card-body{ display:flex; flex-direction:column; gap:12px; padding:16px; }
+.msg-user{ align-self:flex-end; max-width:88%; background:var(--purple); color:#12111a; font-size:14px; line-height:1.45; padding:10px 13px; border-radius:10px 10px 3px 10px; }
+.msg-ai{ max-width:94%; background:rgba(255,255,255,.045); border:1px solid var(--border); font-size:14px; line-height:1.5; padding:12px 13px; border-radius:10px 10px 10px 3px; color:#ddd9ec; }
+.msg-tags{ display:flex; gap:8px; flex-wrap:wrap; font-family:var(--font-mono); font-size:10px; color:var(--ink-faint); }
+.msg-tags span{ padding:5px 9px; border:1px solid var(--border-3); border-radius:4px; }
+.hero-stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:14px; }
+.hero-stats > div{ padding:12px 14px; background:var(--card); border:1px solid var(--border); border-radius:6px; }
+.hero-stats .num{ font-size:20px; font-weight:600; letter-spacing:-.02em; }
+@media (min-width:768px){ .hero-stats .num{ font-size:23px; } }
+.hero-stats .lbl{ font-family:var(--font-mono); font-size:10px; color:var(--ink-ghost); margin-top:3px; }
+
+/* ---------- SECTIONS ---------- */
+.section{ padding:44px 18px; border-bottom:1px solid var(--border); }
+@media (min-width:768px){ .section{ padding:80px 40px; } }
+.section-2col{ display:grid; grid-template-columns:1fr; gap:24px; }
+@media (min-width:768px){ .section-2col{ grid-template-columns:1fr 1fr; gap:56px; } }
+.section-2col.narrow-first{ grid-template-columns:1fr; }
+@media (min-width:768px){ .section-2col.narrow-first{ grid-template-columns:.82fr 1.18fr; } }
+h2{ margin:0; font-size:26px; line-height:1.15; font-weight:600; letter-spacing:-.02em; }
+@media (min-width:768px){ h2{ font-size:38px; line-height:1.12; letter-spacing:-.025em; } }
+.section p.lede{ margin:0; font-size:15.5px; line-height:1.6; color:var(--ink-dim); }
+@media (min-width:768px){ .section p.lede{ font-size:16.5px; line-height:1.62; } }
+
+/* problem stats */
+.stat-row{ display:flex; gap:24px; margin-top:8px; }
+@media (min-width:768px){ .stat-row{ gap:34px; } }
+.stat-row .big{ font-size:26px; font-weight:600; letter-spacing:-.02em; color:var(--amber); }
+@media (min-width:768px){ .stat-row .big{ font-size:32px; } }
+.stat-row .small{ font-size:12.5px; color:var(--ink-ghost); margin-top:2px; }
+.problem-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; align-content:start; margin-top:8px; }
+@media (min-width:768px){ .problem-grid{ gap:10px; margin-top:0; } }
+.problem-item{ padding:14px; border:1px dashed var(--border-4); border-radius:6px; font-size:14px; color:var(--ink-faint); }
+.problem-item .tag{ font-family:var(--font-mono); font-size:10px; color:var(--ink-ghost2); margin-top:6px; }
+.problem-solve{ grid-column:span 2; padding:14px 16px; border:1px solid rgba(139,124,246,.4); background:rgba(139,124,246,.08); border-radius:6px; font-size:14px; color:#d8d6e4; }
+
+/* wat het is */
+.what-grid{ display:grid; grid-template-columns:1fr; gap:10px; margin-top:20px; }
+@media (min-width:768px){ .what-grid{ grid-template-columns:repeat(4,1fr); gap:14px; } }
+.what-card{ padding:20px; background:var(--card); border:1px solid var(--border); border-radius:8px; display:flex; flex-direction:column; gap:9px; transition:border-color .2s, background .2s; }
+@media (min-width:768px){ .what-card:hover{ border-color:rgba(139,124,246,.45); background:var(--card-hover); } }
+.what-card.accent{ background:rgba(139,124,246,.09); border-color:rgba(139,124,246,.32); }
+.what-card .num{ font-family:var(--font-mono); font-size:11px; color:var(--purple); }
+.what-card.accent .num{ color:var(--purple-lt); }
+.what-card h3{ margin:0; font-size:17.5px; font-weight:600; }
+.what-card p{ margin:0; font-size:14px; line-height:1.55; color:var(--ink-mute); }
+.what-card.accent p{ color:#c3bfda; }
+
+/* demo */
+.section-demo{ background:rgba(139,124,246,.03); }
+.demo-grid{ display:flex; gap:10px; overflow-x:auto; margin:20px -18px 0; padding:0 18px 6px; }
+@media (min-width:768px){ .demo-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:20px 0 0; padding:0; overflow:visible; } }
+.demo-q{ min-width:250px; background:rgba(20,19,28,.7); border:1px solid var(--border-3); border-radius:8px; padding:16px; display:flex; flex-direction:column; gap:10px; }
+@media (min-width:768px){ .demo-q{ min-width:0; padding:18px; } }
+.demo-q .qlabel{ font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; color:var(--purple-lt); }
+.demo-q .qtext{ margin:0; font-size:14.5px; line-height:1.45; font-weight:500; }
+.demo-q .atext{ margin:0; font-size:13.5px; line-height:1.55; color:var(--ink-mute); border-top:1px solid var(--border); padding-top:10px; }
+.demo-q .src{ font-family:var(--font-mono); font-size:9.5px; color:var(--ink-ghost2); }
+.demo-swipe-hint{ display:block; margin-top:10px; font-family:var(--font-mono); font-size:10px; color:var(--ink-ghost2); }
+@media (min-width:768px){ .demo-swipe-hint{ display:none; } }
+
+/* werkwijze */
+.step-quote{ margin-top:10px; padding:18px; border:1px solid var(--border-2); border-radius:8px; background:rgba(255,255,255,.025); }
+@media (max-width:767px){ .step-quote{ display:none; } }
+.step-quote .q{ font-size:14.5px; line-height:1.55; color:#d3d0e0; }
+.step-quote .who{ font-family:var(--font-mono); font-size:11px; color:var(--ink-ghost); margin-top:10px; }
+.step{ display:grid; grid-template-columns:34px 1fr; gap:12px; padding:16px 0; border-top:1px solid var(--border-2); align-items:start; }
+@media (min-width:768px){ .step{ grid-template-columns:56px 1fr 150px; gap:20px; padding:22px 0; } }
+.step:last-child{ border-bottom:1px solid var(--border-2); }
+.step .n{ font-family:var(--font-mono); font-size:13px; color:var(--purple); }
+.step h3{ margin:0 0 4px; font-size:16.5px; font-weight:600; }
+@media (min-width:768px){ .step h3{ font-size:19px; } }
+.step p{ margin:0; font-size:14px; line-height:1.55; color:var(--ink-mute); }
+@media (min-width:768px){ .step p{ font-size:14.5px; } }
+.step .meta{ display:none; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-ghost2); text-align:right; }
+@media (min-width:768px){ .step .meta{ display:block; } }
+
+/* bronnen */
+.source-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:20px; }
+@media (min-width:768px){ .source-grid{ grid-template-columns:repeat(4,1fr); gap:10px; } }
+.source-item{ padding:14px 16px; background:var(--card); border:1px solid var(--border); border-radius:6px; font-size:14px; }
+.source-item.accent{ background:rgba(139,124,246,.08); border-color:rgba(139,124,246,.32); color:#c3bfda; }
+.source-item .tag{ font-family:var(--font-mono); font-size:10.5px; color:var(--ink-ghost); margin-top:5px; }
+.source-item.accent .tag{ color:var(--purple-lt); }
+
+/* wel/niet */
+.fit-grid{ display:grid; grid-template-columns:1fr; gap:10px; }
+@media (min-width:768px){ .fit-grid{ grid-template-columns:1fr 1fr; gap:14px; } }
+.fit-card{ padding:20px; border-radius:8px; display:flex; flex-direction:column; gap:12px; }
+@media (min-width:768px){ .fit-card{ padding:26px; gap:14px; } }
+.fit-card.yes{ border:1px solid rgba(125,224,176,.28); background:rgba(125,224,176,.04); }
+.fit-card.no{ border:1px solid var(--border); background:rgba(255,255,255,.015); }
+.fit-card .label{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; }
+.fit-card.yes .label{ color:var(--green); }
+.fit-card.no .label{ color:var(--amber); }
+.fit-card .items{ display:flex; flex-direction:column; gap:9px; font-size:14.5px; line-height:1.5; }
+@media (min-width:768px){ .fit-card .items{ font-size:15px; } }
+.fit-card.yes .items{ color:#d3d0e0; }
+.fit-card.no .items{ color:var(--ink-mute); }
+
+/* prijs */
+.price-card{ padding:22px; border:1px solid rgba(139,124,246,.3); background:linear-gradient(160deg, rgba(139,124,246,.11), rgba(139,124,246,.02)); border-radius:10px; display:flex; flex-direction:column; gap:16px; }
+@media (min-width:768px){ .price-card{ padding:30px; gap:20px; } }
+.price-card .amount{ display:flex; align-items:baseline; gap:8px; }
+.price-card .amount .num{ font-size:32px; font-weight:600; letter-spacing:-.03em; }
+@media (min-width:768px){ .price-card .amount .num{ font-size:42px; } }
+.price-card .amount .unit{ font-size:13.5px; color:var(--ink-dim); }
+.price-card .items{ display:flex; flex-direction:column; gap:9px; font-size:14.5px; line-height:1.5; color:#d3d0e0; }
+.price-card .btn-primary{ text-align:center; padding:14px; }
+.pilot-status{ display:flex; gap:8px; align-items:center; font-family:var(--font-mono); font-size:11px; color:var(--amber); padding-top:6px; }
+.pilot-status .dot{ width:5px; height:5px; border-radius:50%; background:var(--amber); }
+
+/* privacy */
+.privacy-grid{ display:grid; grid-template-columns:1fr; gap:10px; margin-top:24px; }
+@media (min-width:768px){ .privacy-grid{ grid-template-columns:repeat(3,1fr); gap:14px; } }
+.privacy-card{ padding:18px; background:var(--card); border:1px solid var(--border); border-radius:8px; }
+@media (min-width:768px){ .privacy-card{ padding:22px; } }
+.privacy-card h3{ margin:0 0 6px; font-size:16.5px; font-weight:600; }
+@media (min-width:768px){ .privacy-card h3{ font-size:17px; } }
+.privacy-card p{ margin:0; font-size:14px; line-height:1.55; color:var(--ink-mute); }
+
+/* faq */
+details{ border-top:1px solid var(--border-2); padding:16px 0; }
+details:last-child{ border-bottom:1px solid var(--border-2); }
+summary{ list-style:none; cursor:pointer; display:flex; justify-content:space-between; gap:12px; font-size:15.5px; font-weight:500; min-height:24px; }
+@media (min-width:768px){ summary{ font-size:17.5px; align-items:center; } }
+summary::-webkit-details-marker{ display:none; }
+.plus{ color:var(--purple); font-size:19px; transition:transform .2s; flex-shrink:0; }
+details[open] .plus{ transform:rotate(45deg); }
+details p{ margin:10px 0 0; font-size:14px; line-height:1.6; color:var(--ink-mute); max-width:700px; }
+@media (min-width:768px){ details p{ font-size:15px; } }
+.faq-intro p a{ color:var(--purple-lt); }
+
+/* contact */
+.section-contact{ background:rgba(139,124,246,.05); }
+.contact-info{ display:flex; flex-direction:column; gap:11px; padding-top:10px; font-size:15.5px; }
+.contact-info a{ display:flex; gap:12px; align-items:center; min-height:44px; }
+.contact-info .lbl{ font-family:var(--font-mono); color:var(--ink-ghost); font-size:11.5px; width:38px; flex-shrink:0; }
+.contact-form{ display:flex; flex-direction:column; gap:12px; padding:20px; background:var(--panel-2); border:1px solid var(--border-3); border-radius:10px; }
+@media (min-width:768px){ .contact-form{ padding:28px; } }
+.form-row2{ display:grid; grid-template-columns:1fr; gap:12px; }
+@media (min-width:768px){ .form-row2{ grid-template-columns:1fr 1fr; } }
+.field{ display:flex; flex-direction:column; gap:6px; font-size:12.5px; color:var(--ink-faint); }
+.field input, .field select, .field textarea{ background:var(--panel); border:1px solid var(--border-3); border-radius:5px; padding:13px; color:var(--ink); font-size:15px; font-family:var(--font-head); }
+@media (min-width:768px){ .field input, .field select, .field textarea{ padding:12px 13px; font-size:14.5px; } }
+.field textarea{ resize:vertical; }
+.field.has-error input, .field.has-error textarea{ border-color:#e0607a; }
+.submit-btn{ margin-top:4px; background:var(--purple-lt); color:#0e0d13; border:0; border-radius:6px; padding:15px; font-size:15.5px; font-weight:500; cursor:pointer; }
+.form-note{ font-family:var(--font-mono); font-size:10.5px; color:var(--ink-ghost2); text-align:center; }
+.form-status{ font-family:var(--font-mono); font-size:11.5px; text-align:center; }
+.form-status.is-error{ color:#e0607a; }
+
+/* footer */
+footer{ padding:36px 18px 100px; background:var(--panel-3); }
+@media (min-width:768px){ footer{ padding:44px 40px 26px; } }
+.footer-grid{ display:grid; grid-template-columns:1fr; gap:24px; padding-bottom:0; }
+@media (min-width:768px){ .footer-grid{ grid-template-columns:1.3fr 1fr 1fr 1fr; gap:40px; padding-bottom:32px; border-bottom:1px solid var(--border); } }
+.footer-col{ display:flex; flex-direction:column; gap:12px; }
+.footer-col .head{ font-family:var(--font-mono); font-size:10.5px; letter-spacing:.12em; color:var(--ink-ghost2); }
+.footer-col a{ font-size:13.5px; color:var(--ink-mute); }
+.footer-brand p{ margin:0; font-size:13.5px; line-height:1.6; color:var(--ink-ghost); max-width:280px; }
+.footer-bottom{ display:flex; flex-direction:column; gap:10px; padding-top:20px; font-size:12.5px; color:var(--ink-ghost2); }
+@media (min-width:768px){ .footer-bottom{ flex-direction:row; justify-content:space-between; align-items:center; } }
+.footer-legal{ display:flex; gap:20px; }
+
+/* sticky mobile CTA */
+.sticky-cta{ position:sticky; bottom:0; z-index:90; display:flex; gap:10px; padding:12px 18px; background:rgba(22,21,31,.94); backdrop-filter:blur(10px); border-top:1px solid var(--border-2); }
+@media (min-width:768px){ .sticky-cta{ display:none; } }
+.sticky-cta a{ display:flex; align-items:center; justify-content:center; min-height:48px; border-radius:8px; font-size:15px; }
+.sticky-cta .call{ min-width:52px; border:1px solid var(--border-4); font-family:var(--font-mono); font-size:11px; color:#d8d6e4; }
+.sticky-cta .cta{ flex:1; background:var(--purple-lt); color:#0e0d13; font-weight:500; }
+
+/* cookie banner */
+.cookie-banner{ position:fixed; left:18px; right:18px; bottom:18px; z-index:200; max-width:520px; margin:0 auto; padding:18px; background:var(--panel-2); border:1px solid var(--border-3); border-radius:10px; box-shadow:0 20px 50px rgba(0,0,0,.4); }
+.cookie-banner.is-hidden{ display:none; }
+.cookie-banner p{ margin:0 0 14px; font-size:13px; line-height:1.55; color:var(--ink-mute); }
+.cookie-banner a{ color:var(--purple-lt); }
+.cookie-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+.cookie-btn{ flex:1; min-width:120px; padding:10px 14px; border-radius:6px; font-size:13px; font-weight:500; cursor:pointer; border:1px solid var(--border-4); background:transparent; color:var(--ink); }
+.cookie-btn.accept{ background:var(--purple-lt); color:#0e0d13; border:0; }
+</style>
+</head>
+<body>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5Q9H46" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="pilot-bar"><span class="dot"></span>PILOTFASE · 4 VAN 6 PLEKKEN BESCHIKBAAR · START BINNEN 2 WEKEN</div>
+
+<nav class="top" id="top">
+  <div class="nav-left">
+    <a href="#top" class="logo"><span class="logo-mark"></span><span class="logo-text">RankEngine<span> AI</span></span></a>
+    <div class="nav-links">
+      <a href="#wat">Wat het is</a>
+      <a href="#demo">Demo</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="#bronnen">Databronnen</a>
+      <a href="#prijs">Pilot &amp; prijs</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="tel:+31643859989" class="nav-phone">06 43 85 99 89</a>
+    <a href="#contact" class="btn btn-primary">Pilotplek aanvragen</a>
+  </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false" aria-controls="mobilePanel">
+    <span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#wat">Wat het is</a>
+  <a href="#demo">Demo</a>
+  <a href="#werkwijze">Werkwijze</a>
+  <a href="#bronnen">Databronnen</a>
+  <a href="#prijs">Pilot &amp; prijs</a>
+  <a href="#faq">FAQ</a>
+  <a href="tel:+31643859989">Bel 06 43 85 99 89</a>
+  <a href="#contact" class="btn btn-primary" style="margin-top:8px; justify-content:center;">Pilotplek aanvragen</a>
+</div>
+
+<main>
+  <section class="hero">
+    <canvas id="graph"></canvas>
+    <div class="hero-scrim"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="dot"></span>AI Second Brain · door RankEngine</div>
+        <h1>Je hele bedrijf in één<br><span class="gradient-text">doorzoekbaar brein</span></h1>
+        <p class="lede">Kennisbank, klanten en facturatie in één afgeschermde AI-omgeving. Je stelt een vraag in gewone taal, het systeem leest je eigen data en antwoordt — met bronvermelding. RankEngine richt het in en houdt het bij.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Meld interesse voor de pilot</a>
+          <a href="#demo" class="btn btn-ghost">Bekijk de demo</a>
+        </div>
+        <div class="hero-trustbar">
+          <span>30 dagen opzegtermijn</span>
+          <span>Eigen, afgeschermde omgeving</span>
+          <span>Geen technische kennis nodig</span>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="demo-card">
+          <div class="demo-card-head"><span>SECOND BRAIN · jouw omgeving</span><span class="live">● live</span></div>
+          <div class="demo-card-body">
+            <div class="msg-user">Wat had ik met Bakkerij Van Dijk afgesproken over levertijden?</div>
+            <div class="msg-ai">Levering vóór 07:00, uiterlijk woensdag aanleveren. Vastgelegd in het gespreksverslag van 12 juni en verwerkt in factuurregel 2024-118.<span class="caret"></span></div>
+            <div class="msg-tags">
+              <span>↳ verslag_12-06.md</span>
+              <span>↳ klant/van-dijk</span>
+              <span>↳ factuur 2024-118</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div><div class="num">1.412</div><div class="lbl">notities geïndexeerd</div></div>
+          <div><div class="num">0,8s</div><div class="lbl">gem. antwoordtijd</div></div>
+          <div><div class="num">4</div><div class="lbl">pilotplekken over</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEEM -->
+  <section class="section">
+    <div class="wrap section-2col">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="eyebrow" style="text-transform:uppercase;">01 · Het probleem</div>
+        <h2>Tien losse tools die niet met elkaar praten</h2>
+        <p class="lede">WhatsApp, mail, losse notities, een Excel-klantenlijst en een facturatietool. Iedere vraag van een klant kost vijf minuten zoeken in vier systemen — en soms vind je het gewoon niet meer terug.</p>
+        <div class="stat-row">
+          <div><div class="big">6,3 uur</div><div class="small">per week zoeken naar informatie</div></div>
+          <div><div class="big">4 → 1</div><div class="small">systemen terug naar één plek</div></div>
+        </div>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-item">WhatsApp-afspraken<div class="tag">niet doorzoekbaar</div></div>
+        <div class="problem-item">Excel-klantenlijst<div class="tag">3 versies in omloop</div></div>
+        <div class="problem-item">Losse notities<div class="tag">geen verband</div></div>
+        <div class="problem-item">Mailbox als archief<div class="tag">zoeken op geheugen</div></div>
+        <div class="problem-solve">→ Eén omgeving met AI ertussen die het overzicht bijhoudt</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAT HET IS -->
+  <section class="section" id="wat">
+    <div class="wrap">
+      <div class="eyebrow">02 · Wat het is</div>
+      <h2 style="margin-top:16px;">Vier onderdelen, één geheugen</h2>
+      <div class="what-grid">
+        <div class="what-card"><span class="num">01</span><h3>Kennisbank</h3><p>Procedures, prijslijsten en leveranciersinfo als gelinkte notities. Alles wat nu in je hoofd zit, terug te vinden met één vraag.</p></div>
+        <div class="what-card"><span class="num">02</span><h3>Klantenbestand</h3><p>Klanten, contactmomenten en afspraken gekoppeld aan de notities en facturen die erbij horen.</p></div>
+        <div class="what-card"><span class="num">03</span><h3>Facturatie</h3><p>Facturen opstellen vanuit dezelfde omgeving als je klantgegevens. Niets dubbel bijhouden.</p></div>
+        <div class="what-card accent"><span class="num">04</span><h3>AI-assistent</h3><p>De laag erbovenop: stelt vragen aan je eigen data, vat samen, schrijft concepten en verwijst naar de bron.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section class="section section-demo" id="demo">
+    <div class="wrap section-2col narrow-first">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="eyebrow">03 · Demo</div>
+        <h2>Zo voelt het in de praktijk</h2>
+        <p class="lede">Drie vragen die klanten in de pilot dagelijks stellen. Het antwoord komt altijd uit je eigen administratie, met de bron erbij — nooit uit de losse hand.</p>
+        <span class="demo-swipe-hint">← swipe · voorbeeld met fictieve data</span>
+        <span style="font-family:var(--font-mono); font-size:11.5px; color:var(--ink-ghost); display:none;" class="demo-desktop-note">Voorbeeld met fictieve data</span>
+      </div>
+      <div class="demo-grid">
+        <div class="demo-q">
+          <span class="qlabel">VRAAG 01</span>
+          <p class="qtext">"Welke klanten hebben nog een open factuur van vorige maand?"</p>
+          <p class="atext">Drie openstaand: Van Dijk (€480), Terra Hoveniers (€1.250), Studio Mees (€310). Totaal €2.040.</p>
+          <span class="src">bron: facturatie · 3 records</span>
+        </div>
+        <div class="demo-q">
+          <span class="qlabel">VRAAG 02</span>
+          <p class="qtext">"Wat is mijn standaardprocedure voor een spoedopdracht?"</p>
+          <p class="atext">Spoedtarief +35%, bevestiging per mail vóór start, levering binnen 48 uur. Uit je kennisbank.</p>
+          <span class="src">bron: procedures/spoed.md</span>
+        </div>
+        <div class="demo-q">
+          <span class="qlabel">VRAAG 03</span>
+          <p class="qtext">"Maak een offerte voor Terra op basis van vorig project."</p>
+          <p class="atext">Concept klaar: zelfde posten, prijzen geïndexeerd met 4%. Klaar om te controleren en te versturen.</p>
+          <span class="src">bron: project 2024-041 · prijslijst</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WERKWIJZE -->
+  <section class="section" id="werkwijze">
+    <div class="wrap section-2col narrow-first">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="eyebrow">04 · Werkwijze</div>
+        <h2>Van kennismaking naar werkend brein in twee weken</h2>
+        <p class="lede">Je hoeft niets technisch te doen. RankEngine richt in, jij gebruikt het en zegt wat er nog bij moet.</p>
+        <div class="step-quote">
+          <div class="q">"Ik werk alleen, rechtstreeks met jou. Geen lagen, geen wachttijd, geen jargon."</div>
+          <div class="who">THOMAS ROOZEMOND · RANKENGINE, AALSMEER</div>
+        </div>
+      </div>
+      <div>
+        <div class="step"><span class="n">01</span><div><h3>Kennismaking</h3><p>We nemen door hoe je bedrijf nu georganiseerd is en wat je kwijt wil in je Second Brain.</p></div><span class="meta">30 min · gratis</span></div>
+        <div class="step"><span class="n">02</span><div><h3>Opzet &amp; import</h3><p>RankEngine bouwt je eigen afgeschermde omgeving en brengt bestaande bestanden, klanten en facturen naar binnen.</p></div><span class="meta">week 1-2</span></div>
+        <div class="step"><span class="n">03</span><div><h3>Gebruik</h3><p>Vragen en opdrachten in gewone taal. Geen training, geen nieuwe tool om te leren.</p></div><span class="meta">vanaf week 2</span></div>
+        <div class="step"><span class="n">04</span><div><h3>Onderhoud</h3><p>RankEngine houdt de omgeving werkend en breidt hem uit met wat jij nodig hebt.</p></div><span class="meta">doorlopend</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATABRONNEN -->
+  <section class="section" id="bronnen">
+    <div class="wrap">
+      <div style="max-width:660px; display:flex; flex-direction:column; gap:16px;">
+        <div class="eyebrow">05 · Databronnen</div>
+        <h2>Wat er allemaal in kan</h2>
+        <p class="lede">Je bestaande spullen blijven waar ze zijn — het brein indexeert ze en houdt de verbanden bij.</p>
+      </div>
+      <div class="source-grid">
+        <div class="source-item">Google Drive / Dropbox<div class="tag">documenten · pdf</div></div>
+        <div class="source-item">Mailbox<div class="tag">afspraken · offertes</div></div>
+        <div class="source-item">Facturatie &amp; boekhouding<div class="tag">Moneybird · e-Boekhouden</div></div>
+        <div class="source-item">Notities<div class="tag">Obsidian · Notion · md</div></div>
+        <div class="source-item">Agenda<div class="tag">Google · Outlook</div></div>
+        <div class="source-item">Spreadsheets<div class="tag">klantenlijsten · prijzen</div></div>
+        <div class="source-item">WhatsApp Business<div class="tag">export op verzoek</div></div>
+        <div class="source-item accent">Iets anders?<div class="tag">we kijken samen</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEL/NIET -->
+  <section class="section">
+    <div class="wrap fit-grid">
+      <div class="fit-card yes">
+        <span class="label">Wél voor jou als</span>
+        <div class="items">
+          <span>→ Je ZZP'er bent of een team van 5-25 mensen hebt</span>
+          <span>→ Informatie verspreid raakt over mail, notities en spreadsheets</span>
+          <span>→ Je hetzelfde antwoord telkens opnieuw moet opzoeken</span>
+          <span>→ Je iemand wil die het inricht én bijhoudt</span>
+        </div>
+      </div>
+      <div class="fit-card no">
+        <span class="label">Niet voor jou als</span>
+        <div class="items">
+          <span>→ Je een kant-en-klaar SaaS-abonnement zoekt zonder begeleiding</span>
+          <span>→ Je organisatie een eigen IT-afdeling en compliance-traject heeft</span>
+          <span>→ Je verwacht dat AI je werk volledig overneemt</span>
+          <span>→ Je nu al alles strak in één systeem hebt staan</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIJS -->
+  <section class="section" id="prijs">
+    <div class="wrap section-2col">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div class="eyebrow">06 · Pilot &amp; prijs</div>
+        <h2>Prijs in overleg, op basis van je project</h2>
+        <p class="lede">De opzet — en dus de prijs — bepaalt RankEngine samen met de eerste klanten. Kleine ondernemers kunnen denken aan <strong style="color:var(--ink); font-weight:600;">€200-300 per maand</strong>, inclusief inrichting, onderhoud en uitbreiding. Groter project of meer gebruikers: andere prijs, altijd vooraf duidelijk.</p>
+        <div class="pilot-status"><span class="dot"></span>4 van 6 pilotplekken beschikbaar</div>
+      </div>
+      <div class="price-card">
+        <div class="amount"><span class="num">€200-300</span><span class="unit">p/m indicatie · ZZP</span></div>
+        <div class="items">
+          <span>→ Inrichting van je eigen, afgeschermde omgeving</span>
+          <span>→ Kennisbank, klantenbestand en facturatie op maat</span>
+          <span>→ Doorlopend onderhoud en uitbreiding op jouw feedback</span>
+          <span>→ 30 dagen opzegtermijn, geen langlopend contract</span>
+          <span>→ Directe inspraak op wat er wordt gebouwd</span>
+        </div>
+        <a href="#contact" class="btn btn-primary">Vraag een pilotplek aan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY -->
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">07 · Privacy &amp; data</div>
+      <h2 style="margin-top:14px;">Jouw data blijft jouw data</h2>
+      <div class="privacy-grid">
+        <div class="privacy-card"><h3>Eigen omgeving</h3><p>Iedere klant krijgt een afgeschermde instantie. Geen gedeelde index, geen data van andere bedrijven in jouw antwoorden.</p></div>
+        <div class="privacy-card"><h3>Niet gebruikt voor training</h3><p>Je bestanden en gesprekken worden niet gebruikt om modellen te trainen. Verwerking binnen de EU waar dat kan.</p></div>
+        <div class="privacy-card"><h3>Exporteerbaar</h3><p>Stoppen? Je krijgt je kennisbank als gewone bestanden mee. Geen gijzeling van je eigen informatie.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap section-2col narrow-first">
+      <div class="faq-intro" style="display:flex; flex-direction:column; gap:14px;">
+        <div class="eyebrow">08 · FAQ</div>
+        <h2 style="font-size:26px;">Veelgestelde vragen</h2>
+        <p style="margin:0; font-size:15px; line-height:1.6; color:var(--ink-ghost);">Iets anders op je hoofd? <a href="#contact">Stuur een bericht</a>.</p>
+      </div>
+      <div>
+        <details open>
+          <summary>Wat is een AI Second Brain precies?<span class="plus">+</span></summary>
+          <p>Een afgeschermde omgeving waarin je bedrijfsinformatie als gelinkte notities staat, met een AI-laag erbovenop die daarin zoekt en antwoordt. Geen chatbot die dingen verzint: hij leest je eigen data en verwijst naar de bron.</p>
+        </details>
+        <details>
+          <summary>Is mijn data gescheiden van andere klanten?<span class="plus">+</span></summary>
+          <p>Ja. Iedere klant krijgt een eigen instantie met een eigen index. Er wordt nooit data van een ander bedrijf in jouw antwoorden gebruikt.</p>
+        </details>
+        <details>
+          <summary>Moet ik iets nieuws leren?<span class="plus">+</span></summary>
+          <p>Nee. Je stelt vragen in gewone taal, zoals in een appje. De structuur eronder houdt RankEngine bij.</p>
+        </details>
+        <details>
+          <summary>Waarom pilotfase?<span class="plus">+</span></summary>
+          <p>Omdat RankEngine de opzet scherp wil krijgen met echte bedrijven. Je betaalt een pilotprijs en hebt directe invloed op wat er gebouwd wordt.</p>
+        </details>
+        <details>
+          <summary>Wat als het niet werkt voor mij?<span class="plus">+</span></summary>
+          <p>30 dagen opzegtermijn en je data komt mee als gewone bestanden. Geen langlopend contract.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-contact" id="contact">
+    <div class="wrap section-2col">
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <div class="eyebrow">Meld interesse</div>
+        <h2>Eén van de eerste pilotplekken?</h2>
+        <p class="lede" style="max-width:460px;">20-30 minuten, geen verplichtingen. We bespreken je situatie en of dit bij je past.</p>
+        <div class="contact-info">
+          <a href="tel:+31643859989"><span class="lbl">TEL</span>06 43 85 99 89</a>
+          <a href="mailto:info@rankengine.nl"><span class="lbl">MAIL</span>info@rankengine.nl</a>
+          <a href="https://wa.me/31643859989" target="_blank" rel="noopener"><span class="lbl">WA</span>Stuur een WhatsApp</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-row2">
+          <label class="field" id="fName">Naam<input type="text" id="name" name="name" placeholder="Jouw naam" autocomplete="name" required /></label>
+          <label class="field" id="fEmail">E-mail<input type="email" id="email" name="email" placeholder="jij@bedrijf.nl" autocomplete="email" required /></label>
+        </div>
+        <label class="field">Bedrijfsgrootte
+          <select id="bedrijfsgrootte" name="bedrijfsgrootte">
+            <option>ZZP, alleen ik</option>
+            <option>2-5 medewerkers</option>
+            <option>5-25 medewerkers</option>
+            <option>25+</option>
+          </select>
+        </label>
+        <label class="field">Hoe is je bedrijf nu georganiseerd?<textarea rows="4" id="message" name="message" placeholder="Waar staat je informatie nu, en wat loopt vast?"></textarea></label>
+        <button type="submit" class="submit-btn">Verstuur</button>
+        <p class="form-status" id="contactStatus"></p>
+        <span class="form-note">Je gegevens gaan alleen naar RankEngine.</span>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-col footer-brand">
+      <div class="logo"><span class="logo-mark" style="width:20px;height:20px;"></span><span class="logo-text" style="font-size:15px;">RankEngine<span> AI</span></span></div>
+      <p>AI Second Brain voor ZZP'ers en MKB. Ingericht en onderhouden door één specialist uit Aalsmeer.</p>
+    </div>
+    <div class="footer-col">
+      <span class="head">PRODUCT</span>
+      <a href="#wat">Wat het is</a>
+      <a href="#demo">Demo</a>
+      <a href="#bronnen">Databronnen</a>
+      <a href="#prijs">Pilot &amp; prijs</a>
+    </div>
+    <div class="footer-col">
+      <span class="head">RANKENGINE</span>
+      <a href="https://rankengine.nl/">Hoofdsite</a>
+      <a href="https://rankengine.nl/geo-optimalisatie">GEO &amp; AI-optimalisatie</a>
+      <a href="https://rankengine.nl/seo">SEO</a>
+      <a href="https://rankengine.nl/blog/">Blog</a>
+    </div>
+    <div class="footer-col">
+      <span class="head">CONTACT</span>
+      <span style="font-size:13.5px; color:var(--ink-mute);">Koningsstraat 49<br>1432 PL Aalsmeer</span>
+      <a href="tel:+31643859989">06 43 85 99 89</a>
+      <a href="https://www.linkedin.com/company/rankengine-nl">LinkedIn</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 RankEngine · KvK 94381143 · BTW NL005080200B96</span>
+    <div class="footer-legal"><a href="https://rankengine.nl/privacy">Privacybeleid</a><a href="https://rankengine.nl/algemene-voorwaarden">Algemene voorwaarden</a></div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:+31643859989" class="call">TEL</a>
+  <a href="#contact" class="cta">Pilotplek aanvragen</a>
+</div>
+
+<div class="cookie-banner is-hidden" id="cookie-banner" role="dialog" aria-label="Cookiemelding" aria-live="polite">
+  <p>Deze website gebruikt functionele cookies die noodzakelijk zijn voor het werken van de site. Met jouw toestemming plaatsen we ook analytische cookies (Google Analytics) om bezoekersgedrag te meten, anoniem. Lees meer in het <a href="https://rankengine.nl/privacy">privacybeleid</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn" id="cookie-reject" type="button">Alleen functioneel</button>
+    <button class="cookie-btn accept" id="cookie-accept" type="button">Akkoord</button>
+  </div>
+</div>
+
+<script>
+/* mobile nav toggle */
+(function(){
+  var toggle = document.getElementById('navToggle');
+  var panel = document.getElementById('mobilePanel');
+  if (!toggle) return;
+  toggle.addEventListener('click', function(){
+    var open = panel.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  panel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      panel.classList.remove('is-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+
+/* cookie consent */
+(function(){
+  var KEY = 're_cookie_consent';
+  var consent = localStorage.getItem(KEY);
+  var banner = document.getElementById('cookie-banner');
+  function grant(){
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent','update',{ analytics_storage:'granted', ad_storage:'granted', ad_user_data:'granted', ad_personalization:'granted' });
+  }
+  document.getElementById('cookie-accept').addEventListener('click', function(){
+    localStorage.setItem(KEY,'accepted'); banner.classList.add('is-hidden'); grant();
+  });
+  document.getElementById('cookie-reject').addEventListener('click', function(){
+    localStorage.setItem(KEY,'rejected'); banner.classList.add('is-hidden');
+  });
+  if (consent === 'accepted') grant();
+  else if (!consent) setTimeout(function(){ banner.classList.remove('is-hidden'); }, 800);
+})();
+
+/* contact form */
+(function(){
+  var form = document.getElementById('contactForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var ok = true;
+    function check(id, test){
+      var wrap = document.getElementById(id);
+      var pass = test();
+      if (wrap) wrap.classList.toggle('has-error', !pass);
+      if (!pass) ok = false;
+    }
+    check('fName', function(){ return document.getElementById('name').value.trim().length > 0; });
+    check('fEmail', function(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(document.getElementById('email').value.trim()); });
+    if (!ok) return;
+
+    var status = document.getElementById('contactStatus');
+    var btn = form.querySelector('[type=submit]');
+    btn.disabled = true; btn.textContent = 'Versturen...';
+    status.classList.remove('is-error'); status.textContent = '';
+
+    var bericht = 'Bedrijfsgrootte: ' + document.getElementById('bedrijfsgrootte').value + '\n\n' + document.getElementById('message').value.trim();
+
+    fetch('https://n8n.rankengine.nl/webhook/rankengine-contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        naam: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        dienst: 'AI Second Brain (ai.rankengine.nl pilot)',
+        bericht: bericht
+      })
+    })
+      .then(function(){ window.location.href = 'https://rankengine.nl/bedankt?dienst=' + encodeURIComponent('AI Second Brain'); })
+      .catch(function(){
+        btn.disabled = false; btn.textContent = 'Verstuur';
+        status.classList.add('is-error');
+        status.textContent = 'Er ging iets mis. Stuur een e-mail naar info@rankengine.nl.';
+      });
+  });
+})();
+
+/* knowledge-graph canvas background */
+(function(){
+  var canvas = document.getElementById('graph');
+  if (!canvas) return;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var nodes = [], edges = [], pulses = [];
+  var speed = 1;
+
+  function currentDensity(){ return window.innerWidth < 768 ? 95 : 190; }
+
+  function build(){
+    var count = currentDensity();
+    var clusters = 7, cw = W, ch = H;
+    var centers = [];
+    for (var c = 0; c < clusters; c++) {
+      var ang = (c / clusters) * Math.PI * 2 + 0.6;
+      var r = Math.min(cw, ch) * (0.12 + 0.2 * ((c % 3) / 2));
+      centers.push({ x: cw / 2 + Math.cos(ang) * r, y: ch / 2 + Math.sin(ang) * r * 0.9 });
+    }
+    nodes = [];
+    var R = Math.min(cw, ch) * 0.47;
+    for (var i = 0; i < count; i++) {
+      var clustered = i < count * 0.62;
+      var x, y, cl = -1;
+      if (clustered) {
+        cl = i % clusters;
+        var cc = centers[cl];
+        var a = Math.random() * Math.PI * 2, d = Math.pow(Math.random(), 0.7) * Math.min(cw, ch) * 0.13;
+        x = cc.x + Math.cos(a) * d; y = cc.y + Math.sin(a) * d;
+      } else {
+        var a2 = Math.random() * Math.PI * 2, d2 = R * (0.62 + Math.random() * 0.38);
+        x = cw / 2 + Math.cos(a2) * d2; y = ch / 2 + Math.sin(a2) * d2 * 0.94;
+      }
+      nodes.push({ x:x, y:y, bx:x, by:y, cl:cl, r: clustered ? 1.5 + Math.random() * 2.4 : 1.1 + Math.random() * 1.1,
+        ph: Math.random() * Math.PI * 2, sp: 0.3 + Math.random() * 0.7, deg: 0 });
+    }
+    edges = [];
+    var maxD = Math.min(cw, ch) * 0.11;
+    for (var ii = 0; ii < nodes.length; ii++) {
+      for (var jj = ii + 1; jj < nodes.length; jj++) {
+        var n = nodes[ii], m = nodes[jj];
+        if (n.cl < 0 && m.cl < 0) continue;
+        var dx = n.x - m.x, dy = n.y - m.y, dist = Math.hypot(dx, dy);
+        var lim = (n.cl >= 0 && n.cl === m.cl) ? maxD * 1.35 : maxD * 0.72;
+        if (dist < lim && Math.random() < 0.62) { edges.push([ii, jj, dist]); n.deg++; m.deg++; }
+      }
+    }
+    nodes.forEach(function(n){ n.r += Math.min(n.deg, 12) * 0.16; });
+    pulses = [];
+  }
+
+  function resize(){
+    var r = canvas.getBoundingClientRect();
+    W = Math.max(r.width, 320); H = Math.max(r.height, 320);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+  resize();
+
+  var raf, t = 0, alive = true;
+  function spawn(){
+    if (!edges.length) return;
+    var e = edges[(Math.random() * edges.length) | 0];
+    pulses.push({ e:e, t:0, sp: 0.006 + Math.random() * 0.012, dir: Math.random() < 0.5 ? 1 : -1 });
+  }
+
+  var edgeColor = 'rgba(157,151,201,0.28)', nodeColor = '#9d97c9', hubColor = '#c9c2ff', pulseColor = '#cbb9ff';
+
+  function frame(){
+    if (!alive) return;
+    t += 0.006 * speed;
+    ctx.clearRect(0, 0, W, H);
+    for (var k = 0; k < nodes.length; k++) {
+      var n = nodes[k];
+      n.x = n.bx + Math.sin(t * n.sp * 2.2 + n.ph) * 3.4;
+      n.y = n.by + Math.cos(t * n.sp * 1.7 + n.ph) * 3.4;
+    }
+    ctx.lineWidth = 0.7;
+    for (var e2 = 0; e2 < edges.length; e2++) {
+      var pair = edges[e2], n2 = nodes[pair[0]], m2 = nodes[pair[1]], d3 = pair[2];
+      ctx.strokeStyle = edgeColor;
+      ctx.globalAlpha = 0.45 + 0.35 * Math.sin(t * 1.4 + d3 * 0.05);
+      ctx.beginPath(); ctx.moveTo(n2.x, n2.y); ctx.lineTo(m2.x, m2.y); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    for (var k2 = 0; k2 < nodes.length; k2++) {
+      var nn = nodes[k2];
+      var pulse = 1 + 0.22 * Math.sin(t * 2.6 + nn.ph);
+      var hub = nn.deg > 8;
+      if (hub) { ctx.shadowColor = hubColor; ctx.shadowBlur = 9; } else { ctx.shadowBlur = 0; }
+      ctx.fillStyle = hub ? hubColor : nodeColor;
+      ctx.beginPath(); ctx.arc(nn.x, nn.y, nn.r * pulse, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    if (Math.random() < 0.16 * speed && pulses.length < 26) spawn();
+    for (var p2 = pulses.length - 1; p2 >= 0; p2--) {
+      var p = pulses[p2];
+      p.t += p.sp * speed;
+      if (p.t >= 1) { pulses.splice(p2, 1); continue; }
+      var a3 = nodes[p.dir > 0 ? p.e[0] : p.e[1]], b3 = nodes[p.dir > 0 ? p.e[1] : p.e[0]];
+      var x3 = a3.x + (b3.x - a3.x) * p.t, y3 = a3.y + (b3.y - a3.y) * p.t;
+      var fade = Math.sin(p.t * Math.PI);
+      ctx.globalAlpha = fade;
+      ctx.shadowColor = pulseColor; ctx.shadowBlur = 10;
+      ctx.fillStyle = pulseColor;
+      ctx.beginPath(); ctx.arc(x3, y3, 2.1, 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ frame(); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start); else start();
+
+  var ro = new ResizeObserver(function(){ resize(); });
+  ro.observe(canvas);
+})();
+
+/* FAQ plus-icon already handled via CSS details[open] .plus */
+</script>
+
+</body>
+</html>
