@@ -222,6 +222,10 @@ nav.top{ position:sticky; top:0; z-index:100; border-bottom:1px solid var(--bord
 /* ---------- SECTIONS ---------- */
 .section{ padding:44px 18px; border-bottom:1px solid var(--border); }
 @media (min-width:768px){ .section{ padding:80px 40px; } }
+.section-tight-bottom{ padding-bottom:24px; }
+@media (min-width:768px){ .section-tight-bottom{ padding-bottom:32px; } }
+.section-tight-top{ padding-top:24px; }
+@media (min-width:768px){ .section-tight-top{ padding-top:32px; } }
 .section-2col{ display:grid; grid-template-columns:1fr; gap:24px; }
 @media (min-width:768px){ .section-2col{ grid-template-columns:1fr 1fr; gap:56px; } }
 .section-2col.narrow-first{ grid-template-columns:1fr; }
@@ -608,7 +612,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   </section>
 
   <!-- OPLOSSING (probleem + oplossing + wat het is samengevoegd) -->
-  <section class="section" id="oplossing">
+  <section class="section section-tight-bottom" id="oplossing">
     <div class="wrap">
       <div class="eyebrow" style="text-transform:uppercase;">01 &middot; Van chaos naar overzicht</div>
       <h2 style="margin-top:16px; max-width:640px;">Tien tools die niet met elkaar praten</h2>
@@ -807,9 +811,8 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
     </div>
   </section>
 
-
   <!-- DEMO -->
-  <section class="section section-demo" id="demo">
+  <section class="section section-demo section-tight-top" id="demo">
     <div class="wrap">
       <div class="demo-head">
         <div>
