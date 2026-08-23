@@ -219,11 +219,6 @@ h2{ margin:0; font-size:26px; line-height:1.15; font-weight:600; letter-spacing:
 .stat-row .big{ font-size:26px; font-weight:600; letter-spacing:-.02em; color:var(--amber); }
 @media (min-width:768px){ .stat-row .big{ font-size:32px; } }
 .stat-row .small{ font-size:12.5px; color:var(--ink-ghost); margin-top:2px; }
-.problem-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; align-content:start; margin-top:8px; }
-@media (min-width:768px){ .problem-grid{ gap:10px; margin-top:0; } }
-.problem-item{ padding:14px; border:1px dashed var(--border-4); border-radius:6px; font-size:14px; color:var(--ink-faint); }
-.problem-item .tag{ font-family:var(--font-mono); font-size:10px; color:var(--ink-ghost2); margin-top:6px; }
-.problem-solve{ grid-column:span 2; padding:14px 16px; border:1px solid rgba(139,124,246,.4); background:rgba(139,124,246,.08); border-radius:6px; font-size:14px; color:#d8d6e4; }
 
 /* oplossing: van los naar een kluis (animatie) */
 @keyframes reJitter{ 0%,100%{transform:translate(0,0)} 25%{transform:translate(3px,-4px)} 50%{transform:translate(-4px,3px)} 75%{transform:translate(3px,3px)} }
@@ -512,22 +507,13 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
 
   <!-- PROBLEEM -->
   <section class="section">
-    <div class="wrap section-2col">
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="eyebrow" style="text-transform:uppercase;">01 · Het probleem</div>
-        <h2>Tien losse tools die niet met elkaar praten</h2>
-        <p class="lede">WhatsApp, mail, losse notities, een Excel-klantenlijst en een facturatietool. Iedere vraag van een klant kost vijf minuten zoeken in vier systemen en soms vind je het gewoon niet meer terug.</p>
-        <div class="stat-row">
-          <div><div class="big">6,3 uur</div><div class="small">per week zoeken naar informatie</div></div>
-          <div><div class="big">4 → 1</div><div class="small">systemen terug naar één plek</div></div>
-        </div>
-      </div>
-      <div class="problem-grid">
-        <div class="problem-item">WhatsApp-afspraken<div class="tag">niet doorzoekbaar</div></div>
-        <div class="problem-item">Excel-klantenlijst<div class="tag">3 versies in omloop</div></div>
-        <div class="problem-item">Losse notities<div class="tag">geen verband</div></div>
-        <div class="problem-item">Mailbox als archief<div class="tag">zoeken op geheugen</div></div>
-        <div class="problem-solve">→ Eén omgeving met AI ertussen die het overzicht bijhoudt</div>
+    <div class="wrap">
+      <div class="eyebrow" style="text-transform:uppercase;">01 · Het probleem</div>
+      <h2 style="margin-top:16px; max-width:640px;">Elf tools die niet met elkaar praten</h2>
+      <p class="lede" style="max-width:640px; margin-top:14px;">WhatsApp, mail, losse notities, een Excel-klantenlijst en een facturatietool zijn zomaar vijf van de elf plekken waar je informatie zit. Iedere klantvraag kost vijf minuten zoeken, en soms vind je het gewoon niet meer terug.</p>
+      <div class="stat-row" style="margin-top:20px;">
+        <div><div class="big">6,3 uur</div><div class="small">per week zoeken naar informatie</div></div>
+        <div><div class="big">11 → 1</div><div class="small">tools terug naar één plek</div></div>
       </div>
     </div>
   </section>
