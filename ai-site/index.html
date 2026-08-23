@@ -30,7 +30,18 @@
       },
       "description": "Beheerde AI-omgeving voor kleine ondernemers: kennisbank, klantenbestand en facturatie op één plek, ingericht en onderhouden door RankEngine.",
       "url": "https://ai.rankengine.nl/",
-      "areaServed": [{ "@type": "Country", "name": "Nederland" }]
+      "areaServed": [{ "@type": "Country", "name": "Nederland" }],
+      "offers": {
+        "@type": "Offer",
+        "price": "249",
+        "priceCurrency": "EUR",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "249",
+          "priceCurrency": "EUR",
+          "unitText": "maand"
+        }
+      }
     },
     {
       "@type": "FAQPage",
@@ -147,7 +158,7 @@ nav.top{ position:sticky; top:0; z-index:100; border-bottom:1px solid var(--bord
 .demo-card-head .live{ color:var(--green); }
 .demo-card-body{ display:flex; flex-direction:column; padding:16px; min-height:230px; overflow:hidden; }
 @media (min-width:768px){ .demo-card-body{ min-height:200px; } }
-.chat-stack{ display:flex; flex-direction:column; gap:12px; transition:transform .45s ease, opacity .45s ease; }
+.chat-stack{ display:flex; flex-direction:column; gap:12px; transition:transform .6s ease, opacity .6s ease; }
 .chat-stack.is-hidden{ opacity:0; transform:translateY(18px); }
 .msg-user{ align-self:flex-end; max-width:88%; background:var(--purple); color:#12111a; font-size:14px; line-height:1.45; padding:10px 13px; border-radius:10px 10px 3px 10px; }
 .msg-ai{ max-width:94%; min-height:20px; background:rgba(255,255,255,.045); border:1px solid var(--border); font-size:14px; line-height:1.5; padding:12px 13px; border-radius:10px 10px 10px 3px; color:#ddd9ec; }
@@ -556,12 +567,12 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
     <div class="wrap section-2col">
       <div style="display:flex; flex-direction:column; gap:16px;">
         <div class="eyebrow">06 · Pilot &amp; prijs</div>
-        <h2>Prijs in overleg, op basis van je project</h2>
-        <p class="lede">De opzet — en dus de prijs — bepaalt RankEngine samen met de eerste klanten. Kleine ondernemers kunnen denken aan <strong style="color:var(--ink); font-weight:600;">€200-300 per maand</strong>, inclusief inrichting, onderhoud en uitbreiding. Groter project of meer gebruikers: andere prijs, altijd vooraf duidelijk.</p>
+        <h2>€249 per maand tijdens de pilot</h2>
+        <p class="lede">Voor ZZP'ers en kleine teams is de pilotprijs <strong style="color:var(--ink); font-weight:600;">€249 per maand excl. btw</strong>, inclusief inrichting, onderhoud en uitbreiding. Groter project of meer gebruikers: aparte prijs, altijd vooraf duidelijk.</p>
         <div class="pilot-status"><span class="dot"></span>4 van 6 pilotplekken beschikbaar</div>
       </div>
       <div class="price-card">
-        <div class="amount"><span class="num">€200-300</span><span class="unit">p/m indicatie · ZZP</span></div>
+        <div class="amount"><span class="num">€249</span><span class="unit">p/m excl. btw · ZZP</span></div>
         <div class="items">
           <span>→ Inrichting van je eigen, afgeschermde omgeving</span>
           <span>→ Kennisbank, klantenbestand en facturatie op maat</span>
@@ -981,8 +992,30 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
     return;
   }
 
-  var idx = 0;
+  var queue = [];
+  var lastIdx = -1;
   var timer;
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+    }
+    return a;
+  }
+
+  function nextIdx(){
+    if (!queue.length) {
+      queue = shuffle(conversations.map(function(_, i){ return i; }));
+      // voorkom dat dezelfde conversatie twee keer na elkaar komt over de naad van een nieuwe shuffle
+      if (queue[0] === lastIdx && queue.length > 1) {
+        queue.push(queue.shift());
+      }
+    }
+    lastIdx = queue.shift();
+    return lastIdx;
+  }
 
   function typeAi(text, done){
     var i = 0;
@@ -991,12 +1024,12 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
       i++;
       aiTextEl.textContent = text.slice(0, i);
       if (i >= text.length) { caretEl.hidden = true; done(); return; }
-      timer = setTimeout(tick, 14 + Math.random() * 16);
+      timer = setTimeout(tick, 26 + Math.random() * 28);
     })();
   }
 
   function runCycle(){
-    var c = conversations[idx];
+    var c = conversations[nextIdx()];
 
     // reset
     aiEl.classList.add('is-empty');
@@ -1029,13 +1062,12 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
             timer = setTimeout(function(){
               stack.classList.add('is-hidden');
               timer = setTimeout(function(){
-                idx = (idx + 1) % conversations.length;
                 runCycle();
-              }, 500);
-            }, 3200);
+              }, 750);
+            }, 4600);
           });
-        }, 700);
-      }, 550);
+        }, 950);
+      }, 800);
     }, 30);
   }
 
