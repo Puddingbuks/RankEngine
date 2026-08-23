@@ -213,6 +213,8 @@ h2{ margin:0; font-size:26px; line-height:1.15; font-weight:600; letter-spacing:
 @media (min-width:768px){ h2{ font-size:38px; line-height:1.12; letter-spacing:-.025em; } }
 .section p.lede{ margin:0; font-size:15.5px; line-height:1.6; color:var(--ink-dim); }
 @media (min-width:768px){ .section p.lede{ font-size:16.5px; line-height:1.62; } }
+.oplossing-transition{ margin:48px 0 0; font-size:20px; font-weight:600; letter-spacing:-.01em; color:var(--ink); }
+@media (min-width:768px){ .oplossing-transition{ margin-top:64px; font-size:24px; } }
 
 /* problem stats */
 .stat-row{ display:flex; gap:24px; margin-top:8px; }
@@ -450,7 +452,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
     <div class="nav-left">
       <a href="#top" class="logo"><span class="logo-mark"></span><span class="logo-text">RankEngine<span> AI</span></span></a>
       <div class="nav-links">
-        <a href="#wat">Wat het is</a>
+        <a href="#oplossing">Oplossing</a>
         <a href="#demo">Demo</a>
         <a href="#werkwijze">Werkwijze</a>
         <a href="#bronnen">Databronnen</a>
@@ -468,7 +470,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   </div>
 </nav>
 <div class="mobile-panel" id="mobilePanel">
-  <a href="#wat">Wat het is</a>
+  <a href="#oplossing">Oplossing</a>
   <a href="#demo">Demo</a>
   <a href="#werkwijze">Werkwijze</a>
   <a href="#bronnen">Databronnen</a>
@@ -519,25 +521,19 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
     </div>
   </section>
 
-  <!-- PROBLEEM -->
-  <section class="section">
+  <!-- OPLOSSING (probleem + oplossing + wat het is samengevoegd) -->
+  <section class="section" id="oplossing">
     <div class="wrap">
-      <div class="eyebrow" style="text-transform:uppercase;">01 · Het probleem</div>
+      <div class="eyebrow" style="text-transform:uppercase;">01 &middot; Van chaos naar overzicht</div>
       <h2 style="margin-top:16px; max-width:640px;">Tien tools die niet met elkaar praten</h2>
       <p class="lede" style="max-width:640px; margin-top:14px;">WhatsApp, mail, losse notities, een Excel-klantenlijst en een facturatietool zijn zomaar vijf van de tien plekken waar je informatie zit. Iedere klantvraag kost vijf minuten zoeken, en soms vind je het gewoon niet meer terug.</p>
       <div class="stat-row" style="margin-top:20px;">
         <div><div class="big">6,3 uur</div><div class="small">per week zoeken naar informatie</div></div>
-        <div><div class="big">10 → 1</div><div class="small">tools terug naar één plek</div></div>
+        <div><div class="big">10 &rarr; 1</div><div class="small">tools terug naar &eacute;&eacute;n plek</div></div>
       </div>
-    </div>
-  </section>
 
-  <!-- OPLOSSING: van los naar een kluis -->
-  <section class="section">
-    <div class="wrap">
-      <div class="eyebrow">01b &middot; Van los naar &eacute;&eacute;n</div>
-      <h2 style="margin-top:16px; max-width:760px;">Tien tools die hun eigen ding doen. Daarna: &eacute;&eacute;n kluis.</h2>
-      <p class="lede" style="max-width:640px; margin-top:14px;">Je gegevens blijven waar ze zijn, maar komen samen in &eacute;&eacute;n afgeschermde kluis. Claude zit erbovenop: leest, ordent en beantwoordt, zonder dat er iets naar buiten gaat.</p>
+      <h3 class="oplossing-transition">Dat wordt: alles bij elkaar in &eacute;&eacute;n kluis</h3>
+      <p class="lede" style="max-width:640px; margin-top:14px;">Je gegevens blijven waar ze zijn, maar komen samen in &eacute;&eacute;n afgeschermde kluis. Daar zit AI bovenop die meeleest en meedenkt, zonder dat er iets naar buiten gaat.</p>
 
       <div class="re-diagram re-desktop" style="margin-top:32px;">
         <svg viewBox="0 0 1328 660" preserveAspectRatio="none">
@@ -616,10 +612,10 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
           <div class="re-noconn" style="left:24.85%; top:54.55%"><span>&#10005;</span>geen verbinding</div>
         <div class="re-claude" style="top:25.45%; width:33.13%;">
           <div>
-            <div class="t">Claude &middot; de laag erboven</div>
-            <div class="s">leest de kluis &middot; ordent &middot; antwoordt met bron</div>
+            <div class="t">Claude denkt mee</div>
+            <div class="s">leest mee &middot; houdt orde &middot; antwoordt met bron</div>
           </div>
-          <span class="badge">AI-LAAG</span>
+          <span class="badge">AI</span>
         </div>
         <div class="re-vault" style="top:51.52%; width:19.58%;">
           <div class="re-vault-head"><span style="color:var(--purple-lt);">DE KLUIS</span><span style="color:var(--green); font-weight:normal;">&#9679; versleuteld</span></div>
@@ -673,8 +669,8 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
           </div>
         <div class="re-claude" style="top:24%; width:70.62%;">
           <div>
-            <div class="t" style="font-size:14px;">Claude &middot; de laag erboven</div>
-            <div class="s">beheert de kluis &middot; antwoordt met bron</div>
+            <div class="t" style="font-size:14px;">Claude denkt mee</div>
+            <div class="s">houdt orde &middot; antwoordt met bron</div>
           </div>
         </div>
         <div class="re-vault" style="top:64%; width:53.67%; padding:15px;">
@@ -703,37 +699,33 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
           <p>Tien plekken waar informatie ontstaat, zonder onderling verband. Jij bent de enige koppeling.</p>
         </div>
         <div class="re-step s2">
-          <span class="lbl">FASE 02 &middot; KOPPELEN</span>
+          <span class="lbl">FASE 02 &middot; SAMEN</span>
           <h3>Alles komt samen in de kluis</h3>
           <p>Je bronnen worden ingelezen en gelinkt in &eacute;&eacute;n afgeschermde omgeving. Versleuteld, alleen van jou.</p>
         </div>
         <div class="re-step s3">
-          <span class="lbl">FASE 03 &middot; DE AI-LAAG</span>
-          <h3>Claude beheert de kluis</h3>
-          <p>De AI-laag leest en ordent wat er binnenkomt en beantwoordt je vragen, altijd met bronvermelding.</p>
+          <span class="lbl">FASE 03 &middot; AI HELPT</span>
+          <h3>Claude denkt met je mee</h3>
+          <p>Claude leest mee, houdt orde en beantwoordt je vragen, altijd met de bron erbij.</p>
         </div>
+      </div>
+    </div>
+
+      <h3 class="oplossing-transition">Wat er allemaal in je kluis komt te staan</h3>
+      <div class="what-grid" style="margin-top:20px;">
+        <div class="what-card"><span class="num">01</span><h3>Kennisbank</h3><p>Procedures, prijslijsten en leveranciersinfo als gelinkte notities. Alles wat nu in je hoofd zit, terug te vinden met &eacute;&eacute;n vraag.</p></div>
+        <div class="what-card"><span class="num">02</span><h3>Klantenbestand</h3><p>Klanten, contactmomenten en afspraken gekoppeld aan de notities en facturen die erbij horen.</p></div>
+        <div class="what-card"><span class="num">03</span><h3>Facturatie</h3><p>Facturen opstellen vanuit dezelfde omgeving als je klantgegevens. Niets dubbel bijhouden.</p></div>
+        <div class="what-card accent"><span class="num">04</span><h3>Hulp die meedenkt</h3><p>Beantwoordt je vragen op basis van je eigen data, vat dingen samen, schrijft concepten en verwijst altijd naar de bron.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- WAT HET IS -->
-  <section class="section" id="wat">
-    <div class="wrap">
-      <div class="eyebrow">02 · Wat het is</div>
-      <h2 style="margin-top:16px;">Vier onderdelen, één geheugen</h2>
-      <div class="what-grid">
-        <div class="what-card"><span class="num">01</span><h3>Kennisbank</h3><p>Procedures, prijslijsten en leveranciersinfo als gelinkte notities. Alles wat nu in je hoofd zit, terug te vinden met één vraag.</p></div>
-        <div class="what-card"><span class="num">02</span><h3>Klantenbestand</h3><p>Klanten, contactmomenten en afspraken gekoppeld aan de notities en facturen die erbij horen.</p></div>
-        <div class="what-card"><span class="num">03</span><h3>Facturatie</h3><p>Facturen opstellen vanuit dezelfde omgeving als je klantgegevens. Niets dubbel bijhouden.</p></div>
-        <div class="what-card accent"><span class="num">04</span><h3>AI-assistent</h3><p>De laag erbovenop: stelt vragen aan je eigen data, vat samen, schrijft concepten en verwijst naar de bron.</p></div>
-      </div>
-    </div>
-  </section>
 
   <!-- DEMO -->
   <section class="section section-demo" id="demo">
     <div class="wrap">
-      <div class="eyebrow">03 · Demo</div>
+      <div class="eyebrow">02 · Demo</div>
       <h2 style="margin-top:16px; max-width:640px;">Van opzet tot dagelijks gebruik</h2>
       <p class="lede" style="margin-top:14px; max-width:640px;">Dit is wat er allemaal gebeurt: van de eerste kennismaking met je kluis tot het moment dat je hem dagelijks gebruikt om je bedrijf te runnen.</p>
 
@@ -773,7 +765,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   <section class="section" id="werkwijze">
     <div class="wrap section-2col narrow-first">
       <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="eyebrow">04 · Werkwijze</div>
+        <div class="eyebrow">03 · Werkwijze</div>
         <h2>Van kennismaking naar werkend brein in twee weken</h2>
         <p class="lede">Je hoeft niets technisch te doen. RankEngine richt in, jij gebruikt het en zegt wat er nog bij moet.</p>
         <div class="step-quote">
@@ -794,7 +786,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   <section class="section" id="bronnen">
     <div class="wrap">
       <div style="max-width:660px; display:flex; flex-direction:column; gap:16px;">
-        <div class="eyebrow">05 · Databronnen</div>
+        <div class="eyebrow">04 · Databronnen</div>
         <h2>Wat er allemaal in kan</h2>
         <p class="lede">Je bestaande spullen blijven waar ze zijn: het brein indexeert ze en houdt de verbanden bij.</p>
       </div>
@@ -839,7 +831,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   <section class="section" id="prijs">
     <div class="wrap section-2col">
       <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="eyebrow">06 · Pilot &amp; prijs</div>
+        <div class="eyebrow">05 · Pilot &amp; prijs</div>
         <h2>€249 per maand tijdens de pilot</h2>
         <p class="lede">Voor ZZP'ers en kleine teams is de pilotprijs <strong style="color:var(--ink); font-weight:600;">€249 per maand excl. btw</strong>, inclusief inrichting, onderhoud en uitbreiding. Groter project of meer gebruikers: aparte prijs, altijd vooraf duidelijk.</p>
         <div class="pilot-status"><span class="dot"></span>4 van 6 pilotplekken beschikbaar</div>
@@ -862,7 +854,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   <!-- PRIVACY -->
   <section class="section">
     <div class="wrap">
-      <div class="eyebrow">07 · Privacy &amp; data</div>
+      <div class="eyebrow">06 · Privacy &amp; data</div>
       <h2 style="margin-top:14px;">Jouw data blijft jouw data</h2>
       <div class="privacy-grid">
         <div class="privacy-card"><h3>Eigen omgeving</h3><p>Iedere klant krijgt een afgeschermde instantie. Geen gedeelde index, geen data van andere bedrijven in jouw antwoorden.</p></div>
@@ -876,7 +868,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
   <section class="section" id="faq">
     <div class="wrap section-2col narrow-first">
       <div class="faq-intro" style="display:flex; flex-direction:column; gap:14px;">
-        <div class="eyebrow">08 · FAQ</div>
+        <div class="eyebrow">07 · FAQ</div>
         <h2 style="font-size:26px;">Veelgestelde vragen</h2>
         <p style="margin:0; font-size:15px; line-height:1.6; color:var(--ink-ghost);">Iets anders op je hoofd? <a href="#contact">Stuur een bericht</a>.</p>
       </div>
@@ -952,7 +944,7 @@ footer{ padding:36px 18px 100px; background:var(--panel-3); }
     </div>
     <div class="footer-col">
       <span class="head">PRODUCT</span>
-      <a href="#wat">Wat het is</a>
+      <a href="#oplossing">Oplossing</a>
       <a href="#demo">Demo</a>
       <a href="#bronnen">Databronnen</a>
       <a href="#prijs">Pilot &amp; prijs</a>
