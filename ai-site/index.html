@@ -182,11 +182,10 @@ header{ position:relative; z-index:5; background:var(--bg); }
 .rail-row{ position:absolute; left:0; top:0; display:flex; align-items:center; gap:16px; white-space:nowrap; will-change:transform; }
 
 /* wat erin gaat / wat eruit komt: verticaal op mobiel, horizontaal vanaf 900px */
-.io-mobile, .io-mobile-caption{ display:flex; }
-.io-mobile{ flex-direction:column; align-items:center; gap:14px; }
+.io-mobile{ display:flex; flex-direction:column; align-items:center; gap:14px; }
 .io-desktop{ display:none; }
 @media (min-width:900px){
-  .io-mobile, .io-mobile-caption{ display:none; }
+  .io-mobile{ display:none; }
   .io-desktop{ display:block; }
 }
 .io-col{ display:flex; flex-direction:column; gap:10px; width:100%; max-width:340px; }
@@ -528,15 +527,6 @@ body{ padding-bottom:64px; }
         <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Maandoverzicht op maandag</span></div>
       </div>
       <span class="io-label">wat eruit komt</span>
-    </div>
-
-    <div class="io-desktop" style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;font-size:13px;letter-spacing:-0.02em;color:#797776">
-      <span>Links: de systemen die je al gebruikt. Ik koppel ze, jij zet niets over.</span>
-      <span>Rechts: wat er dagelijks uitrolt zonder dat je het vraagt.</span>
-    </div>
-    <div class="io-mobile-caption" style="display:flex;flex-direction:column;gap:6px;font-size:13px;letter-spacing:-0.02em;color:#797776">
-      <span>Boven: de systemen die je al gebruikt. Ik koppel ze, jij zet niets over.</span>
-      <span>Onder: wat er dagelijks uitrolt zonder dat je het vraagt.</span>
     </div>
   </div>
 </section>
