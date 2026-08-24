@@ -162,6 +162,30 @@ input,textarea,select,button{ font-family:inherit; }
 .rail-viewport{ position:relative; height:560px; overflow:hidden; }
 .rail-row{ position:absolute; left:0; top:0; display:flex; align-items:center; gap:16px; white-space:nowrap; will-change:transform; }
 
+/* wat erin gaat / wat eruit komt: verticaal op mobiel, horizontaal vanaf 900px */
+.io-mobile, .io-mobile-caption{ display:flex; }
+.io-mobile{ flex-direction:column; align-items:center; gap:14px; }
+.io-desktop{ display:none; }
+@media (min-width:900px){
+  .io-mobile, .io-mobile-caption{ display:none; }
+  .io-desktop{ display:block; }
+}
+.io-col{ display:flex; flex-direction:column; gap:10px; width:100%; max-width:340px; }
+.io-pill{ display:flex; align-items:center; gap:10px; border:1px solid var(--line); background:var(--bg); border-radius:9999px; padding:8px 18px 8px 8px; }
+.io-pill-out{ border-color:var(--ink); padding-left:10px; }
+.io-badge{ flex:none; width:30px; height:30px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:13px; color:var(--ink); }
+.io-check{ flex:none; width:26px; height:26px; border-radius:9999px; background:var(--ink); color:var(--bg); display:flex; align-items:center; justify-content:center; font-size:11px; }
+.io-pill > span:last-child{ font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+.io-label{ font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-mute); }
+.io-arrow{ font-size:16px; color:var(--line); line-height:1; }
+.io-vault{ position:relative; width:180px; height:180px; margin:2px 0; }
+.io-vault-ring{ position:absolute; inset:0; border:1px dashed var(--line); border-radius:9999px; animation:reSpin 34s linear infinite; }
+.io-vault-inner{ position:absolute; inset:12px; border:1px solid var(--ink); border-radius:9999px; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
+.io-vault-title{ font-family:var(--font-serif); font-size:24px; letter-spacing:-.02em; color:var(--ink); }
+.io-vault-sub{ font-size:9px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-mute); }
+.io-vault-line{ width:34px; height:1px; background:var(--line); margin:6px 0 0; }
+.io-vault-count{ font-size:10px; letter-spacing:-.02em; color:var(--ink-dim); }
+
 /* FAQ */
 .faq-item{ border-bottom:1px solid var(--line); padding:26px 0; }
 .faq-btn{ width:100%; background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:24px; text-align:left; color:var(--ink); }
@@ -316,7 +340,7 @@ body{ padding-bottom:64px; }
       <h2 style="font-family:Newsreader,Georgia,serif;font-weight:400;font-size:40px;letter-spacing:-0.02em;margin:0;max-width:540px">Wat erin gaat, en wat eruit komt</h2>
       <p style="margin:0;max-width:420px;font-size:15px;line-height:1.5;letter-spacing:-0.025em;color:#4e4d4d">Ik koppel de systemen die je al gebruikt. Niets overzetten, niets nieuws leren.</p>
     </div>
-    <div style="overflow-x:auto;overflow-y:hidden;margin:0 -32px;padding:0 32px">
+    <div class="io-desktop" style="overflow-x:auto;overflow-y:hidden;margin:0 -32px;padding:0 32px">
       <div style="position:relative;width:1200px;height:560px;margin:0 auto">
         <div style="position:absolute;left:400px;top:80px;width:400px;height:400px;filter:blur(60px);opacity:.6;background:radial-gradient(50% 50% at 50% 50%, #a7fccd 0%, transparent 70%), radial-gradient(46% 46% at 62% 60%, #cfdaf5 0%, transparent 72%);animation:reBreathe 6s ease-in-out infinite;pointer-events:none"></div>
         <svg viewBox="0 0 1200 560" width="1200" height="560" style="position:absolute;left:0;top:0;overflow:visible">
@@ -434,9 +458,48 @@ body{ padding-bottom:64px; }
         <span style="position:absolute;left:488px;top:404px;width:224px;text-align:center;font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:#797776">uitvoeren</span>
       </div>
     </div>
-    <div style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;font-size:13px;letter-spacing:-0.02em;color:#797776">
+
+    <div class="io-mobile">
+      <span class="io-label">wat erin gaat</span>
+      <div class="io-col">
+        <div class="io-pill"><span class="io-badge" style="background:#ff9473">M</span><span>Gmail &amp; Agenda</span></div>
+        <div class="io-pill"><span class="io-badge" style="background:#ecda98">D</span><span>Google Drive</span></div>
+        <div class="io-pill"><span class="io-badge" style="background:#cfdaf5">N</span><span>Notion &amp; notities</span></div>
+        <div class="io-pill"><span class="io-badge" style="background:#a7fccd">W</span><span>WhatsApp &amp; gesprekken</span></div>
+        <div class="io-pill"><span class="io-badge" style="background:#cfdaf5">S</span><span>Webshop &amp; orders</span></div>
+        <div class="io-pill"><span class="io-badge" style="background:#ff9473">F</span><span>Facturen &amp; boekhouding</span></div>
+      </div>
+      <span class="io-arrow">&#8595;</span>
+      <span class="io-label">opruimen</span>
+      <div class="io-vault">
+        <div class="io-vault-ring"></div>
+        <div class="io-vault-inner">
+          <span class="io-vault-title">De kluis</span>
+          <span class="io-vault-sub">Claude bestuurt</span>
+          <span class="io-vault-line"></span>
+          <span class="io-vault-count">1.284 notities</span>
+        </div>
+      </div>
+      <span class="io-label">uitvoeren</span>
+      <span class="io-arrow">&#8595;</span>
+      <div class="io-col">
+        <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Antwoord met de bron erbij</span></div>
+        <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Concept-offerte, jouw prijzen</span></div>
+        <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Taak op je lijst gezet</span></div>
+        <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Opvolgmail klaar om te sturen</span></div>
+        <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Nieuwe leads uit je eigen data</span></div>
+        <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Maandoverzicht op maandag</span></div>
+      </div>
+      <span class="io-label">wat eruit komt</span>
+    </div>
+
+    <div class="io-desktop" style="display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;font-size:13px;letter-spacing:-0.02em;color:#797776">
       <span>Links: de systemen die je al gebruikt. Ik koppel ze, jij zet niets over.</span>
       <span>Rechts: wat er dagelijks uitrolt zonder dat je het vraagt.</span>
+    </div>
+    <div class="io-mobile-caption" style="display:flex;flex-direction:column;gap:6px;font-size:13px;letter-spacing:-0.02em;color:#797776">
+      <span>Boven: de systemen die je al gebruikt. Ik koppel ze, jij zet niets over.</span>
+      <span>Onder: wat er dagelijks uitrolt zonder dat je het vraagt.</span>
     </div>
   </div>
 </section>
