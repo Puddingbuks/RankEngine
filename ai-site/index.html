@@ -149,6 +149,20 @@ input,textarea,select,button{ font-family:inherit; }
 .re-link-primary{ cursor:pointer; border:none; background:var(--blue); color:#fff; border-radius:100px; padding:17px 32px; font-size:12px; text-transform:uppercase; letter-spacing:.03em; display:inline-flex; align-items:center; gap:10px; }
 .re-link-primary:hover{ background:var(--blue-hover); color:#fff; }
 
+/* hero */
+.hero-inner{ position:relative; max-width:1000px; margin:0 auto; padding:64px 32px 80px; display:flex; flex-direction:column; align-items:center; gap:28px; text-align:center; }
+.hero-text{ display:flex; flex-direction:column; align-items:center; gap:28px; }
+.hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+.hero-trust{ display:flex; gap:32px; flex-wrap:wrap; justify-content:center; padding-top:12px; font-size:13px; letter-spacing:-0.02em; color:var(--ink-mute); }
+.hero-graph{ display:none; }
+@media (min-width:900px){
+  .hero-inner{ max-width:1432px; flex-direction:row; align-items:center; text-align:left; gap:56px; padding:88px 32px 100px; }
+  .hero-text{ align-items:flex-start; flex:1 1 460px; }
+  .hero-ctas, .hero-trust{ justify-content:flex-start; }
+  .hero-graph{ display:block; flex:1 1 420px; max-width:460px; aspect-ratio:1/1; position:relative; }
+  .hero-graph canvas{ width:100%; height:100%; display:block; -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 55%, transparent 78%); mask-image:radial-gradient(circle at 50% 50%, #000 55%, transparent 78%); }
+}
+
 /* reveal-on-scroll */
 .re-reveal{ opacity:0; transform:translateY(14px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1); }
 .re-reveal.is-visible{ opacity:1; transform:none; }
@@ -258,19 +272,22 @@ body{ padding-bottom:64px; }
 
 <section id="top" style="position:relative;overflow:hidden;border-bottom:1px solid #cecac8">
   <div style="position:absolute;left:50%;top:40px;transform:translateX(-50%);width:1000px;height:520px;filter:blur(80px);opacity:.45;background:radial-gradient(38% 48% at 25% 45%, #a0b5eb 0%, transparent 70%), radial-gradient(38% 48% at 55% 40%, #a7fccd 0%, transparent 70%), radial-gradient(38% 48% at 80% 58%, #ecda98 0%, transparent 70%);pointer-events:none"></div>
-  <div style="position:relative;max-width:1000px;margin:0 auto;padding:64px 32px 80px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center">
-    <span style="border:1px solid #cecac8;border-radius:9999px;padding:9px 18px;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:#4e4d4d">AI-kluizen · gebouwd met Claude</span>
-    <h1 style="font-family:Newsreader,Georgia,serif;font-weight:400;font-size:56px;line-height:1.05;letter-spacing:-0.024em;margin:0">Ik bouw je <em style="font-style:italic">tweede brein</em> en verbind al je systemen.</h1>
-    <p style="margin:0;max-width:600px;font-size:19px;line-height:1.45;letter-spacing:-0.02em;color:#4e4d4d">Mail, Drive, notities en afspraken in één kluis. Claude erbovenop als laag die alles bestuurt. Vanaf dag één stel je vragen over je eigen bedrijf, en krijg je antwoord.</p>
-    <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center">
-      <a href="#contact" class="re-link-primary">Pilotplek aanvragen <span style="font-size:10px">▸</span></a>
-      <a href="#demo" class="re-link-btn">Zie het werken</a>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span style="border:1px solid #cecac8;border-radius:9999px;padding:9px 18px;font-size:11px;text-transform:uppercase;letter-spacing:0.04em;color:#4e4d4d">AI-kluizen · gebouwd met Claude</span>
+      <h1 style="font-family:Newsreader,Georgia,serif;font-weight:400;font-size:56px;line-height:1.05;letter-spacing:-0.024em;margin:0">Ik bouw je <em style="font-style:italic">tweede brein</em> en verbind al je systemen.</h1>
+      <p style="margin:0;max-width:600px;font-size:19px;line-height:1.45;letter-spacing:-0.02em;color:#4e4d4d">Mail, Drive, notities en afspraken in één kluis. Claude erbovenop als laag die alles bestuurt. Vanaf dag één stel je vragen over je eigen bedrijf, en krijg je antwoord.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="re-link-primary">Pilotplek aanvragen <span style="font-size:10px">▸</span></a>
+        <a href="#demo" class="re-link-btn">Zie het werken</a>
+      </div>
+      <div class="hero-trust">
+        <span>3 weken tot een werkende kluis</span>
+        <span>Je bestanden blijven van jou</span>
+        <span>Geen nieuw programma leren</span>
+      </div>
     </div>
-    <div style="display:flex;gap:32px;flex-wrap:wrap;justify-content:center;padding-top:12px;font-size:13px;letter-spacing:-0.02em;color:#797776">
-      <span>3 weken tot een werkende kluis</span>
-      <span>Je bestanden blijven van jou</span>
-      <span>Geen nieuw programma leren</span>
-    </div>
+    <div class="hero-graph"><canvas id="heroGraph"></canvas></div>
   </div>
 </section>
 
@@ -1208,6 +1225,127 @@ body{ padding-bottom:64px; }
     });
   }, { rootMargin: '0px 0px -10% 0px' });
   document.querySelectorAll('.re-reveal').forEach(function(el){ io.observe(el); });
+})();
+
+/* knowledge-graph canvas, hero (desktop only) */
+(function(){
+  var canvas = document.getElementById('heroGraph');
+  if (!canvas) return;
+  if (!window.matchMedia('(min-width:900px)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var ctx = canvas.getContext('2d');
+  var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var nodes = [], edges = [], pulses = [];
+  var speed = 1;
+
+  function build(){
+    var count = Math.max(55, Math.min(150, Math.round((W * H) / 2800)));
+    var clusters = 6, cw = W, ch = H;
+    var centers = [];
+    for (var c = 0; c < clusters; c++) {
+      var ang = (c / clusters) * Math.PI * 2 + 0.6;
+      var r = Math.min(cw, ch) * (0.14 + 0.18 * ((c % 3) / 2));
+      centers.push({ x: cw / 2 + Math.cos(ang) * r, y: ch / 2 + Math.sin(ang) * r * 0.9 });
+    }
+    nodes = [];
+    var R = Math.min(cw, ch) * 0.47;
+    for (var i = 0; i < count; i++) {
+      var clustered = i < count * 0.62;
+      var x, y, cl = -1;
+      if (clustered) {
+        cl = i % clusters;
+        var cc = centers[cl];
+        var a = Math.random() * Math.PI * 2, d = Math.pow(Math.random(), 0.7) * Math.min(cw, ch) * 0.14;
+        x = cc.x + Math.cos(a) * d; y = cc.y + Math.sin(a) * d;
+      } else {
+        var a2 = Math.random() * Math.PI * 2, d2 = R * (0.62 + Math.random() * 0.38);
+        x = cw / 2 + Math.cos(a2) * d2; y = ch / 2 + Math.sin(a2) * d2 * 0.94;
+      }
+      nodes.push({ x:x, y:y, bx:x, by:y, cl:cl, r: clustered ? 1.6 + Math.random() * 2.2 : 1.1 + Math.random() * 1.0,
+        ph: Math.random() * Math.PI * 2, sp: 0.3 + Math.random() * 0.7, deg: 0 });
+    }
+    edges = [];
+    var maxD = Math.min(cw, ch) * 0.13;
+    for (var ii = 0; ii < nodes.length; ii++) {
+      for (var jj = ii + 1; jj < nodes.length; jj++) {
+        var n = nodes[ii], m = nodes[jj];
+        if (n.cl < 0 && m.cl < 0) continue;
+        var dx = n.x - m.x, dy = n.y - m.y, dist = Math.hypot(dx, dy);
+        var lim = (n.cl >= 0 && n.cl === m.cl) ? maxD * 1.3 : maxD * 0.7;
+        if (dist < lim && Math.random() < 0.6) { edges.push([ii, jj, dist]); n.deg++; m.deg++; }
+      }
+    }
+    nodes.forEach(function(n){ n.r += Math.min(n.deg, 12) * 0.15; });
+    pulses = [];
+  }
+
+  function resize(){
+    var r = canvas.getBoundingClientRect();
+    W = Math.max(r.width, 200); H = Math.max(r.height, 200);
+    canvas.width = W * dpr; canvas.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+  resize();
+
+  var raf, t = 0, alive = true;
+  function spawn(){
+    if (!edges.length) return;
+    var e = edges[(Math.random() * edges.length) | 0];
+    pulses.push({ e:e, t:0, sp: 0.006 + Math.random() * 0.012, dir: Math.random() < 0.5 ? 1 : -1 });
+  }
+
+  var edgeColor = 'rgba(160,181,235,0.4)', nodeColor = '#a0b5eb', hubColor = '#2b59d1', pulseColor = '#ff9473';
+
+  function frame(){
+    if (!alive) return;
+    t += 0.006 * speed;
+    ctx.clearRect(0, 0, W, H);
+    for (var k = 0; k < nodes.length; k++) {
+      var n = nodes[k];
+      n.x = n.bx + Math.sin(t * n.sp * 2.2 + n.ph) * 3;
+      n.y = n.by + Math.cos(t * n.sp * 1.7 + n.ph) * 3;
+    }
+    ctx.lineWidth = 0.7;
+    for (var e2 = 0; e2 < edges.length; e2++) {
+      var pair = edges[e2], n2 = nodes[pair[0]], m2 = nodes[pair[1]], d3 = pair[2];
+      ctx.strokeStyle = edgeColor;
+      ctx.globalAlpha = 0.4 + 0.3 * Math.sin(t * 1.4 + d3 * 0.05);
+      ctx.beginPath(); ctx.moveTo(n2.x, n2.y); ctx.lineTo(m2.x, m2.y); ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+    for (var k2 = 0; k2 < nodes.length; k2++) {
+      var nn = nodes[k2];
+      var pulse = 1 + 0.2 * Math.sin(t * 2.6 + nn.ph);
+      var hub = nn.deg > 8;
+      if (hub) { ctx.shadowColor = hubColor; ctx.shadowBlur = 8; } else { ctx.shadowBlur = 0; }
+      ctx.fillStyle = hub ? hubColor : nodeColor;
+      ctx.beginPath(); ctx.arc(nn.x, nn.y, nn.r * pulse, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+    if (Math.random() < 0.15 * speed && pulses.length < 18) spawn();
+    for (var p2 = pulses.length - 1; p2 >= 0; p2--) {
+      var p = pulses[p2];
+      p.t += p.sp * speed;
+      if (p.t >= 1) { pulses.splice(p2, 1); continue; }
+      var a3 = nodes[p.dir > 0 ? p.e[0] : p.e[1]], b3 = nodes[p.dir > 0 ? p.e[1] : p.e[0]];
+      var x3 = a3.x + (b3.x - a3.x) * p.t, y3 = a3.y + (b3.y - a3.y) * p.t;
+      var fade = Math.sin(p.t * Math.PI);
+      ctx.globalAlpha = fade;
+      ctx.shadowColor = pulseColor; ctx.shadowBlur = 9;
+      ctx.fillStyle = pulseColor;
+      ctx.beginPath(); ctx.arc(x3, y3, 2, 0, Math.PI * 2); ctx.fill();
+      ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  function start(){ frame(); }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start); else start();
+
+  var ro = new ResizeObserver(function(){ resize(); });
+  ro.observe(canvas);
 })();
 </script>
 
