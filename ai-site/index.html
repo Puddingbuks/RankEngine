@@ -178,6 +178,7 @@ input,textarea,select,button{ font-family:inherit; }
 .io-pill > span:last-child{ font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
 .io-label{ font-size:10px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-mute); }
 .io-arrow{ font-size:16px; color:var(--line); line-height:1; }
+.io-flow{ position:relative; width:40px; height:72px; }
 .io-vault{ position:relative; width:180px; height:180px; margin:2px 0; }
 .io-vault-ring{ position:absolute; inset:0; border:1px dashed var(--line); border-radius:9999px; animation:reSpin 34s linear infinite; }
 .io-vault-inner{ position:absolute; inset:12px; border:1px solid var(--ink); border-radius:9999px; background:var(--bg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; }
@@ -469,7 +470,14 @@ body{ padding-bottom:64px; }
         <div class="io-pill"><span class="io-badge" style="background:#cfdaf5">S</span><span>Webshop &amp; orders</span></div>
         <div class="io-pill"><span class="io-badge" style="background:#ff9473">F</span><span>Facturen &amp; boekhouding</span></div>
       </div>
-      <span class="io-arrow">&#8595;</span>
+      <div class="io-flow">
+        <svg viewBox="0 0 40 72" width="40" height="72" style="position:absolute;left:0;top:0;overflow:visible">
+          <path d="M20 0 L20 72" fill="none" stroke="#cecac8" stroke-width="1"></path>
+        </svg>
+        <span style="position:absolute;left:0;top:0;width:7px;height:7px;margin-left:-3.5px;margin-top:-3.5px;border-radius:9999px;background:#2b59d1;offset-path:path('M20 0 L20 72');offset-rotate:0deg;animation:reFlow 3.4s linear 0s infinite backwards"></span>
+        <span style="position:absolute;left:0;top:0;width:6px;height:6px;margin-left:-3px;margin-top:-3px;border-radius:9999px;background:#242424;offset-path:path('M20 0 L20 72');offset-rotate:0deg;animation:reFlow 3.9s linear 1.5s infinite backwards"></span>
+        <span style="position:absolute;left:0;top:0;transform:translate(-50%,-50%);border:1px solid #cecac8;background:#f6f3f1;border-radius:9999px;padding:4px 10px;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#4e4d4d;white-space:nowrap;offset-path:path('M20 0 L20 72');offset-rotate:0deg;animation:reFlowMid 4.4s linear 1s infinite backwards">prijsafspraak</span>
+      </div>
       <span class="io-label">opruimen</span>
       <div class="io-vault">
         <div class="io-vault-ring"></div>
@@ -481,7 +489,14 @@ body{ padding-bottom:64px; }
         </div>
       </div>
       <span class="io-label">uitvoeren</span>
-      <span class="io-arrow">&#8595;</span>
+      <div class="io-flow">
+        <svg viewBox="0 0 40 72" width="40" height="72" style="position:absolute;left:0;top:0;overflow:visible">
+          <path d="M20 0 L20 72" fill="none" stroke="#cecac8" stroke-width="1"></path>
+        </svg>
+        <span style="position:absolute;left:0;top:0;width:7px;height:7px;margin-left:-3.5px;margin-top:-3.5px;border-radius:9999px;background:#2b59d1;offset-path:path('M20 0 L20 72');offset-rotate:0deg;animation:reFlow 3.7s linear 0.6s infinite backwards"></span>
+        <span style="position:absolute;left:0;top:0;width:7px;height:7px;margin-left:-3.5px;margin-top:-3.5px;border-radius:9999px;background:#a7fccd;offset-path:path('M20 0 L20 72');offset-rotate:0deg;animation:reFlow 4.2s linear 2s infinite backwards"></span>
+        <span style="position:absolute;left:0;top:0;transform:translate(-50%,-50%);border:1px solid #cecac8;background:#f6f3f1;border-radius:9999px;padding:4px 10px;font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:#4e4d4d;white-space:nowrap;offset-path:path('M20 0 L20 72');offset-rotate:0deg;animation:reFlowMid 4.6s linear 2.4s infinite backwards">offerte klaar</span>
+      </div>
       <div class="io-col">
         <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Antwoord met de bron erbij</span></div>
         <div class="io-pill io-pill-out"><span class="io-check">&#10003;</span><span>Concept-offerte, jouw prijzen</span></div>
