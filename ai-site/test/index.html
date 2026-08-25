@@ -107,44 +107,60 @@ a{ color:inherit; text-decoration:none; }
 .dot-red{ background:var(--red); } .dot-yellow{ background:var(--yellow); } .dot-blue{ background:var(--blue); }
 .frame-body{
   position:relative;
+  padding:48px 40px;
+}
+.demo-split{ display:grid; grid-template-columns:320px 1fr; gap:48px; align-items:start; }
+
+.demo-explain{ display:flex; flex-direction:column; gap:20px; padding-top:8px; }
+.demo-explain .tag{
+  display:inline-block; align-self:flex-start; background:var(--red); color:var(--paper);
+  border-radius:3000px; padding:6px 14px; font-size:12px; font-weight:500;
+}
+.demo-explain h3{ font-family:var(--font-display); font-weight:700; font-size:26px; line-height:1.2; letter-spacing:-0.01em; margin:0; }
+.demo-explain p{ font-size:15px; line-height:1.55; color:#4a4a4a; margin:0; }
+.demo-points{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+.demo-points li{ display:flex; align-items:flex-start; gap:10px; font-size:14px; font-weight:500; line-height:1.4; }
+.demo-points .pt-icon{ flex-shrink:0; width:26px; height:26px; border-radius:50%; background:var(--canvas); display:flex; align-items:center; justify-content:center; font-size:13px; }
+
+.chat-window{
+  background:var(--paper); border:1px solid var(--hairline); border-radius:20px;
+  box-shadow:0 10px 10px -5px rgba(0,0,0,.1);
+  display:flex; flex-direction:column; overflow:hidden;
+}
+.chat-window-head{ display:flex; align-items:center; gap:8px; padding:14px 18px; border-bottom:1px solid var(--hairline); }
+.chat-window-head .live-dot{ width:8px; height:8px; border-radius:50%; background:var(--green); flex-shrink:0; }
+.chat-window-head span.lbl{ font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:#8a8a8a; font-weight:600; }
+.chat-scroll{
+  height:460px; overflow-y:auto; overflow-x:hidden; scroll-behavior:smooth;
+  padding:24px 20px; display:flex; flex-direction:column; gap:16px;
   background-image: radial-gradient(var(--hairline) 1.5px, transparent 1.5px);
   background-size: 20px 20px;
-  padding:40px 32px;
-  display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
-  min-height:340px;
 }
-.chat-card{
-  display:flex; flex-direction:column; justify-content:center; gap:10px;
-  height:222px; overflow:hidden;
-}
-.bubble-row{ display:flex; align-items:flex-end; gap:8px; }
-.bubble-row.user{ justify-content:flex-end; }
-.bubble-row.assistant{ justify-content:flex-start; }
-.avatar{ width:28px; height:28px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:13px; }
+.chat-scroll::-webkit-scrollbar{ display:none; }
+.chat-scroll{ scrollbar-width:none; }
+.msg-row{ display:flex; align-items:flex-end; gap:8px; opacity:0; transform:translateY(6px); animation:msgIn .5s ease forwards; }
+@keyframes msgIn{ to{ opacity:1; transform:translateY(0); } }
+.msg-row.user{ justify-content:flex-end; }
+.msg-row.assistant{ justify-content:flex-start; }
+.avatar{ width:26px; height:26px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:12px; }
 .avatar.user{ background:var(--paper); border:1px solid var(--hairline); }
-.avatar.bot{ background:var(--yellow); font-family:var(--font-display); font-weight:700; font-size:13px; color:var(--ink); }
-.bubble-q{
-  background:#ececec; color:#333; border-radius:16px 16px 4px 16px; padding:9px 14px;
-  font-size:12.5px; line-height:1.35; max-width:78%; height:44px; overflow:hidden;
-  display:flex; align-items:center; transition:opacity .9s ease;
+.avatar.bot{ background:var(--yellow); font-family:var(--font-display); font-weight:700; font-size:12px; color:var(--ink); }
+.msg-bubble{
+  max-width:78%; display:flex; flex-direction:column; gap:6px;
 }
-.bubble-q .caret{ display:inline-block; width:1px; height:1em; background:#333; margin-left:1px; animation:aaCaret .8s step-end infinite; }
-.bubble-a-wrap{
-  background:var(--ink); color:#fff; border-radius:16px 16px 16px 4px; padding:9px 14px;
-  max-width:78%; height:66px; overflow:hidden; display:flex; align-items:center;
-}
-.bubble-a{ font-size:13px; font-weight:500; line-height:1.4; transition:opacity .8s ease; }
-.chat-src{ display:block; margin-left:36px; font-size:10px; color:#9a9a9a; transition:opacity .9s ease; }
-.typing-dots{ display:none; gap:5px; align-items:center; }
+.msg-user .msg-text{ background:#ececec; color:#333; border-radius:16px 16px 4px 16px; padding:9px 14px; font-size:13px; line-height:1.4; }
+.msg-assistant .msg-text{ background:var(--ink); color:#fff; border-radius:16px 16px 16px 4px; padding:9px 14px; font-size:13px; font-weight:500; line-height:1.45; }
+.msg-src{ font-size:10px; color:#9a9a9a; padding-left:4px; }
+.typing-row{ display:flex; align-items:center; gap:8px; }
+.typing-dots{ display:flex; gap:5px; align-items:center; background:var(--ink); border-radius:16px 16px 16px 4px; padding:12px 16px; }
 .typing-dots span{ width:6px; height:6px; border-radius:50%; background:#7a7a7a; animation:aaTypingBounce 1s ease-in-out infinite; }
-@keyframes aaCaret{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 .typing-dots span:nth-child(2){ animation-delay:.15s; }
 .typing-dots span:nth-child(3){ animation-delay:.3s; }
 @keyframes aaTypingBounce{ 0%,100%{ transform:translateY(0); opacity:.4; } 50%{ transform:translateY(-4px); opacity:1; } }
-@media (max-width:700px){
-  .frame-body{ grid-template-columns:1fr; padding:28px 18px; min-height:0; gap:14px; }
-  .chat-card[data-card="2"], .chat-card[data-card="3"]{ display:none; }
-  .chat-card{ height:250px; }
+@media (max-width:800px){
+  .demo-split{ grid-template-columns:1fr; gap:28px; }
+  .frame-body{ padding:32px 20px; }
+  .chat-scroll{ height:380px; }
 }
 
 
@@ -318,62 +334,25 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
     <div class="frame-bar">
       <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-blue"></span>
     </div>
-    <div class="frame-body" id="demoGrid">
-      <div class="chat-card" data-card="0">
-        <div class="bubble-row user">
-          <div class="bubble-q">"Wat had ik met deze klant afgesproken?"</div>
-          <div class="avatar user">🧑‍💼</div>
+    <div class="frame-body">
+      <div class="demo-split">
+        <div class="demo-explain">
+          <span class="tag">Zo werkt het</span>
+          <h3>Zo werk je met je kluis</h3>
+          <p>Je stelt een vraag zoals je dat tegen een collega zou doen. Geen commando's of trucjes. Je stelt gerust een vervolgvraag, de kluis onthoudt waar het gesprek over ging.</p>
+          <ul class="demo-points">
+            <li><span class="pt-icon">💬</span>Praat in gewone taal, geen commando's</li>
+            <li><span class="pt-icon">🔄</span>Vervolgvragen, het gesprek blijft kloppen</li>
+            <li><span class="pt-icon">📎</span>Altijd een bron erbij om zelf te checken</li>
+          </ul>
         </div>
-        <div class="bubble-row assistant">
-          <div class="avatar bot">M</div>
-          <div class="bubble-a-wrap">
-            <div class="typing-dots"><span></span><span></span><span></span></div>
-            <div class="bubble-a">Vaste prijs van €1.450, levering in week 12, factuur volgt na oplevering.</div>
+        <div class="chat-window">
+          <div class="chat-window-head">
+            <span class="live-dot"></span>
+            <span class="lbl">Live in je kluis</span>
           </div>
+          <div class="chat-scroll" id="liveChat"></div>
         </div>
-        <span class="chat-src">Bron: mail · 14 juni</span>
-      </div>
-      <div class="chat-card" data-card="1">
-        <div class="bubble-row user">
-          <div class="bubble-q">"Maak een concept-offerte voor deze aanvraag"</div>
-          <div class="avatar user">👩‍💼</div>
-        </div>
-        <div class="bubble-row assistant">
-          <div class="avatar bot">M</div>
-          <div class="bubble-a-wrap">
-            <div class="typing-dots"><span></span><span></span><span></span></div>
-            <div class="bubble-a">Offerte klaarstaand in je stijl, met jouw tarieven ingevuld.</div>
-          </div>
-        </div>
-        <span class="chat-src">Bron: prijslijst · kluis</span>
-      </div>
-      <div class="chat-card" data-card="2">
-        <div class="bubble-row user">
-          <div class="bubble-q">"Wie is onze leverancier voor de kozijnen?"</div>
-          <div class="avatar user">🧑‍🔧</div>
-        </div>
-        <div class="bubble-row assistant">
-          <div class="avatar bot">M</div>
-          <div class="bubble-a-wrap">
-            <div class="typing-dots"><span></span><span></span><span></span></div>
-            <div class="bubble-a">Van Es Kozijnen, contactpersoon Mark, levertijd 3 weken.</div>
-          </div>
-        </div>
-        <span class="chat-src">Bron: leveranciers · kluis</span>
-      </div>
-      <div class="chat-card" data-card="3">
-        <div class="bubble-row user">
-          <div class="bubble-q">"Hoeveel uur heb ik deze week geschreven?"</div>
-          <div class="avatar user">👨‍💻</div>
-        </div>
-        <div class="bubble-row assistant">
-          <div class="avatar bot">M</div>
-          <div class="bubble-a-wrap">
-            <div class="typing-dots"><span></span><span></span><span></span></div>
-            <div class="bubble-a">27,5 uur, waarvan 18 op het project Buitenhof.</div>
-          </div>
-        </div>
-        <span class="chat-src">Bron: urenregistratie · live</span>
       </div>
     </div>
   </div>
@@ -563,102 +542,92 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
 
 <script>
 (function(){
-  var pairs = [
-    { q:'Wat had ik met deze klant afgesproken?', a:'Vaste prijs van €1.450, levering in week 12, factuur volgt na oplevering.', src:'mail · 14 juni' },
-    { q:'Maak een concept-offerte voor deze aanvraag', a:'Offerte klaarstaand in je stijl, met jouw tarieven ingevuld.', src:'prijslijst · kluis' },
-    { q:'Wat is onze standaard levertijd voor maatwerk?', a:'6 tot 8 weken vanaf akkoord op de offerte, tenzij anders afgesproken.', src:'procedures · kluis' },
-    { q:'Heb ik deze factuur al verstuurd?', a:'Nee, nog concept. Klaar om te versturen naar Jansen Interieurbouw.', src:'facturatie · 3 aug' },
-    { q:'Wanneer heb ik weer een gesprek met De Vries?', a:'Donderdag 10:00, telefonisch. Vorig gesprek ging over de tweede fase.', src:'agenda · gekoppeld' },
-    { q:'Wat rekenen we voor een spoedklus?', a:'Toeslag van 25% boven het reguliere uurtarief.', src:'prijslijst · kluis' },
-    { q:'Wie is onze leverancier voor de kozijnen?', a:'Van Es Kozijnen, contactpersoon Mark, levertijd 3 weken.', src:'leveranciers · kluis' },
-    { q:'Hoeveel uur heb ik deze week geschreven?', a:'27,5 uur, waarvan 18 op het project Buitenhof.', src:'urenregistratie · live' },
-    { q:'Stuur een opvolgmail naar deze lead', a:'Concept klaar, verwijst naar het gesprek van vorige week.', src:'WhatsApp · concept' },
-    { q:'Wat stond er in de garantievoorwaarden?', a:'2 jaar op materiaal, 1 jaar op arbeidsloon, vanaf opleverdatum.', src:'voorwaarden · kluis' },
-    { q:'Welke klanten hebben nog niet betaald?', a:'3 openstaande facturen, oudste is 12 dagen verlopen.', src:'facturatie · live' },
-    { q:'Wat had de klant liever, eiken of grenen?', a:'Eiken, genoemd in het intakegesprek van 2 juni.', src:'notities · kluis' },
-    { q:'Maak een planning voor komende week', a:'Vier klussen ingepland, dinsdag en donderdag zijn nog vrij.', src:'agenda · kluis' },
-    { q:'Wat kost een keuken gemiddeld bij ons?', a:'Tussen de €8.000 en €14.000, afhankelijk van materiaal en maat.', src:'prijslijst · kluis' },
-    { q:'Is er al gereageerd op de aanvraag van gisteren?', a:'Nog niet, staat klaar in de inbox sinds 16:40.', src:'mail · live' }
+  var script = [
+    { role:'user', text:'Wat had ik met deze klant afgesproken?' },
+    { role:'assistant', text:'Vaste prijs van €1.450, levering in week 12, factuur volgt na oplevering.', src:'mail · 14 juni' },
+    { role:'user', text:'En is die factuur al verstuurd?' },
+    { role:'assistant', text:'Nee, nog concept. Zal ik hem klaarzetten om te versturen?', src:'facturatie · live' },
+    { role:'user', text:'Ja graag, zet de betaaltermijn op 14 dagen' },
+    { role:'assistant', text:'Factuur staat klaar met 14 dagen betaaltermijn, klaar om te versturen.', src:'facturatie · concept' },
+    { role:'user', text:'Wie is ook alweer onze leverancier voor de kozijnen?' },
+    { role:'assistant', text:'Van Es Kozijnen, contactpersoon Mark, levertijd 3 weken.', src:'leveranciers · kluis' }
   ];
 
-  function shuffle(arr){
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var t = a[i]; a[i] = a[j]; a[j] = t;
-    }
-    return a;
-  }
-
-  var grid = document.getElementById('demoGrid');
-  if (!grid) return;
-  var cards = Array.prototype.slice.call(grid.querySelectorAll('.chat-card'));
-  if (!cards.length) return;
+  var chat = document.getElementById('liveChat');
+  if (!chat) return;
 
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) return;
 
-  var order = shuffle(pairs);
-  var pointers = cards.map(function(_, i){ return i % order.length; });
+  function scrollDown(){
+    chat.scrollTo({ top: chat.scrollHeight, behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
 
-  function typeText(el, text, msPerChar, cb){
-    el.textContent = '';
-    var caret = document.createElement('span');
-    caret.className = 'caret';
-    el.appendChild(caret);
-    var i = 0;
-    var iv = setInterval(function(){
-      i++;
-      el.textContent = text.slice(0, i);
-      el.appendChild(caret);
-      if (i >= text.length) {
-        clearInterval(iv);
-        caret.remove();
-        cb && cb();
+  function addUser(text){
+    var row = document.createElement('div');
+    row.className = 'msg-row user';
+    row.innerHTML = '<div class="msg-bubble msg-user"><div class="msg-text"></div></div><div class="avatar user">🧑‍💼</div>';
+    row.querySelector('.msg-text').textContent = '"' + text + '"';
+    chat.appendChild(row);
+    scrollDown();
+  }
+
+  function addTyping(){
+    var row = document.createElement('div');
+    row.className = 'msg-row assistant';
+    row.innerHTML = '<div class="avatar bot">M</div><div class="typing-dots"><span></span><span></span><span></span></div>';
+    chat.appendChild(row);
+    scrollDown();
+    return row;
+  }
+
+  function replaceWithAnswer(row, text, src){
+    row.innerHTML = '<div class="avatar bot">M</div><div class="msg-bubble msg-assistant"><div class="msg-text"></div><div class="msg-src">Bron: ' + src + '</div></div>';
+    row.querySelector('.msg-text').textContent = text;
+    scrollDown();
+  }
+
+  function clearChat(){
+    chat.innerHTML = '';
+  }
+
+  function playStatic(){
+    script.forEach(function(turn){
+      if (turn.role === 'user') { addUser(turn.text); }
+      else {
+        var row = addTyping();
+        replaceWithAnswer(row, turn.text, turn.src);
       }
-    }, msPerChar);
+    });
   }
 
-  function runCycle(cardIndex){
-    var card = cards[cardIndex];
-    var q = card.querySelector('.bubble-q');
-    var a = card.querySelector('.bubble-a');
-    var src = card.querySelector('.chat-src');
-    var dots = card.querySelector('.typing-dots');
-
-    pointers[cardIndex] = (pointers[cardIndex] + cards.length) % order.length;
-    var pair = order[pointers[cardIndex]];
-
-    // fade out previous question only — keep the previous answer visible
-    // until the new question has finished typing, so the bubble never sits empty
-    q.style.opacity = 0;
-    src.style.opacity = 0;
-
-    setTimeout(function(){
-      q.textContent = '';
-      q.style.opacity = 1;
-      typeText(q, '"' + pair.q + '"', 48, function(){
+  function playAnimated(index){
+    if (index >= script.length) {
+      setTimeout(function(){
+        chat.style.transition = 'opacity .6s ease';
+        chat.style.opacity = 0;
         setTimeout(function(){
-          a.style.display = 'none';
-          dots.style.display = 'flex';
-          setTimeout(function(){
-            dots.style.display = 'none';
-            a.textContent = pair.a;
-            src.textContent = 'Bron: ' + pair.src;
-            a.style.display = 'block';
-            requestAnimationFrame(function(){
-              src.style.opacity = 1;
-            });
-            setTimeout(function(){ runCycle(cardIndex); }, 9000);
-          }, 2200);
+          clearChat();
+          chat.style.opacity = 1;
+          playAnimated(0);
         }, 700);
-      });
-    }, 1000);
+      }, 4200);
+      return;
+    }
+    var turn = script[index];
+    if (turn.role === 'user') {
+      addUser(turn.text);
+      setTimeout(function(){ playAnimated(index + 1); }, 1100);
+    } else {
+      var row = addTyping();
+      setTimeout(function(){
+        replaceWithAnswer(row, turn.text, turn.src);
+        setTimeout(function(){ playAnimated(index + 1); }, 1300);
+      }, 1400);
+    }
   }
 
-  cards.forEach(function(card, i){
-    setTimeout(function(){ runCycle(i); }, 5000 + i * 2800);
-  });
+  if (reduceMotion) { playStatic(); }
+  else { setTimeout(function(){ playAnimated(0); }, 1200); }
 })();
 </script>
 
