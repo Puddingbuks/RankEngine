@@ -163,26 +163,37 @@ a{ color:inherit; text-decoration:none; }
 .n-why span{ color:#3a3a3a; }
 @media (max-width:560px){ .n-row{ grid-template-columns:1fr; padding:28px 24px; } .n-body{ grid-column:1; } }
 
-/* scallop band */
-.scallop-wrap{ padding:56px 24px 0; }
-.scallop{
-  max-width:980px; margin:0 auto; background:var(--sunbeam); border:2px solid var(--ink);
-  border-radius:28px 28px 0 0; padding:44px 40px 52px; position:relative;
-  display:grid; grid-template-columns:auto 1fr; gap:24px 32px;
+/* promise / pricing card */
+.promise-wrap{ padding:56px 24px 0; }
+.promise-card{
+  max-width:980px; margin:0 auto; background:var(--yellow); border:2px solid var(--ink);
+  border-radius:28px; padding:44px 40px; position:relative;
+  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr auto;
+  column-gap:40px; row-gap:24px;
+  grid-template-areas:
+    "head list"
+    "head list"
+    "why  cta";
 }
-.scallop h3{ font-family:var(--font-display); font-weight:700; font-size:26px; letter-spacing:-0.01em; margin:0 0 6px; grid-column:1/-1; }
-.scallop ul{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px; grid-column:1/-1; max-width:460px; }
-.scallop li{ font-size:15px; font-weight:500; display:flex; align-items:center; gap:10px; }
-.scallop li::before{ content:'✓'; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--sunbeam); font-size:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-.scallop .btn{ grid-column:1/-1; justify-self:start; margin-top:8px; }
-.scallop-edge{
-  max-width:980px; margin:0 auto; height:26px;
-  background-image: radial-gradient(circle at 50% 0, transparent 13px, var(--sunbeam) 14px);
-  background-size: 26px 26px; background-repeat:repeat-x; background-position:top center;
-  border-left:2px solid var(--ink); border-right:2px solid var(--ink); border-top:none;
-  position:relative; top:-2px;
+.promise-head{ grid-area:head; align-self:start; display:flex; flex-direction:column; gap:20px; }
+.promise-badge{
+  width:52px; height:52px; border-radius:50%; border:1.5px solid var(--ink);
+  display:flex; align-items:center; justify-content:center; font-size:22px;
 }
-@media (max-width:560px){ .scallop{ grid-template-columns:1fr; padding:36px 24px 44px; } }
+.promise-head h3{ font-family:var(--font-display); font-weight:700; font-size:28px; line-height:1.2; letter-spacing:-0.01em; margin:0; }
+.promise-list{ grid-area:list; list-style:none; margin:0; padding:0; align-self:start; display:flex; flex-direction:column; gap:12px; }
+.promise-list li{ font-size:15px; font-weight:500; display:flex; align-items:center; gap:10px; }
+.promise-list li::before{ content:'✓'; width:20px; height:20px; border-radius:50%; background:var(--ink); color:var(--yellow); font-size:11px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.promise-why{ grid-area:why; align-self:end; }
+.promise-rule{ border:none; border-top:1px solid rgba(0,0,0,.25); margin:0 0 16px; }
+.promise-why-row{ display:flex; gap:14px; font-size:14px; line-height:1.5; }
+.promise-why-row b{ flex-shrink:0; }
+.promise-why-row span{ color:#2a2a1a; }
+.promise-cta{ grid-area:cta; justify-self:start; align-self:end; }
+@media (max-width:640px){
+  .promise-card{ grid-template-columns:1fr; grid-template-rows:auto auto auto auto; grid-template-areas:"head" "list" "why" "cta"; padding:32px 24px; row-gap:28px; }
+  .promise-cta{ justify-self:stretch; }
+}
 
 /* funnel diagram */
 .funnel{ padding:104px 24px 0; }
@@ -474,19 +485,26 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
   </div>
 </section>
 
-<div class="scallop-wrap" id="alles-erin">
-  <div class="scallop">
-    <h3>Alles inbegrepen in de pilotfase</h3>
-    <ul>
-      <li>Eigen afgeschermde omgeving</li>
-      <li>Mail, Drive en notities gekoppeld</li>
-      <li>Antwoord met bronvermelding</li>
-      <li>Persoonlijke inrichting door mij</li>
+<div class="promise-wrap" id="alles-erin">
+  <div class="promise-card">
+    <div class="promise-head">
+      <div class="promise-badge">🤝</div>
+      <h3>Eén vaste prijs,<br>geen verrassingen achteraf</h3>
+    </div>
+    <ul class="promise-list">
+      <li>Vaste pilotprijs: €249 per maand</li>
+      <li>Los Claude-abonnement nodig, richtprijs €20 à €100 per maand</li>
       <li>30 dagen opzegtermijn, geen lang contract</li>
+      <li>Prijs 1 jaar vast na de pilotfase</li>
+      <li>Persoonlijke inrichting en onderhoud door mij</li>
+      <li>Jouw data blijft van jou, altijd exporteerbaar</li>
     </ul>
-    <a href="#contact" class="btn btn-black">Pilotplek aanvragen →</a>
+    <div class="promise-why">
+      <hr class="promise-rule" />
+      <div class="promise-why-row"><b>Waarom?</b><span>Ik hou zelf niet van verborgen kosten. Je weet vooraf precies waar je aan toe bent, ook na de pilotfase.</span></div>
+    </div>
+    <a href="#contact" class="btn btn-black promise-cta">Pilotplek aanvragen →</a>
   </div>
-  <div class="scallop-edge"></div>
 </div>
 
 <section class="cta-band">
