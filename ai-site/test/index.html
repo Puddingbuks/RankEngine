@@ -116,14 +116,16 @@ a{ color:inherit; text-decoration:none; }
 .chat-card{
   background:var(--paper); border-radius:14px; padding:18px;
   box-shadow:0 10px 10px -5px rgba(0,0,0,.15);
-  display:flex; flex-direction:column; min-height:130px;
+  display:flex; flex-direction:column;
+  height:222px; overflow:hidden;
 }
 .chat-mark{ width:20px; height:20px; border-radius:6px; background:var(--blue); margin-bottom:10px; flex-shrink:0; }
-.chat-q{ font-size:12px; color:#4a4a4a; margin-bottom:9px; min-height:1.5em; transition:opacity .6s ease; }
+.chat-q{ font-size:12px; color:#4a4a4a; margin-bottom:9px; height:2.6em; overflow:hidden; transition:opacity .6s ease; }
 .chat-q .caret{ display:inline-block; width:1px; height:1em; background:#4a4a4a; margin-left:1px; vertical-align:-2px; animation:aaCaret .8s step-end infinite; }
-.chat-a{ font-size:14px; font-weight:500; line-height:1.4; margin-bottom:10px; flex-grow:1; transition:opacity .6s ease; }
-.chat-src{ display:inline-block; background:var(--canvas); border-radius:3000px; padding:4px 11px; font-size:10px; color:#5a5a5a; align-self:flex-start; transition:opacity .6s ease; }
-.typing-dots{ display:none; gap:5px; align-items:center; height:14px; margin-bottom:10px; }
+.chat-a{ font-size:14px; font-weight:500; line-height:1.4; margin-bottom:10px; flex-grow:1; overflow:hidden; transition:opacity .6s ease; }
+.chat-src{ display:inline-block; background:var(--canvas); border-radius:3000px; padding:4px 11px; font-size:10px; color:#5a5a5a; align-self:flex-start; flex-shrink:0; transition:opacity .6s ease; }
+.typing-dots{ display:flex; gap:5px; align-items:center; height:0; margin-bottom:0; opacity:0; overflow:hidden; transition:height .2s ease, opacity .2s ease, margin-bottom .2s ease; }
+.typing-dots.is-visible{ height:14px; margin-bottom:10px; opacity:1; }
 .typing-dots span{ width:6px; height:6px; border-radius:50%; background:#c9c9c9; animation:aaTypingBounce 1s ease-in-out infinite; }
 @keyframes aaCaret{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 .typing-dots span:nth-child(2){ animation-delay:.15s; }
@@ -132,15 +134,9 @@ a{ color:inherit; text-decoration:none; }
 @media (max-width:700px){
   .frame-body{ grid-template-columns:1fr; padding:28px 18px; min-height:0; gap:14px; }
   .chat-card[data-card="2"], .chat-card[data-card="3"]{ display:none; }
+  .chat-card{ height:250px; }
 }
 
-/* collaborative cursor tags */
-.cursor-tag{ position:absolute; display:flex; align-items:center; gap:6px; z-index:3; }
-.cursor-tag .pointer{ width:0; height:0; border-style:solid; border-width:0 5px 9px 5px; border-color:transparent transparent currentColor transparent; transform:rotate(-15deg); }
-.cursor-tag .pill{ background:currentColor; color:var(--paper); border-radius:3000px; padding:5px 12px; font-size:12px; font-weight:600; white-space:nowrap; }
-.cursor-tag.c-thomas{ color:var(--red); top:14px; left:8%; }
-.cursor-tag.c-kim{ color:var(--blue); bottom:18%; right:6%; }
-@media (max-width:700px){ .cursor-tag.c-kim{ display:none; } }
 
 /* numbered rows */
 .numbered{ padding:104px 24px 0; }
@@ -319,8 +315,6 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
       <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-blue"></span>
     </div>
     <div class="frame-body" id="demoGrid">
-      <span class="cursor-tag c-thomas"><span class="pointer"></span><span class="pill">Thomas</span></span>
-      <span class="cursor-tag c-kim"><span class="pointer"></span><span class="pill">Kim</span></span>
       <div class="chat-card" data-card="0">
         <div class="chat-mark" style="background:var(--blue)"></div>
         <div class="chat-q">"Wat had ik met deze klant afgesproken?"</div>
@@ -614,16 +608,16 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
     q.style.opacity = 0;
     a.style.opacity = 0;
     src.style.opacity = 0;
-    dots.style.display = 'none';
+    dots.classList.remove('is-visible');
 
     setTimeout(function(){
       q.textContent = '';
       q.style.opacity = 1;
       typeText(q, '"' + pair.q + '"', 28, function(){
         setTimeout(function(){
-          dots.style.display = 'flex';
+          dots.classList.add('is-visible');
           setTimeout(function(){
-            dots.style.display = 'none';
+            dots.classList.remove('is-visible');
             a.textContent = pair.a;
             src.textContent = 'Bron: ' + pair.src;
             requestAnimationFrame(function(){
