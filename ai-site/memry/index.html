@@ -135,6 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 html{ -webkit-font-smoothing:antialiased; scroll-behavior:smooth; }
 @keyframes memFlow { 0% { offset-distance: 0%; opacity: 0; } 8% { opacity: 1; } 88% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
 @keyframes memFlowMid { 0% { offset-distance: 26%; opacity: 0; } 15% { opacity: 1; } 80% { opacity: 1; } 100% { offset-distance: 82%; opacity: 0; } }
+@keyframes memTypeDot { 0%, 60%, 100% { transform:translateY(0); opacity:.4; } 30% { transform:translateY(-4px); opacity:1; } }
 body{ margin:0; background:#fff; color:#000; font-family:var(--font); font-weight:400; font-feature-settings:'kern' on,'liga' on; }
 img{ max-width:100%; display:block; }
 a{ color:#000; text-decoration:none; }
@@ -560,9 +561,26 @@ body{ padding-bottom:64px; }
       <span style="font-size:15px; line-height:1.43; color:#8e9194;">Zo voelt het</span>
       <h3 class="h-card" style="max-width:440px; color:#000;">Je typt het zoals je het tegen een medewerker zou zeggen.</h3>
       <p style="margin:0; max-width:480px; font-size:19px; line-height:1.42; color:#000;">Geen commando's, geen trucjes. Onder elk antwoord staat waar het vandaan komt — de mail van 12 maart, de offerte erbij — zodat je het altijd kunt nakijken.</p>
-      <span style="font-size:15px; line-height:1.43; color:#8e9194;">Kluis · Van Dijk Installatietechniek — 1.284 notities, 6 gekoppelde systemen. Namen aangepast.</span>
+      <span style="font-size:15px; line-height:1.43; color:#8e9194;">Voorbeelden uit de praktijk. Namen, klanten en bedragen zijn aangepast.</span>
     </div>
-    <div class="img-slot" style="width:100%; height:520px; border-radius:8px;">Screenshot van de kluis</div>
+    <div style="width:100%; height:520px; border:1px solid #a7aaad; border-radius:8px; background:#fff; display:flex; flex-direction:column; overflow:hidden;">
+      <div style="flex:none; display:flex; align-items:center; gap:10px; padding:16px 20px; border-bottom:1px solid #d8d8d8;">
+        <span style="width:8px; height:8px; border-radius:9999px; background:#3a9d5a; flex:none;"></span>
+        <span id="chatDemoBiz" style="font-size:15px; line-height:1.43; color:#000;">Kluis · Van Dijk Installatietechniek</span>
+      </div>
+      <div id="chatDemoBody" style="flex:1; padding:24px 20px; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; overflow:hidden;">
+        <div id="chatDemoQ" style="align-self:flex-end; max-width:88%; background:#000; color:#fff; border-radius:14px 14px 2px 14px; padding:12px 16px; font-size:15px; line-height:1.5; opacity:0;"></div>
+        <div id="chatDemoTyping" style="align-self:flex-start; display:flex; gap:4px; padding:12px 16px; opacity:0;">
+          <span style="width:6px; height:6px; border-radius:9999px; background:#8e9194; display:inline-block; animation:memTypeDot 1.1s ease-in-out infinite;"></span>
+          <span style="width:6px; height:6px; border-radius:9999px; background:#8e9194; display:inline-block; animation:memTypeDot 1.1s ease-in-out .15s infinite;"></span>
+          <span style="width:6px; height:6px; border-radius:9999px; background:#8e9194; display:inline-block; animation:memTypeDot 1.1s ease-in-out .3s infinite;"></span>
+        </div>
+        <div id="chatDemoA" style="align-self:flex-start; max-width:88%; border:1px solid #d8d8d8; border-radius:14px 14px 14px 2px; padding:12px 16px; display:flex; flex-direction:column; gap:8px; opacity:0;">
+          <span id="chatDemoAText" style="font-size:15px; line-height:1.5; color:#000;"></span>
+          <span id="chatDemoBron" style="font-size:12px; line-height:1.4; color:#8e9194;"></span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -816,6 +834,81 @@ body{ padding-bottom:64px; }
         status.textContent = 'Er ging iets mis. Stuur een e-mail naar info@rankengine.nl.';
       });
   });
+})();
+
+/* chat demo: rotating example Q&A, shuffled, typing-indicator between question and answer */
+(function(){
+  var biz = document.getElementById('chatDemoBiz');
+  var qEl = document.getElementById('chatDemoQ');
+  var typing = document.getElementById('chatDemoTyping');
+  var aEl = document.getElementById('chatDemoA');
+  var aText = document.getElementById('chatDemoAText');
+  var bron = document.getElementById('chatDemoBron');
+  if (!qEl) return;
+
+  var EXAMPLES = [
+    { biz:'Van Dijk Installatietechniek', q:'Wat had ik met De Boer afgesproken over de levertijd?', a:'Twee weken, bevestigd in de mail van 14 juni. Op verzoek van De Boer is dat toen verlengd naar drie weken voor de najaarslevering.', bron:'Mail · 14 juni' },
+    { biz:'Studio Linde', q:'Stuur een offerte voor 20 uur consultancy tegen mijn standaardtarief.', a:'Concept staat klaar: 20 uur x € 85, totaal € 1.700 excl. btw. Zelfde voorwaarden als de offerte aan Van Dijk in mei.', bron:'Prijslijst 2026' },
+    { biz:'Bakker Interieur', q:'Welke klanten hebben nog niet betaald?', a:'Drie openstaande facturen: Bakker Interieur zelf niet, maar wel Studio Linde (€ 220) en De Wit Bouw (€ 1.150, vervalt morgen).', bron:'Facturatie · vandaag' },
+    { biz:'Noordwind Webshop', q:'Wat waren ook alweer de retourvoorwaarden voor webshopklanten?', a:'14 dagen bedenktijd, retourkosten voor de klant tenzij het artikel defect is. Staat op de retourpagina en in de leveringsvoorwaarden van maart.', bron:'Website · retourbeleid' },
+    { biz:'De Wit Bouw', q:'Wanneer had ik ook alweer een afspraak met de accountant?', a:'Donderdag 10 uur, kantoor Aalsmeer. Vorige keer ging het over de voorlopige aanslag, dat agendapunt staat al klaar.', bron:'Agenda · donderdag' },
+    { biz:'Groenveld Techniek', q:'Wat leverde de leverancier uit Duitsland vorige keer, en tegen welke prijs?', a:'200 stuks type A-14, € 4,20 per stuk excl. verzending. Levertijd toen 9 dagen, factuur van 3 juli.', bron:'Facturen · 3 juli' },
+    { biz:'Fam. de Boer Klussenbedrijf', q:'Maak een opvolgmail voor de klant die vorige week vroeg naar de garantie.', a:'Concept staat klaar voor Fam. Jansen — verwijst naar de garantietermijn van 2 jaar en hun oorspronkelijke vraag van 6 augustus.', bron:'WhatsApp · 6 augustus' },
+    { biz:'Meijer Ontwerp', q:'Hoeveel uur heb ik deze maand aan het project van Meijer besteed?', a:'14,5 uur, verdeeld over 6 dagen. Grootste post: het ontwerp op 11 augustus, 4 uur.', bron:'Urenregistratie · augustus' },
+    { biz:'Linde & Co', q:'Wat stond er in de laatste nieuwsbrief die ik naar klanten stuurde?', a:'Aankondiging van de nieuwe openingstijden en de zomeractie van 10% op onderhoudscontracten, verstuurd 1 juli.', bron:'Mail · 1 juli' },
+    { biz:'Hoeksema Verbouw', q:'Is er al gereageerd op de vacature die ik op LinkedIn zette?', a:'Twee reacties binnen, beide doorgestuurd naar je mail op 15 en 17 augustus. Nog geen van beide beantwoord.', bron:'Mail · 17 augustus' },
+    { biz:'De Boer Keukens', q:'Welke afspraken staan er nog open met de aannemer over de verbouwing?', a:'De keuken wordt in week 36 opgeleverd, mits de tegels op tijd binnen zijn. Laatste update was een bericht van 9 augustus.', bron:'WhatsApp · 9 augustus' },
+    { biz:'Van Dijk Installatietechniek', q:'Wat vroeg die klant ook alweer over de prijs van het onderhoudscontract?', a:'Of er korting mogelijk was bij een 2-jarig contract. Je hebt toen 8% aangeboden bij vooruitbetaling, nog geen antwoord ontvangen.', bron:'Mail · 20 juli' },
+    { biz:'Hoeksema Verbouw', q:'Zet materiaal bestellen voor project Hoeksema op mijn takenlijst.', a:'Toegevoegd, met de deadline van vrijdag die in de projectnotities van Hoeksema stond.', bron:'Notities · project Hoeksema' },
+    { biz:'Studio Linde', q:'Geef een overzicht van de omzet van deze maand tot nu toe.', a:'€ 18.400 gefactureerd, € 14.900 al betaald. Grootste klant deze maand: Groenveld Techniek met € 3.200.', bron:'Facturatie · augustus' },
+    { biz:'Groenveld Techniek', q:'Wie heb ik dit kwartaal het vaakst gemaild over hetzelfde onderwerp?', a:'Van Dijk Installatietechniek, 11 keer over de levering van de warmtepomp-onderdelen. Laatste update: nog niet binnen.', bron:'Mail · dit kwartaal' }
+  ];
+
+  function shuffle(arr){
+    var a = arr.slice();
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = (Math.random() * (i + 1)) | 0;
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  function show(el){ el.style.transition = 'opacity .4s ease'; el.style.opacity = '1'; }
+  function hide(el){ el.style.transition = 'opacity .3s ease'; el.style.opacity = '0'; }
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ex0 = EXAMPLES[0];
+    biz.textContent = 'Kluis · ' + ex0.biz;
+    qEl.textContent = ex0.q; qEl.style.opacity = '1';
+    aText.textContent = ex0.a; bron.textContent = 'Bron: ' + ex0.bron; aEl.style.opacity = '1';
+    return;
+  }
+
+  var queue = shuffle(EXAMPLES);
+  var qi = 0;
+
+  function next(){
+    if (qi >= queue.length) { queue = shuffle(EXAMPLES); qi = 0; }
+    var ex = queue[qi++];
+    hide(qEl); hide(typing); hide(aEl);
+    setTimeout(function(){
+      biz.textContent = 'Kluis · ' + ex.biz;
+      qEl.textContent = ex.q;
+      show(qEl);
+      setTimeout(function(){
+        show(typing);
+        setTimeout(function(){
+          hide(typing);
+          aText.textContent = ex.a;
+          bron.textContent = 'Bron: ' + ex.bron;
+          setTimeout(function(){ show(aEl); }, 50);
+        }, 1400);
+      }, 700);
+    }, 350);
+  }
+
+  next();
+  setInterval(next, 6200);
 })();
 
 /* diagram auto-fit (scales the fixed 1200x560 diagram to its container width) */
