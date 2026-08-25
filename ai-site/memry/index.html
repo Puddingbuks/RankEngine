@@ -171,28 +171,27 @@ a:hover{ color:#4b514d; }
 /* grids */
 .g-hero{ position:relative; }
 .hero-text-col{ max-width:520px; }
-.hero-graph-wrap{ margin-top:24px; }
-.hero-graph-canvas{ width:100%; height:380px; display:block; -webkit-mask-image:radial-gradient(circle at 50% 50%, #000 62%, transparent 88%); mask-image:radial-gradient(circle at 50% 50%, #000 62%, transparent 88%); }
+.hero-graph-wrap{ margin-top:24px; width:100%; }
 @media (min-width:900px){
-  .g-hero{ min-height:480px; }
-  .hero-graph-wrap{ position:absolute; top:0; right:0; width:480px; margin-top:0; }
-  .hero-graph-canvas{ height:480px; }
+  .g-hero{ min-height:460px; }
+  .hero-graph-wrap{ position:absolute; top:-10px; right:0; width:440px; margin-top:0; }
 }
 @media (min-width:1240px){
-  .g-hero{ min-height:520px; }
-  .hero-graph-wrap{ width:520px; }
-  .hero-graph-canvas{ height:520px; }
+  .g-hero{ min-height:500px; }
+  .hero-graph-wrap{ width:480px; }
 }
 .g-label{ display:grid; grid-template-columns:280px minmax(0,1fr); gap:24px; }
 .g-2{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
 .g-3{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
 .g-4{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:24px; }
+.g-split{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.25fr); gap:56px; align-items:start; }
 .g-footer{ display:grid; grid-template-columns:minmax(0,1fr) 200px 200px 240px; gap:24px; }
 @media (max-width:900px){
   .g-label{ grid-template-columns:1fr; }
   .g-2{ grid-template-columns:1fr; }
   .g-3{ grid-template-columns:1fr; }
   .g-4{ grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .g-split{ grid-template-columns:1fr; gap:64px; }
 }
 @media (max-width:640px){
   .g-4{ grid-template-columns:1fr; }
@@ -213,6 +212,18 @@ a:hover{ color:#4b514d; }
   .h-card{ font-size:24px; }
   .stat-num{ font-size:40px; }
 }
+
+/* funnel diagram: pill nodes converging on a rotated center card, ported style */
+.funnel-pill{ position:absolute; display:flex; align-items:center; gap:9px; padding:0 15px; border-radius:9999px; background:#fff; border:1px solid #d8d8d8; box-shadow:0 6px 16px rgba(0,0,0,.05); font-size:13px; line-height:1.3; color:#000; white-space:nowrap; }
+.funnel-pill-icon{ flex:none; width:20px; height:20px; border-radius:50%; background:#f4f4f3; border:1px solid #d8d8d8; display:inline-flex; align-items:center; justify-content:center; font-size:10px; }
+.funnel-center{ position:absolute; border-radius:30%; transform:rotate(45deg); background:radial-gradient(circle at 35% 30%, #fff 0%, #f4f4f3 60%, #eceeec 100%); border:1px solid #d8d8d8; box-shadow:0 30px 60px -20px rgba(0,0,0,.18); }
+.funnel-center-inner{ position:absolute; inset:0; transform:rotate(-45deg); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; text-align:center; padding:12px; }
+.funnel-center-title{ font-weight:500; color:#000; }
+.funnel-center-sub{ font-size:.72em; color:#8e9194; }
+.funnel-center-meta{ font-size:.66em; color:#4b514d; }
+.funnel-center-dots{ display:flex; gap:3px; margin-top:6px; }
+.funnel-center-dots i{ width:4px; height:4px; border-radius:9999px; background:#9ea29f; display:inline-block; animation:funnelDotPulse 1.6s ease-in-out infinite; }
+@keyframes funnelDotPulse { 0%,100%{ opacity:.25; transform:scale(.8); } 50%{ opacity:1; transform:scale(1); } }
 
 /* faq accordion */
 summary{ outline:none; }
@@ -297,59 +308,56 @@ body{ padding-bottom:64px; }
         <h1 class="h-hero" style="max-width:560px;">Alles wat je bedrijf weet, op één plek.</h1>
         <p style="margin:0; max-width:440px; font-size:19px; line-height:1.42; color:#fff;">Kennisbank, klanten en facturatie in één afgeschermde AI-omgeving. Ingericht en onderhouden door één specialist.</p>
         <a href="#werkwijze" class="pill pill-outline-w" style="align-self:flex-start;">Ontdek jouw tweede brein →</a>
-        <span style="margin-top:4px; font-size:57px; line-height:1; font-weight:500; color:#fff; letter-spacing:0.02em;">MEMRY</span>
       </div>
       <div class="hero-graph-wrap">
-        <canvas id="memry-graph" class="hero-graph-canvas"></canvas>
+        <div id="heroFunnelFit" style="width:100%; overflow:hidden;">
+          <div id="heroFunnel" style="position:relative; transform-origin:top left;"></div>
+        </div>
       </div>
     </div>
+    <span style="display:block; margin-top:8px; font-weight:500; font-size:clamp(56px,11vw,168px); line-height:.88; color:#fff; letter-spacing:-0.01em;">MEMRY</span>
   </div>
 </section>
 
 <section id="uitleg" style="position:relative; overflow:hidden; background:#fff;">
   <div style="position:absolute; right:-10%; top:20%; width:560px; height:460px; filter:blur(90px); opacity:.16; background:radial-gradient(45% 55% at 50% 45%, #a0b5eb 0%, transparent 72%); pointer-events:none;"></div>
-  <div class="wrap sec" style="position:relative; display:flex; flex-direction:column; gap:56px;">
-    <div class="g-label">
-      <p style="margin:0; font-size:15px; line-height:1.43; color:#000;">Wat is het</p>
-      <h2 class="h-sec" style="max-width:720px; color:#000;">Je eigen kennisbank, die elke dag slimmer wordt.</h2>
-    </div>
-    <div class="g-label">
-      <p style="margin:0; font-size:19px; line-height:1.42; color:#4b514d;">Gedaan met zoeken in drie jaar mail, vier prijslijsten en je eigen hoofd. Je stelt een vraag in gewone taal, het systeem leest je eigen data en antwoordt, met de bron erbij.</p>
-      <div style="display:flex; flex-direction:column;">
-        <div style="display:grid; grid-template-columns:40px minmax(0,1fr); gap:24px; padding:16px 0; border-top:1px solid #d8d8d8; font-size:19px; line-height:1.42; color:#000;"><span style="color:#8e9194;">01</span><span>Je kluis staat in een eigen, afgeschermde omgeving — geen gedeelde server met andere klanten.</span></div>
-        <div style="display:grid; grid-template-columns:40px minmax(0,1fr); gap:24px; padding:16px 0; border-top:1px solid #d8d8d8; font-size:19px; line-height:1.42; color:#000;"><span style="color:#8e9194;">02</span><span>Claude koppelt aan de tools die je al gebruikt: mail en agenda, Drive of Dropbox, je CRM of webshop, klantgegevens — noem het maar op.</span></div>
-        <div style="display:grid; grid-template-columns:40px minmax(0,1fr); gap:24px; padding:16px 0; border-top:1px solid #d8d8d8; font-size:19px; line-height:1.42; color:#000;"><span style="color:#8e9194;">03</span><span>Alle kennis komt samen in één doorzoekbare database van je eigen bedrijf, altijd actueel.</span></div>
-        <div style="display:grid; grid-template-columns:40px minmax(0,1fr); gap:24px; padding:16px 0; border-top:1px solid #d8d8d8; font-size:19px; line-height:1.42; color:#000;"><span style="color:#8e9194;">04</span><span>Daarna stel ik routines in: een dagstart met je taken, een afsluiting aan het eind van de dag, binnenkomende mail die zichzelf verwerkt.</span></div>
-        <div style="display:grid; grid-template-columns:40px minmax(0,1fr); gap:24px; padding:16px 0; border-top:1px solid #d8d8d8; font-size:19px; line-height:1.42; color:#000;"><span style="color:#8e9194;">05</span><span>De kluis breidt elke dag uit. Hoe meer je hem gebruikt, hoe meer context Claude heeft om jou te helpen.</span></div>
+  <div class="wrap sec" style="position:relative;">
+    <div class="g-split">
+      <div style="display:flex; flex-direction:column; gap:24px;">
+        <p style="margin:0; font-size:15px; line-height:1.43; color:#8e9194;">Wat is het</p>
+        <h2 class="h-sec" style="color:#000;">Je eigen kennisbank, die elke dag slimmer wordt.</h2>
+        <p style="margin:0; font-size:17px; line-height:1.5; color:#4b514d;">Gedaan met zoeken in drie jaar mail, vier prijslijsten en je eigen hoofd. Je stelt een vraag in gewone taal, het systeem leest je eigen data en antwoordt, met de bron erbij.</p>
+        <div style="display:flex; flex-direction:column;">
+          <div style="display:grid; grid-template-columns:32px minmax(0,1fr); gap:16px; padding:14px 0; border-top:1px solid #d8d8d8; font-size:15px; line-height:1.5; color:#000;"><span style="color:#8e9194;">01</span><span>Je kluis staat in een eigen, afgeschermde omgeving — geen gedeelde server met andere klanten.</span></div>
+          <div style="display:grid; grid-template-columns:32px minmax(0,1fr); gap:16px; padding:14px 0; border-top:1px solid #d8d8d8; font-size:15px; line-height:1.5; color:#000;"><span style="color:#8e9194;">02</span><span>Claude koppelt aan de tools die je al gebruikt: mail en agenda, Drive of Dropbox, je CRM of webshop, klantgegevens — noem het maar op.</span></div>
+          <div style="display:grid; grid-template-columns:32px minmax(0,1fr); gap:16px; padding:14px 0; border-top:1px solid #d8d8d8; font-size:15px; line-height:1.5; color:#000;"><span style="color:#8e9194;">03</span><span>Alle kennis komt samen in één doorzoekbare database van je eigen bedrijf, altijd actueel.</span></div>
+          <div style="display:grid; grid-template-columns:32px minmax(0,1fr); gap:16px; padding:14px 0; border-top:1px solid #d8d8d8; font-size:15px; line-height:1.5; color:#000;"><span style="color:#8e9194;">04</span><span>Daarna stel ik routines in: een dagstart met je taken, een afsluiting aan het eind van de dag, binnenkomende mail die zichzelf verwerkt.</span></div>
+          <div style="display:grid; grid-template-columns:32px minmax(0,1fr); gap:16px; padding:14px 0; border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; font-size:15px; line-height:1.5; color:#000;"><span style="color:#8e9194;">05</span><span>De kluis breidt elke dag uit. Hoe meer je hem gebruikt, hoe meer context Claude heeft om jou te helpen.</span></div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="werkwijze" style="background:#9ea29f;">
-  <div class="wrap sec" style="display:flex; flex-direction:column; gap:76px;">
-    <div class="g-label">
-      <p style="margin:0; font-size:15px; line-height:1.43; color:#000;">Hoe het gaat</p>
-      <h2 class="h-sec" style="max-width:720px; color:#fff;">Drie stappen. Ik doe het werk.</h2>
-    </div>
-    <div class="g-3">
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="img-slot" style="width:100%; height:240px; border-radius:8px;">Het intakegesprek</div>
-        <span style="font-size:15px; line-height:1.43; color:#fff;">01. Week 1</span>
-        <h4 style="margin:0; font-weight:500; font-size:20px; line-height:1.38; color:#fff;">We praten een uur</h4>
-        <p style="margin:0; font-size:19px; line-height:1.42; color:#000;">Waar verdwijnt je tijd, waar zoek je steeds naar? Daaruit volgt de indeling van je kluis. Jij regelt alleen toegang.</p>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="img-slot" style="width:100%; height:240px; border-radius:8px;">Koppelen en opbouwen</div>
-        <span style="font-size:15px; line-height:1.43; color:#fff;">02. Week 2</span>
-        <h4 style="margin:0; font-weight:500; font-size:20px; line-height:1.38; color:#fff;">Ik bouw en koppel</h4>
-        <p style="margin:0; font-size:19px; line-height:1.42; color:#000;">Systemen aan elkaar, bestaande rommel opgeruimd, Claude erbovenop als laag die alles bestuurt. Jij hoeft niets te doen.</p>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:16px;">
-        <div class="img-slot" style="width:100%; height:240px; border-radius:8px;">Aan het werk met je team</div>
-        <span style="font-size:15px; line-height:1.43; color:#fff;">03. Week 3 en verder</span>
-        <h4 style="margin:0; font-weight:500; font-size:20px; line-height:1.38; color:#fff;">Jij gaat vragen stellen</h4>
-        <p style="margin:0; font-size:19px; line-height:1.42; color:#000;">Twee uur met jou en je team. Daarna bouw ik elke maand bij op wat je in de praktijk mist — dat zit in het abonnement.</p>
+      <div id="werkwijze" style="display:flex; flex-direction:column; gap:24px;">
+        <p style="margin:0; font-size:15px; line-height:1.43; color:#8e9194;">Hoe het gaat</p>
+        <h2 class="h-sec" style="color:#000;">Drie stappen. Ik doe het werk.</h2>
+        <div style="display:flex; flex-direction:column; gap:32px;">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="img-slot" style="width:100%; height:180px; border-radius:8px;">Het intakegesprek</div>
+            <span style="font-size:13px; line-height:1.43; color:#8e9194;">01. Week 1</span>
+            <h4 style="margin:0; font-weight:500; font-size:19px; line-height:1.38; color:#000;">We praten een uur</h4>
+            <p style="margin:0; font-size:15px; line-height:1.5; color:#4b514d;">Waar verdwijnt je tijd, waar zoek je steeds naar? Daaruit volgt de indeling van je kluis. Jij regelt alleen toegang.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="img-slot" style="width:100%; height:180px; border-radius:8px;">Koppelen en opbouwen</div>
+            <span style="font-size:13px; line-height:1.43; color:#8e9194;">02. Week 2</span>
+            <h4 style="margin:0; font-weight:500; font-size:19px; line-height:1.38; color:#000;">Ik bouw en koppel</h4>
+            <p style="margin:0; font-size:15px; line-height:1.5; color:#4b514d;">Systemen aan elkaar, bestaande rommel opgeruimd, Claude erbovenop als laag die alles bestuurt. Jij hoeft niets te doen.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="img-slot" style="width:100%; height:180px; border-radius:8px;">Aan het werk met je team</div>
+            <span style="font-size:13px; line-height:1.43; color:#8e9194;">03. Week 3 en verder</span>
+            <h4 style="margin:0; font-weight:500; font-size:19px; line-height:1.38; color:#000;">Jij gaat vragen stellen</h4>
+            <p style="margin:0; font-size:15px; line-height:1.5; color:#4b514d;">Twee uur met jou en je team. Daarna bouw ik elke maand bij op wat je in de praktijk mist — dat zit in het abonnement.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -363,69 +371,8 @@ body{ padding-bottom:64px; }
       <p style="margin:0; font-size:15px; line-height:1.43; color:#4b514d;">Ik koppel de systemen die je al gebruikt. Niets overzetten, niets nieuws leren.</p>
     </div>
 
-    <div id="memry-diagram-fit" style="width:100%; height:560px; overflow:hidden;">
-    <div id="memry-diagram-inner" style="position:relative; width:1200px; height:560px; transform-origin:top left;">
-
-      <svg width="1200" height="560" viewBox="0 0 1200 560" fill="none" style="position:absolute; inset:0; pointer-events:none;">
-        <path d="M300 24 C 400 24, 420 280, 500 280" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M300 126.4 C 400 126.4, 420 280, 500 280" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M300 228.8 C 400 228.8, 430 280, 500 280" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M300 331.2 C 400 331.2, 430 280, 500 280" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M300 433.6 C 400 433.6, 420 280, 500 280" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M300 536 C 400 536, 420 280, 500 280" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M700 280 C 780 280, 800 24, 900 24" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M700 280 C 780 280, 800 126.4, 900 126.4" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M700 280 C 770 280, 800 228.8, 900 228.8" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M700 280 C 770 280, 800 331.2, 900 331.2" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M700 280 C 780 280, 800 433.6, 900 433.6" stroke="#a7aaad" stroke-width="1"></path>
-        <path d="M700 280 C 780 280, 800 536, 900 536" stroke="#a7aaad" stroke-width="1"></path>
-      </svg>
-
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#000; offset-path:path('M300 24 C 400 24, 420 280, 500 280'); offset-rotate:0deg; animation:memFlow 4.2s linear 0s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:7px; height:7px; margin-left:-3.5px; margin-top:-3.5px; border-radius:9999px; background:#4b514d; offset-path:path('M300 126.4 C 400 126.4, 420 280, 500 280'); offset-rotate:0deg; animation:memFlow 4.6s linear 1.4s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#000; offset-path:path('M300 228.8 C 400 228.8, 430 280, 500 280'); offset-rotate:0deg; animation:memFlow 3.8s linear 0.7s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:7px; height:7px; margin-left:-3.5px; margin-top:-3.5px; border-radius:9999px; background:#8e9194; offset-path:path('M300 331.2 C 400 331.2, 430 280, 500 280'); offset-rotate:0deg; animation:memFlow 4.4s linear 2.1s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#000; offset-path:path('M300 433.6 C 400 433.6, 420 280, 500 280'); offset-rotate:0deg; animation:memFlow 5s linear 1.1s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#4b514d; offset-path:path('M300 536 C 400 536, 420 280, 500 280'); offset-rotate:0deg; animation:memFlow 4.2s linear 2.8s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; transform:translate(-50%,-50%); border:1px solid #a7aaad; background:#fff; border-radius:9999px; padding:5px 11px; font-size:12px; color:#4b514d; white-space:nowrap; offset-path:path('M300 228.8 C 400 228.8, 430 280, 500 280'); offset-rotate:0deg; animation:memFlowMid 5.2s linear 2.6s infinite backwards;">prijsafspraak</span>
-      <span style="position:absolute; left:0; top:0; transform:translate(-50%,-50%); border:1px solid #a7aaad; background:#fff; border-radius:9999px; padding:5px 11px; font-size:12px; color:#4b514d; white-space:nowrap; offset-path:path('M300 433.6 C 400 433.6, 420 280, 500 280'); offset-rotate:0deg; animation:memFlowMid 5.6s linear 3.4s infinite backwards;">order</span>
-
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#000; offset-path:path('M700 280 C 780 280, 800 24, 900 24'); offset-rotate:0deg; animation:memFlow 4s linear 0.4s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:7px; height:7px; margin-left:-3.5px; margin-top:-3.5px; border-radius:9999px; background:#8e9194; offset-path:path('M700 280 C 780 280, 800 126.4, 900 126.4'); offset-rotate:0deg; animation:memFlow 4.6s linear 1.8s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#000; offset-path:path('M700 280 C 770 280, 800 228.8, 900 228.8'); offset-rotate:0deg; animation:memFlow 3.9s linear 0.9s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:9px; height:9px; margin-left:-4.5px; margin-top:-4.5px; border-radius:9999px; background:#4b514d; offset-path:path('M700 280 C 770 280, 800 331.2, 900 331.2'); offset-rotate:0deg; animation:memFlow 4.5s linear 2.4s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:8px; height:8px; margin-left:-4px; margin-top:-4px; border-radius:9999px; background:#000; offset-path:path('M700 280 C 780 280, 800 433.6, 900 433.6'); offset-rotate:0deg; animation:memFlow 4.8s linear 1.3s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; width:7px; height:7px; margin-left:-3.5px; margin-top:-3.5px; border-radius:9999px; background:#8e9194; offset-path:path('M700 280 C 780 280, 800 536, 900 536'); offset-rotate:0deg; animation:memFlow 4.3s linear 3.1s infinite backwards;"></span>
-      <span style="position:absolute; left:0; top:0; transform:translate(-50%,-50%); border:1px solid #a7aaad; background:#fff; border-radius:9999px; padding:5px 11px; font-size:12px; color:#4b514d; white-space:nowrap; offset-path:path('M700 280 C 780 280, 800 126.4, 900 126.4'); offset-rotate:0deg; animation:memFlowMid 5.4s linear 1.2s infinite backwards;">offerte klaar</span>
-      <span style="position:absolute; left:0; top:0; transform:translate(-50%,-50%); border:1px solid #a7aaad; background:#fff; border-radius:9999px; padding:5px 11px; font-size:12px; color:#4b514d; white-space:nowrap; offset-path:path('M700 280 C 770 280, 800 331.2, 900 331.2'); offset-rotate:0deg; animation:memFlowMid 5.8s linear 3.8s infinite backwards;">taak gedaan</span>
-
-      <div style="position:absolute; left:0; top:0; width:300px; height:560px; display:flex; flex-direction:column; justify-content:space-between; align-items:flex-end;">
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #a7aaad; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">M</span><span style="font-size:15px; line-height:1.43; color:#000;">Gmail &amp; Agenda</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #a7aaad; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">D</span><span style="font-size:15px; line-height:1.43; color:#000;">Google Drive</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #a7aaad; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">N</span><span style="font-size:15px; line-height:1.43; color:#000;">Notion &amp; notities</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #a7aaad; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">W</span><span style="font-size:15px; line-height:1.43; color:#000;">WhatsApp &amp; gesprekken</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #a7aaad; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">S</span><span style="font-size:15px; line-height:1.43; color:#000;">Webshop &amp; orders</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #a7aaad; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">F</span><span style="font-size:15px; line-height:1.43; color:#000;">Facturen &amp; boekhouding</span></div>
-      </div>
-
-      <div style="position:absolute; left:900px; top:0; width:300px; height:560px; display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start;">
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #000; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">✓</span><span style="font-size:15px; line-height:1.43; color:#000;">Antwoord met de bron erbij</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #000; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">✓</span><span style="font-size:15px; line-height:1.43; color:#000;">Concept-offerte, jouw prijzen</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #000; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">✓</span><span style="font-size:15px; line-height:1.43; color:#000;">Taak op je lijst gezet</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #000; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">✓</span><span style="font-size:15px; line-height:1.43; color:#000;">Opvolgmail klaar om te sturen</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #000; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">✓</span><span style="font-size:15px; line-height:1.43; color:#000;">Nieuwe leads uit je eigen data</span></div>
-        <div style="display:inline-flex; align-items:center; gap:16px; height:48px; padding:0 20px; border:1px solid #000; border-radius:8px; background:#fff;"><span style="width:24px; height:24px; border-radius:50%; border:1px solid #000; display:inline-flex; align-items:center; justify-content:center; font-size:15px; line-height:1;">✓</span><span style="font-size:15px; line-height:1.43; color:#000;">Maandoverzicht op maandag</span></div>
-      </div>
-
-      <div style="position:absolute; left:500px; top:180px; width:200px; height:200px; border:1px solid #000; border-radius:50%; background:#fff; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;">
-        <span style="font-size:30px; line-height:1.25; font-weight:500; color:#000;">De kluis</span>
-        <span style="font-size:15px; line-height:1.43; color:#8e9194;">Claude bestuurt</span>
-        <span style="font-size:15px; line-height:1.43; color:#4b514d;">1.284 notities</span>
-      </div>
-
-      <span style="position:absolute; left:500px; top:140px; width:200px; text-align:center; font-size:15px; line-height:1.43; color:#8e9194;">opruimen</span>
-      <span style="position:absolute; left:500px; top:396px; width:200px; text-align:center; font-size:15px; line-height:1.43; color:#8e9194;">uitvoeren</span>
-    </div>
+    <div id="demoFunnelFit" style="width:100%; overflow:hidden;">
+      <div id="demoFunnel" style="position:relative; transform-origin:top left;"></div>
     </div>
   </div>
 </section>
@@ -629,48 +576,39 @@ body{ padding-bottom:64px; }
   </div>
 </section>
 
-<section id="faq" style="background:#fff;">
-  <div class="wrap sec-tight">
-    <div style="display:flex; flex-direction:column; gap:4px;">
-      <details style="border-top:1px solid #d8d8d8; padding:20px 0;">
-        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; line-height:1.42; color:#000; list-style:none;">Wat is een AI Second Brain precies?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
-        <p style="margin:16px 0 0; max-width:640px; font-size:15px; line-height:1.6; color:#4b514d;">Een afgeschermde omgeving waarin de kennis van je bedrijf gelinkt staat, met een AI-laag erboven die daarin zoekt en antwoordt. Geen chatbot die dingen verzint: hij leest je eigen data en verwijst naar de bron.</p>
-      </details>
-      <details style="border-top:1px solid #d8d8d8; padding:20px 0;">
-        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; line-height:1.42; color:#000; list-style:none;">Is mijn data gescheiden van andere klanten?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
-        <p style="margin:16px 0 0; max-width:640px; font-size:15px; line-height:1.6; color:#4b514d;">Ja. Elke kluis is een eigen, afgeschermde omgeving. Niets wordt gedeeld of hergebruikt tussen klanten.</p>
-      </details>
-      <details style="border-top:1px solid #d8d8d8; padding:20px 0;">
-        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; line-height:1.42; color:#000; list-style:none;">Heb ik zelf een Claude-abonnement nodig?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
-        <p style="margin:16px 0 0; max-width:640px; font-size:15px; line-height:1.6; color:#4b514d;">Ja, dat sluit je rechtstreeks bij Anthropic af, los van het maandbedrag aan mij. Reken op ongeveer € 20-100 per maand, afhankelijk van gebruik.</p>
-      </details>
-      <details style="border-top:1px solid #d8d8d8; padding:20px 0;">
-        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; line-height:1.42; color:#000; list-style:none;">Moet ik zelf iets nieuws leren?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
-        <p style="margin:16px 0 0; max-width:640px; font-size:15px; line-height:1.6; color:#4b514d;">Nee. Je stelt vragen in gewone taal, zoals je het tegen een medewerker zou zeggen. Ik richt de kluis in en koppel de systemen die je al gebruikt.</p>
-      </details>
-      <details style="border-top:1px solid #d8d8d8; padding:20px 0;">
-        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; line-height:1.42; color:#000; list-style:none;">Waarom pilotfase?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
-        <p style="margin:16px 0 0; max-width:640px; font-size:15px; line-height:1.6; color:#4b514d;">Ik bouw dit samen met de eerste klanten, zodat de kluis aansluit op wat er in de praktijk nodig blijkt. Pilotdeelnemers houden hun tarief het eerste jaar vast.</p>
-      </details>
-      <details style="border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; padding:20px 0;">
-        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:19px; line-height:1.42; color:#000; list-style:none;">Wat als het niet werkt voor mij?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
-        <p style="margin:16px 0 0; max-width:640px; font-size:15px; line-height:1.6; color:#4b514d;">Dan zeg ik dat eerlijk na het eerste gesprek. Dat kost je een half uur en niets meer. Loop je toch vast, dan kun je met 30 dagen opzeggen.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
 <section id="contact" style="position:relative; overflow:hidden; background:#fff;">
   <div style="position:absolute; left:50%; bottom:-15%; transform:translateX(-50%); width:900px; height:500px; filter:blur(90px); opacity:.18; background:radial-gradient(45% 55% at 50% 50%, #a0b5eb 0%, transparent 72%); pointer-events:none;"></div>
-  <div class="wrap sec g-2" style="position:relative;">
-    <div style="display:flex; flex-direction:column; gap:24px;">
-      <span style="font-size:15px; line-height:1.43; color:#8e9194;">Een van de eerste pilotplekken?</span>
-      <h2 class="h-sec" style="max-width:480px; color:#000;">Begin met één gesprek van dertig minuten.</h2>
-      <p style="margin:0; max-width:480px; font-size:19px; line-height:1.42; color:#000;">Niets voorbereiden. Ik stel vragen over hoe je werkt en zeg je daarna eerlijk of een kluis bij jou iets oplevert. Zo niet, dan kost het je een half uur en niets meer.</p>
-      <div style="display:flex; flex-direction:column; gap:8px; font-size:15px; line-height:1.43; color:#4b514d;">
-        <span>Reactie binnen één werkdag. Gratis en zonder verplichtingen.</span>
-        <a href="tel:+31643859989" style="border-bottom:1px solid #000; align-self:flex-start;">06 43 85 99 89</a>
+  <div class="wrap sec g-split" style="position:relative;">
+    <div id="faq" style="display:flex; flex-direction:column; gap:16px;">
+      <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:16px;">
+        <span style="font-size:15px; line-height:1.43; color:#8e9194;">Veelgestelde vragen</span>
+        <h2 class="h-sec" style="color:#000;">Begin met één gesprek van dertig minuten.</h2>
+        <p style="margin:0; font-size:15px; line-height:1.5; color:#4b514d;">Niets voorbereiden. Reactie binnen één werkdag. Bel <a href="tel:+31643859989" style="border-bottom:1px solid #000;">06 43 85 99 89</a> of vul het formulier in.</p>
       </div>
+      <details style="border-top:1px solid #d8d8d8; padding:16px 0;">
+        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:16px; line-height:1.42; color:#000; list-style:none;">Wat is een AI Second Brain precies?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.6; color:#4b514d;">Een afgeschermde omgeving waarin de kennis van je bedrijf gelinkt staat, met een AI-laag erboven die daarin zoekt en antwoordt. Geen chatbot die dingen verzint: hij leest je eigen data en verwijst naar de bron.</p>
+      </details>
+      <details style="border-top:1px solid #d8d8d8; padding:16px 0;">
+        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:16px; line-height:1.42; color:#000; list-style:none;">Is mijn data gescheiden van andere klanten?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.6; color:#4b514d;">Ja. Elke kluis is een eigen, afgeschermde omgeving. Niets wordt gedeeld of hergebruikt tussen klanten.</p>
+      </details>
+      <details style="border-top:1px solid #d8d8d8; padding:16px 0;">
+        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:16px; line-height:1.42; color:#000; list-style:none;">Heb ik zelf een Claude-abonnement nodig?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.6; color:#4b514d;">Ja, dat sluit je rechtstreeks bij Anthropic af, los van het maandbedrag aan mij. Reken op ongeveer € 20-100 per maand, afhankelijk van gebruik.</p>
+      </details>
+      <details style="border-top:1px solid #d8d8d8; padding:16px 0;">
+        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:16px; line-height:1.42; color:#000; list-style:none;">Moet ik zelf iets nieuws leren?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.6; color:#4b514d;">Nee. Je stelt vragen in gewone taal, zoals je het tegen een medewerker zou zeggen. Ik richt de kluis in en koppel de systemen die je al gebruikt.</p>
+      </details>
+      <details style="border-top:1px solid #d8d8d8; padding:16px 0;">
+        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:16px; line-height:1.42; color:#000; list-style:none;">Waarom pilotfase?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.6; color:#4b514d;">Ik bouw dit samen met de eerste klanten, zodat de kluis aansluit op wat er in de praktijk nodig blijkt. Pilotdeelnemers houden hun tarief het eerste jaar vast.</p>
+      </details>
+      <details style="border-top:1px solid #d8d8d8; border-bottom:1px solid #d8d8d8; padding:16px 0;">
+        <summary style="cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:16px; line-height:1.42; color:#000; list-style:none;">Wat als het niet werkt voor mij?<span aria-hidden="true" style="flex:none; color:#8e9194;">+</span></summary>
+        <p style="margin:12px 0 0; font-size:14px; line-height:1.6; color:#4b514d;">Dan zeg ik dat eerlijk na het eerste gesprek. Dat kost je een half uur en niets meer. Loop je toch vast, dan kun je met 30 dagen opzeggen.</p>
+      </details>
     </div>
     <div id="contactSent" style="display:none; flex-direction:column; gap:16px; min-height:360px; justify-content:center;">
       <span style="font-size:15px; line-height:1.43; color:#8e9194;">Verzonden</span>
@@ -911,19 +849,149 @@ body{ padding-bottom:64px; }
   setInterval(next, 6200);
 })();
 
-/* diagram auto-fit (scales the fixed 1200x560 diagram to its container width) */
+/* funnel diagram: pill nodes converging on a rotated "kluis" card, with animated pulses along the paths */
 (function(){
-  var outer = document.getElementById('memry-diagram-fit');
-  var inner = document.getElementById('memry-diagram-inner');
-  if (!outer || !inner) return;
-  function fit(){
-    var s = Math.min(1, outer.clientWidth / 1200);
-    inner.style.transform = 'scale(' + s + ')';
-    outer.style.height = (560 * s) + 'px';
+  var REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var svgNS = 'http://www.w3.org/2000/svg';
+
+  function fitScale(outer, inner, designW, designH){
+    function apply(){
+      var s = Math.min(1, outer.clientWidth / designW);
+      inner.style.transform = 'scale(' + s + ')';
+      outer.style.height = (designH * s) + 'px';
+    }
+    apply();
+    if (window.ResizeObserver) new ResizeObserver(apply).observe(outer);
+    window.addEventListener('resize', apply);
   }
-  fit();
-  if (window.ResizeObserver) new ResizeObserver(fit).observe(outer);
-  window.addEventListener('resize', fit);
+
+  function renderFunnel(root, opts){
+    var W = opts.W, H = opts.H, cx = W / 2, cy = H / 2;
+    var centerR = opts.centerR, pillW = opts.pillW, pillH = opts.pillH;
+    var accent = opts.accent || '#000';
+    root.style.width = W + 'px';
+    root.style.height = H + 'px';
+
+    var glow = document.createElement('div');
+    glow.style.cssText = 'position:absolute; left:' + (cx - centerR * 1.9) + 'px; top:' + (cy - centerR * 1.9) + 'px; width:' + (centerR * 3.8) + 'px; height:' + (centerR * 3.8) + 'px; border-radius:50%; background:radial-gradient(circle, rgba(160,181,235,.4) 0%, rgba(160,181,235,0) 70%); filter:blur(28px); pointer-events:none;';
+    root.appendChild(glow);
+
+    var svg = document.createElementNS(svgNS, 'svg');
+    svg.setAttribute('width', W); svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.style.cssText = 'position:absolute; inset:0; pointer-events:none;';
+    root.appendChild(svg);
+
+    function layout(list, side){
+      var n = list.length, margin = pillH * .7, usable = H - margin * 2;
+      return list.map(function(item, i){
+        var y = margin + (usable * (i + .5)) / n + (i % 2 === 0 ? -8 : 8);
+        var x = side === 'left' ? 6 : (W - pillW - 6);
+        return { item: item, x: x, y: y };
+      });
+    }
+
+    function connect(node, side){
+      var startX = side === 'left' ? node.x + pillW : cx + centerR * .7;
+      var startY = side === 'left' ? node.y + pillH / 2 : cy;
+      var endX = side === 'left' ? cx - centerR * .7 : node.x;
+      var endY = side === 'left' ? cy : node.y + pillH / 2;
+      var c1x = startX + (endX - startX) * (side === 'left' ? .55 : .25), c1y = startY;
+      var c2x = startX + (endX - startX) * (side === 'left' ? .75 : .45), c2y = endY;
+      var d = 'M' + startX + ' ' + startY + ' C ' + c1x + ' ' + c1y + ', ' + c2x + ' ' + c2y + ', ' + endX + ' ' + endY;
+      var path = document.createElementNS(svgNS, 'path');
+      path.setAttribute('d', d); path.setAttribute('fill', 'none');
+      path.setAttribute('stroke', side === 'left' ? '#c7cac7' : accent);
+      path.setAttribute('stroke-width', '1.3');
+      if (side === 'right') path.setAttribute('stroke-opacity', '.5');
+      svg.appendChild(path);
+      if (!REDUCED) {
+        var dot = document.createElement('span');
+        dot.style.cssText = 'position:absolute; left:0; top:0; width:6px; height:6px; margin-left:-3px; margin-top:-3px; border-radius:9999px; background:' + (side === 'left' ? '#9ea29f' : accent) + "; offset-path:path('" + d + "'); offset-rotate:0deg; animation:memFlow " + (3.4 + Math.random() * 1.8).toFixed(1) + 's linear ' + (Math.random() * 2.6).toFixed(1) + 's infinite backwards;';
+        root.appendChild(dot);
+      }
+    }
+
+    function makePill(node){
+      var div = document.createElement('div');
+      div.className = 'funnel-pill';
+      div.style.left = node.x + 'px'; div.style.top = node.y + 'px';
+      div.style.width = pillW + 'px'; div.style.height = pillH + 'px';
+      div.innerHTML = '<span class="funnel-pill-icon">' + node.item.icon + '</span><span>' + node.item.label + '</span>';
+      root.appendChild(div);
+    }
+
+    var L = layout(opts.inputs, 'left'), R = layout(opts.outputs, 'right');
+    L.forEach(function(n){ connect(n, 'left'); });
+    R.forEach(function(n){ connect(n, 'right'); });
+    L.forEach(makePill); R.forEach(makePill);
+
+    var center = document.createElement('div');
+    center.className = 'funnel-center';
+    center.style.left = (cx - centerR) + 'px'; center.style.top = (cy - centerR) + 'px';
+    center.style.width = (centerR * 2) + 'px'; center.style.height = (centerR * 2) + 'px';
+    center.style.fontSize = Math.round(centerR * .19) + 'px';
+    var dots = '';
+    for (var di = 0; di < 8; di++) dots += '<i style="animation-delay:' + (di * .12).toFixed(2) + 's;"></i>';
+    center.innerHTML = '<div class="funnel-center-inner">' +
+      '<span class="funnel-center-title">' + opts.centerTitle + '</span>' +
+      (opts.centerSub ? '<span class="funnel-center-sub">' + opts.centerSub + '</span>' : '') +
+      (opts.centerMeta ? '<span class="funnel-center-meta">' + opts.centerMeta + '</span>' : '') +
+      '<span class="funnel-center-dots">' + dots + '</span></div>';
+    root.appendChild(center);
+  }
+
+  var heroInputs = [
+    { icon: 'M', label: 'Mail &amp; agenda' },
+    { icon: 'D', label: 'Drive' },
+    { icon: 'N', label: 'Notities' },
+    { icon: 'W', label: 'WhatsApp' },
+    { icon: 'S', label: 'Webshop' },
+    { icon: 'F', label: 'Facturen' }
+  ];
+  var heroOutputs = [
+    { icon: '✓', label: 'Antwoord + bron' },
+    { icon: '✓', label: 'Offerte klaar' },
+    { icon: '✓', label: 'Taak gezet' },
+    { icon: '✓', label: 'Opvolgmail' },
+    { icon: '✓', label: 'Nieuwe leads' },
+    { icon: '✓', label: 'Maandoverzicht' }
+  ];
+
+  var heroFit = document.getElementById('heroFunnelFit'), heroInner = document.getElementById('heroFunnel');
+  if (heroFit && heroInner) {
+    renderFunnel(heroInner, {
+      W: 480, H: 480, centerR: 62, pillW: 128, pillH: 34, accent: '#000',
+      centerTitle: 'De kluis', centerSub: 'Claude bestuurt',
+      inputs: heroInputs, outputs: heroOutputs
+    });
+    fitScale(heroFit, heroInner, 480, 480);
+  }
+
+  var demoFit = document.getElementById('demoFunnelFit'), demoInner = document.getElementById('demoFunnel');
+  if (demoFit && demoInner) {
+    renderFunnel(demoInner, {
+      W: 1180, H: 620, centerR: 108, pillW: 208, pillH: 46, accent: '#000',
+      centerTitle: 'De kluis', centerSub: 'Claude bestuurt', centerMeta: '1.284 notities',
+      inputs: [
+        { icon: 'M', label: 'Gmail &amp; Agenda' },
+        { icon: 'D', label: 'Google Drive' },
+        { icon: 'N', label: 'Notion &amp; notities' },
+        { icon: 'W', label: 'WhatsApp &amp; gesprekken' },
+        { icon: 'S', label: 'Webshop &amp; orders' },
+        { icon: 'F', label: 'Facturen &amp; boekhouding' }
+      ],
+      outputs: [
+        { icon: '✓', label: 'Antwoord met de bron erbij' },
+        { icon: '✓', label: 'Concept-offerte, jouw prijzen' },
+        { icon: '✓', label: 'Taak op je lijst gezet' },
+        { icon: '✓', label: 'Opvolgmail klaar om te sturen' },
+        { icon: '✓', label: 'Nieuwe leads uit je eigen data' },
+        { icon: '✓', label: 'Maandoverzicht op maandag' }
+      ]
+    });
+    fitScale(demoFit, demoInner, 1180, 620);
+  }
 })();
 
 /* integration rail: perspective marquee, ported from ai.rankengine.nl — rows step-scroll
@@ -963,115 +1031,6 @@ body{ padding-bottom:64px; }
   requestAnimationFrame(tick);
 })();
 
-/* hero knowledge graph — deterministic seeded PRNG so the layout is stable across reloads */
-(function(){
-  var cv = document.getElementById('memry-graph');
-  if (!cv) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  var ctx = cv.getContext('2d');
-  var rand = (function(){ var s = 20260824; return function(){ s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; }; })();
-
-  var W = 0, H = 0, nodes = [], edges = [], pulses = [];
-  var CLUSTERS = 11, PER = 14;
-
-  function spawnPulse(){
-    if (!edges.length) return;
-    var e = edges[(Math.random() * edges.length) | 0];
-    pulses.push({ e: e, t: 0, sp: 0.006 + Math.random() * 0.012, dir: Math.random() < 0.5 ? 1 : -1 });
-  }
-
-  function build(){
-    nodes = []; edges = [];
-    var centers = [];
-    for (var c = 0; c < CLUSTERS; c++) {
-      centers.push({ x: 0.12 + rand() * 0.76, y: 0.12 + rand() * 0.76 });
-    }
-    centers.forEach(function(c, ci){
-      var start = nodes.length;
-      for (var i = 0; i < PER; i++) {
-        var a = rand() * Math.PI * 2, r = Math.pow(rand(), 0.7) * 0.11;
-        nodes.push({
-          bx: c.x + Math.cos(a) * r, by: c.y + Math.sin(a) * r * 0.85,
-          r: 1.6 + Math.pow(rand(), 2) * 5.4,
-          ph: rand() * Math.PI * 2, sp: 0.15 + rand() * 0.35,
-          amp: 0.004 + rand() * 0.008, cl: ci, x: 0, y: 0
-        });
-      }
-      for (var j2 = start; j2 < nodes.length; j2++) {
-        var links = 1 + Math.floor(rand() * 2);
-        for (var k = 0; k < links; k++) {
-          var j = start + Math.floor(rand() * PER);
-          if (j !== j2) edges.push([j2, j]);
-        }
-      }
-      if (ci > 0) edges.push([start, Math.floor(rand() * start)]);
-    });
-    for (var i2 = 0; i2 < 46; i2++) {
-      nodes.push({ bx: rand(), by: rand(), r: 0.9 + rand() * 1.6, ph: rand() * 6.28, sp: 0.1 + rand() * 0.2, amp: 0.003 + rand() * 0.006, cl: -1, x: 0, y: 0 });
-    }
-  }
-
-  function resize(){
-    var dpr = Math.min(2, window.devicePixelRatio || 1);
-    W = cv.clientWidth; H = cv.clientHeight;
-    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function draw(t){
-    ctx.clearRect(0, 0, W, H);
-    for (var ni = 0; ni < nodes.length; ni++) {
-      var n = nodes[ni];
-      n.x = (n.bx + Math.sin(t * n.sp + n.ph) * n.amp) * W;
-      n.y = (n.by + Math.cos(t * n.sp * 0.8 + n.ph) * n.amp) * H;
-    }
-    ctx.lineWidth = 1;
-    for (var ei = 0; ei < edges.length; ei++) {
-      var p = nodes[edges[ei][0]], q = nodes[edges[ei][1]];
-      var d = Math.hypot(p.x - q.x, p.y - q.y);
-      ctx.strokeStyle = 'rgba(255,255,255,' + Math.max(0.08, 0.42 - d / 900) + ')';
-      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
-    }
-    for (var nj = 0; nj < nodes.length; nj++) {
-      var nn = nodes[nj];
-      var pulse = 0.5 + 0.5 * Math.sin(t * 0.9 + nn.ph);
-      var hub = nn.cl !== -1 && nn.r > 4.4;
-      if (hub) { ctx.shadowColor = '#fff'; ctx.shadowBlur = 8; } else { ctx.shadowBlur = 0; }
-      if (nn.cl === -1) {
-        ctx.fillStyle = 'rgba(255,255,255,' + (0.18 + pulse * 0.14) + ')';
-      } else if (hub) {
-        ctx.fillStyle = 'rgba(0,0,0,' + (0.62 + pulse * 0.18) + ')';
-      } else if (nn.r > 3) {
-        ctx.fillStyle = 'rgba(75,81,77,' + (0.72 + pulse * 0.16) + ')';
-      } else {
-        ctx.fillStyle = 'rgba(255,255,255,' + (0.5 + pulse * 0.3) + ')';
-      }
-      ctx.beginPath(); ctx.arc(nn.x, nn.y, nn.r, 0, 6.2832); ctx.fill();
-    }
-    ctx.shadowBlur = 0;
-
-    if (Math.random() < 0.18 && pulses.length < 22) spawnPulse();
-    for (var pi = pulses.length - 1; pi >= 0; pi--) {
-      var p = pulses[pi];
-      p.t += p.sp;
-      if (p.t >= 1) { pulses.splice(pi, 1); continue; }
-      var a = nodes[p.dir > 0 ? p.e[0] : p.e[1]], b = nodes[p.dir > 0 ? p.e[1] : p.e[0]];
-      var px = a.x + (b.x - a.x) * p.t, py = a.y + (b.y - a.y) * p.t;
-      var fade = Math.sin(p.t * Math.PI);
-      ctx.globalAlpha = fade;
-      ctx.shadowColor = '#a0b5eb'; ctx.shadowBlur = 11;
-      ctx.fillStyle = '#c3d0f2';
-      ctx.beginPath(); ctx.arc(px, py, 2.2, 0, 6.2832); ctx.fill();
-      ctx.shadowBlur = 0; ctx.globalAlpha = 1;
-    }
-  }
-
-  build(); resize();
-  var t0g = performance.now();
-  function loop(){ draw((performance.now() - t0g) / 1000); requestAnimationFrame(loop); }
-  loop();
-  if (window.ResizeObserver) new ResizeObserver(resize).observe(cv);
-})();
 </script>
 
 </body>
