@@ -109,27 +109,30 @@ a{ color:inherit; text-decoration:none; }
   position:relative;
   background-image: radial-gradient(var(--hairline) 1.5px, transparent 1.5px);
   background-size: 20px 20px;
-  padding:56px 40px;
-  display:grid; grid-template-columns:repeat(2,1fr); gap:28px;
-  min-height:460px;
+  padding:40px 32px;
+  display:grid; grid-template-columns:repeat(2,1fr); gap:20px;
+  min-height:340px;
 }
 .chat-card{
-  background:var(--paper); border-radius:16px; padding:24px;
+  background:var(--paper); border-radius:14px; padding:18px;
   box-shadow:0 10px 10px -5px rgba(0,0,0,.15);
-  display:flex; flex-direction:column; min-height:170px;
+  display:flex; flex-direction:column; min-height:130px;
 }
-.chat-mark{ width:22px; height:22px; border-radius:6px; background:var(--blue); margin-bottom:14px; flex-shrink:0; }
-.chat-q{ font-size:13px; color:#4a4a4a; margin-bottom:12px; transition:opacity .35s ease; }
-.chat-a{ font-size:15px; font-weight:500; line-height:1.45; margin-bottom:14px; flex-grow:1; transition:opacity .35s ease; }
-.chat-src{ display:inline-block; background:var(--canvas); border-radius:3000px; padding:5px 12px; font-size:11px; color:#5a5a5a; align-self:flex-start; transition:opacity .35s ease; }
-.chat-card.is-typing .chat-a, .chat-card.is-typing .chat-q, .chat-card.is-typing .chat-src{ opacity:0; }
-.typing-dots{ display:none; gap:5px; align-items:center; height:15px; margin-bottom:14px; }
-.chat-card.is-typing .typing-dots{ display:flex; }
+.chat-mark{ width:20px; height:20px; border-radius:6px; background:var(--blue); margin-bottom:10px; flex-shrink:0; }
+.chat-q{ font-size:12px; color:#4a4a4a; margin-bottom:9px; min-height:1.5em; transition:opacity .6s ease; }
+.chat-q .caret{ display:inline-block; width:1px; height:1em; background:#4a4a4a; margin-left:1px; vertical-align:-2px; animation:aaCaret .8s step-end infinite; }
+.chat-a{ font-size:14px; font-weight:500; line-height:1.4; margin-bottom:10px; flex-grow:1; transition:opacity .6s ease; }
+.chat-src{ display:inline-block; background:var(--canvas); border-radius:3000px; padding:4px 11px; font-size:10px; color:#5a5a5a; align-self:flex-start; transition:opacity .6s ease; }
+.typing-dots{ display:none; gap:5px; align-items:center; height:14px; margin-bottom:10px; }
 .typing-dots span{ width:6px; height:6px; border-radius:50%; background:#c9c9c9; animation:aaTypingBounce 1s ease-in-out infinite; }
+@keyframes aaCaret{ 0%,100%{ opacity:1; } 50%{ opacity:0; } }
 .typing-dots span:nth-child(2){ animation-delay:.15s; }
 .typing-dots span:nth-child(3){ animation-delay:.3s; }
 @keyframes aaTypingBounce{ 0%,100%{ transform:translateY(0); opacity:.4; } 50%{ transform:translateY(-4px); opacity:1; } }
-@media (max-width:700px){ .frame-body{ grid-template-columns:1fr; padding:32px 20px; min-height:0; } }
+@media (max-width:700px){
+  .frame-body{ grid-template-columns:1fr; padding:28px 18px; min-height:0; gap:14px; }
+  .chat-card[data-card="2"], .chat-card[data-card="3"]{ display:none; }
+}
 
 /* collaborative cursor tags */
 .cursor-tag{ position:absolute; display:flex; align-items:center; gap:6px; z-index:3; }
@@ -579,27 +582,63 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
   var order = shuffle(pairs);
   var pointers = cards.map(function(_, i){ return i % order.length; });
 
-  function renderCard(card, pair){
+  function typeText(el, text, msPerChar, cb){
+    el.textContent = '';
+    var caret = document.createElement('span');
+    caret.className = 'caret';
+    el.appendChild(caret);
+    var i = 0;
+    var iv = setInterval(function(){
+      i++;
+      el.textContent = text.slice(0, i);
+      el.appendChild(caret);
+      if (i >= text.length) {
+        clearInterval(iv);
+        caret.remove();
+        cb && cb();
+      }
+    }, msPerChar);
+  }
+
+  function runCycle(cardIndex){
+    var card = cards[cardIndex];
     var q = card.querySelector('.chat-q');
     var a = card.querySelector('.chat-a');
     var src = card.querySelector('.chat-src');
-    q.textContent = '"' + pair.q + '"';
-    a.textContent = pair.a;
-    src.textContent = 'Bron: ' + pair.src;
-  }
+    var dots = card.querySelector('.typing-dots');
 
-  function advance(cardIndex){
-    var card = cards[cardIndex];
-    card.classList.add('is-typing');
+    pointers[cardIndex] = (pointers[cardIndex] + cards.length) % order.length;
+    var pair = order[pointers[cardIndex]];
+
+    // fade out previous answer + question
+    q.style.opacity = 0;
+    a.style.opacity = 0;
+    src.style.opacity = 0;
+    dots.style.display = 'none';
+
     setTimeout(function(){
-      pointers[cardIndex] = (pointers[cardIndex] + cards.length) % order.length;
-      renderCard(card, order[pointers[cardIndex]]);
-      card.classList.remove('is-typing');
+      q.textContent = '';
+      q.style.opacity = 1;
+      typeText(q, '"' + pair.q + '"', 28, function(){
+        setTimeout(function(){
+          dots.style.display = 'flex';
+          setTimeout(function(){
+            dots.style.display = 'none';
+            a.textContent = pair.a;
+            src.textContent = 'Bron: ' + pair.src;
+            requestAnimationFrame(function(){
+              a.style.opacity = 1;
+              src.style.opacity = 1;
+            });
+            setTimeout(function(){ runCycle(cardIndex); }, 5400);
+          }, 1300);
+        }, 300);
+      });
     }, 650);
   }
 
   cards.forEach(function(card, i){
-    setInterval(function(){ advance(i); }, 5200 + i * 900);
+    setTimeout(function(){ runCycle(i); }, 4500 + i * 2000);
   });
 })();
 </script>
