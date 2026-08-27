@@ -86,25 +86,25 @@ a{ color:inherit; text-decoration:none; }
 .btn-sm{ padding:11px 20px; font-size:13px; }
 
 /* hero */
-.hero{ padding:64px 24px 0; text-align:center; }
+.hero{ padding:12px 24px 0; text-align:center; }
 .hero-inner{ max-width:880px; margin:0 auto; }
 .eyebrow{
   display:inline-block; background:var(--paper); border:1px solid var(--ink);
-  border-radius:3000px; padding:8px 18px; font-size:13px; font-weight:500; margin-bottom:24px;
+  border-radius:3000px; padding:8px 18px; font-size:13px; font-weight:500; margin-bottom:14px;
 }
 .hero h1{
   font-family:var(--font-display); font-weight:700; font-size:clamp(34px,5.6vw,54px);
-  line-height:1.08; letter-spacing:-0.02em; margin:0 0 24px;
+  line-height:1.08; letter-spacing:-0.02em; margin:0 0 14px;
 }
 .hero h1 img.inline-icon{ height:0.78em; width:auto; display:inline-block; vertical-align:-0.12em; margin:0 2px; }
 .hero p{
-  font-size:18px; line-height:1.53; color:#1a1a1a; max-width:540px; margin:0 auto 32px;
+  font-size:18px; line-height:1.53; color:#1a1a1a; max-width:540px; margin:0 auto 20px;
 }
-.hero-ctas{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:18px; }
+.hero-ctas{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-bottom:12px; }
 .hero-note{ font-size:13px; color:#5a5a5a; }
 
 /* collab frame */
-.frame-wrap{ padding:52px 24px 0; }
+.frame-wrap{ padding:12px 24px 0; }
 .frame{
   max-width:1160px; margin:0 auto;
   background:var(--paper); border-radius:20px;
@@ -177,7 +177,7 @@ a{ color:inherit; text-decoration:none; }
 /* numbered rows */
 .numbered{ padding:104px 24px 0; }
 .disclaimer-wrap{ padding:56px 24px 0; }
-.numbered-head{ text-align:center; max-width:600px; margin:0 auto 48px; }
+.numbered-head{ text-align:center; max-width:600px; margin:0 auto 16px; }
 .numbered-head span.tag{
   display:inline-block; background:var(--red); color:var(--paper); border-radius:3000px;
   padding:6px 14px; font-size:12px; font-weight:500; margin-bottom:16px;
@@ -185,7 +185,8 @@ a{ color:inherit; text-decoration:none; }
 .numbered-head h2{ font-family:var(--font-display); font-weight:500; font-size:clamp(28px,4vw,34px); letter-spacing:-0.02em; margin:0; }
 .n-row{
   max-width:980px; margin:0 auto 24px; background:var(--paper); border-radius:24px;
-  padding:36px 36px 32px; display:grid; grid-template-columns:auto 1fr; gap:16px 20px;
+  padding:14px 36px; display:grid; grid-template-columns:auto 1fr; gap:16px 20px;
+  align-items:center;
 }
 .n-badge{
   width:52px; height:52px; border-radius:50%; border:1.5px solid var(--ink);
@@ -201,9 +202,9 @@ a{ color:inherit; text-decoration:none; }
 @media (max-width:560px){ .n-row{ grid-template-columns:1fr; padding:28px 24px; } .n-body{ grid-column:1; } }
 
 /* step cards (aaply-stijl: tekst + kleurig beeldvlak) */
-.steps{ padding:104px 24px 0; }
+.steps{ padding:16px 24px 0; }
 .step-card{
-  max-width:1020px; margin:0 auto 28px;
+  max-width:1020px; margin:0 auto 14px;
   background:var(--paper); border-radius:28px; overflow:hidden;
   box-shadow:0 10px 10px -5px rgba(0,0,0,.15);
   display:grid; grid-template-columns:1fr 1fr;
@@ -267,10 +268,10 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* promise / pricing card */
-.promise-wrap{ padding:56px 24px 0; }
+.promise-wrap{ padding:32px 24px 0; }
 .promise-card{
   max-width:980px; margin:0 auto; background:var(--yellow); border:2px solid var(--ink);
-  border-radius:28px; padding:44px 40px; position:relative;
+  border-radius:28px; padding:40px 40px 24px; position:relative;
   display:grid; grid-template-columns:1fr 1fr; grid-template-rows:auto 1fr auto;
   column-gap:40px; row-gap:24px;
   grid-template-areas:
@@ -299,8 +300,8 @@ a{ color:inherit; text-decoration:none; }
 }
 
 /* funnel diagram: koppelingen -> je kluis  <->  Claude -> resultaten */
-.funnel{ padding:104px 24px 0; }
-.funnel .frame-wrap{ padding:44px 0 0; }
+.funnel{ padding:24px 24px 0; }
+.funnel .frame-wrap{ padding:0; }
 .funnel .frame-body{ padding:32px 16px; }
 .funnel-desktop{ display:none; }
 .funnel-mobile{ display:flex; flex-direction:column; align-items:center; gap:10px; max-width:340px; margin:0 auto; }
@@ -367,11 +368,11 @@ a{ color:inherit; text-decoration:none; }
 .fm-link span.bi{ font-size:15px; color:var(--ink); }
 
 /* contactformulier */
-.contact-sec{ padding:104px 24px 0; }
-.contact-card{ max-width:820px; margin:0 auto; background:var(--paper); border:2px solid var(--ink); border-radius:28px; padding:44px 40px; }
+.contact-sec{ padding:18px 24px 0; }
+.contact-card{ max-width:820px; margin:0 auto; background:var(--paper); border:2px solid var(--ink); border-radius:28px; padding:24px 40px; }
 .contact-card .tag{ display:inline-block; background:var(--red); color:var(--paper); border-radius:3000px; padding:6px 14px; font-size:12px; font-weight:500; margin-bottom:16px; }
 .contact-card h2{ font-family:var(--font-display); font-weight:700; font-size:clamp(24px,3.6vw,30px); line-height:1.2; letter-spacing:-0.01em; margin:0 0 10px; }
-.contact-card p.lead{ font-size:15px; line-height:1.55; color:#4a4a4a; margin:0 0 28px; }
+.contact-card p.lead{ font-size:15px; line-height:1.55; color:#4a4a4a; margin:0 0 18px; }
 .contact-card p.lead a{ border-bottom:1px solid var(--ink); }
 .contact-form{ display:flex; flex-direction:column; gap:14px; }
 .cf-row{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
