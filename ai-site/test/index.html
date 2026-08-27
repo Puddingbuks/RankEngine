@@ -190,6 +190,72 @@ a{ color:inherit; text-decoration:none; }
 .n-why span{ color:#3a3a3a; }
 @media (max-width:560px){ .n-row{ grid-template-columns:1fr; padding:28px 24px; } .n-body{ grid-column:1; } }
 
+/* step cards (aaply-stijl: tekst + kleurig beeldvlak) */
+.steps{ padding:104px 24px 0; }
+.step-card{
+  max-width:1020px; margin:0 auto 28px;
+  background:var(--paper); border-radius:28px; overflow:hidden;
+  box-shadow:0 10px 10px -5px rgba(0,0,0,.15);
+  display:grid; grid-template-columns:1fr 1fr;
+}
+.step-text{ padding:40px 40px 36px; display:flex; flex-direction:column; gap:18px; min-height:340px; }
+.step-badge{
+  width:46px; height:46px; border-radius:50%; border:1.5px solid var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-display); font-weight:700; font-size:17px;
+}
+.step-text h3{ font-family:var(--font-display); font-weight:600; font-size:23px; line-height:1.22; letter-spacing:-0.01em; margin:0; }
+.step-chip{
+  align-self:flex-start; display:inline-flex; align-items:center; gap:10px;
+  background:var(--canvas); border-radius:3000px; padding:7px 16px 7px 7px;
+  font-size:12px; font-weight:600;
+}
+.step-chip .knob{ width:34px; height:19px; border-radius:3000px; background:var(--ink); position:relative; flex-shrink:0; }
+.step-chip .knob::after{ content:''; position:absolute; top:2px; right:2px; width:15px; height:15px; border-radius:50%; background:var(--sunbeam); }
+.step-why{ margin-top:auto; }
+.step-rule{ border:none; border-top:1px solid var(--hairline); margin:0 0 14px; }
+.step-why-row{ display:flex; gap:14px; font-size:14px; line-height:1.55; }
+.step-why-row b{ flex-shrink:0; min-width:52px; }
+.step-why-row span{ color:#3a3a3a; }
+.step-visual{ position:relative; min-height:320px; padding:32px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.step-visual.v-blue{ background:var(--blue); }
+.step-visual.v-yellow{ background:var(--yellow); }
+.step-visual.v-peach{ background:var(--peach); }
+.step-card.flip .step-text{ order:2; }
+.step-card.flip .step-visual{ order:1; }
+/* mini-window motief, sluit aan op .frame en .chat-window */
+.sv-card{
+  width:100%; max-width:300px; background:var(--paper); border-radius:16px;
+  box-shadow:0 14px 24px -10px rgba(0,0,0,.28); padding:14px; position:relative;
+}
+.sv-bar{ display:flex; gap:6px; margin-bottom:12px; }
+.sv-bar i{ width:9px; height:9px; border-radius:50%; background:var(--hairline); }
+.sv-bar i:first-child{ background:var(--red); }
+.sv-line{ height:10px; border-radius:3000px; background:var(--canvas); margin:8px 0; }
+.sv-line.s{ width:55%; } .sv-line.m{ width:78%; } .sv-line.l{ width:92%; }
+.sv-bubble{ font-size:12px; font-weight:600; line-height:1.35; border-radius:12px; padding:9px 12px; margin:8px 0; }
+.sv-bubble.you{ background:#ececec; color:#333; margin-left:auto; max-width:80%; border-bottom-right-radius:3px; }
+.sv-bubble.bot{ background:var(--ink); color:#fff; max-width:85%; border-bottom-left-radius:3px; }
+.sv-node{ display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; margin:7px 0; }
+.sv-node .d{ width:14px; height:14px; border-radius:50%; flex-shrink:0; border:2px solid var(--ink); }
+.sv-node .d.fill{ background:var(--yellow); }
+.sv-stat{ display:flex; align-items:flex-end; gap:6px; height:74px; margin-top:6px; }
+.sv-stat i{ flex:1; border-radius:6px 6px 0 0; background:var(--peach); }
+.sv-float{
+  position:absolute; width:52px; height:52px; border-radius:50%; background:var(--paper);
+  display:flex; align-items:center; justify-content:center; font-size:24px;
+  box-shadow:0 10px 20px -8px rgba(0,0,0,.3);
+}
+.sv-float.tr{ top:26px; right:26px; }
+.sv-float.bl{ bottom:26px; left:26px; }
+@media (max-width:800px){
+  .step-card{ grid-template-columns:1fr; }
+  .step-card.flip .step-text{ order:1; }
+  .step-card.flip .step-visual{ order:2; }
+  .step-text{ min-height:0; padding:32px 24px; }
+  .step-visual{ min-height:260px; }
+}
+
 /* promise / pricing card */
 .promise-wrap{ padding:56px 24px 0; }
 .promise-card{
@@ -275,18 +341,30 @@ a{ color:inherit; text-decoration:none; }
 .fm-center .cn-title{ font-family:var(--font-display); font-weight:700; font-size:17px; }
 .fm-center .cn-sub{ font-size:9px; text-transform:uppercase; letter-spacing:.06em; color:#a3a3a3; }
 
-/* footer */
-footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margin-top:0; }
+/* footer — structuur nagebouwd van rankengine.nl */
+footer{ background:var(--ink); color:var(--paper); padding:56px 24px 32px; margin-top:0; }
 .footer-inner{ max-width:1160px; margin:0 auto; }
-.footer-top{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:40px; padding-bottom:36px; }
+.footer-brand{ display:flex; flex-direction:column; gap:12px; margin-bottom:40px; }
 .footer-logo{ display:flex; align-items:center; gap:10px; }
-.footer-cols{ display:flex; gap:56px; flex-wrap:wrap; }
-.footer-col{ display:flex; flex-direction:column; gap:12px; font-size:14px; }
-.footer-col a{ color:#c9c9c9; }
+.footer-brand p{ margin:0; font-size:14px; color:#9a9a9a; }
+.footer-brand p a{ color:var(--sunbeam); }
+.footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px 24px; padding-bottom:40px; }
+.footer-col{ display:flex; flex-direction:column; gap:10px; align-items:flex-start; font-size:14px; }
+.footer-col-title{ font-family:var(--font-body); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#fff; margin-bottom:6px; }
+.footer-col a{ color:#c2c2c2; }
 .footer-col a:hover{ color:var(--paper); }
+.footer-col address{ font-style:normal; font-size:14px; line-height:1.65; color:#c2c2c2; }
+.footer-col .meta{ font-size:13px; color:#9a9a9a; }
+.footer-col .meta b{ color:#e4e4e4; font-weight:600; margin-right:6px; }
+.footer-contact-row{ display:flex; align-items:center; gap:8px; }
+.footer-contact-row svg{ flex-shrink:0; color:var(--sunbeam); }
 .footer-rule{ border:none; border-top:1px solid #2a2a2a; margin:0 0 20px; }
-.footer-bottom{ display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:13px; color:#8a8a8a; }
-.footer-bottom a{ color:var(--sunbeam); }
+.footer-bottom{ display:flex; justify-content:space-between; gap:12px 24px; flex-wrap:wrap; font-size:13px; color:#8a8a8a; }
+.footer-bottom .legal{ display:flex; gap:8px; flex-wrap:wrap; }
+.footer-bottom .legal a{ color:#c2c2c2; }
+.footer-bottom .legal .sep{ opacity:.5; }
+@media (max-width:760px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:440px){ .footer-grid{ grid-template-columns:1fr; } }
 .preview-bar{ background:var(--ink); color:var(--paper); text-align:center; padding:10px 24px; font-size:13px; display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; }
 .preview-bar b{ color:var(--sunbeam); }
 </style>
@@ -360,36 +438,76 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
   </div>
 </div>
 
-<section id="uitleg" class="numbered">
+<section id="uitleg" class="steps">
   <div class="numbered-head">
     <span class="tag">Hoe het werkt</span>
-    <h2>Geen chatbot die dingen verzint</h2>
+    <h2>Drie stappen. Ik doe het werk.</h2>
   </div>
 
-  <div class="n-row">
-    <div class="n-badge">1</div>
-    <h3>Ik kom bij je langs, of we doen het samen digitaal</h3>
-    <div class="n-body">
-      <hr class="n-rule" />
-      <div class="n-why"><b>Waarom?</b><span>Ter plekke of via een scherm: we pakken samen alle koppelingen met je bestaande tools op, zodat alles klaarstaat.</span></div>
+  <div class="step-card">
+    <div class="step-text">
+      <div class="step-badge">1</div>
+      <h3>Ik kom bij je langs, of we doen het samen digitaal</h3>
+      <span class="step-chip"><span class="knob"></span>Kennismaken</span>
+      <div class="step-why">
+        <hr class="step-rule" />
+        <div class="step-why-row"><b>Waarom?</b><span>Ter plekke of via een scherm pakken we samen alle koppelingen met je bestaande tools op, zodat alles klaarstaat voordat ik ga bouwen.</span></div>
+      </div>
+    </div>
+    <div class="step-visual v-blue">
+      <div class="sv-card">
+        <div class="sv-bar"><i></i><i></i><i></i></div>
+        <div class="sv-bubble bot">Waar verdwijnt je tijd nu in?</div>
+        <div class="sv-bubble you">Zoeken in oude mail en vier prijslijsten</div>
+        <div class="sv-bubble bot">Die koppelen we als eerste.</div>
+      </div>
+      <span class="sv-float tr">👋</span>
+      <span class="sv-float bl">🗓️</span>
     </div>
   </div>
 
-  <div class="n-row">
-    <div class="n-badge">2</div>
-    <h3>Ik bouw en richt je eigen Obsidian-kluis in</h3>
-    <div class="n-body">
-      <hr class="n-rule" />
-      <div class="n-why"><b>Waarom?</b><span>Geen kant-en-klare SaaS-tool. Ik zet je kluis persoonlijk op, precies passend bij hoe jij werkt. Hij leeft in GitHub, niet in een gewone cloud zoals Drive of OneDrive, zodat iedereen er veilig in kan meewerken met een volledige geschiedenis.</span></div>
+  <div class="step-card flip">
+    <div class="step-text">
+      <div class="step-badge">2</div>
+      <h3>Ik bouw en richt je eigen Obsidian-kluis in</h3>
+      <span class="step-chip"><span class="knob"></span>Inrichten</span>
+      <div class="step-why">
+        <hr class="step-rule" />
+        <div class="step-why-row"><b>Waarom?</b><span>Geen kant-en-klare SaaS-tool. Ik zet je kluis persoonlijk op, passend bij hoe jij werkt. Hij leeft in GitHub, niet in een gewone cloud, zodat iedereen er veilig in meewerkt met een volledige geschiedenis.</span></div>
+      </div>
+    </div>
+    <div class="step-visual v-yellow">
+      <div class="sv-card">
+        <div class="sv-bar"><i></i><i></i><i></i></div>
+        <div class="sv-node"><span class="d fill"></span>Kennisbank</div>
+        <div class="sv-node"><span class="d"></span>Klantenbestand</div>
+        <div class="sv-node"><span class="d"></span>Facturatie</div>
+        <div class="sv-node"><span class="d fill"></span>Routines &amp; dagstart</div>
+      </div>
+      <span class="sv-float tr">🗂️</span>
+      <span class="sv-float bl">🔒</span>
     </div>
   </div>
 
-  <div class="n-row">
-    <div class="n-badge">3</div>
-    <h3>We bouwen samen je eigen AI-assistent uit</h3>
-    <div class="n-body">
-      <hr class="n-rule" />
-      <div class="n-why"><b>Waarom?</b><span>We bekijken de processen waar jij tegenaan loopt en breiden van daaruit uit wat je assistent voor je kan doen. Er zit een leercurve in: werken met Claude Code gaat anders dan je gewend bent, maar ik begeleid je erdoorheen.</span></div>
+  <div class="step-card">
+    <div class="step-text">
+      <div class="step-badge">3</div>
+      <h3>We bouwen samen je eigen AI-assistent uit</h3>
+      <span class="step-chip"><span class="knob"></span>Uitbouwen</span>
+      <div class="step-why">
+        <hr class="step-rule" />
+        <div class="step-why-row"><b>Waarom?</b><span>We bekijken de processen waar jij tegenaan loopt en breiden van daaruit uit wat je assistent doet. Er zit een leercurve in: werken met Claude Code gaat anders, maar ik begeleid je erdoorheen.</span></div>
+      </div>
+    </div>
+    <div class="step-visual v-peach">
+      <div class="sv-card">
+        <div class="sv-bar"><i></i><i></i><i></i></div>
+        <div class="sv-line l"></div>
+        <div class="sv-line m"></div>
+        <div class="sv-stat"><i style="height:38%"></i><i style="height:56%"></i><i style="height:72%"></i><i style="height:64%"></i><i style="height:90%"></i></div>
+      </div>
+      <span class="sv-float tr">🤝</span>
+      <span class="sv-float bl">✨</span>
     </div>
   </div>
 </section>
@@ -522,7 +640,7 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
 
 <footer id="contact">
   <div class="footer-inner">
-    <div class="footer-top">
+    <div class="footer-brand">
       <a href="#top" class="footer-logo">
         <svg class="logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="40" height="40" rx="14" fill="#e6e51e"/>
@@ -530,25 +648,45 @@ footer{ background:var(--ink); color:var(--paper); padding:52px 24px 32px; margi
         </svg>
         <span class="logo-word" style="color:#fff">memry<span class="tag" style="color:#8a8a8a">preview</span></span>
       </a>
-      <div class="footer-cols">
-        <div class="footer-col">
-          <strong>Product</strong>
-          <a href="#uitleg">Hoe het werkt</a>
-          <a href="#funnel">Koppelingen</a>
-          <a href="#alles-erin">Wat je krijgt</a>
-          <a href="#contact">Pilotplek</a>
-        </div>
-        <div class="footer-col">
-          <strong>Contact</strong>
-          <a href="mailto:info@rankengine.nl">info@rankengine.nl</a>
-          <a href="https://rankengine.nl">Een dienst van RankEngine</a>
-        </div>
+      <p>Memry is een dienst van <a href="https://rankengine.nl">RankEngine.nl</a></p>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-col-title">Locatie en gegevens</div>
+        <address><strong>RankEngine</strong><br />Koningsstraat 49<br />1432 PL Aalsmeer</address>
+        <a class="footer-contact-row" href="tel:+31643859989"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 005 5L15 12l5 2v3a2 2 0 01-2 2C10.5 19 5 13.5 5 6a2 2 0 011-3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> 06 43 85 99 89</a>
+        <a class="footer-contact-row" href="mailto:info@rankengine.nl"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg> info@rankengine.nl</a>
+        <p class="meta"><b>KVK</b>94381143</p>
+        <p class="meta"><b>BTW</b>NL005080200B96</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Memry</div>
+        <a href="#uitleg">Hoe het werkt</a>
+        <a href="#funnel">Koppelingen</a>
+        <a href="#alles-erin">Wat je krijgt</a>
+        <a href="#contact">Pilotplek aanvragen</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">RankEngine</div>
+        <a href="https://rankengine.nl/">Hoofdsite</a>
+        <a href="https://rankengine.nl/geo-optimalisatie">GEO &amp; AI-optimalisatie</a>
+        <a href="https://rankengine.nl/seo">SEO</a>
+        <a href="https://rankengine.nl/blog/">Blog</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Social</div>
+        <a class="footer-contact-row" href="https://www.linkedin.com/company/rankengine-nl" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 11-4-.002 2 2 0 014 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.68-2.91V8.48z"/></svg> LinkedIn</a>
       </div>
     </div>
+
     <hr class="footer-rule" />
     <div class="footer-bottom">
-      <span>Preview van memry.nl op basis van de <a href="https://aaply.app" target="_blank" rel="noopener">aaply.app</a>-huisstijl</span>
-      <span>Alle rechten voorbehouden</span>
+      <span>© 2026 RankEngine · KvK 94381143 · BTW NL005080200B96</span>
+      <span class="legal">
+        <a href="https://rankengine.nl/privacy">Privacybeleid</a><span class="sep">·</span>
+        <a href="https://rankengine.nl/algemene-voorwaarden">Algemene voorwaarden</a>
+      </span>
     </div>
   </div>
 </footer>
